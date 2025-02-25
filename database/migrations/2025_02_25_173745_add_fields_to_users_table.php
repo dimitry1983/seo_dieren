@@ -29,6 +29,6 @@ class AddFieldsToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn(['ip', 'role', 'first_name', 'last_name', 'blocked', 'active', 'deleted']);
-        });
+        });  
     }
 }
