@@ -19,6 +19,9 @@ class Province extends Model
     ];
 
     public static function getStateByCountry($country){
-        return Province::where('country_id', $country)->pluck( 'name', 'id');
+        if ($country == 1){
+            $country = 'nl';
+        }
+        return Province::where('country', $country)->pluck( 'name', 'id');
     }
 }
