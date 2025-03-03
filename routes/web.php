@@ -13,6 +13,7 @@ Route::view('dashboard', 'dashboard')
     ->name('dashboard');
 
 Route::get('/convert', [SiteController::class, 'convertDB'])->name('site.convert');    
+Route::get('/convert2', [SiteController::class, 'convertDBAgain'])->name('site.convert2');    
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');

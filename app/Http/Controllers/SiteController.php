@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
+use App\Models\Veterinarian;
 use App\Services\GeoapifyService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -20,6 +22,7 @@ class SiteController extends Controller
     }
 
     public function convertDB(){
+        return;
         ini_set("memory_limit", "-1");
         set_time_limit(0);
          $ads = DB::table('vets')->get();
@@ -69,6 +72,25 @@ class SiteController extends Controller
                 }
          
         } 
+    }
+
+    public function convertDBAgain(){
+        return;
+        ini_set("memory_limit", "-1");
+        set_time_limit(0);
+
+        $records = Veterinarian::get();
+        foreach( $records as $item){
+           $record = Veterinarian::find($item -> id);
+           $city   = $record -> city; 
+           $result = City::where('name', $city)->first();
+           if (!empty($result)){
+              $record -> city = $result -> id;
+              $record -> region =  $result -> province_id;
+              $record -> save();
+           }
+        }
+
     }
 
  
