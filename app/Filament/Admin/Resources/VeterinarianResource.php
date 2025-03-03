@@ -4,11 +4,14 @@ namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\VeterinarianResource\Pages;
 use App\Filament\Admin\Resources\VeterinarianResource\RelationManagers;
+use App\Models\City;
+use App\Models\Province;
 use App\Models\Veterinarian;
 use Filament\Forms;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -55,10 +58,37 @@ class VeterinarianResource extends Resource
                         // Right side - Contact info (2 columns)
                         Section::make('Contact Information')
                             ->schema([
-                                Forms\Components\TextInput::make('region')
-                                    ->maxLength(255),
-                                Forms\Components\TextInput::make('city')
-                                    ->maxLength(255),
+                                Forms\Components\Select::make('region_id')
+                                    ->label('Province')
+                                    ->searchable(true)
+                                    ->options(function (Get $get){
+                                        $countryId = 1;
+                
+                                        if (!empty($countryId)){
+                                            return Province::getStateByCountry($countryId);
+                                        }
+                                    })
+                                    ->live()
+                                    ->afterStateUpdated(function (Forms\Contracts\HasForms $livewire,  Forms\Components\Select $component) {
+                                        $livewire->validateOnly($component->getStatePath());
+                                    }),
+                                Forms\Components\TextInput::make('city_id')
+                                        ->label('City')
+                                        ->searchable(true)
+                                        ->live()
+                                        ->options(function (Get $get){
+                                            $countryId = 1;
+                                            $stateId = $get('province_id');
+                    
+                                            if (!empty($countryId) && !empty($stateId)){
+                                                return City::getCityByCountryAndState($countryId, $stateId);
+                                            }
+                                        })
+                                        ->required()
+                                        ->afterStateUpdated(function (Forms\Contracts\HasForms $livewire,  Forms\Components\Select $component) {
+                                            $livewire->validateOnly($component->getStatePath());
+                                        }),
+            
                                 Forms\Components\TextInput::make('zipcode')
                                     ->maxLength(255),
                                 Forms\Components\TextInput::make('street')
@@ -84,9 +114,9 @@ class VeterinarianResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('region')
+                Tables\Columns\TextColumn::make('province.name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('city')
+                Tables\Columns\TextColumn::make('city.name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('zipcode')
                     ->searchable(),

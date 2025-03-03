@@ -18,4 +18,20 @@ class Veterinarian extends Model
     {
         return $this->belongsTo(\App\Models\User::class);
     }
+
+        /**
+     * Get the city associated with the veterinarian.
+     */
+    public function city()
+    {
+        return $this->belongsTo(\App\Models\City::class, 'city_id');
+    }
+
+    /**
+     * Get the province (region) associated with the veterinarian.
+     */
+    public function province()
+    {
+        return $this->belongsTo(\App\Models\Province::class, 'region_id');
+    }
 }
