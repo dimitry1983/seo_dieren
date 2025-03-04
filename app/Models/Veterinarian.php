@@ -11,6 +11,21 @@ class Veterinarian extends Model
 
     protected $guarded = [];
 
+    protected function mutateFormDataBeforeSave(array $data): array
+    {
+        $categories = $data['categories'] ?? [];
+        unset($data['categories']); // Remove from $data to avoid errors
+    
+        return $data;
+    }
+    
+    protected function afterSave(Veterinarian $record, array $data): void
+    {
+        if (isset($data['categories'])) {
+            $record->categories()->sync($data['categories']); // Attach categories
+        }
+    }
+
     /**
      * Get the user (admin) that owns the veterinarian.
     */
@@ -33,5 +48,13 @@ class Veterinarian extends Model
     public function province()
     {
         return $this->belongsTo(\App\Models\Province::class, 'region_id');
+    }
+
+    /**
+     * The categories that belong to the veterinarian.
+     */
+    public function categories()
+    {
+        return $this->belongsToMany(\App\Models\Category::class, 'veterinarians_categories', 'veterinarian_id', 'category_id');
     }
 }

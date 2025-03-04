@@ -25,7 +25,7 @@ class SiteController extends Controller
         return;
         ini_set("memory_limit", "-1");
         set_time_limit(0);
-         $ads = DB::table('vets')->get();
+         $ads = DB::table('vets')->where('id', '>' , 3365)->get();
        
          if (!empty($ads)){
             
@@ -49,8 +49,8 @@ class SiteController extends Controller
                                 'name' => $item->name,
                                 'short_description' => "",
                                 'description' => "",
-                                'region' => $item->region,
-                                'city' => $item->city,
+                                'region_id' => $item->region,
+                                'city_id' => $item->city,
                                 'zipcode' => $item->zipcode,
                                 'street' => $item->street,
                                 'street_nr' => $item->street_nr,
@@ -79,14 +79,14 @@ class SiteController extends Controller
         ini_set("memory_limit", "-1");
         set_time_limit(0);
 
-        $records = Veterinarian::get();
+        $records = Veterinarian::where('id','>',527)->get();
         foreach( $records as $item){
            $record = Veterinarian::find($item -> id);
-           $city   = $record -> city; 
+           $city   = $record -> city_id; 
            $result = City::where('name', $city)->first();
            if (!empty($result)){
-              $record -> city = $result -> id;
-              $record -> region =  $result -> province_id;
+              $record -> city_id = $result -> id;
+              $record -> region_id =  $result -> province_id;
               $record -> save();
            }
         }

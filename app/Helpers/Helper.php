@@ -504,7 +504,7 @@ function getPageBuilderSchema(){
 
 if (!function_exists('devTranslate')) {
     function devTranslate($key, $default = null, $replace = []) {
-        if (app()->environment('local')) {
+        if (app()->environment('local') || app()->environment('production') || app()->environment('staging')) {
             return __($default, $replace)  ?? __($key, $replace);
         }
 

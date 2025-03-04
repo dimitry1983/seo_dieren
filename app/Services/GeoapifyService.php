@@ -49,7 +49,7 @@ class GeoapifyService
         }
         $queryParts[] = $country;
         $fullAddress = implode(', ', $queryParts);
-
+      
         $url = "https://api.geoapify.com/v1/geocode/search?text=" . urlencode($fullAddress) . "&apiKey=" . $this->apiKey;
 
         
@@ -66,10 +66,16 @@ class GeoapifyService
                     'lon' => $lon,
                 ];
             }
+            else{
+                return [
+                    'lat' => null,
+                    'lon' => null,
+                ];
+            }
 
-            throw new \Exception('No location features found in API response.');
+            //throw new \Exception('No location features found in API response.');
         }
 
-        throw new \Exception('API request failed with status: ' . $response->status());
+        //throw new \Exception('API request failed with status: ' . $response->status());
     }
 }

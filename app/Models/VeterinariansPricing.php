@@ -9,6 +9,8 @@ class VeterinariansPricing extends Model
 {
     use HasFactory;
 
+    protected $table = 'veterinarians_pricing';
+
     protected $guarded = [];
 
     // Define the relationship with Veterinarian

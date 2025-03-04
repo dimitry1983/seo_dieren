@@ -4,6 +4,7 @@ namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\VeterinarianResource\Pages;
 use App\Filament\Admin\Resources\VeterinarianResource\RelationManagers;
+use App\Models\Category;
 use App\Models\City;
 use App\Models\Province;
 use App\Models\User;
@@ -25,7 +26,7 @@ class VeterinarianResource extends Resource
 {
     protected static ?string $model = Veterinarian::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-user';
+    protected static ?string $navigationIcon = 'heroicon-o-building-office-2';
 
     protected static ?string $navigationGroup = 'Veterinarian management';
 
@@ -45,6 +46,12 @@ class VeterinarianResource extends Resource
                                     ->maxLength(255),
                                 Forms\Components\Textarea::make('short_description')
                                     ->columnSpanFull(),
+                                Select::make('categories')
+                                    ->label('Categories')
+                                    ->multiple()
+                                    ->relationship('categories', 'name') // Ensure this matches the model function
+                                    ->searchable()
+                                    ->preload(), 
                                 Forms\Components\RichEditor::make('description')
                                     ->columnSpanFull(),
                                 Forms\Components\TextInput::make('lat')
@@ -127,6 +134,7 @@ class VeterinarianResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->defaultSort('id', 'desc')
             ->columns([
                 Tables\Columns\TextColumn::make('id')
                     ->searchable()
