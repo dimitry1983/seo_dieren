@@ -33,7 +33,7 @@ class VeterinariansImageResource extends Resource
     {
         return $form
             ->schema([
-                Section::make('General Information') // Title of the section
+                Section::make('Images') // Title of the section
                     ->schema([
                         FileUpload::make('name')
                             ->image()
@@ -65,7 +65,6 @@ class VeterinariansImageResource extends Resource
                 Tables\Columns\IconColumn::make('featured')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('veterinarian.name')
-                    ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

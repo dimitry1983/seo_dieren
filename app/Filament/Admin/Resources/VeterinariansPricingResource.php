@@ -32,7 +32,7 @@ class VeterinariansPricingResource extends Resource
     {
         return $form
         ->schema([
-            Section::make('General Information') // Title of the section
+            Section::make('Pricing') // Title of the section
                 ->schema([
                     TextInput::make('name')
                             ->required(), // Max file size in KB (2MB)
@@ -50,6 +50,7 @@ class VeterinariansPricingResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->defaultSort('id', 'desc')
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
