@@ -14,6 +14,7 @@ use App\Http\Controllers\SearchController;
 
 // Site Routes
 Route::get('/', [SiteController::class, 'index'])->name('home');
+Route::get('/over-ons', [SiteController::class, 'about'])->name('about');
 Route::get('/contact', [SiteController::class, 'contact'])->name('contact');
 
 // Blog Routes
