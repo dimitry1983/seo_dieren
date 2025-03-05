@@ -2,33 +2,42 @@
 
 @section('content')
 <div class="main-container relative w-full overflow-hidden">
-    <section class="section section--hero bg-cover bg-right bg-center" style="background-image: url('{{ asset('dieren/src/public/img/hero.jpg') }}');">
-        <div class="container mx-auto lg:pt-[120px] lg:pb-[180px] md:pt-[90px] md:pb-[120px] sm:pt-[50px] sm:pb-[80px] pt-[30px] pb-[50px] bg-white  bg-opacity-75 lg:bg-opacity-0">
-            <div class="flex flex-col lg:flex-row items-center">
-                <div class="w-full lg:w-1/2 text-center lg:text-left">
-                    <div class="mb-6">
-                        <h1 class="text-4xl sm:text-5xl md:text-6xl font-regular text-gray-800">
-                            Discover The Best <span class="text-primary font-bold">Veterinary</span> <strong>Clinics</strong> In Your City
-                        </h1>
-                        <p class="mt-4 text-gray-600 text-sm sm:text-base">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras<br class="hidden md:block"> euismod leo eleifend maximus mattis quis augue dapibus.
-                        </p>
+    <section class="section section--hero bg-cover bg-right bg-center pb-0 pt-0 md:pt-0 px-0 md:px-0 lg:px-0" style="background-image: url('{{ asset('dieren/src/public/img/hero.jpg') }}');">
+        <div class="relative w-full h-full">
+            <!-- White overlay background -->
+            <div class="absolute top-0 left-0 w-full h-full bg-white bg-opacity-65 z-2"></div>
+
+            <!-- Content container -->
+            <div class="container mx-auto lg:pt-[120px] lg:pb-[180px] md:pt-[90px] md:pb-[120px] sm:pt-[50px] sm:pb-[80px] pt-[100px] pb-[100px] xl-custom:py-[200px] relative z-20">
+                <div class="flex flex-col lg:flex-row items-center">
+                    <div class="w-full lg:w-1/2 text-center lg:text-left">
+                        <div class="mb-6">
+                            <h1 class="text-4xl sm:text-5xl md:text-6xl font-regular text-gray-800">
+                                Discover The Best <span class="text-primary font-bold">Veterinary</span> <strong>Clinics</strong> In Your City
+                            </h1>
+                            <p class="mt-4 text-gray-900 text-sm sm:text-base">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras<br class="hidden md:block"> euismod leo eleifend maximus mattis quis augue dapibus.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+
     <section class="section section--search py-0 bg-transparent">
         <div class="container mx-auto bg-transparent">
-            <form action="" class="md:p-[40px] p-[20px] flex flex-col md:flex-row items-center gap-y-4 md:gap-x-6 mt-[-50px] bg-white md:rounded-full border border-[#D2D3D4] relative before:hidden md:before:block before:absolute before:right-0 before:top-0 before:w-full md:before:w-1/4 before:h-full before:z-0 before:bg-primaryLight before:rounded-tr-full before:rounded-br-full">
+            <form action="" class="s-form md:p-[40px] z-30 p-[20px] flex flex-col md:flex-row items-center gap-y-4 md:gap-x-6 mt-[-50px] bg-white md:rounded-full border border-[#D2D3D4] relative before:hidden md:before:block before:absolute before:right-0 before:top-0 before:w-full md:before:w-1/4 before:h-full before:z-0 before:bg-primaryLight before:rounded-tr-full before:rounded-br-full">
                 <div class="w-full md:w-1/4 text-center md:text-left relative z-1">
-                    <p class="mb-[10px]"><strong>What Are You Looking For?</strong></p>
+                    <p class="mb-[10px] block xl-custom:block md:hidden">
+                        <strong>What Are You Looking For?</strong>
+                    </p>
                     <input type="text" placeholder="Search For" class="form-control p-3 border border-gray-300 rounded-full outline-none transition duration-300 ease-out w-full">
                 </div>
 
                 <div class="w-full md:w-1/4 text-center md:text-left relative">
-                    <p class="mb-[10px]"><strong>Category</strong></p>
+                    <p class="mb-[10px] hidden xl-custom:block"><strong>Category</strong></p>
                     <div class="relative">
                         <select class="form-control p-3 border border-gray-300 rounded-full outline-none transition duration-300 ease-out w-full appearance-none pr-10">
                             <option>Dogs</option>
@@ -38,7 +47,7 @@
                 </div>
 
                 <div class="w-full md:w-1/4 text-center md:text-left relative">
-                    <p class="mb-[10px]"><strong>Location</strong></p>
+                    <p class="mb-[10px] hidden xl-custom:block"><strong>Location</strong></p>
                     <div class="relative">
                         <select class="form-control p-3 border border-gray-300 rounded-full outline-none transition duration-300 ease-out w-full appearance-none pr-10">
                             <option>Amsterdam</option>
@@ -192,82 +201,7 @@
 </div>
 </section>
                                                                                                         
-<section class="section section--categories bg-cover bg-center pt-[80px] pb-[100px]" style="background-image: url('{{ asset('dieren/src/public/img/categories.jpg')}}');">
-    <div class="container mx-auto">
-        <div class="section__header flex flex-col lg:flex-row items-center justify-between mb-6">
-            <div class="text-center lg:text-left">
-                <h4 class="subtitle w-fit text-md font-semibold relative before:content-[''] before:w-[20px] before:h-[2px] before:bg-primary before:absolute before:right-[-30px] before:top-1/2 before:-translate-y-1/2">
-                    Choose Your Category
-                </h4>
-                <h3 class="title title--section font-bold text-3xl text-gray-800">
-                    <span class="text-primary">Browse</span> Categories
-                </h3>
-            </div>
-            <a href="#" class="btn btn-outline-black whitespace-nowrap mt-4 lg:mt-0">Explore All</a>
-        </div>
-        <div class="categories grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            <div class="category border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
-                <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
-                    <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/dog.png')}}" alt="">
-                </figure>
-                <div class="content text-center p-4">
-                    <h3 class="title text-md font-semibold mb-2">Dogs</h3>
-                    <p class="paragraph text-sm">(150 Listings)</p>
-                </div>
-            </div>
 
-            <div class="category border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
-                <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
-                    <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/cat.png')}}" alt="">
-                </figure>
-                <div class="content text-center p-4">
-                    <h3 class="title text-md font-semibold mb-2">Cats</h3>
-                    <p class="paragraph text-sm">(150 Listings)</p>
-                </div>
-            </div>
-
-            <div class="category border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
-                <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
-                    <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/turtle.png')}}" alt="">
-                </figure>
-                <div class="content text-center p-4">
-                    <h3 class="title text-md font-semibold mb-2">Others</h3>
-                    <p class="paragraph text-sm">(100 Listings)</p>
-                </div>
-            </div>
-
-            <div class="category border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
-                <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
-                    <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/shelters.png')}}" alt="">
-                </figure>
-                <div class="content text-center p-4">
-                    <h3 class="title text-md font-semibold mb-2">Shelters</h3>
-                    <p class="paragraph text-sm">(100 Listings)</p>
-                </div>
-            </div>
-
-            <div class="category border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
-                <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
-                    <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/specialists.png')}}" alt="">
-                </figure>
-                <div class="content text-center p-4">
-                    <h3 class="title text-md font-semibold mb-2">Specialists</h3>
-                    <p class="paragraph text-sm">(50 Listings)</p>
-                </div>
-            </div>
-
-            <div class="category border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
-                <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
-                    <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/emergencies.png')}}" alt="">
-                </figure>
-                <div class="content text-center p-4">
-                    <h3 class="title text-md font-semibold mb-2">Emergencies</h3>
-                    <p class="paragraph text-sm">(50 Listings)</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <section class="section section--clinics">
     <div class="container mx-auto relative">

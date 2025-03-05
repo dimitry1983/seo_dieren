@@ -9,6 +9,12 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        'xl-custom': '1280px', // Custom breakpoint
+      },
+      padding: {
+        '20p': '20%', // Define a 20% padding utility
+      },
       colors: {
         primary: '#009999', 
         primaryLight: '#00CCCC', 

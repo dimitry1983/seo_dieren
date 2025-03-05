@@ -1,2 +1,2 @@
-cd public/sex-advertenties
+cd public/dieren
 npx tailwindcss -i ./src/public/css/app.css -o ./dist/public/css/app.css --watch
