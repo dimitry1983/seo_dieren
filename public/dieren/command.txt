@@ -1,0 +1,2 @@
+cd public/sex-advertenties
+npx tailwindcss -i ./src/public/css/app.css -o ./dist/public/css/app.css --watch
