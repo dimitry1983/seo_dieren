@@ -18,7 +18,11 @@ class SiteController extends Controller
     }
 
     public function index(){
-        return view('site.index');
+        return view('website.index');
+    }
+
+    public function contact(){
+        return view('website.contact');
     }
 
     public function convertDB(){
