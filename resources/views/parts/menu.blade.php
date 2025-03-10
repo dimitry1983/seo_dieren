@@ -9,7 +9,7 @@
             <span class="block mt-2 bg-white w-8 h-[2px] transition duration-300 group-open:opacity-0"></span>
             <span class="top-0 block mt-2 bg-white w-8 h-[2px] transition origin-top-center relative group-open:-rotate-45 group-open:-top-[11px] group-open:border-none"></span>
         </button>
-        <nav id="mainMenu" class="peer-open:border-t peer-open:border-gray-800 hidden absolute top-[100%] left-0 lg:static bg-primaryAlt w-full lg:w-[fit-content] lg:block ms-auto z-50 bg-white">
+        <nav id="mainMenu" class="peer-open:border-t peer-open:border-gray-800 hidden absolute top-[100%] left-0 lg:static bg-primaryAlt w-full lg:w-[fit-content] lg:block mx-auto z-50 bg-white">
             <ul class="text-center py-5 lg:py-0 lg:text-left lg:flex lg:space-x-8 text-lg text-black font-medium">
                 <li class="nav-item hover:text-primary"><a href="#">Home</a></li>
                 <li class="nav-item hover:text-primary mt-2 lg:mt-0"><a href="#">Listing</a></li>
@@ -26,7 +26,7 @@
         </nav>
 
         <div class="hidden lg:flex ms-6 gap-4">
-            <a href="#" class="btn-secondary flex justify-center items-center" style="padding-top:5px!important; padding-bottom:5px!important;">
+            <a href="#" class="btn-secondary flex justify-center items-center" style="padding-top:8px!important; padding-bottom:8px!important;">
                 Add Your Clinic <i class="fa-solid fa-circle-plus ml-4 text-4xl"></i>
             </a>
         </div>
