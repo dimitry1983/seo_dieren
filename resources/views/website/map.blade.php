@@ -27,7 +27,7 @@
                     </div>
 
                     <p class="mb-0"><strong>Search</strong></p>
-                    <button class="btn btn-primary w-full mt-3 flex items-center justify-center gap-2 p-3 rounded-full">
+                    <button class="btn btn-primaryLight w-full mt-3 flex items-center justify-center gap-2 p-3 rounded-full">
                         Search Now <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
 
