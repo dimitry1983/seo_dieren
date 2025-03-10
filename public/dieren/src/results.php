@@ -385,29 +385,6 @@
                 </div>
                 <img src="public/img/bg-blocks.png" alt="" class="absolute bottom-[-80px] left-[-60px] z-[-1]"> 
             </div>
-            <script>
-                document.addEventListener("DOMContentLoaded", function () {
-                    const postsContainer = document.querySelector(".posts");
-                    const btn2Cols = document.getElementById("btn-2cols");
-                    const btn4Cols = document.getElementById("btn-4cols");
-                    const btn6Cols = document.getElementById("btn-6cols");
-
-                    btn2Cols.addEventListener("click", () => {
-                        postsContainer.classList.remove("grid-cols-3", "grid-cols-2");
-                        postsContainer.classList.add("grid-cols-1");
-                    });
-
-                    btn4Cols.addEventListener("click", () => {
-                        postsContainer.classList.remove("grid-cols-1", "grid-cols-3");
-                        postsContainer.classList.add("grid-cols-2");
-                    });
-
-                    btn6Cols.addEventListener("click", () => {
-                        postsContainer.classList.remove("grid-cols-1", "grid-cols-2");
-                        postsContainer.classList.add("grid-cols-3");
-                    });
-                });
-            </script>
         </section>
 
         <section class="section section--categories bg-[url('../../../src/public/img/categories.jpg')] bg-cover bg-center pt-[80px] pb-[100px]">
