@@ -23,7 +23,7 @@ class VeterinariansPricingResource extends Resource
 {
     protected static ?string $model = VeterinariansPricing::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-currency-euro';
 
     protected static ?string $navigationGroup = 'Veterinarian management';
 

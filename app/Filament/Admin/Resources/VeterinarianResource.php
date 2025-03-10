@@ -52,6 +52,13 @@ class VeterinarianResource extends Resource
                                     ->relationship('categories', 'name') // Ensure this matches the model function
                                     ->searchable()
                                     ->preload(), 
+                                Select::make('services')
+                                    ->label('Services')
+                                    ->multiple()
+                                    ->relationship('services', 'name') // Ensure this matches the model function
+                                    ->searchable()
+                                    ->preload(), 
+
                                 Forms\Components\RichEditor::make('description')
                                     ->columnSpanFull(),
                                 Forms\Components\TextInput::make('lat')
