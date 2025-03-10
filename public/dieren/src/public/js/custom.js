@@ -1,10 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
+    
     const postsContainer = document.querySelector(".posts");
-    const btn2Cols = document.getElementById("btn-2cols");
-    const btn4Cols = document.getElementById("btn-4cols");
-    const btn6Cols = document.getElementById("btn-6cols");
+    const btn2Cols = document.getElementById("btn-2-cols");
+    const btn4Cols = document.getElementById("btn-4-cols");
+    const btn6Cols = document.getElementById("btn-6-cols");
 
-    if (btn2Cols && btn4Cols && btn6Cols && postsContainer) {
+    if (btn2Cols && btn4Cols && btn6Cols) {
+
         btn2Cols.addEventListener("click", () => {
             postsContainer.classList.remove("grid-cols-3", "grid-cols-2");
             postsContainer.classList.add("grid-cols-1");
@@ -79,3 +81,4 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }).mount();
 });
+
