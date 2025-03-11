@@ -4,7 +4,7 @@
 <div class="main-container relative w-full overflow-hidden">
 
     <section class="section section--hero-interior bg-primaryLight relative py-[140px]">
-        <div class="container mx-auto">
+        <div class="container mx-auto relative z-1">
             <h1 class="text-6xl text-center font-regular text-gray-800 relative z-1">
                 Blog & <strong>News</strong>
             </h1>
@@ -18,188 +18,188 @@
                 From <span class="text-primary">Our Blog</span>
             </h3>
             <div class="posts grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg category-best-rated">
+                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg">
                     <figure class="m-0 overflow-hidden">
                         <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/blog-1.png')}}" alt=""></a>
                     </figure>
                     <div class="content p-[20px] pb-[30px]">
-                        <p class="text-primary text-sm date">20 February, 2025</p>
+                        <p class="text-primary text-normal date">20 February, 2025</p>
                         <h3 class="title font-bold text-lg">
                             <a href="#">Lorem Ipsum Dolor</a>
                         </h3>
                         <p class="mb-5">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec varius.
                         </p>
-                        <a href="#" class="btn btn-outline-black text-sm font-bold block w-fit mx-auto">Read Article</a>
+                        <a href="#" class="btn btn-outline-black text-normal font-bold block w-fit mx-auto border border-gray-800 py-2 px-4 rounded-full transition duration-300 ease-out hover:bg-black hover:text-white">Read Article</a>
                     </div>
                 </div>
-                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg category-best-rated">
+                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg">
                     <figure class="m-0 overflow-hidden">
                         <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/blog-2.png')}}" alt=""></a>
                     </figure>
                     <div class="content p-[20px] pb-[30px]">
-                        <p class="text-primary text-sm date">20 February, 2025</p>
+                        <p class="text-primary text-normal date">20 February, 2025</p>
                         <h3 class="title font-bold text-lg">
                             <a href="#">Lorem Ipsum Dolor</a>
                         </h3>
                         <p class="mb-5">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec varius.
                         </p>
-                        <a href="#" class="btn btn-outline-black text-sm font-bold block w-fit mx-auto">Read Article</a>
+                        <a href="#" class="btn btn-outline-black text-normal font-bold block w-fit mx-auto border border-gray-800 py-2 px-4 rounded-full transition duration-300 ease-out hover:bg-black hover:text-white">Read Article</a>
                     </div>
                 </div>
-                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg category-best-rated">
+                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg">
                     <figure class="m-0 overflow-hidden">
                         <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/blog-3.png')}}" alt=""></a>
                     </figure>
                     <div class="content p-[20px] pb-[30px]">
-                        <p class="text-primary text-sm date">20 February, 2025</p>
+                        <p class="text-primary text-normal date">20 February, 2025</p>
                         <h3 class="title font-bold text-lg">
                             <a href="#">Lorem Ipsum Dolor</a>
                         </h3>
                         <p class="mb-5">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec varius.
                         </p>
-                        <a href="#" class="btn btn-outline-black text-sm font-bold block w-fit mx-auto">Read Article</a>
+                        <a href="#" class="btn btn-outline-black text-normal font-bold block w-fit mx-auto border border-gray-800 py-2 px-4 rounded-full transition duration-300 ease-out hover:bg-black hover:text-white">Read Article</a>
                     </div>
                 </div>
-                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg category-best-rated">
+                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg">
                     <figure class="m-0 overflow-hidden">
                         <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/blog-1.png')}}" alt=""></a>
                     </figure>
                     <div class="content p-[20px] pb-[30px]">
-                        <p class="text-primary text-sm date">20 February, 2025</p>
+                        <p class="text-primary text-normal date">20 February, 2025</p>
                         <h3 class="title font-bold text-lg">
                             <a href="#">Lorem Ipsum Dolor</a>
                         </h3>
                         <p class="mb-5">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec varius.
                         </p>
-                        <a href="#" class="btn btn-outline-black text-sm font-bold block w-fit mx-auto">Read Article</a>
+                        <a href="#" class="btn btn-outline-black text-normal font-bold block w-fit mx-auto border border-gray-800 py-2 px-4 rounded-full transition duration-300 ease-out hover:bg-black hover:text-white">Read Article</a>
                     </div>
                 </div>
-                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg category-best-rated">
+                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg">
                     <figure class="m-0 overflow-hidden">
                         <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/blog-2.png')}}" alt=""></a>
                     </figure>
                     <div class="content p-[20px] pb-[30px]">
-                        <p class="text-primary text-sm date">20 February, 2025</p>
+                        <p class="text-primary text-normal date">20 February, 2025</p>
                         <h3 class="title font-bold text-lg">
                             <a href="#">Lorem Ipsum Dolor</a>
                         </h3>
                         <p class="mb-5">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec varius.
                         </p>
-                        <a href="#" class="btn btn-outline-black text-sm font-bold block w-fit mx-auto">Read Article</a>
+                        <a href="#" class="btn btn-outline-black text-normal font-bold block w-fit mx-auto border border-gray-800 py-2 px-4 rounded-full transition duration-300 ease-out hover:bg-black hover:text-white">Read Article</a>
                     </div>
                 </div>
-                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg category-best-rated">
+                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg">
                     <figure class="m-0 overflow-hidden">
                         <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/blog-3.png')}}" alt=""></a>
                     </figure>
                     <div class="content p-[20px] pb-[30px]">
-                        <p class="text-primary text-sm date">20 February, 2025</p>
+                        <p class="text-primary text-normal date">20 February, 2025</p>
                         <h3 class="title font-bold text-lg">
                             <a href="#">Lorem Ipsum Dolor</a>
                         </h3>
                         <p class="mb-5">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec varius.
                         </p>
-                        <a href="#" class="btn btn-outline-black text-sm font-bold block w-fit mx-auto">Read Article</a>
+                        <a href="#" class="btn btn-outline-black text-normal font-bold block w-fit mx-auto border border-gray-800 py-2 px-4 rounded-full transition duration-300 ease-out hover:bg-black hover:text-white">Read Article</a>
                     </div>
                 </div>
-                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg category-best-rated">
+                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg">
                     <figure class="m-0 overflow-hidden">
                         <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/blog-1.png')}}" alt=""></a>
                     </figure>
                     <div class="content p-[20px] pb-[30px]">
-                        <p class="text-primary text-sm date">20 February, 2025</p>
+                        <p class="text-primary text-normal date">20 February, 2025</p>
                         <h3 class="title font-bold text-lg">
                             <a href="#">Lorem Ipsum Dolor</a>
                         </h3>
                         <p class="mb-5">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec varius.
                         </p>
-                        <a href="#" class="btn btn-outline-black text-sm font-bold block w-fit mx-auto">Read Article</a>
+                        <a href="#" class="btn btn-outline-black text-normal font-bold block w-fit mx-auto border border-gray-800 py-2 px-4 rounded-full transition duration-300 ease-out hover:bg-black hover:text-white">Read Article</a>
                     </div>
                 </div>
-                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg category-best-rated">
+                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg">
                     <figure class="m-0 overflow-hidden">
                         <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/blog-2.png')}}" alt=""></a>
                     </figure>
                     <div class="content p-[20px] pb-[30px]">
-                        <p class="text-primary text-sm date">20 February, 2025</p>
+                        <p class="text-primary text-normal date">20 February, 2025</p>
                         <h3 class="title font-bold text-lg">
                             <a href="#">Lorem Ipsum Dolor</a>
                         </h3>
                         <p class="mb-5">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec varius.
                         </p>
-                        <a href="#" class="btn btn-outline-black text-sm font-bold block w-fit mx-auto">Read Article</a>
+                        <a href="#" class="btn btn-outline-black text-normal font-bold block w-fit mx-auto border border-gray-800 py-2 px-4 rounded-full transition duration-300 ease-out hover:bg-black hover:text-white">Read Article</a>
                     </div>
                 </div>
-                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg category-best-rated">
+                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg">
                     <figure class="m-0 overflow-hidden">
                         <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/blog-3.png')}}" alt=""></a>
                     </figure>
                     <div class="content p-[20px] pb-[30px]">
-                        <p class="text-primary text-sm date">20 February, 2025</p>
+                        <p class="text-primary text-normal date">20 February, 2025</p>
                         <h3 class="title font-bold text-lg">
                             <a href="#">Lorem Ipsum Dolor</a>
                         </h3>
                         <p class="mb-5">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec varius.
                         </p>
-                        <a href="#" class="btn btn-outline-black text-sm font-bold block w-fit mx-auto">Read Article</a>
+                        <a href="#" class="btn btn-outline-black text-normal font-bold block w-fit mx-auto border border-gray-800 py-2 px-4 rounded-full transition duration-300 ease-out hover:bg-black hover:text-white">Read Article</a>
                     </div>
                 </div>
-                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg category-best-rated">
+                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg">
                     <figure class="m-0 overflow-hidden">
                         <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/blog-1.png')}}" alt=""></a>
                     </figure>
                     <div class="content p-[20px] pb-[30px]">
-                        <p class="text-primary text-sm date">20 February, 2025</p>
+                        <p class="text-primary text-normal date">20 February, 2025</p>
                         <h3 class="title font-bold text-lg">
                             <a href="#">Lorem Ipsum Dolor</a>
                         </h3>
                         <p class="mb-5">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec varius.
                         </p>
-                        <a href="#" class="btn btn-outline-black text-sm font-bold block w-fit mx-auto">Read Article</a>
+                        <a href="#" class="btn btn-outline-black text-normal font-bold block w-fit mx-auto border border-gray-800 py-2 px-4 rounded-full transition duration-300 ease-out hover:bg-black hover:text-white">Read Article</a>
                     </div>
                 </div>
-                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg category-best-rated">
+                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg">
                     <figure class="m-0 overflow-hidden">
                         <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/blog-2.png')}}" alt=""></a>
                     </figure>
                     <div class="content p-[20px] pb-[30px]">
-                        <p class="text-primary text-sm date">20 February, 2025</p>
+                        <p class="text-primary text-normal date">20 February, 2025</p>
                         <h3 class="title font-bold text-lg">
                             <a href="#">Lorem Ipsum Dolor</a>
                         </h3>
                         <p class="mb-5">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec varius.
                         </p>
-                        <a href="#" class="btn btn-outline-black text-sm font-bold block w-fit mx-auto">Read Article</a>
+                        <a href="#" class="btn btn-outline-black text-normal font-bold block w-fit mx-auto border border-gray-800 py-2 px-4 rounded-full transition duration-300 ease-out hover:bg-black hover:text-white">Read Article</a>
                     </div>
                 </div>
-                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg category-best-rated">
+                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg">
                     <figure class="m-0 overflow-hidden">
                         <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/blog-3.png')}}" alt=""></a>
                     </figure>
                     <div class="content p-[20px] pb-[30px]">
-                        <p class="text-primary text-sm date">20 February, 2025</p>
+                        <p class="text-primary text-normal date">20 February, 2025</p>
                         <h3 class="title font-bold text-lg">
                             <a href="#">Lorem Ipsum Dolor</a>
                         </h3>
                         <p class="mb-5">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec varius.
                         </p>
-                        <a href="#" class="btn btn-outline-black text-sm font-bold block w-fit mx-auto">Read Article</a>
+                        <a href="#" class="btn btn-outline-black text-normal font-bold block w-fit mx-auto border border-gray-800 py-2 px-4 rounded-full transition duration-300 ease-out hover:bg-black hover:text-white">Read Article</a>
                     </div>
                 </div>
             </div>
-            <img src="public/img/bg-blocks.png" alt="" class="absolute top-[-80px] right-[-60px] z-[-1]">
+            <img src="public/img/bg-blocks.png" alt="" class="absolute top-[-80px] left-[150px] z-[-1]">
         </div>
     </section>
 
@@ -244,7 +244,6 @@
                     </div>
                 </div>
             </div>
-            <img src="{{ asset('dieren/src/public/img/bg-blocks.png')}}" alt="" class="absolute top-[-80px] left-[-60px] z-[-1]">
         </div>
     </section>
 </div>

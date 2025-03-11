@@ -27,7 +27,7 @@
 
     <section class="section section--search py-0 bg-transparent">
         <div class="container px-2 mx-auto bg-transparent">
-            <form action="" class="s-form md:p-[40px] z-30 p-[20px] flex flex-col md:flex-row px-[20px] items-center gap-y-4 md:gap-x-6 mt-[-50px] bg-white md:rounded-full border border-[#D2D3D4] relative before:hidden md:before:block before:absolute before:right-0 before:top-0 before:w-full md:before:w-1/4 before:h-full before:z-0 before:bg-primaryLight before:rounded-tr-full before:rounded-br-full">
+            <form action="" class="s-form lg:px-[40px] lg:py-[20px] md:px-[30px] md:py-[15px] px-[20px] py-8px z-30 flex flex-col md:flex-row items-center gap-y-4 md:gap-x-6 mt-[-50px] bg-white md:rounded-full border border-[#D2D3D4] relative before:hidden md:before:block before:absolute before:right-0 before:top-0 before:w-full md:before:w-1/4 before:h-full before:z-0 before:bg-primaryLight before:rounded-tr-full before:rounded-br-full">
                 <div class="w-full md:w-1/4 text-center md:text-left relative z-1">
                     <p class="mb-0 block xl-custom:block md:hidden">
                         <strong>What Are You Looking For?</strong>
@@ -113,11 +113,11 @@
                 <span class="text-primary">Hotspots</span> You Can't Miss
             </h3>
             <div class="header-pills flex flex-wrap justify-center mb-6">
-                <button class="pill active border-b-2 border-b-primary px-4 sm:px-6 mb-2  hover:border-b-primary" data-filter="all">All</button>
-                <button class="pill border-b-2 border-b-[#D2D3D4] px-4 sm:px-6 mb-2  hover:border-b-primary" data-filter="best-rated">Best Rated</button>
-                <button class="pill border-b-2 border-b-[#D2D3D4] px-4 sm:px-6 mb-2  hover:border-b-primary" data-filter="most-viewed">Most Viewed</button>
-                <button class="pill border-b-2 border-b-[#D2D3D4] px-4 sm:px-6 mb-2  hover:border-b-primary" data-filter="veterinarians">Veterinarians</button>
-                <button class="pill border-b-2 border-b-[#D2D3D4] px-4 sm:px-6 mb-2  hover:border-b-primary" data-filter="clinics">Clinics</button>
+                <button class="pill font-medium active border-b-4 border-b-primary px-4 sm:px-6 mb-2  hover:border-b-primary" data-filter="all">All</button>
+                <button class="pill font-medium border-b-2 border-b-[#D2D3D4] px-4 sm:px-6 mb-2  hover:border-b-primary" data-filter="best-rated">Best Rated</button>
+                <button class="pill font-medium border-b-2 border-b-[#D2D3D4] px-4 sm:px-6 mb-2  hover:border-b-primary" data-filter="most-viewed">Most Viewed</button>
+                <button class="pill font-medium border-b-2 border-b-[#D2D3D4] px-4 sm:px-6 mb-2  hover:border-b-primary" data-filter="veterinarians">Veterinarians</button>
+                <button class="pill font-medium border-b-2 border-b-[#D2D3D4] px-4 sm:px-6 mb-2  hover:border-b-primary" data-filter="clinics">Clinics</button>
             </div>
 
             <div class="content-blocks grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -203,8 +203,8 @@
 
     <section class="section section--categories bg-[url('../../../src/public/img/categories.jpg')] bg-cover bg-center pt-[80px] pb-[100px]">
         <div class="container p-2 mx-auto">
-            <div class="section__header flex flex-col lg:flex-row items-center justify-between mb-6">
-                <div class="text-center lg:text-left">
+            <div class="section__header flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+                <div class="text-left">
                     <h4 class="subtitle w-fit text-md font-semibold relative before:content-[''] before:w-[20px] before:h-[2px] before:bg-primary before:absolute before:right-[-30px] before:top-1/2 before:-translate-y-1/2">
                         Choose Your Category
                     </h4>
@@ -212,7 +212,7 @@
                         <span class="text-primary">Browse</span> Categories
                     </h3>
                 </div>
-                <a href="#" class="btn btn-outline-black whitespace-nowrap mt-4 lg:mt-0">Explore All</a>
+                <a href="#" class="btn btn-outline-black border border-gray-800 py-2 px-4 rounded-full font-bold whitespace-nowrap mt-4 md:mt-0 transition duration-300 ease-out hover:bg-black hover:text-white w-fit">Explore All</a>
             </div>
             <div class="categories grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                 <div class="category border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
@@ -280,7 +280,7 @@
 
     <section class="section section--clinics">
         <div class="container px-2 mx-auto relative">
-            <div class="section__header flex items-center justify-between mb-8">
+            <div class="section__header md:flex items-center justify-between mb-8">
                 <div>
                     <h4 class="subtitle w-fit text-md font-semibold relative before:content-[''] before:w-[20px] before:h-[2px] before:bg-primary before:absolute before:right-[-30px] before:top-1/2 before:-translate-y-1/2">
                         Lorem Ipsum Dolor
@@ -289,29 +289,31 @@
                         What Are You <span class="text-primary">Looking for?</span>
                     </h3>
                 </div>
-                <div class="relative ml-auto">
-                    <select class="appearance-none border border-gray-300 rounded-full p-[10px] w-full px-2 text-black font-semibold bg-white pr-10">
-                        <option>All Filters</option>
-                    </select>
-                    <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-black"></i>
-                </div>
+                <div class="flex mt-4 md:mt-0"> 
+                    <div class="relative ml-auto">
+                        <select class="appearance-none border border-gray-300 rounded-full p-[10px] w-full px-2 text-black font-semibold bg-white pr-10">
+                            <option>All Filters</option>
+                        </select>
+                        <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-black"></i>
+                    </div>
 
-                <div class="relative ml-2">
-                    <select class="appearance-none border border-gray-300 rounded-full p-[10px] w-full px-2 text-black font-semibold bg-white pr-10">
-                        <option>Sort By</option>
-                    </select>
-                    <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-black"></i>
-                </div>
+                    <div class="relative ml-2">
+                        <select class="appearance-none border border-gray-300 rounded-full p-[10px] w-full px-2 text-black font-semibold bg-white pr-10">
+                            <option>Sort By</option>
+                        </select>
+                        <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-black"></i>
+                    </div>
 
-                <button id="btn-2-cols" class="w-[45px] h-[45px] flex items-center justify-center rounded-full border border-gray-300 text-gray-400 transition duration-300 ease-out hover:text-black hover:border-black ml-2">
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </button>
-                <button id="btn-4-cols" class="w-[45px] h-[45px] flex items-center justify-center rounded-full border border-gray-300 text-gray-400 transition duration-300 ease-out hover:text-black hover:border-black ml-2">
-                    <i class="fa-solid fa-ellipsis-vertical"></i><i class="fa-solid fa-ellipsis-vertical ml-1"></i>
-                </button>
-                <button id="btn-6-cols" class="w-[45px] h-[45px] flex items-center justify-center rounded-full border border-gray-300 text-gray-400 transition duration-300 ease-out hover:text-black hover:border-black ml-2">
-                    <i class="fa-solid fa-ellipsis-vertical"></i><i class="fa-solid fa-ellipsis-vertical ml-1"></i><i class="fa-solid fa-ellipsis-vertical ml-1"></i>
-                </button>
+                    <button id="btn-2-cols" class="w-[45px] h-[45px] flex items-center justify-center rounded-full border border-gray-300 text-gray-400 transition duration-300 ease-out hover:text-black hover:border-black ml-2">
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </button>
+                    <button id="btn-4-cols" class="w-[45px] h-[45px] flex items-center justify-center rounded-full border border-gray-300 text-gray-400 transition duration-300 ease-out hover:text-black hover:border-black ml-2">
+                        <i class="fa-solid fa-ellipsis-vertical"></i><i class="fa-solid fa-ellipsis-vertical ml-1"></i>
+                    </button>
+                    <button id="btn-6-cols" class="w-[45px] h-[45px] flex items-center justify-center rounded-full border border-gray-300 text-gray-400 transition duration-300 ease-out hover:text-black hover:border-black ml-2">
+                        <i class="fa-solid fa-ellipsis-vertical"></i><i class="fa-solid fa-ellipsis-vertical ml-1"></i><i class="fa-solid fa-ellipsis-vertical ml-1"></i>
+                    </button>
+                </div>
             </div>
             <div class="grid grid-cols-4 gap-4 mb-8">
                 <div class="categories-sidebar col-span-4 lg:col-span-1 bg-white border border-gray-300 p-[20px] h-fit">
@@ -332,7 +334,7 @@
                         View All Categories
                     </a>
                 </div>
-                <div class="posts col-span-4 lg:col-span-3 grid grid-cols-3 gap-4">
+                <div class="posts col-span-4 lg:col-span-3 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
                     <div class="block-hotspots bg-white border border-gray-300 transition duration-300 ease-out hover:shadow-lg category-best-rated">
                         <figure class="m-0 overflow-hidden">
                             <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/post-1.png')}}" alt=""></a>
@@ -525,8 +527,8 @@
 
     <section class="section section--stats bg-[#202428] pt-[90px] pb-[75px]">
         <div class="container px-2 mx-auto">
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 items-center">
-                <div class="col-span-1 sm:col-span-2 text-center lg:text-left">
+            <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-6 items-center">
+                <div class="col-span-1 lg:col-span-2 md:col-span-3 sm:col-span-3 text-center lg:text-left">
                     <h3 class="title title--section text-4xl text-white font-bold mb-2">
                         <span class="text-primary">Vergelijk</span>dierenarts.nl
                     </h3>
@@ -536,15 +538,15 @@
                 </div>
                 <div class="text-center">
                     <p class="text-white">CLINICS</p>
-                    <span class="text-primaryLight font-medium text-4xl md:text-6xl block">+2k</span>
+                    <span class="text-primaryLight font-medium text-5xl md:text-6xl block">+2k</span>
                 </div>
-                <div class="border-x border-x-white text-center">
+                <div class="sm:border-x sm:border-x-white sm:border-x-2 text-center">
                     <p class="text-white">LISTINGS</p>
-                    <span class="text-primaryLight font-medium text-4xl md:text-6xl block">+20k</span>
+                    <span class="text-primaryLight font-medium text-5xl md:text-6xl block">+20k</span>
                 </div>
                 <div class="text-center">
                     <p class="text-white">PETS</p>
-                    <span class="text-primaryLight font-medium text-4xl md:text-6xl block">+200k</span>
+                    <span class="text-primaryLight font-medium text-5xl md:text-6xl block">+200k</span>
                 </div>
             </div>
         </div>
@@ -615,7 +617,7 @@
                         <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/blog-1.png')}}" alt=""></a>
                     </figure>
                     <div class="content p-[20px] pb-[30px]">
-                        <p class="text-primary text-sm date">20 February, 2025</p>
+                        <p class="text-primary text-normal date">20 February, 2025</p>
                         <h3 class="title font-bold text-lg">
                             <a href="#">Lorem Ipsum Dolor</a>
                         </h3>
@@ -630,7 +632,7 @@
                         <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/blog-2.png')}}" alt=""></a>
                     </figure>
                     <div class="content p-[20px] pb-[30px]">
-                        <p class="text-primary text-sm date">20 February, 2025</p>
+                        <p class="text-primary text-normal date">20 February, 2025</p>
                         <h3 class="title font-bold text-lg">
                             <a href="#">Lorem Ipsum Dolor</a>
                         </h3>
@@ -645,7 +647,7 @@
                         <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/blog-3.png')}}" alt=""></a>
                     </figure>
                     <div class="content p-[20px] pb-[30px]">
-                        <p class="text-primary text-sm date">20 February, 2025</p>
+                        <p class="text-primary text-normal date">20 February, 2025</p>
                         <h3 class="title font-bold text-lg">
                             <a href="#">Lorem Ipsum Dolor</a>
                         </h3>

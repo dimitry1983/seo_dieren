@@ -5,18 +5,18 @@
 
     <section class="section section--hero-interior bg-primaryLight relative py-[140px]">
         <img class="absolute bottom-0 left-0 z-0" src="{{ asset('dieren/src/public/img/about1.png')}}" alt="">
-        <div class="container mx-auto">
+        <div class="container mx-auto relative z-1">
             <h1 class="text-6xl text-center font-regular text-gray-800 relative z-1">
                 Contact <strong>Us</strong>
             </h1>
         </div>
-        <img class="absolute bottom-0 right-0 z-0" src="{{ asset('dieren/src/public/img/contact.png')}}" alt="">
+        <img class="absolute bottom-0 right-0 z-0 hidden lg:block" src="{{ asset('dieren/src/public/img/contact.png')}}" alt="">
     </section>
 
     <section class="section section--contact contact-form pb-[40px]">
         <div class="container mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-12">
-                <div class="lg:col-span-7">
+                <div class="lg:col-span-8">
                     <form class="px-[50px] py-[60px] bg-[#202428] lg:h-full" action="">
                         <p class="text-white">
                             Leave us a message and we will help you with any questions about veterinary clinics, services or how to use our directory.
@@ -43,9 +43,9 @@
                         <button class="btn btn-primaryLight w-full rounded-[5px] text-white">Send</button>
                     </form>
                 </div>
-                <div class="lg:col-span-5 bg-gray-200">
-                    <figure>
-                        <img src="{{ asset('dieren/src/public/img/contact2.png')}}" alt="">
+                <div class="lg:col-span-4 bg-gray-200">
+                    <figure class="h-full">
+                        <img class="h-full w-full object-cover" src="{{ asset('dieren/src/public/img/contact2.png')}}" alt="">
                     </figure>
                 </div>
             </div>

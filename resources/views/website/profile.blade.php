@@ -3,7 +3,7 @@
 @section('content')
 <div class="main-container relative w-full overflow-hidden">
 
-<section class="section section--hero-interior bg-cover bg-right bg-center h-[300px]" style="background-image: url('{{ asset('dieren/src/public/img/profile.png') }}')"></section>
+    <section class="section section--hero-interior bg-cover bg-right bg-center h-[300px]" style="background-image: url('{{ asset('dieren/src/public/img/profile.png') }}')"></section>
 
     <section class="section section--profile p-0 mt-[-90px] bg-transparent">
         <div class="container mx-auto">
@@ -26,20 +26,20 @@
             <div class="grid grid-cols-4 gap-4">
                 <div class="lg:col-span-3 col-span-4">
                     <div class="pills border border-gray-300 shadow-lg mb-8">
-                        <ul class="lg:flex py-3">
-                            <li class="px-3">
-                                <button class="btn btn-primary">Informatie</button>
+                        <ul class="md:flex py-3">
+                            <li class="px-1 xl:px-3">
+                                <button class="btn btn-primaryLight">Informatie</button>
                             </li>
-                            <li class="px-3 border-l border-l-gray-300">
+                            <li class="xl:px-3 md:border-l md:border-l-gray-300">
                                 <button class="btn btn-primary bg-white">Diensten</button>
                             </li>
-                            <li class="px-3 border-l border-l-gray-300">
+                            <li class="xl:px-3 md:border-l md:border-l-gray-300">
                                 <button class="btn btn-primary bg-white">Galerij</button>
                             </li>
-                            <li class="px-3 border-l border-l-gray-300">
+                            <li class="xl:px-3 md:border-l md:border-l-gray-300">
                                 <button class="btn btn-primary bg-white">Prijzen</button>
                             </li>
-                            <li class="px-3 border-l border-l-gray-300">
+                            <li class="xl:px-3 md:border-l md:border-l-gray-300">
                                 <button class="btn btn-primary bg-white">Beoordelingen</button>
                             </li>
                         </ul>

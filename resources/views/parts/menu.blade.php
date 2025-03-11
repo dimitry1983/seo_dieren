@@ -1,7 +1,7 @@
 <div class="py-4">
     <div class="container px-4 mx-auto flex justify-center items-center">
         <a href="#" class="castoro text-2xl lg:text-3xl text-white">
-            <img src="{{ asset('dieren/src/public/img/logo.png')}}" alt="">
+            <img class="max-w-[250px] sm:max-w-[350px]" src="{{ asset('dieren/src/public/img/logo.png')}}" alt="">
         </a>
 
         <button id="toggleBtn" class="group peer lg:hidden ml-auto bg-primary text-white peer-open:mt-10 px-2 py-2 ">
