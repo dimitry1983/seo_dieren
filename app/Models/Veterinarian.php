@@ -91,4 +91,20 @@ class Veterinarian extends Model
     {
         return $this->hasMany(VegetarianOpeningTime::class, 'veterinarian_id', 'id');
     }
+
+    /**
+     * The openingstimes that belong to the veterinarian.
+     */
+    public function images()
+    {
+        return $this->hasMany(VeterinariansImage::class, 'veterinarian_id', 'id');
+    }
+
+    /**
+     * The openingstimes that belong to the veterinarian.
+     */
+    public function pricing()
+    {
+        return $this->hasMany(VeterinariansPricing::class, 'veterinarian_id', 'id');
+    }
 }

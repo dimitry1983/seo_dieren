@@ -2,6 +2,7 @@
 
 namespace App\Filament\Admin\Resources\VeterinarianResource\RelationManagers;
 
+use App\Models\Veterinarian;
 use Filament\Forms;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
@@ -49,6 +50,11 @@ class OpeningstimesRelationManager extends RelationManager
                 Textarea::make('notes')
                     ->label('Additional Notes')
                     ->columnSpanFull(),
+                Select::make('veterinarian_id')
+                    ->searchable()
+                    ->label('Veterinarian')
+                    ->options(Veterinarian::pluck('name', 'id')->toArray())    
+                    ->required(),    
             ]);
     }
 

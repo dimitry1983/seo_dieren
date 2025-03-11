@@ -4,7 +4,9 @@ namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\VeterinarianResource\Pages;
 use App\Filament\Admin\Resources\VeterinarianResource\RelationManagers;
+use App\Filament\Admin\Resources\VeterinarianResource\RelationManagers\ImagesRelationManager;
 use App\Filament\Admin\Resources\VeterinarianResource\RelationManagers\OpeningstimesRelationManager;
+use App\Filament\Admin\Resources\VeterinarianResource\RelationManagers\PricingRelationManager;
 use App\Filament\Admin\Resources\VeterinarianResource\RelationManagers\ReviewsRelationManager;
 use App\Models\Category;
 use App\Models\City;
@@ -223,6 +225,8 @@ class VeterinarianResource extends Resource
         return [
             ReviewsRelationManager::class,
             OpeningstimesRelationManager::class,
+            ImagesRelationManager::class,
+            PricingRelationManager::class,
         ];
     }
 
