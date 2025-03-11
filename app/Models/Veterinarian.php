@@ -75,4 +75,20 @@ class Veterinarian extends Model
     {
         return $this->belongsToMany(\App\Models\Service::class, 'veterinarians_services', 'veterinarian_id', 'category_id');
     }
+
+    /**
+     * The reviews that belong to the veterinarian.
+     */
+    public function reviews()
+    {
+        return $this->hasMany(\App\Models\Review::class, 'veterinarian_id', 'id');
+    }
+
+    /**
+     * The openingstimes that belong to the veterinarian.
+     */
+    public function openingstimes()
+    {
+        return $this->hasMany(VegetarianOpeningTime::class, 'veterinarian_id', 'id');
+    }
 }
