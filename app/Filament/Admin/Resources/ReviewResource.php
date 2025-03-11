@@ -23,10 +23,15 @@ class ReviewResource extends Resource
     protected static ?string $model = Review::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-left-ellipsis';
+   
+    protected static ?string $navigationGroup = 'Veterinarian management';
 
-    protected static ?string $navigationGroup = 'Content management';
+    protected static ?int $navigationSort = 4;
 
-    protected static ?int $navigationSort = 7;
+    public static function getNavigationLabel(): string
+    {
+        return __('Veterinarian Review');
+    }
 
     public static function form(Form $form): Form
     {

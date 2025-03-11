@@ -217,7 +217,7 @@
             <div class="categories grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                 <div class="category border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
                     <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
-                        <img class="m-auto w-[120px] h-[120px]" src="public/img/dog.png" alt="">
+                        <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/dog.png')}}" alt="">
                     </figure>
                     <div class="content text-center p-4">
                         <h3 class="title text-md font-semibold mb-2">Dogs</h3>
@@ -227,7 +227,7 @@
 
                 <div class="category border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
                     <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
-                        <img class="m-auto w-[120px] h-[120px]" src="public/img/cat.png" alt="">
+                        <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/cat.png')}}" alt="">
                     </figure>
                     <div class="content text-center p-4">
                         <h3 class="title text-md font-semibold mb-2">Cats</h3>
@@ -237,7 +237,7 @@
 
                 <div class="category border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
                     <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
-                        <img class="m-auto w-[120px] h-[120px]" src="public/img/turtle.png" alt="">
+                        <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/turtle.png')}}" alt="">
                     </figure>
                     <div class="content text-center p-4">
                         <h3 class="title text-md font-semibold mb-2">Others</h3>
@@ -247,7 +247,7 @@
 
                 <div class="category border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
                     <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
-                        <img class="m-auto w-[120px] h-[120px]" src="public/img/shelters.png" alt="">
+                        <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/shelters.png')}}" alt="">
                     </figure>
                     <div class="content text-center p-4">
                         <h3 class="title text-md font-semibold mb-2">Shelters</h3>
@@ -257,7 +257,7 @@
 
                 <div class="category border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
                     <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
-                        <img class="m-auto w-[120px] h-[120px]" src="public/img/specialists.png" alt="">
+                        <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/specialists.png')}}" alt="">
                     </figure>
                     <div class="content text-center p-4">
                         <h3 class="title text-md font-semibold mb-2">Specialists</h3>
@@ -267,7 +267,7 @@
 
                 <div class="category border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
                     <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
-                        <img class="m-auto w-[120px] h-[120px]" src="public/img/emergencies.png" alt="">
+                        <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/emergencies.png')}}" alt="">
                     </figure>
                     <div class="content text-center p-4">
                         <h3 class="title text-md font-semibold mb-2">Emergencies</h3>

@@ -4,6 +4,10 @@ namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\VeterinarianResource\Pages;
 use App\Filament\Admin\Resources\VeterinarianResource\RelationManagers;
+use App\Filament\Admin\Resources\VeterinarianResource\RelationManagers\ImagesRelationManager;
+use App\Filament\Admin\Resources\VeterinarianResource\RelationManagers\OpeningstimesRelationManager;
+use App\Filament\Admin\Resources\VeterinarianResource\RelationManagers\PricingRelationManager;
+use App\Filament\Admin\Resources\VeterinarianResource\RelationManagers\ReviewsRelationManager;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\Province;
@@ -52,6 +56,13 @@ class VeterinarianResource extends Resource
                                     ->relationship('categories', 'name') // Ensure this matches the model function
                                     ->searchable()
                                     ->preload(), 
+                                Select::make('services')
+                                    ->label('Services')
+                                    ->multiple()
+                                    ->relationship('services', 'name') // Ensure this matches the model function
+                                    ->searchable()
+                                    ->preload(), 
+
                                 Forms\Components\RichEditor::make('description')
                                     ->columnSpanFull(),
                                 Forms\Components\TextInput::make('lat')
@@ -212,7 +223,10 @@ class VeterinarianResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            ReviewsRelationManager::class,
+            OpeningstimesRelationManager::class,
+            ImagesRelationManager::class,
+            PricingRelationManager::class,
         ];
     }
 

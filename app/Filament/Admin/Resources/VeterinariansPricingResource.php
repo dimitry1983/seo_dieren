@@ -5,6 +5,7 @@ namespace App\Filament\Admin\Resources;
 use App\Filament\Admin\Resources\VeterinariansPricingResource\Pages;
 use App\Filament\Admin\Resources\VeterinariansPricingResource\RelationManagers;
 use App\Models\Veterinarian;
+use App\Models\VeterinarianPricingGroup;
 use App\Models\VeterinariansPricing;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
@@ -22,7 +23,7 @@ class VeterinariansPricingResource extends Resource
 {
     protected static ?string $model = VeterinariansPricing::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-currency-euro';
 
     protected static ?string $navigationGroup = 'Veterinarian management';
 
@@ -34,6 +35,9 @@ class VeterinariansPricingResource extends Resource
         ->schema([
             Section::make('Pricing') // Title of the section
                 ->schema([
+                    Forms\Components\Select::make('pricing_group_id')
+                        ->options(VeterinarianPricingGroup::pluck('name', 'id'))
+                        ->required(),
                     TextInput::make('name')
                             ->required(), // Max file size in KB (2MB)
                     TextInput::make('consult_price')

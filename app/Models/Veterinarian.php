@@ -13,16 +13,26 @@ class Veterinarian extends Model
 
     protected function mutateFormDataBeforeSave(array $data): array
     {
+        // Remove categories and services from $data to avoid mass assignment errors
         $categories = $data['categories'] ?? [];
-        unset($data['categories']); // Remove from $data to avoid errors
+        unset($data['categories']);
+    
+        $services = $data['services'] ?? [];
+        unset($data['services']);
     
         return $data;
     }
     
     protected function afterSave(Veterinarian $record, array $data): void
     {
+        // Sync the categories relationship if provided
         if (isset($data['categories'])) {
-            $record->categories()->sync($data['categories']); // Attach categories
+            $record->categories()->sync($data['categories']);
+        }
+        
+        // Sync the services relationship if provided
+        if (isset($data['services'])) {
+            $record->services()->sync($data['services']);
         }
     }
 
@@ -56,5 +66,45 @@ class Veterinarian extends Model
     public function categories()
     {
         return $this->belongsToMany(\App\Models\Category::class, 'veterinarians_categories', 'veterinarian_id', 'category_id');
+    }
+
+    /**
+     * The services that belong to the veterinarian.
+     */
+    public function services()
+    {
+        return $this->belongsToMany(\App\Models\Service::class, 'veterinarians_services', 'veterinarian_id', 'category_id');
+    }
+
+    /**
+     * The reviews that belong to the veterinarian.
+     */
+    public function reviews()
+    {
+        return $this->hasMany(\App\Models\Review::class, 'veterinarian_id', 'id');
+    }
+
+    /**
+     * The openingstimes that belong to the veterinarian.
+     */
+    public function openingstimes()
+    {
+        return $this->hasMany(VegetarianOpeningTime::class, 'veterinarian_id', 'id');
+    }
+
+    /**
+     * The openingstimes that belong to the veterinarian.
+     */
+    public function images()
+    {
+        return $this->hasMany(VeterinariansImage::class, 'veterinarian_id', 'id');
+    }
+
+    /**
+     * The openingstimes that belong to the veterinarian.
+     */
+    public function pricing()
+    {
+        return $this->hasMany(VeterinariansPricing::class, 'veterinarian_id', 'id');
     }
 }

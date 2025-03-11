@@ -18,4 +18,9 @@ class VeterinariansPricing extends Model
     {
         return $this->belongsTo(Veterinarian::class);
     }
+
+    public function pricingGroup()
+    {
+        return $this->belongsTo(VeterinarianPricingGroup::class, 'pricing_group_id');
+    }
 }

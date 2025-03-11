@@ -25,7 +25,9 @@ Route::get('/blog/{slug}', [BlogController::class, 'blogDetail'])->name('blog.de
 Route::get('/overzicht', [OverviewController::class, 'map'])->name('map');
 
 // Profile Routes
-Route::get('/{slug}/{id}', [ProfileController::class, 'profile'])->name('profile');
+Route::get('/{slug}/{id}', [ProfileController::class, 'profile'])
+    ->where('slug', '^(?!admin).*') // Exclude "admin" as the first segment
+    ->name('profile');
 
 // Search Routes
 Route::get('/zoekresultaat', [SearchController::class, 'search'])->name('search');
