@@ -105,6 +105,12 @@
     </header>
     @yield('content')
 
+    @if (isset($slot ))
+      
+            {{ $slot}}
+        
+    @endif
+
     @include('parts.footer')
 </body>
 <script src="{{ asset('dieren/src/public/js/jquery.js')}}"></script>
