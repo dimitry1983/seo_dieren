@@ -5,7 +5,7 @@
 
     <section class="section section--hero-interior bg-primaryLight relative py-[140px]">
         <div class="container mx-auto relative z-1">
-            <h1 class="text-6xl text-center font-regular text-gray-800 relative z-1">
+            <h1 class="text-6xl text-center font-regular text-gray-800 relative z-1 md:leading-tight leading-normal">
                 Blog & <strong>News</strong>
             </h1>
         </div>
@@ -14,11 +14,11 @@
 
     <section class="section section--blog py-[40px]">
         <div class="container mx-auto relative">
-            <h3 class="title title--section text-center text-3xl text-gray-800 font-bold mb-8">
+            <h3 class="title title--section text-center text-3xl text-gray-800 font-bold mb-8 md:leading-tight leading-normal">
                 From <span class="text-primary">Our Blog</span>
             </h3>
             <div class="posts grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg">
+                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg mb-2">
                     <figure class="m-0 overflow-hidden">
                         <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/blog-1.png')}}" alt=""></a>
                     </figure>
@@ -33,7 +33,7 @@
                         <a href="#" class="btn btn-outline-black text-normal font-bold block w-fit mx-auto border border-gray-800 py-2 px-4 rounded-full transition duration-300 ease-out hover:bg-black hover:text-white">Read Article</a>
                     </div>
                 </div>
-                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg">
+                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg mb-2">
                     <figure class="m-0 overflow-hidden">
                         <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/blog-2.png')}}" alt=""></a>
                     </figure>
@@ -48,7 +48,7 @@
                         <a href="#" class="btn btn-outline-black text-normal font-bold block w-fit mx-auto border border-gray-800 py-2 px-4 rounded-full transition duration-300 ease-out hover:bg-black hover:text-white">Read Article</a>
                     </div>
                 </div>
-                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg">
+                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg mb-2">
                     <figure class="m-0 overflow-hidden">
                         <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/blog-3.png')}}" alt=""></a>
                     </figure>
@@ -63,7 +63,7 @@
                         <a href="#" class="btn btn-outline-black text-normal font-bold block w-fit mx-auto border border-gray-800 py-2 px-4 rounded-full transition duration-300 ease-out hover:bg-black hover:text-white">Read Article</a>
                     </div>
                 </div>
-                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg">
+                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg mb-2">
                     <figure class="m-0 overflow-hidden">
                         <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/blog-1.png')}}" alt=""></a>
                     </figure>
@@ -78,7 +78,7 @@
                         <a href="#" class="btn btn-outline-black text-normal font-bold block w-fit mx-auto border border-gray-800 py-2 px-4 rounded-full transition duration-300 ease-out hover:bg-black hover:text-white">Read Article</a>
                     </div>
                 </div>
-                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg">
+                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg mb-2">
                     <figure class="m-0 overflow-hidden">
                         <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/blog-2.png')}}" alt=""></a>
                     </figure>
@@ -93,7 +93,7 @@
                         <a href="#" class="btn btn-outline-black text-normal font-bold block w-fit mx-auto border border-gray-800 py-2 px-4 rounded-full transition duration-300 ease-out hover:bg-black hover:text-white">Read Article</a>
                     </div>
                 </div>
-                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg">
+                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg mb-2">
                     <figure class="m-0 overflow-hidden">
                         <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/blog-3.png')}}" alt=""></a>
                     </figure>
@@ -108,7 +108,7 @@
                         <a href="#" class="btn btn-outline-black text-normal font-bold block w-fit mx-auto border border-gray-800 py-2 px-4 rounded-full transition duration-300 ease-out hover:bg-black hover:text-white">Read Article</a>
                     </div>
                 </div>
-                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg">
+                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg mb-2">
                     <figure class="m-0 overflow-hidden">
                         <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/blog-1.png')}}" alt=""></a>
                     </figure>
@@ -123,7 +123,7 @@
                         <a href="#" class="btn btn-outline-black text-normal font-bold block w-fit mx-auto border border-gray-800 py-2 px-4 rounded-full transition duration-300 ease-out hover:bg-black hover:text-white">Read Article</a>
                     </div>
                 </div>
-                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg">
+                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg mb-2">
                     <figure class="m-0 overflow-hidden">
                         <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/blog-2.png')}}" alt=""></a>
                     </figure>
@@ -138,7 +138,7 @@
                         <a href="#" class="btn btn-outline-black text-normal font-bold block w-fit mx-auto border border-gray-800 py-2 px-4 rounded-full transition duration-300 ease-out hover:bg-black hover:text-white">Read Article</a>
                     </div>
                 </div>
-                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg">
+                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg mb-2">
                     <figure class="m-0 overflow-hidden">
                         <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/blog-3.png')}}" alt=""></a>
                     </figure>
@@ -153,7 +153,7 @@
                         <a href="#" class="btn btn-outline-black text-normal font-bold block w-fit mx-auto border border-gray-800 py-2 px-4 rounded-full transition duration-300 ease-out hover:bg-black hover:text-white">Read Article</a>
                     </div>
                 </div>
-                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg">
+                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg mb-2">
                     <figure class="m-0 overflow-hidden">
                         <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/blog-1.png')}}" alt=""></a>
                     </figure>
@@ -168,7 +168,7 @@
                         <a href="#" class="btn btn-outline-black text-normal font-bold block w-fit mx-auto border border-gray-800 py-2 px-4 rounded-full transition duration-300 ease-out hover:bg-black hover:text-white">Read Article</a>
                     </div>
                 </div>
-                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg">
+                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg mb-2">
                     <figure class="m-0 overflow-hidden">
                         <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/blog-2.png')}}" alt=""></a>
                     </figure>
@@ -183,7 +183,7 @@
                         <a href="#" class="btn btn-outline-black text-normal font-bold block w-fit mx-auto border border-gray-800 py-2 px-4 rounded-full transition duration-300 ease-out hover:bg-black hover:text-white">Read Article</a>
                     </div>
                 </div>
-                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg">
+                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg mb-2">
                     <figure class="m-0 overflow-hidden">
                         <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/blog-3.png')}}" alt=""></a>
                     </figure>
@@ -205,7 +205,7 @@
 
     <section class="section section--intro py-[80px]">
         <div class="container mx-auto relative">
-            <h1 class="text-4xl text-center font-bold text-gray-800 relative z-1 mb-8">
+            <h1 class="text-4xl text-center font-bold text-gray-800 relative z-1 mb-8 md:leading-tight leading-normal">
                 News
             </h1>
             <div class="flex flex-col lg:flex-row gap-y-4 lg:gap-x-6">

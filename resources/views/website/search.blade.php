@@ -5,7 +5,7 @@
 
     <section class="section section--hero-interior bg-cover bg-center" style="background-image: url('{{ asset('dieren/src/public/img/results-hero.png') }}');">
         <div class="container mx-auto lg:pt-[120px] lg:pb-[180px] md:pt-[80px] md:pb-[120px] sm:pt-[50px] sm:pb-[80px] pt-[30px] pb-[50px]">
-            <h1 class="text-6xl text-center font-regular text-gray-800">
+            <h1 class="text-6xl text-center font-regular text-gray-800 md:leading-tight leading-normal">
                 Discover The Best<br><strong>Veterinary Clinics</strong>
             </h1>
         </div>
@@ -458,7 +458,7 @@
 
     <section class="section section--hotspots">
         <div class="container mx-auto relative">
-            <h3 class="title title--section text-center text-4xl text-gray-800 font-bold mb-4">
+            <h3 class="title title--section text-center text-4xl text-gray-800 font-bold mb-4 md:leading-tight leading-normal">
                 <span class="text-primary">Hotspots</span> You Can't Miss
             </h3>
             <div class="header-pills flex flex-col lg:flex-row items-center justify-center mb-6">
@@ -558,7 +558,7 @@
         <div class="container mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div>
-                    <h3 class="title title--section text-4xl font-bold mb-8">
+                    <h3 class="title title--section text-4xl font-bold mb-8 md:leading-tight leading-normal">
                         Why To Choose<br><span class="text-primary">Our Directory</span>
                     </h3>
                     <div class="grid grid-cols-2 mb-3 pb-3 border-b border-b-gray-300">

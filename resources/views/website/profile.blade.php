@@ -11,7 +11,7 @@
                 <figure>
                     <img src="{{ asset('dieren/src/public/img/clinic.png')}}" alt="">
                 </figure>
-                <h3 class="title title--profile text-md font-bold ml-4">
+                <h3 class="title title--profile text-md font-bold ml-4 md:leading-tight leading-normal">
                     Amsterdam Clinic | <span class="rating text-yellow-500">
                         <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
@@ -71,7 +71,7 @@
                         <h4 class="subtitle w-fit text-md font-semibold relative before:content-[''] before:w-[20px] before:h-[2px] before:bg-primary before:absolute before:right-[-30px] before:top-1/2 before:-translate-y-1/2">
                             Diensten
                         </h4>
-                        <h3 class="title title--section font-bold text-3xl text-gray-800 mb-6">
+                        <h3 class="title title--section font-bold text-3xl text-gray-800 mb-6 md:leading-tight leading-normal">
                             <span class="text-primary">Producten</span> En Diensten
                         </h3>
                         <div class="services grid md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -153,7 +153,7 @@
                         <h4 class="subtitle w-fit text-md font-semibold relative before:content-[''] before:w-[20px] before:h-[2px] before:bg-primary before:absolute before:right-[-30px] before:top-1/2 before:-translate-y-1/2">
                             Galerij
                         </h4>
-                        <h3 class="title title--section font-bold text-3xl text-gray-800 mb-6">
+                        <h3 class="title title--section font-bold text-3xl text-gray-800 mb-6 md:leading-tight leading-normal">
                             <span class="text-primary">Aenean</span> Massa
                         </h3>
                         <div class="splide" id="gallery-slider">
@@ -187,7 +187,7 @@
                         <h4 class="subtitle w-fit text-md font-semibold relative before:content-[''] before:w-[20px] before:h-[2px] before:bg-primary before:absolute before:right-[-30px] before:top-1/2 before:-translate-y-1/2">
                             Prijzen
                         </h4>
-                        <h3 class="title title--section font-bold text-3xl text-gray-800 mb-6">
+                        <h3 class="title title--section font-bold text-3xl text-gray-800 mb-6 md:leading-tight leading-normal">
                             <span class="text-primary">Aenean</span> Massa
                         </h3>
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -254,7 +254,7 @@
                         <h4 class="subtitle w-fit text-md font-semibold relative before:content-[''] before:w-[20px] before:h-[2px] before:bg-primary before:absolute before:right-[-30px] before:top-1/2 before:-translate-y-1/2">
                             Beoordelingen
                         </h4>
-                        <h3 class="title title--section font-bold text-3xl text-gray-800 mb-6">
+                        <h3 class="title title--section font-bold text-3xl text-gray-800 mb-6 md:leading-tight leading-normal">
                             <span class="text-primary">Aenean</span> Massa
                         </h3>
                         <div class="rate grid lg:grid-cols-3 grid-cols-1 mb-4 pb-6 border-b border-b-gray-300">

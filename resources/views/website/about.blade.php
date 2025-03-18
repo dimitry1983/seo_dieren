@@ -6,7 +6,7 @@
     <section class="section section--hero-interior bg-primaryLight relative py-[140px]">
         <img class="absolute bottom-0 left-0 z-0" src="{{ asset('dieren/src/public/img/about1.png')}}" alt="">
         <div class="container mx-auto relative z-1">
-            <h1 class="text-5xl lg:text-6xl text-center font-regular text-gray-800 relative z-1">
+            <h1 class="text-5xl lg:text-6xl text-center font-regular text-gray-800 relative z-1 md:leading-tight leading-normal">
                 About <strong>Us</strong>
             </h1>
         </div>
@@ -17,7 +17,7 @@
         <div class="container mx-auto relative">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div>
-                    <h3 class="title title--section text-4xl font-bold mb-8">
+                    <h3 class="title title--section text-4xl font-bold mb-8 md:leading-tight leading-normal">
                         Find The Best<br><span class="text-primary">Veterinary Cate Near You</span>
                     </h3>
                     <p class="paragraph text-gray-600 mb-4">
@@ -42,14 +42,14 @@
         <div class="container mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-12">
                 <div class="lg:col-span-7">
-                    <h3 class="title title--section c-white text-3xl text-white font-bold mb-2">
+                    <h3 class="title title--section c-white text-3xl text-white font-bold mb-2 md:leading-tight leading-normal">
                         <span class="text-primary">Vergelijk</span>dierenarts.nl
                     </h3>
                     <p class="paragraph text-white">
                         We are committed to providing you with an up-to-date, easy-to-use and accessible platform, so that your pet's care is always a priority.
                         <br><br>Your furry companion deserves the best, and we help you find it!
                     </p>
-                    <ul>
+                    <ul class="mb-4">
                         <li class="font-semibold mb-3 text-white">
                             <i class="fa-regular fa-circle-check text-white"></i> Lorem ipsum dolor sit amet consectetur adipcing elit.
                         </li>
@@ -80,7 +80,7 @@
                     <h4 class="subtitle w-fit text-md font-semibold relative before:content-[''] before:w-[20px] before:h-[2px] before:bg-primary before:absolute before:right-[-30px] before:top-1/2 before:-translate-y-1/2">
                         Lorem Ipsum Dolor
                     </h4>
-                    <h3 class="title title--section font-bold text-3xl text-gray-800">
+                    <h3 class="title title--section font-bold text-3xl text-gray-800 md:leading-tight leading-normal">
                         What Our Customers <span class="text-primary">Are Saying...</span>
                     </h3>
                 </div>
@@ -129,7 +129,7 @@
 
     <section class="section section--map pt-[40px] pb-0">
         <div class="container mx-auto">
-            <h3 class="title title--section text-center text-4xl text-gray-800 font-bold mb-8">
+            <h3 class="title title--section text-center text-4xl text-gray-800 font-bold mb-8 md:leading-tight leading-normal">
                 Discover The Best <span class="text-primary">Veterinary Clinics</span>
             </h3>
         </div>

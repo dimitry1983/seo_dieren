@@ -113,7 +113,7 @@
                     <h4 class="subtitle w-fit text-md font-semibold relative before:content-[''] before:w-[20px] before:h-[2px] before:bg-primary before:absolute before:right-[-30px] before:top-1/2 before:-translate-y-1/2">
                         Lorem Ipsum Dolor
                     </h4>
-                    <h3 class="title title--section font-bold text-3xl text-gray-800">
+                    <h3 class="title title--section font-bold text-3xl text-gray-800 md:leading-tight leading-normal">
                         <span class="text-primary">Top Clinics</span> Of The Month
                     </h3>
                 </div>
@@ -216,7 +216,7 @@
                     <h4 class="subtitle w-fit text-md font-semibold relative before:content-[''] before:w-[20px] before:h-[2px] before:bg-primary before:absolute before:right-[-30px] before:top-1/2 before:-translate-y-1/2">
                         Lorem Ipsum Dolor
                     </h4>
-                    <h3 class="title title--section font-bold text-3xl text-gray-800">
+                    <h3 class="title title--section font-bold text-3xl text-gray-800 md:leading-tight leading-normal">
                         What Our Customers <span class="text-primary">Are Saying...</span>
                     </h3>
                 </div>
@@ -267,7 +267,7 @@
         <div class="container mx-auto">
             <div class="grid grid-cols-2 gap-6">
                 <div class="lg:col-span-1 col-span-2">
-                    <h3 class="title title--section text-4xl font-bold mb-4 pb-4 border-b border-b-gray-300 w-fit">
+                    <h3 class="title title--section text-4xl font-bold mb-4 pb-4 border-b border-b-gray-300 w-fit md:leading-tight leading-normal">
                         <span class="text-primary">Lorem Ipsum</span> Dolor Sit
                     </h3>
                     <ul class="mb-[25px] lg:mb-[100px]">
@@ -292,7 +292,7 @@
         <div class="container px-2 mx-auto">
             <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-6 items-center">
                 <div class="col-span-1 lg:col-span-2 md:col-span-3 sm:col-span-3 text-center lg:text-left">
-                    <h3 class="title title--section text-4xl text-white font-bold mb-2">
+                    <h3 class="title title--section text-4xl text-white font-bold mb-2 md:leading-tight leading-normal">
                         <span class="text-primary">Vergelijk</span>dierenarts.nl
                     </h3>
                     <p class="paragraph text-white">
@@ -317,7 +317,7 @@
 
     <section class="section section--blog py-[40px]">
         <div class="container px-2 mx-auto relative">
-            <h3 class="title title--section text-center text-3xl text-gray-800 font-bold mb-8">
+            <h3 class="title title--section text-center text-3xl text-gray-800 font-bold mb-8 md:leading-tight leading-normal">
                 From <span class="text-primary">Our Blog</span>
             </h3>
             <div class="posts grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -373,7 +373,7 @@
 
     <section class="section section--map pt-[40px] pb-0">
         <div class="container mx-auto">
-            <h3 class="title title--section text-center text-4xl text-gray-800 font-bold mb-8">
+            <h3 class="title title--section text-center text-4xl text-gray-800 font-bold mb-8 md:leading-tight leading-normal">
                 Discover The Best <span class="text-primary">Veterinary Clinics</span>
             </h3>
         </div>

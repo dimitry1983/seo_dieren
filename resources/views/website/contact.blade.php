@@ -6,7 +6,7 @@
     <section class="section section--hero-interior bg-primaryLight relative py-[140px]">
         <img class="absolute bottom-0 left-0 z-0" src="{{ asset('dieren/src/public/img/about1.png')}}" alt="">
         <div class="container mx-auto relative z-1">
-            <h1 class="text-6xl text-center font-regular text-gray-800 relative z-1">
+            <h1 class="text-6xl text-center font-regular text-gray-800 relative z-1 md:leading-tight leading-normal">
                 Contact <strong>Us</strong>
             </h1>
         </div>
@@ -54,7 +54,7 @@
 
     <section class="section section--map pt-[40px] pb-0">
         <div class="container mx-auto">
-            <h3 class="title title--section text-center text-4xl text-gray-800 font-bold mb-8">
+            <h3 class="title title--section text-center text-4xl text-gray-800 font-bold mb-8 md:leading-tight leading-normal">
                 Discover The Best <span class="text-primary">Veterinary Clinics</span>
             </h3>
         </div>
