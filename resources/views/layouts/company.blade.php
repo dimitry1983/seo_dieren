@@ -25,7 +25,7 @@
         }
     </style>
     <link href="/css/filament/filament/app.css?v=3.2.132.0" rel="stylesheet" data-navigate-track />
-    
+    @filamentStyles 
     <link rel="stylesheet" href="{{ asset('dieren-dashboard/dist/public/css/app.css')}}">
     @livewireStyles
 
@@ -38,7 +38,7 @@
     {{$slot}}
 </body>
 @livewireScripts
-
+@filamentScripts
 
 <script src="{{ asset('dieren-dashboard/src/public/js/quill.js') }}"></script>
 

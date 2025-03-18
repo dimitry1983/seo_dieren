@@ -1,4 +1,9 @@
 <div>
+    <style>
+        .trix-dialog__link-fields{
+            display:none;
+        }
+    </style>
     <div class="main-container flex  relative">
         @include('parts.company.sidebar', ['active' => $active ?? ""])
         <div class="main-content flex-1  px-5 py-10 lg:p-16 max-w-[100%]">
@@ -35,3 +40,4 @@
         </div>
     </div>
 </div>            
+
