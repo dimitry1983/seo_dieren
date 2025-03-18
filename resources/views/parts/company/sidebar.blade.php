@@ -43,7 +43,7 @@
                         ])></i><span>{{devTranslate('menu_company.Media','Media')}}</span>  <i class="fa-solid fa-angle-down ms-auto" :class="{'rotate-180': open, 'duration-300': true}"></i></a>
 
         </li>
-        <li><a href="{{route('company.company.openingstime')}}"
+        <li><a href="{{route('company.openingstime')}}"
                 @class([
                     'flex items-center px-6 py-3 duration-300',
                     'relative text-[#271F30] bg-[#F7F8FA] before:content-[""] before:bg-primary before:w-[4px] before:h-full before:absolute before:left-0 before:rounded' => $active === 'times',
@@ -104,7 +104,7 @@
                     'group-hover:text-primary' => $active !== 'inbox',
                 ])></i>
         <span>{{devTranslate('menu_company.Inbox','Inbox')}}</span> </a></li>
-        <li><a href="{{route(''company.company-invoices'')}}" 
+        <li><a href="{{route('company.company-invoices')}}" 
             @class([
                 'flex items-center px-6 py-3 duration-300',
                 'relative text-[#271F30] bg-[#F7F8FA] before:content-[""] before:bg-primary before:w-[4px] before:h-full before:absolute before:left-0 before:rounded' => $active === 'invoices',
