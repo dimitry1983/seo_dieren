@@ -31,7 +31,7 @@
         </li>
     
         <li  x-data="{ open: false }">
-            <a href="{{route('company.company-media')}}" @click.prevent="open = !open" @class([
+            <a href="{{route('company.company-media')}}"  @class([
                     'flex items-center px-6 py-3 duration-300',
                     'relative text-[#271F30] bg-[#F7F8FA] before:content-[""] before:bg-primary before:w-[4px] before:h-full before:absolute before:left-0 before:rounded' => $active === 'media',
                     'group text-[#ADB5C3] hover:text-[#271F30]' => $active !== 'media',
@@ -40,7 +40,7 @@
                             'fa-solid fa-images  text-xl w-[20px] me-2 duration-300',
                             'text-primary' => $active === 'media',
                             'group-hover:text-primary' => $active !== 'media',
-                        ])></i><span>{{devTranslate('menu_company.Media','Media')}}</span>  <i class="fa-solid fa-angle-down ms-auto" :class="{'rotate-180': open, 'duration-300': true}"></i></a>
+                        ])></i><span>{{devTranslate('menu_company.Media','Media')}}</span>  </a>
 
         </li>
         <li><a href="{{route('company.openingstime')}}"
