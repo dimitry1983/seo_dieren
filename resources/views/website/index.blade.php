@@ -12,7 +12,7 @@
                 <div class="flex flex-col lg:flex-row items-center">
                     <div class="w-full lg:w-1/2 text-center lg:text-left">
                         <div class="mb-6">
-                            <h1 class="text-4xl sm:text-5xl md:text-6xl font-regular text-gray-800">
+                            <h1 class="text-4xl sm:text-5xl md:text-6xl font-regular text-gray-800 md:leading-tight leading-normal">
                                 Discover The Best <span class="text-primary font-bold">Veterinary</span> <strong>Clinics</strong> In Your City
                             </h1>
                             <p class="mt-4 text-gray-900 text-sm sm:text-base">
@@ -29,7 +29,7 @@
         <div class="container px-2 mx-auto bg-transparent">
             <form action="" class="s-form lg:px-[40px] lg:py-[20px] md:px-[30px] md:py-[15px] px-[20px] py-8px z-30 flex flex-col md:flex-row items-center gap-y-4 md:gap-x-6 mt-[-50px] bg-white md:rounded-full border border-[#D2D3D4] relative before:hidden md:before:block before:absolute before:right-0 before:top-0 before:w-full md:before:w-1/4 before:h-full before:z-0 before:bg-primaryLight before:rounded-tr-full before:rounded-br-full">
                 <div class="w-full md:w-1/4 text-center md:text-left relative z-1">
-                    <p class="mb-0 block xl-custom:block md:hidden">
+                    <p class="lg:mb-0 block xl-custom:block md:hidden mb-4">
                         <strong>What Are You Looking For?</strong>
                     </p>
                     <input type="text" placeholder="Search For" class="form-control p-3 border border-none outline-none transition duration-300 ease-out w-full">
@@ -57,7 +57,7 @@
 
                 <div class="w-full md:w-1/4 text-center flex items-center justify-center relative z-1">
                     <span class="font-bold mr-8 text-lg">Search</span>
-                    <button type="submit" class="btn btn-secondary text-3xl md:text-5xl p-4 md:p-[20px] md:rounded-full w-full md:w-fit">
+                    <button type="submit" class="btn btn-secondary text-3xl md:text-5xl p-2 md:p-[20px] md:rounded-full w-full md:w-fit">
                         <i class="fa-regular fa-magnifying-glass"></i>
                     </button>
                 </div>
@@ -109,7 +109,7 @@
 
     <section class="section section--hotspots">
         <div class="container px-2 mx-auto relative">
-            <h3 class="title title--section text-center text-3xl sm:text-4xl text-gray-800 font-bold mb-5">
+            <h3 class="title title--section text-center text-3xl sm:text-4xl text-gray-800 font-bold mb-5  md:leading-tight leading-normal">
                 <span class="text-primary">Hotspots</span> You Can't Miss
             </h3>
             <div class="header-pills flex flex-wrap justify-center mb-6">
@@ -205,7 +205,7 @@
         <div class="container p-2 mx-auto">
             <div class="section__header flex flex-col md:flex-row md:items-center md:justify-between mb-6">
                 <div class="text-left">
-                    <h4 class="subtitle w-fit text-md font-semibold relative before:content-[''] before:w-[20px] before:h-[2px] before:bg-primary before:absolute before:right-[-30px] before:top-1/2 before:-translate-y-1/2">
+                    <h4 class="subtitle w-fit text-md font-semibold relative before:content-[''] before:w-[20px] before:h-[2px] before:bg-primary before:absolute before:right-[-30px] before:top-1/2 before:-translate-y-1/2  md:leading-tight leading-normal">
                         Choose Your Category
                     </h4>
                     <h3 class="title title--section font-bold text-3xl text-gray-800">
@@ -282,7 +282,7 @@
         <div class="container px-2 mx-auto relative">
             <div class="section__header md:flex items-center justify-between mb-8">
                 <div>
-                    <h4 class="subtitle w-fit text-md font-semibold relative before:content-[''] before:w-[20px] before:h-[2px] before:bg-primary before:absolute before:right-[-30px] before:top-1/2 before:-translate-y-1/2">
+                    <h4 class="subtitle w-fit text-md font-semibold relative before:content-[''] before:w-[20px] before:h-[2px] before:bg-primary before:absolute before:right-[-30px] before:top-1/2 before:-translate-y-1/2  md:leading-tight leading-normal">
                         Lorem Ipsum Dolor
                     </h4>
                     <h3 class="title title--section font-bold text-3xl text-gray-800">
@@ -488,7 +488,7 @@
         <div class="container px-2 mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div>
-                    <h3 class="title title--section text-4xl font-bold mb-8">
+                    <h3 class="title title--section text-4xl font-bold mb-8  md:leading-tight leading-normal">
                         Why To Choose<br><span class="text-primary">Our Directory</span>
                     </h3>
                     <div class="grid grid-cols-2 mb-3 pb-3 border-b border-b-gray-300">
@@ -529,7 +529,7 @@
         <div class="container px-2 mx-auto">
             <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-6 items-center">
                 <div class="col-span-1 lg:col-span-2 md:col-span-3 sm:col-span-3 text-center lg:text-left">
-                    <h3 class="title title--section text-4xl text-white font-bold mb-2">
+                    <h3 class="title title--section text-4xl text-white font-bold mb-2  md:leading-tight leading-normal">
                         <span class="text-primary">Vergelijk</span>dierenarts.nl
                     </h3>
                     <p class="paragraph text-white">
@@ -559,7 +559,7 @@
                     <h4 class="subtitle w-fit text-md font-semibold relative before:content-[''] before:w-[20px] before:h-[2px] before:bg-primary before:absolute before:right-[-30px] before:top-1/2 before:-translate-y-1/2">
                         Lorem Ipsum Dolor
                     </h4>
-                    <h3 class="title title--section font-bold text-3xl text-gray-800">
+                    <h3 class="title title--section font-bold text-3xl text-gray-800  md:leading-tight leading-normal">
                         What Our Customers <span class="text-primary">Are Saying...</span>
                     </h3>
                 </div>
@@ -608,7 +608,7 @@
 
     <section class="section section--blog py-[40px]">
         <div class="container px-2 mx-auto relative">
-            <h3 class="title title--section text-center text-3xl text-gray-800 font-bold mb-8">
+            <h3 class="title title--section text-center text-3xl text-gray-800 font-bold mb-8  md:leading-tight leading-normal">
                 From <span class="text-primary">Our Blog</span>
             </h3>
             <div class="posts grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -664,7 +664,7 @@
 
     <section class="section section--map pt-[40px] pb-0">
         <div class="container px-2 mx-auto">
-            <h3 class="title title--section text-center text-4xl text-gray-800 font-bold mb-8">
+            <h3 class="title title--section text-center text-4xl text-gray-800 font-bold mb-8  md:leading-tight leading-normal">
                 Discover The Best <span class="text-primary">Veterinary Clinics</span>
             </h3>
         </div>

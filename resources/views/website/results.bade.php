@@ -4,7 +4,7 @@
     <div class="main-container relative w-full overflow-hidden">
         <section class="section section--hero-interior bg-[url('../../../src/public/img/results-hero.png')] bg-cover bg-center bg-center">
             <div class="container p-2 mx-auto lg:pt-[120px] lg:pb-[180px] md:pt-[80px] md:pb-[120px] sm:pt-[50px] sm:pb-[80px] pt-[30px] pb-[50px]">
-                <h1 class="text-6xl text-center font-regular text-gray-800">
+                <h1 class="text-6xl text-center font-regular text-gray-800 md:leading-tight leading-normal">
                     Discover The Best<br><strong>Veterinary Clinics</strong>
                 </h1>
             </div>
@@ -20,7 +20,7 @@
                         <input type="text" placeholder="Search For" class="form-control p-3 border border-none outline-none transition duration-300 ease-out w-full">
                     </div>
 
-                    <div class="w-full md:w-1/4 text-center md:text-left relative lg:border-l lg:border-l-[#20242866] lg:px-[20px]">
+                    <div class="w-full md:w-1/4 text-center md:text-left relative lg:border-l lg:border-l-[#20242866] lg:px-[20px] ">
                         <p class="mb-0 hidden xl-custom:block"><strong>Category</strong></p>
                         <div class="relative">
                             <select class="form-control p-3 border border-none outline-none transition duration-300 ease-out w-full appearance-none pr-10">
@@ -86,7 +86,7 @@
                 <div class="map mb-8">
                     <div style="width: 100%"><iframe width="100%" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=500&amp;hl=es&amp;q=Netherlands+(Mi%20nombre%20de%20egocios)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.gps.ie/car-satnav-gps/">GPS car tracker</a></iframe></div>
                 </div>
-                <div class="grid grid-cols-4 gap-4 mb-8">
+                <div class="grid grid-cols-4 gap-4 mb-8 pt-2">
                     <div class="categories-sidebar col-span-4 lg:col-span-1 bg-white border border-gray-300 p-[20px] h-fit">
                         <h3 class="title title--sidebar title title--section font-bold text-2xl text-gray-800 mb-2">
                             Search Category
@@ -106,7 +106,7 @@
                         </a>
                     </div>
                     <div class="posts col-span-4 lg:col-span-3 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
-                        <div class="block-hotspots bg-white border border-gray-300 transition duration-300 ease-out hover:shadow-lg category-best-rated">
+                        <div class="block-hotspots bg-white border border-gray-300 transition duration-300 ease-out hover:shadow-lg category-best-rated mb-2">
                             <figure class="m-0 overflow-hidden">
                                 <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/post-1.png')}}" alt=""></a>
                             </figure>
@@ -127,7 +127,7 @@
                                 </h4>
                             </div>
                         </div>
-                        <div class="block-hotspots bg-white border border-gray-300 transition duration-300 ease-out hover:shadow-lg category-best-rated">
+                        <div class="block-hotspots bg-white border border-gray-300 transition duration-300 ease-out hover:shadow-lg category-best-rated mb-2">
                             <figure class="m-0 overflow-hidden">
                                 <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/post-2.png')}}" alt=""></a>
                             </figure>
@@ -148,7 +148,7 @@
                                 </h4>
                             </div>
                         </div>
-                        <div class="block-hotspots bg-white border border-gray-300 transition duration-300 ease-out hover:shadow-lg category-best-rated">
+                        <div class="block-hotspots bg-white border border-gray-300 transition duration-300 ease-out hover:shadow-lg category-best-rated mb-2">
                             <figure class="m-0 overflow-hidden">
                                 <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/post-3.png')}}" alt=""></a>
                             </figure>
@@ -169,7 +169,7 @@
                                 </h4>
                             </div>
                         </div>
-                        <div class="block-hotspots bg-white border border-gray-300 transition duration-300 ease-out hover:shadow-lg category-best-rated">
+                        <div class="block-hotspots bg-white border border-gray-300 transition duration-300 ease-out hover:shadow-lg category-best-rated mb-2">
                             <figure class="m-0 overflow-hidden">
                                 <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/post-4.png')}}" alt=""></a>
                             </figure>
@@ -190,7 +190,7 @@
                                 </h4>
                             </div>
                         </div>
-                        <div class="block-hotspots bg-white border border-gray-300 transition duration-300 ease-out hover:shadow-lg category-best-rated">
+                        <div class="block-hotspots bg-white border border-gray-300 transition duration-300 ease-out hover:shadow-lg category-best-rated mb-2">
                             <figure class="m-0 overflow-hidden">
                                 <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/post-5.png')}}" alt=""></a>
                             </figure>
@@ -211,7 +211,7 @@
                                 </h4>
                             </div>
                         </div>
-                        <div class="block-hotspots bg-white border border-gray-300 transition duration-300 ease-out hover:shadow-lg category-best-rated">
+                        <div class="block-hotspots bg-white border border-gray-300 transition duration-300 ease-out hover:shadow-lg category-best-rated mb-2">
                             <figure class="m-0 overflow-hidden">
                                 <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/post-6.png')}}" alt=""></a>
                             </figure>
@@ -283,7 +283,7 @@
                 <div class="section__header flex flex-col lg:flex-row items-center justify-between mb-6">
                     <div>
                         <h4 class="subtitle w-fit text-md font-semibold relative before:content-[''] before:w-[20px] before:h-[2px] before:bg-primary before:absolute before:right-[-30px] before:top-1/2 before:-translate-y-1/2">Choose Your Category</h4>
-                        <h3 class="title title--section font-bold text-3xl text-gray-800">
+                        <h3 class="title title--section font-bold text-3xl text-gray-800 md:leading-tight leading-normal">
                             <span class="text-primary">Browse</span> Categories
                         </h3>
                     </div>
@@ -448,7 +448,7 @@
             <div class="container px-2 mx-auto">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     <div>
-                        <h3 class="title title--section text-4xl font-bold mb-8">
+                        <h3 class="title title--section text-4xl font-bold mb-8 md:leading-tight leading-normal">
                             Why To Choose<br><span class="text-primary">Our Directory</span>
                         </h3>
                         <div class="grid grid-cols-2 mb-3 pb-3 border-b border-b-gray-300">
