@@ -32,16 +32,16 @@
                         <li class="mb-[15px]"><a class="text-white text-normal hover:font-bold transition" href="#">Privacy Policy</a></li>
                     </ul>
                 </div>
-                <div class="widget col-span-1 lg:col-span-3 text-center sm:text-left">
-                    <h4 class="title title--widget text-primary font-bold text-lg mb-[20px]">Follow Us</h4>
-                    <div class="flex justify-center sm:justify-start gap-3 mb-3">
+                <div class="widget col-span-1 lg:col-span-3 text-left">
+                    <h4 class="title title--widget text-primary font-bold text-lg mb-[20px]">Volg ons</h4>
+                    <div class="flex justify-start  gap-3 mb-3">
                         <a class="text-white text-xl hover:text-primary transition" href="#"><i class="fa-brands fa-facebook-f"></i></a>
                         <a class="text-white text-xl hover:text-primary transition" href="#"><i class="fa-brands fa-instagram"></i></a>
                         <a class="text-white text-xl hover:text-primary transition" href="#"><i class="fa-brands fa-youtube"></i></a>
                         <a class="text-white text-xl hover:text-primary transition" href="#"><i class="fa-brands fa-x-twitter"></i></a>
                     </div>
                     <a href="#" class="text-white text-normal block mb-6"><i class="fa-solid fa-envelope"></i> info@domain.com</a>
-                    <a href="#" class="btn btn-primaryLight text-center w-fit mx-auto sm:mx-0 flex justify-center items-center py-2 px-5">Add Your Clinic <i class="fa-solid fa-circle-plus text-4xl ml-3"></i></a>
+                    <a href="#" class="btn btn-primaryLight text-left w-fit mx-auto sm:mx-0 flex justify-start items-center py-2 px-5">Kliniek toevoegen <i class="fa-solid fa-circle-plus text-4xl ml-3"></i></a>
                 </div>
             </div>
         </div>

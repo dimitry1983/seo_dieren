@@ -28,7 +28,7 @@ new #[Layout('layouts.site')] class extends Component {
         <img class="absolute bottom-0 left-0 z-0" src="{{ asset('dieren/src/public/img/about1.png') }}" alt="">
         <div class="container mx-auto relative z-1">
             <h1 class="text-6xl text-center font-regular text-gray-800 relative z-3">
-                Forgot Password
+                {{devTranslate('page.Forgot Password', 'Wachtwoord Vergeten')}}
             </h1>
         </div>
         <img class="absolute bottom-0 right-0 z-0 hidden lg:block" src="{{ asset('dieren/src/public/img/contact.png') }}" alt="">
@@ -43,17 +43,17 @@ new #[Layout('layouts.site')] class extends Component {
                     <x-auth-session-status class="text-center" :status="session('status')" />
 
                     <form wire:submit="sendPasswordResetLink" class="px-[50px] py-[60px] bg-[#202428] lg:h-full">
-                        <x-auth-header title="Forgot Password" description="Enter your email to receive a password reset link" />
+                        <x-auth-header title="{{devTranslate('page.Forgot Password', 'Wachtwoord Vergeten')}}" description="{{devTranslate('page.Enter your email to receive a password reset link', 'Voer je e-mailadres in om een wachtwoordherstel link te ontvangen')}}" />
 
                         <!-- Email Address -->
                         <flux:field>
-                            <flux:label class="!text-base !font-normal !text-white block mb-2">{{ __('Email Address') }}</flux:label>
+                            <flux:label class="!text-base !font-normal !text-white block mb-2">{{ devTranslate('page.Email Address', 'E-mailadres') }}</flux:label>
                             <flux:input wire:model="email" type="email" name="email" required autofocus placeholder="email@example.com" />
                             <flux:error name="email" />
                         </flux:field>
 
                         <button variant="primary" type="submit" class="btn btn-primaryLight mt-5 w-full rounded-[5px] text-white">
-                            {{ __('Email password reset link') }}
+                            {{ devTranslate('page.Email password reset link', 'E-mail wachtwoordherstel link') }}
                         </button>
                     </form>
                 </div>
@@ -68,7 +68,7 @@ new #[Layout('layouts.site')] class extends Component {
 
     <section class="section section--info pt-[40px] pb-0 text-center">
         <div class="container mx-auto">
-            <p class="text-gray-800 text-lg">Or, return to <a href="{{ route('login') }}" class="text-primary font-bold">{{ __('log in') }}</a></p>
+            <p class="text-gray-800 text-lg">{{devTranslate('page.Or, return to', 'Of, ga terug naar')}} <a href="{{ route('login') }}" class="text-primary font-bold">{{ devTranslate('page.log in', 'Inloggen') }}</a></p>
         </div>
-    </section
+    </section>
 </div>

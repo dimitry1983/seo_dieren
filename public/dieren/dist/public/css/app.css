@@ -1884,6 +1884,10 @@ body{
   align-items: center;
 }
 
+.justify-start {
+  justify-content: flex-start;
+}
+
 .justify-end {
   justify-content: flex-end;
 }
@@ -3763,6 +3767,10 @@ body{
     justify-content: flex-start;
   }
 
+  .sm\:justify-center {
+    justify-content: center;
+  }
+
   .sm\:border-x {
     border-left-width: 1px;
     border-right-width: 1px;
@@ -4384,6 +4392,10 @@ body{
   .xl\:py-9 {
     padding-top: 2.25rem;
     padding-bottom: 2.25rem;
+  }
+
+  .xl\:text-left {
+    text-align: left;
   }
 
   .xl-custom\:block {

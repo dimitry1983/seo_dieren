@@ -74,7 +74,7 @@ new #[Layout('layouts.site')] class extends Component {
         <img class="absolute bottom-0 left-0 z-0" src="{{ asset('dieren/src/public/img/about1.png') }}" alt="">
         <div class="container mx-auto relative z-1">
             <h1 class="text-6xl text-center font-regular text-gray-800 relative z-3">
-                Reset Password
+                {{devTranslate('page.Reset Password', 'Wachtwoord Resetten')}}
             </h1>
         </div>
         <img class="absolute bottom-0 right-0 z-0 hidden lg:block" src="{{ asset('dieren/src/public/img/contact.png') }}" alt="">
@@ -86,7 +86,7 @@ new #[Layout('layouts.site')] class extends Component {
             <div class="grid grid-cols-1 lg:grid-cols-12">
                 <div class="lg:col-span-8">
                     <form wire:submit="resetPassword" class="px-[50px] py-[60px] bg-[#202428] lg:h-full">
-                        <x-auth-header title="Reset Password" description="Please enter your new password below" />
+                        <x-auth-header title="{{devTranslate('page.Reset Password', 'Wachtwoord Resetten')}}" description="{{devTranslate('page.Please enter your new password below', 'Voer hieronder je nieuwe wachtwoord in')}}" />
                         
                         <!-- Session Status -->
                         <x-auth-session-status class="text-center" :status="session('status')" />
@@ -94,7 +94,7 @@ new #[Layout('layouts.site')] class extends Component {
                         <!-- Email Address -->
                         <div class="grid gap-2">
                             <flux:field class="my-5">
-                                <flux:label class="text-white mb-2">{{ __('Email') }}</flux:label>
+                                <flux:label class="text-white mb-2">{{ devTranslate('page.Email', 'E-mail') }}</flux:label>
                                 <flux:input wire:model="email" id="email" type="email" name="email" required autocomplete="email" placeholder="email@example.com" />
                                 <flux:error name="email" />
                             </flux:field>
@@ -103,7 +103,7 @@ new #[Layout('layouts.site')] class extends Component {
                         <!-- Password -->
                         <div class="grid gap-2">
                             <flux:field class="my-5">
-                                <flux:label class="!text-base !font-normal !text-white block mb-2">{{ __('Password') }}</flux:label>
+                                <flux:label class="!text-base !font-normal !text-white block mb-2">{{ devTranslate('page.Password', 'Wachtwoord') }}</flux:label>
                                 <flux:input
                                     wire:model="password"
                                     id="password"
@@ -111,7 +111,7 @@ new #[Layout('layouts.site')] class extends Component {
                                     name="password"
                                     required
                                     autocomplete="new-password"
-                                    placeholder="Password"
+                                    placeholder="{{ devTranslate('page.Password', 'Wachtwoord') }}"
                                 />
                                 <flux:error name="password" />
                             </flux:field>
@@ -120,7 +120,7 @@ new #[Layout('layouts.site')] class extends Component {
                         <!-- Confirm Password -->
                         <div class="grid gap-2">
                             <flux:field class="my-5">
-                                <flux:label class="!text-base !font-normal !text-white block mb-2">{{ __('Confirm password') }}</flux:label>
+                                <flux:label class="!text-base !font-normal !text-white block mb-2">{{ devTranslate('page.Confirm password', 'Bevestig wachtwoord') }}</flux:label>
                                 <flux:input
                                     wire:model="password_confirmation"
                                     id="password_confirmation"
@@ -128,7 +128,7 @@ new #[Layout('layouts.site')] class extends Component {
                                     name="password_confirmation"
                                     required
                                     autocomplete="new-password"
-                                    placeholder="Confirm password"
+                                    placeholder="{{devTranslate('page.Confirm password', 'Bevestig wachtwoord')}}"
                                 />
                                 <flux:error name="password_confirmation" />
                             </flux:field>
@@ -136,7 +136,7 @@ new #[Layout('layouts.site')] class extends Component {
 
                         <div class="flex items-center justify-end">
                             <button type="submit" variant="primary" class="btn btn-primaryLight mt-5 w-full rounded-[5px] text-white">
-                                {{ __('Reset Password') }}
+                                {{ devTranslate('page.Reset Password', 'Wachtwoord Resetten') }}
                             </button>
                         </div>
                     </form>
@@ -154,8 +154,8 @@ new #[Layout('layouts.site')] class extends Component {
     <section class="section section--info pt-[40px] pb-0 text-center">
         <div class="container mx-auto">
             <p class="text-gray-800 text-lg">
-                Remembered your password?
-                <a href="{{ route('login') }}" class="text-primary font-bold">Log in</a>
+                {{devTranslate('page.Remembered your password?', 'Wachtwoord herinnerd?')}}
+                <a href="{{ route('login') }}" class="text-primary font-bold">{{devTranslate('page.Log in', 'Inloggen')}}</a>
             </p>
         </div>
     </section>

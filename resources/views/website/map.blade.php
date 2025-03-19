@@ -8,7 +8,7 @@
             <div class="search-form lg:col-span-1 col-span-2 bg-[#F3F6F9] border border-gray-300">
                 <form class="py-[50px] px-[30px]">
                     <p class="mb-[10px]"><strong>{{ devTranslate('page.What Are You Looking For?','Waar ben je naar opzoek?') }}</strong></p>
-                    <input type="text" placeholder="Search For" class="form-control mb-4 p-3 rounded-full border border-gray-300 outline-none hover:border-gray-400 focus:ring-2 focus:ring-primary transition duration-300 ease-out w-full">
+                    <input type="text" placeholder="{{ devTranslate('page.Search For','Zoek naar') }}" class="form-control mb-4 p-3 rounded-full border border-gray-300 outline-none hover:border-gray-400 focus:ring-2 focus:ring-primary transition duration-300 ease-out w-full">
 
                     <p class="mb-[10px]"><strong>{{ devTranslate('page.Category','Categorie') }}</strong></p>
                     <div class="relative mb-4">

@@ -40,7 +40,7 @@ new #[Layout('layouts.site')] class extends Component {
         <img class="absolute bottom-0 left-0 z-0" src="{{ asset('dieren/src/public/img/about1.png') }}" alt="">
         <div class="container mx-auto relative z-1">
             <h1 class="text-6xl text-center font-regular text-gray-800 relative z-3">
-                Verify Email
+                {{devTranslate('page.Verify Email', 'E-mail Verifiëren')}}
             </h1>
         </div>
         <img class="absolute bottom-0 right-0 z-0 hidden lg:block" src="{{ asset('dieren/src/public/img/contact.png') }}" alt="">
@@ -55,18 +55,18 @@ new #[Layout('layouts.site')] class extends Component {
                     <div class="px-[50px] py-[60px] bg-[#202428]">
                         <div class="mt-4 flex flex-col gap-6">
                             <div class="text-center text-sm text-gray-600">
-                                {{ __('Please verify your email address by clicking on the link we just emailed to you.') }}
+                                {{ devTranslate('page.Please verify your email address by clicking on the link we just emailed to you.', 'Verifieer je e-mailadres door op de link te klikken die we zojuist hebben gestuurd.') }}
                             </div>
 
                             @if (session('status') == 'verification-link-sent')
                                 <div class="font-medium text-center text-sm text-green-600">
-                                    {{ __('A new verification link has been sent to the email address you provided during registration.') }}
+                                    {{ devTranslate('page.A new verification link has been sent to the email address you provided during registration.', 'Een nieuwe verificatielink is verzonden naar het e-mailadres dat je tijdens de registratie hebt opgegeven.') }}
                                 </div>
                             @endif
 
                             <div class="flex flex-col items-center justify-between space-y-3">
                                 <flux:button wire:click="sendVerification" variant="primary" class="w-full">
-                                    {{ __('Resend verification email') }}
+                                    {{ devTranslate('page.Resend verification email', 'Verificatie-e-mail opnieuw verzenden') }}
                                 </flux:button>
 
                                 <button
@@ -74,7 +74,7 @@ new #[Layout('layouts.site')] class extends Component {
                                     type="submit"
                                     class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                                 >
-                                    {{ __('Log out') }}
+                                    {{ devTranslate('page.Log out', 'Uitloggen') }}
                                 </button>
                             </div>
                         </div>
@@ -94,8 +94,8 @@ new #[Layout('layouts.site')] class extends Component {
     <section class="section section--info pt-[40px] pb-0 text-center">
         <div class="container mx-auto">
             <p class="text-gray-800 text-lg">
-                Already have an account?
-                <a href="{{ route('login') }}" class="text-primary font-bold">Log in</a>
+                {{devTranslate('page.Already have an account?', 'Heb je al een account?')}}
+                <a href="{{ route('login') }}" class="text-primary font-bold">{{devTranslate('page.Log in', 'Inloggen')}}</a>
             </p>
         </div>
     </section>

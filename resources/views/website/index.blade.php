@@ -110,7 +110,7 @@
     <section class="section section--hotspots">
         <div class="container px-2 mx-auto relative">
             <h3 class="title title--section text-center text-3xl sm:text-4xl text-gray-800 font-bold mb-5 leading-tight md:leading-tight lg:leading-normal">
-                <span class="text-primary">{{ devTranslate('page.The best clinics','De beste klinieken') }}</span> {{ devTranslate('page.You cannot miss out on','Die Je Niet Mag Missen') }}
+                <span class="text-primary">{{ devTranslate('page.The best clinics','De beste klinieken') }}</span> {{ devTranslate('page.You cannot miss out on','die je niet mag Missen') }}
             </h3>
             <div class="header-pills flex flex-wrap justify-center mb-6">
                 <button class="pill font-medium active border-b-4 border-b-primary px-4 sm:px-6 mb-2  hover:border-b-primary" data-filter="all">{{ devTranslate('page.All','Alles') }}</button>
@@ -594,7 +594,7 @@
     </section>
 
     <section class="section section--blog py-[40px]">
-        <div class="container px-2 mx-auto relative">
+        <div class="container px-2 z-10 mx-auto relative">
             <h3 class="title title--section text-center text-3xl text-gray-800 font-bold mb-8 leading-tight md:leading-tight lg:leading-normal">
             {{ devTranslate('page.From blog','Het laatste') }} <span class="text-primary">{{ devTranslate('page.Our Blog','Nieuws') }}</span>
             </h3>

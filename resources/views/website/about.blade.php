@@ -5,9 +5,9 @@
 <div class="main-container relative w-full overflow-hidden">
     <section class="section section--hero-interior bg-primaryLight relative py-[140px]">
         <img class="absolute bottom-0 left-0 z-0" src="{{ asset('dieren/src/public/img/about1.png')}}" alt="">
-        <div class="container mx-auto relative z-1">
+        <div class="container mx-auto relative z-10">
             <h1 class="text-5xl lg:text-6xl text-center font-regular text-gray-800 relative z-3 leading-tight md:leading-tight lg:leading-normal">
-                About <strong>Us</strong>
+             {{devTranslate('page.About', 'Over')}} <strong>{{devTranslate('page.Us', 'Ons')}}</strong>
             </h1>
         </div>
         <img class="absolute bottom-0 right-0 z-0" src="{{ asset('dieren/src/public/img/about2.png')}}" alt="">
@@ -18,14 +18,14 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div>
                     <h3 class="title title--section text-4xl font-bold mb-8 leading-tight md:leading-tight lg:leading-normal">
-                        Find The Best<br><span class="text-primary">Veterinary Cate Near You</span>
+                        {{devTranslate('page.Find The Best', 'Vind de beste')}}<br><span class="text-primary">{{devTranslate('page.Veterinary Care Near You', 'Dierenkliniek bij jou in de buurt')}}</span>
                     </h3>
                     <p class="paragraph text-gray-600 mb-4">
                         We are passionate about pet well-being and know how important it is to find the best veterinary care for them. That's why we've created this specialized directory of veterinary clinics, designed to help you easily locate the best animal health centers near you.
                         <br><br>Our goal is to connect pet owners with qualified professionals, offering detailed information about services, hours, locations, and reviews of each clinic.
                     </p>
                     <a href="#" class="btn-secondary flex justify-center items-center" style="padding-top:8px!important; padding-bottom:8px!important;">
-                        Add Your Clinic <i class="fa-solid fa-circle-plus ml-4 text-4xl"></i>
+                        {{devTranslate('page.Add Your Clinic', 'Voeg jouw kliniek toe')}} <i class="fa-solid fa-circle-plus ml-4 text-4xl"></i>
                     </a>
                 </div>
                 <div>
@@ -61,7 +61,7 @@
                         </li>
                     </ul>
                     <a href="#" class="btn btn-primary pl-6 pr-[70px] py-5 bg-primaryLight text-center text-white block w-fit lg:mb-8 mb-4 relative">
-                        Find A Clinic <i class="fa-solid fa-magnifying-glass float-right text-xl  text-primaryLight w-[50px] h-[50px] rounded-full flex justify-center items-center bg-white absolute right-2 top-2"></i>
+                        {{devTranslate('page.Find A Clinic', 'Zoek een kliniek')}} <i class="fa-solid fa-magnifying-glass float-right text-xl  text-primaryLight w-[50px] h-[50px] rounded-full flex justify-center items-center bg-white absolute right-2 top-2"></i>
                     </a>
                 </div>
                 <div class="lg:col-span-5">
@@ -81,7 +81,7 @@
                         Lorem Ipsum Dolor
                     </h4>
                     <h3 class="title title--section font-bold text-3xl text-gray-800 leading-tight md:leading-tight lg:leading-normal">
-                        What Our Customers <span class="text-primary">Are Saying...</span>
+                        {{devTranslate('page.What Our Customers', 'Wat onze klanten')}} <span class="text-primary">{{devTranslate('page.Are Saying...', 'Zeggen...')}}</span>
                     </h3>
                 </div>
                 <a href="#" class="btn btn-outline-black border border-gray-800 py-2 px-4 rounded-full font-bold whitespace-nowrap mt-4 lg:mt-0 transition duration-300 ease-out hover:bg-black hover:text-white">Explore All</a>
@@ -130,7 +130,7 @@
     <section class="section section--map pt-[40px] pb-0">
         <div class="container mx-auto">
             <h3 class="title title--section text-center text-4xl text-gray-800 font-bold mb-8 leading-tight md:leading-tight lg:leading-normal">
-                Discover The Best <span class="text-primary">Veterinary Clinics</span>
+                {{devTranslate('page.Discover The Best', 'Ontdek de beste')}} <span class="text-primary">{{devTranslate('page.Veterinary Clinics', 'Dierenklinieken')}}</span>
             </h3>
         </div>
         <div class="map w-full">

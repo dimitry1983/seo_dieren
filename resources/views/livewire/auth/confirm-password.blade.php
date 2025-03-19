@@ -38,7 +38,7 @@ new #[Layout('layouts.site')] class extends Component {
         <img class="absolute bottom-0 left-0 z-0" src="{{ asset('dieren/src/public/img/about1.png') }}" alt="">
         <div class="container mx-auto relative z-1">
             <h1 class="text-6xl text-center font-regular text-gray-800 relative z-3">
-                Confirm Password
+                {{devTranslate('page.Confirm Password', 'Bevestig Wachtwoord')}}
             </h1>
         </div>
         <img class="absolute bottom-0 right-0 z-0 hidden lg:block" src="{{ asset('dieren/src/public/img/contact.png') }}" alt="">
@@ -54,8 +54,9 @@ new #[Layout('layouts.site')] class extends Component {
 
                     <form wire:submit="confirmPassword" class="px-[50px] py-[60px] bg-[#202428] lg:h-full">
                         <x-auth-header
-                            title="Confirm Password"
-                            description="This is a secure area of the application. Please confirm your password before continuing."
+                            title="{{devTranslate('page.Confirm Password', 'Bevestig Wachtwoord')}}"
+                            description="{{devTranslate('page.This is a secure area of the application. Please confirm your password before continuing.', 
+             'Dit is een beveiligd gedeelte van de applicatie. Bevestig je wachtwoord voordat je verder gaat.')}}"
                         />
 
                         <!-- Password Field -->
@@ -63,17 +64,17 @@ new #[Layout('layouts.site')] class extends Component {
                             <flux:input
                                 wire:model="password"
                                 id="password"
-                                label="{{ __('Password') }}"
+                                label="{{ devTranslate('page.Password', 'Wachtwoord') }}"
                                 type="password"
                                 name="password"
                                 required
                                 autocomplete="new-password"
-                                placeholder="Password"
+                                placeholder="{{devTranslate('page.Password', 'Wachtwoord')}}"
                             />
                         </flux:field>
 
                         <flux:button variant="primary" type="submit" class="btn btn-primaryLight w-full rounded-[5px] text-white">
-                            {{ __('Confirm') }}
+                            {{ devTranslate('page.Confirm', 'Bevestigen') }}
                         </flux:button>
                     </form>
                 </div>
@@ -90,7 +91,7 @@ new #[Layout('layouts.site')] class extends Component {
     <section class="section section--info pt-[40px] pb-0 text-center">
         <div class="container mx-auto">
             <p class="text-gray-800 text-lg">
-                Or, return to <x-text-link href="{{ route('login') }}">{{ __('log in') }}</x-text-link>
+                {{devTranslate('page.Or, return to', 'Of, ga terug naar')}} <x-text-link href="{{ route('login') }}">{{ devTranslate('page.log in', 'Inloggen') }}</x-text-link>
             </p>
         </div>
     </section>
