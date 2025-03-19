@@ -158,19 +158,17 @@
         </section>
 
         <section class="section section--map pt-[40px] pb-0">
-            <div class="container p-2 mx-auto">
-                <h3 class="title title--section text-center text-4xl text-gray-800 font-bold mb-8">
-                    Discover The Best <span class="text-primary">Veterinary Clinics</span>
-                </h3>
+        <div class="container mx-auto">
+            <h3 class="title title--section text-center text-4xl text-gray-800 font-bold mb-8 leading-tight md:leading-tight lg:leading-normal">
+                {{devTranslate('page.Discover The Best', 'Ontdek de beste')}} <span class="text-primary">{{devTranslate('page.Veterinary Clinics', 'Dierenklinieken')}}</span>
+            </h3>
+        </div>
+        <div class="map w-full">
+            <div class="w-full">
+                <img src="{{ asset('dieren/src/public/img/map.jpg')}}" alt="Map Image" class="w-full h-[500px] object-cover">
             </div>
-            <div class="map">
-                <div style="width: 100%">
-                    <iframe width="100%" height="400" class="sm:h-[500px]" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
-                        src="https://maps.google.com/maps?width=100%25&amp;height=500&amp;hl=es&amp;q=Netherlands+(Mi%20nombre%20de%20egocios)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
-                    </iframe>
-                </div>
-            </div>
-        </section>
+        </div>
+    </section>
 
     </div>
 @endsection
