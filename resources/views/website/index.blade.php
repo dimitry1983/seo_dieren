@@ -505,7 +505,7 @@
                 </div>
                 <div>
                     <figure class="w-full flex lg:justify-center">
-                        <img class="max-w-full h-auto" src="{{ asset('dieren/src/public/img/pics.png')}}" alt="">
+                        <img class="max-w-full h-auto" src="{{ asset('dieren/src/public/img/Pics.png')}}" alt="">
                     </figure>
                 </div>
             </div>

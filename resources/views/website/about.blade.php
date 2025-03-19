@@ -30,7 +30,7 @@
                 </div>
                 <div>
                     <figure>
-                        <img src="{{ asset('dieren/src/public/img/pics.png')}}" alt="">
+                        <img src="{{ asset('dieren/src/public/img/Pics.png')}}" alt="">
                     </figure>
                 </div>
             </div>
