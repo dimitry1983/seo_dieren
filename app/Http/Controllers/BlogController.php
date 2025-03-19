@@ -12,7 +12,7 @@ class BlogController extends Controller
     }
 
     public function blogDetail(){
-        return view('website.blog-detail');
+        return view('website.interior-blog');
     }
 
 }
