@@ -60,7 +60,7 @@
                         </div>
                         <div class="lg:ms-auto">
                             <figure class="w-[130px] px-2 py-4 rounded-[8px] bg-white">
-                                <img src="public/img/logo.png" alt="">
+                                <img src="public/img/Logo.png" alt="">
                             </figure>
                         </div>
                     </div>
