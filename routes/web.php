@@ -9,6 +9,17 @@ use App\Http\Controllers\OverviewController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
 
+Route::middleware(['auth'])->group(function () {
+    Route::redirect('settings', 'settings/profile');
+
+    Volt::route('settings/profile', 'settings.profile')->name('settings.profile');
+    Volt::route('settings/password', 'settings.password')->name('settings.password');
+    Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
+});
+
+require __DIR__.'/auth.php';
+
+
 
 Route::get('/cms/dashboard', \App\Livewire\Company\Dashboard::class)->name('company.dashboard');
 Route::get('/cms/bedrijfsinformatie', \App\Livewire\Company\CompanyInformation::class)->name('company.company-info');
@@ -58,12 +69,3 @@ Route::view('dashboard', 'dashboard')
 Route::get('/convert', [SiteController::class, 'convertDB'])->name('site.convert');    
 Route::get('/convert2', [SiteController::class, 'convertDBAgain'])->name('site.convert2');    
 
-Route::middleware(['auth'])->group(function () {
-    Route::redirect('settings', 'settings/profile');
-
-    Volt::route('settings/profile', 'settings.profile')->name('settings.profile');
-    Volt::route('settings/password', 'settings.password')->name('settings.password');
-    Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
-});
-
-require __DIR__.'/auth.php';

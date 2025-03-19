@@ -3088,6 +3088,11 @@ body{
   color: rgb(39 39 42 / var(--tw-text-opacity, 1));
 }
 
+.\!text-primary {
+  --tw-text-opacity: 1 !important;
+  color: rgb(0 153 153 / var(--tw-text-opacity, 1)) !important;
+}
+
 .underline {
   text-decoration-line: underline;
 }
@@ -4197,6 +4202,10 @@ body{
 
   .lg\:grid-cols-6 {
     grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .lg\:grid-cols-8 {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
   }
 
   .lg\:flex-row {
