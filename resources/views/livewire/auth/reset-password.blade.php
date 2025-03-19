@@ -73,7 +73,7 @@ new #[Layout('layouts.site')] class extends Component {
     <section class="section section--hero-interior bg-primaryLight relative py-[140px]">
         <img class="absolute bottom-0 left-0 z-0" src="{{ asset('dieren/src/public/img/about1.png') }}" alt="">
         <div class="container mx-auto relative z-1">
-            <h1 class="text-6xl text-center font-regular text-gray-800 relative z-1">
+            <h1 class="text-6xl text-center font-regular text-gray-800 relative z-3">
                 Reset Password
             </h1>
         </div>
@@ -103,7 +103,7 @@ new #[Layout('layouts.site')] class extends Component {
                         <!-- Password -->
                         <div class="grid gap-2">
                             <flux:field class="my-5">
-                                <flux:label class="text-white mb-2">{{ __('Password') }}</flux:label>
+                                <flux:label class="!text-base !font-normal !text-white block mb-2">{{ __('Password') }}</flux:label>
                                 <flux:input
                                     wire:model="password"
                                     id="password"
@@ -120,7 +120,7 @@ new #[Layout('layouts.site')] class extends Component {
                         <!-- Confirm Password -->
                         <div class="grid gap-2">
                             <flux:field class="my-5">
-                                <flux:label class="text-white mb-2">{{ __('Confirm password') }}</flux:label>
+                                <flux:label class="!text-base !font-normal !text-white block mb-2">{{ __('Confirm password') }}</flux:label>
                                 <flux:input
                                     wire:model="password_confirmation"
                                     id="password_confirmation"
@@ -135,9 +135,9 @@ new #[Layout('layouts.site')] class extends Component {
                         </div>
 
                         <div class="flex items-center justify-end">
-                            <flux:button type="submit" variant="primary" class="btn btn-primaryLight w-full rounded-[5px] text-white">
+                            <button type="submit" variant="primary" class="btn btn-primaryLight mt-5 w-full rounded-[5px] text-white">
                                 {{ __('Reset Password') }}
-                            </flux:button>
+                            </button>
                         </div>
                     </form>
                 </div>

@@ -14,7 +14,7 @@
 
         <section class="section section--hero-interior bg-primaryLight relative py-[140px]">
             <div class="container mx-auto">
-                <h1 class="text-6xl text-center font-regular text-gray-800 relative z-1">
+                <h1 class="text-6xl text-center font-regular text-gray-800 relative z-3">
                     Blog & <strong>News</strong>
                 </h1>
             </div>

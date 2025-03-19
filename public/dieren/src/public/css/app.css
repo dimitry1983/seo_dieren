@@ -193,3 +193,10 @@
         --tw-bg-opacity: 0;
     }
 }
+
+@media (max-width: 767px) {
+    .section--about-us {
+      /* Remove any previously set background image */
+      background-image: none !important;
+    }
+  }

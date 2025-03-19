@@ -1,10 +1,10 @@
 <footer class="footer footer--main bg-[#202428] text-white">
     <div class="footer--content py-[60px]">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 w-full lg:w-10/12 mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 w-full lg:w-12/12 mx-auto">
                 <div class="col-span-1 lg:col-span-4 text-center lg:text-left">
                     <figure class="mb-4">
-                        <a href="#">
+                        <a href="{{route('home')}}">
                             <img src="{{ asset('dieren/src/public/img/footer.png')}}" class="mx-auto lg:mx-0">
                         </a>
                     </figure>
@@ -27,7 +27,7 @@
                     <ul>
                         <li class="mb-[15px]"><a class="text-white text-normal hover:font-bold transition" href="#">Advertise</a></li>
                         <li class="mb-[15px]"><a class="text-white text-normal hover:font-bold transition" href="#">FAQ's</a></li>
-                        <li class="mb-[15px]"><a class="text-white text-normal hover:font-bold transition" href="#">Contact us</a></li>
+                        <li class="mb-[15px]"><a class="text-white text-normal hover:font-bold transition" href="{{route('contact')}}">Contact us</a></li>
                         <li class="mb-[15px]"><a class="text-white text-normal hover:font-bold transition" href="#">Terms of Use</a></li>
                         <li class="mb-[15px]"><a class="text-white text-normal hover:font-bold transition" href="#">Privacy Policy</a></li>
                     </ul>

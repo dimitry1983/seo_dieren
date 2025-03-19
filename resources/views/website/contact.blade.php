@@ -6,7 +6,7 @@
     <section class="section section--hero-interior bg-primaryLight relative py-[140px]">
         <img class="absolute bottom-0 left-0 z-0" src="{{ asset('dieren/src/public/img/about1.png')}}" alt="">
         <div class="container mx-auto relative z-1">
-            <h1 class="text-6xl text-center font-regular text-gray-800 relative z-1 md:leading-tight leading-normal">
+            <h1 class="text-6xl text-center font-regular text-gray-800 relative z-3 leading-tight md:leading-tight lg:leading-normal">
                 Contact <strong>Us</strong>
             </h1>
         </div>
@@ -24,22 +24,22 @@
                         <p class="text-primary">
                             We are here for you and your pet!
                         </p>
-                        <p class="text-white mb-2">
+                        <label class="text-white block mb-2">
                             Name
-                        </p>
-                        <input class="rounded-[5px] w-full py-1" type="text">
-                        <p class="text-white mb-2">
+                        </label>
+                        <input class="rounded-[5px] px-2 w-full py-2" type="text">
+                        <label class="text-white block my-2">
                             Telephone
-                        </p>
-                        <input class="rounded-[5px] w-full py-1" type="text">
-                        <p class="text-white mb-2">
+                        </label>
+                        <input class="rounded-[5px] px-2 w-full py-2" type="text">
+                        <label class="text-white block my-2">
                             Email
-                        </p>
-                        <input class="rounded-[5px] w-full py-1" type="text">
-                        <p class="text-white mb-2">
+                        </label>
+                        <input class="rounded-[5px] px-2 w-full py-2" type="text">
+                        <label class="text-white block my-2">
                             Message
-                        </p>
-                        <input class="rounded-[5px] w-full mb-5 py-1" type="text">
+                        </label>
+                        <textarea class="rounded-[5px] px-2 w-full mb-10 py-2" ></textarea>
                         <button class="btn btn-primaryLight w-full rounded-[5px] text-white">Send</button>
                     </form>
                 </div>
@@ -54,7 +54,7 @@
 
     <section class="section section--map pt-[40px] pb-0">
         <div class="container mx-auto">
-            <h3 class="title title--section text-center text-4xl text-gray-800 font-bold mb-8 md:leading-tight leading-normal">
+            <h3 class="title title--section text-center text-4xl text-gray-800 font-bold mb-8 leading-tight md:leading-tight lg:leading-normal">
                 Discover The Best <span class="text-primary">Veterinary Clinics</span>
             </h3>
         </div>

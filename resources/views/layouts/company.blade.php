@@ -12,24 +12,11 @@
     
     <link rel="stylesheet" href="{{ asset('dieren/src/public/css/splide.min.css')}}">
     <link rel="stylesheet" href="{{ asset('dieren-dashboard/src/public/css/all.min.css')}}">
-    <style>
-        :root {
-            --primary: #029999;
-            --primaryLight: #0fd1d1;
-            --primaryDark: #B71200;
-            --primaryDarker: #970000;
-            --secondary: #202428;
-            --secondaryLight:rgb(40, 43, 45);
-            --secondaryDark: #A6BE1B;
-            --secondaryDarker: #86A600;
-        }
-    </style>
+
     <link href="/css/filament/filament/app.css?v=3.2.132.0" rel="stylesheet" data-navigate-track />
     @filamentStyles 
     <link rel="stylesheet" href="{{ asset('dieren-dashboard/dist/public/css/app.css')}}">
     @livewireStyles
-
-
     @stack('styles') <!-- For page-specific styles -->
 </head>
 

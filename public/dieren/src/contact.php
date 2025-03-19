@@ -15,7 +15,7 @@
         <section class="section section--hero-interior bg-primaryLight relative py-[140px]">
             <img class="absolute bottom-0 left-0 z-0" src="public/img/about1.png" alt="">
             <div class="container mx-auto">
-                <h1 class="text-6xl text-center font-regular text-gray-800 relative z-1">
+                <h1 class="text-6xl text-center font-regular text-gray-800 relative z-3">
                     Contact <strong>Us</strong>
                 </h1>
             </div>

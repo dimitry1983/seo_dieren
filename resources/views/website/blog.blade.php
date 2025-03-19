@@ -5,7 +5,7 @@
 
     <section class="section section--hero-interior bg-primaryLight relative py-[140px]">
         <div class="container mx-auto relative z-1">
-            <h1 class="text-6xl text-center font-regular text-gray-800 relative z-1 md:leading-tight leading-normal">
+            <h1 class="text-6xl text-center font-regular text-gray-800 relative z-3 leading-tight md:leading-tight lg:leading-normal">
                 Blog & <strong>News</strong>
             </h1>
         </div>
@@ -14,7 +14,7 @@
 
     <section class="section section--blog py-[40px]">
         <div class="container mx-auto relative">
-            <h3 class="title title--section text-center text-3xl text-gray-800 font-bold mb-8 md:leading-tight leading-normal">
+            <h3 class="title title--section text-center text-3xl text-gray-800 font-bold mb-8 leading-tight md:leading-tight lg:leading-normal">
                 From <span class="text-primary">Our Blog</span>
             </h3>
             <div class="posts grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -205,7 +205,7 @@
 
     <section class="section section--intro py-[80px]">
         <div class="container mx-auto relative">
-            <h1 class="text-4xl text-center font-bold text-gray-800 relative z-1 mb-8 md:leading-tight leading-normal">
+            <h1 class="text-4xl text-center font-bold text-gray-800 relative z-1 mb-8 leading-tight md:leading-tight lg:leading-normal">
                 News
             </h1>
             <div class="flex flex-col lg:flex-row gap-y-4 lg:gap-x-6">

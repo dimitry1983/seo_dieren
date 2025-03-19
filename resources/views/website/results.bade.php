@@ -4,7 +4,7 @@
     <div class="main-container relative w-full overflow-hidden">
         <section class="section section--hero-interior bg-[url('../../../src/public/img/results-hero.png')] bg-cover bg-center bg-center">
             <div class="container p-2 mx-auto lg:pt-[120px] lg:pb-[180px] md:pt-[80px] md:pb-[120px] sm:pt-[50px] sm:pb-[80px] pt-[30px] pb-[50px]">
-                <h1 class="text-6xl text-center font-regular text-gray-800 md:leading-tight leading-normal">
+                <h1 class="text-6xl text-center font-regular text-gray-800 leading-tight md:leading-tight lg:leading-normal">
                     Discover The Best<br><strong>Veterinary Clinics</strong>
                 </h1>
             </div>
@@ -15,13 +15,13 @@
                 <form action="" class="s-form md:p-[40px] z-30 p-[20px] flex flex-col md:flex-row px-[20px] items-center gap-y-4 md:gap-x-6 mt-[-50px] bg-white md:rounded-full border border-[#D2D3D4] relative before:hidden md:before:block before:absolute before:right-0 before:top-0 before:w-full md:before:w-1/4 before:h-full before:z-0 before:bg-primaryLight before:rounded-tr-full before:rounded-br-full">
                     <div class="w-full md:w-1/4 text-center md:text-left relative z-1">
                         <p class="mb-0 block xl-custom:block md:hidden">
-                            <strong>What Are You Looking For?</strong>
+                            <strong>{{ devTranslate('page.What Are You Looking For?','Waar ben je naar opzoek?') }}</strong>
                         </p>
                         <input type="text" placeholder="Search For" class="form-control p-3 border border-none outline-none transition duration-300 ease-out w-full">
                     </div>
 
                     <div class="w-full md:w-1/4 text-center md:text-left relative lg:border-l lg:border-l-[#20242866] lg:px-[20px] ">
-                        <p class="mb-0 hidden xl-custom:block"><strong>Category</strong></p>
+                        <p class="mb-0 hidden xl-custom:block"><strong>{{ devTranslate('page.Category','Categorie') }}</strong></p>
                         <div class="relative">
                             <select class="form-control p-3 border border-none outline-none transition duration-300 ease-out w-full appearance-none pr-10">
                                 <option>Dogs</option>
@@ -31,7 +31,7 @@
                     </div>
 
                     <div class="w-full md:w-1/4 text-center md:text-left relative lg:border-l lg:border-l-[#20242866] lg:px-[20px]">
-                        <p class="mb-0 hidden xl-custom:block"><strong>Location</strong></p>
+                        <p class="mb-0 hidden xl-custom:block"><strong>{{ devTranslate('page.Location','Lokatie') }}</strong></p>
                         <div class="relative">
                             <select class="form-control p-3 border border-none outline-none transition duration-300 ease-out w-full appearance-none pr-10">
                                 <option>Amsterdam</option>
@@ -41,7 +41,7 @@
                     </div>
 
                     <div class="w-full md:w-1/4 text-center flex items-center justify-center relative z-1">
-                        <span class="font-bold mr-8 text-lg">Search</span>
+                        <span class="font-bold mr-8 text-lg">{{ devTranslate('page.Search','Zoeken') }}</span>
                         <button type="submit" class="btn btn-secondary text-3xl md:text-5xl p-4 md:p-[20px] md:rounded-full w-full md:w-fit">
                             <i class="fa-regular fa-magnifying-glass"></i>
                         </button>
@@ -283,7 +283,7 @@
                 <div class="section__header flex flex-col lg:flex-row items-center justify-between mb-6">
                     <div>
                         <h4 class="subtitle w-fit text-md font-semibold relative before:content-[''] before:w-[20px] before:h-[2px] before:bg-primary before:absolute before:right-[-30px] before:top-1/2 before:-translate-y-1/2">Choose Your Category</h4>
-                        <h3 class="title title--section font-bold text-3xl text-gray-800 md:leading-tight leading-normal">
+                        <h3 class="title title--section font-bold text-3xl text-gray-800 leading-tight md:leading-tight lg:leading-normal">
                             <span class="text-primary">Browse</span> Categories
                         </h3>
                     </div>
@@ -448,7 +448,7 @@
             <div class="container px-2 mx-auto">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     <div>
-                        <h3 class="title title--section text-4xl font-bold mb-8 md:leading-tight leading-normal">
+                        <h3 class="title title--section text-4xl font-bold mb-8 leading-tight md:leading-tight lg:leading-normal">
                             Why To Choose<br><span class="text-primary">Our Directory</span>
                         </h3>
                         <div class="grid grid-cols-2 mb-3 pb-3 border-b border-b-gray-300">

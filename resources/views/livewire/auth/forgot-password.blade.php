@@ -27,7 +27,7 @@ new #[Layout('layouts.site')] class extends Component {
     <section class="section section--hero-interior bg-primaryLight relative py-[140px]">
         <img class="absolute bottom-0 left-0 z-0" src="{{ asset('dieren/src/public/img/about1.png') }}" alt="">
         <div class="container mx-auto relative z-1">
-            <h1 class="text-6xl text-center font-regular text-gray-800 relative z-1">
+            <h1 class="text-6xl text-center font-regular text-gray-800 relative z-3">
                 Forgot Password
             </h1>
         </div>
@@ -47,14 +47,14 @@ new #[Layout('layouts.site')] class extends Component {
 
                         <!-- Email Address -->
                         <flux:field>
-                            <flux:label class="text-white mb-2">{{ __('Email Address') }}</flux:label>
+                            <flux:label class="!text-base !font-normal !text-white block mb-2">{{ __('Email Address') }}</flux:label>
                             <flux:input wire:model="email" type="email" name="email" required autofocus placeholder="email@example.com" />
                             <flux:error name="email" />
                         </flux:field>
 
-                        <flux:button variant="primary" type="submit" class="btn btn-primaryLight w-full rounded-[5px] text-white">
+                        <button variant="primary" type="submit" class="btn btn-primaryLight mt-5 w-full rounded-[5px] text-white">
                             {{ __('Email password reset link') }}
-                        </flux:button>
+                        </button>
                     </form>
                 </div>
                 <div class="lg:col-span-4 bg-gray-200">
@@ -66,12 +66,9 @@ new #[Layout('layouts.site')] class extends Component {
         </div>
     </section>
 
-    <!-- Info Section -->
     <section class="section section--info pt-[40px] pb-0 text-center">
         <div class="container mx-auto">
-            <p class="text-gray-800 text-lg">
-                Or, return to <x-text-link href="{{ route('login') }}">{{ __('log in') }}</x-text-link>
-            </p>
+            <p class="text-gray-800 text-lg">Or, return to <a href="{{ route('login') }}" class="text-primary font-bold">{{ __('log in') }}</a></p>
         </div>
-    </section>
+    </section
 </div>

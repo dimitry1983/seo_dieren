@@ -66,7 +66,7 @@ new #[Layout('layouts.site')] class extends Component {
     <section class="section section--hero-interior bg-primaryLight relative py-[140px]">
         <img class="absolute bottom-0 left-0 z-0" src="{{ asset('dieren/src/public/img/about1.png') }}" alt="">
         <div class="container mx-auto relative z-1">
-            <h1 class="text-6xl text-center font-regular text-gray-800 relative z-1">
+            <h1 class="text-6xl text-center font-regular text-gray-800 relative z-3">
                 Log In
             </h1>
         </div>
@@ -87,17 +87,18 @@ new #[Layout('layouts.site')] class extends Component {
 
                         <!-- Email Address -->
                         <flux:field>
-                            <flux:label class="text-white mb-2">{{ __('Email address') }}</flux:label>
-                            <flux:input wire:model="email" type="email" name="email" required autofocus autocomplete="email" placeholder="email@example.com" />
+                            <flux:label class="!text-base !font-normal !text-white block my-2">{{ __('Email address') }}</flux:label>
+                            <flux:input class="!rounded-lg" wire:model="email" type="email" name="email" required autofocus autocomplete="email" placeholder="email@example.com" />
                             <flux:error name="email" />
                         </flux:field>
                         <!-- Password -->
                         
                         <div class="relative">
                             <flux:field class="my-5">
-                                <flux:label class="text-white mb-2">Password</flux:label>
+                                <flux:label class="!text-base !font-normal !text-white block my-2">Password</flux:label>
 
                                 <flux:input
+                                    class="!rounded-lg"
                                     wire:model="password"
                                     type="password"
                                     name="password"
@@ -126,7 +127,7 @@ new #[Layout('layouts.site')] class extends Component {
                             </label>
                         
 
-                        <flux:button variant="primary" type="submit" class="btn btn-primaryLight w-full rounded-[5px] text-white">{{ __('Log in') }}</flux:button>
+                        <button variant="primary" type="submit" class="btn btn-primaryLight w-full mt-5 rounded-[5px] text-white">{{ __('Log in') }}</button>
                     
                     </form>
                 </div>

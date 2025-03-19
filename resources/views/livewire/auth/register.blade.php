@@ -39,7 +39,7 @@ new #[Layout('layouts.site')] class extends Component {
     <section class="section section--hero-interior bg-primaryLight relative py-[140px]">
         <img class="absolute bottom-0 left-0 z-0" src="{{ asset('dieren/src/public/img/about1.png') }}" alt="">
         <div class="container mx-auto relative z-1">
-            <h1 class="text-6xl text-center font-regular text-gray-800 relative z-1">
+            <h1 class="text-6xl text-center font-regular text-gray-800 relative z-3">
                 Registreren
             </h1>
         </div>
@@ -59,10 +59,10 @@ new #[Layout('layouts.site')] class extends Component {
         <x-auth-session-status class="text-center" :status="session('status')" />
         <!-- Name -->
         <div class="grid gap-2">
-            <flux:field class="my-5">
-                <flux:label class="text-white mb-2">{{ __('Name') }}</flux:label>
+            <flux:field class="my-2">
+                <flux:label class="!text-base !font-normal !text-white block mb-2">{{ __('Name') }}</flux:label>
 
-                <flux:input wire:model="name" id="name" type="text" name="name" required autofocus autocomplete="name" placeholder="Full name" />
+                <flux:input class="!rounded-lg" wire:model="name" id="name" type="text" name="name" required autofocus autocomplete="name" placeholder="Full name" />
 
                 <flux:error name="name" />
             </flux:field>
@@ -70,18 +70,19 @@ new #[Layout('layouts.site')] class extends Component {
 
         <!-- Email Address -->
         <div class="grid gap-2">
-            <flux:field class="my-5">
-                <flux:label class="text-white mb-2">{{ __('Email address') }}</flux:label>
-                <flux:input wire:model="email" id="email" type="email" name="email" required autocomplete="email" placeholder="email@example.com" />
+            <flux:field class="my-2">
+                <flux:label class="!text-base !font-normal !text-white block mb-2">{{ __('Email address') }}</flux:label>
+                <flux:input class="!rounded-lg" wire:model="email" id="email" type="email" name="email" required autocomplete="email" placeholder="email@example.com" />
                 <flux:error name="email" />
             </flux:field>
         </div>
 
         <!-- Password -->
-        <div class="grid gap-2">
-            <flux:field class="my-5">
-                <flux:label class="text-white mb-2">{{ __('Password') }}</flux:label>
+        <div class="grid ">
+            <flux:field class="my-2">
+                <flux:label class="!text-base !font-normal !text-white block mb-2">{{ __('Password') }}</flux:label>
                 <flux:input
+                    class="!rounded-lg"
                     wire:model="password"
                     id="password"
                     type="password"
@@ -95,9 +96,9 @@ new #[Layout('layouts.site')] class extends Component {
         </div>
 
         <!-- Confirm Password -->
-        <div class="grid gap-2">
-            <flux:field class="my-5">
-                <flux:label class="text-white mb-2">{{ __('Confirm password') }}</flux:label>
+        <div class="grid ">
+            <flux:field class="my-2">
+                <flux:label class="!text-base !font-normal !text-white block mb-2">{{ __('Confirm password') }}</flux:label>
                 <flux:input
                     wire:model="password_confirmation"
                     id="password_confirmation"
@@ -113,9 +114,9 @@ new #[Layout('layouts.site')] class extends Component {
         </div>
 
         <div class="flex items-center mt-5 justify-end">
-            <flux:button type="submit" variant="primary" class="btn btn-primaryLight w-full rounded-[5px] text-white">
+            <button type="submit" variant="primary" class="btn btn-primaryLight w-full rounded-[5px] text-white">
                 {{ __('Create account') }}
-            </flux:button>
+            </button>
         </div>
         </div>
                 <div class="lg:col-span-4 bg-gray-200">

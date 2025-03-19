@@ -10,12 +10,12 @@
         </a>
       </div>
       <ul class="mb-0 mt-2 md:mt-0 md:ml-auto md:flex hidden md:text-sm">
-        <li class="mb-0 text-white"><a href="#">About</a></li>
+        <li class="mb-0 text-white"><a href="{{route('about')}}">Over ons</a></li>
         <li class="mb-0 text-white ml-2 border-l border-l-white">
-            <a class="pl-[10px]" href="#">Contact</a>
+            <a class="pl-[10px]" href="{{route('contact')}}">Contact</a>
         </li>
         <li class="mb-0 text-white ml-2 border-l border-l-white">
-            <a class="pl-[10px]" href="#">My Account</a>
+            <a class="pl-[10px]" href="{{route('login')}}">Mijn Account</a>
         </li>
     </ul>
     </div>

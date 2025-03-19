@@ -7,10 +7,10 @@
         <div class="grid md:grid-cols-4">
             <div class="search-form lg:col-span-1 col-span-2 bg-[#F3F6F9] border border-gray-300">
                 <form class="py-[50px] px-[30px]">
-                    <p class="mb-[10px]"><strong>What Are You Looking For?</strong></p>
+                    <p class="mb-[10px]"><strong>{{ devTranslate('page.What Are You Looking For?','Waar ben je naar opzoek?') }}</strong></p>
                     <input type="text" placeholder="Search For" class="form-control mb-4 p-3 rounded-full border border-gray-300 outline-none hover:border-gray-400 focus:ring-2 focus:ring-primary transition duration-300 ease-out w-full">
 
-                    <p class="mb-[10px]"><strong>Category</strong></p>
+                    <p class="mb-[10px]"><strong>{{ devTranslate('page.Category','Categorie') }}</strong></p>
                     <div class="relative mb-4">
                         <select class="appearance-none p-3 rounded-full border border-gray-300 outline-none hover:border-gray-400 focus:ring-2 focus:ring-primary transition duration-300 ease-out w-full pr-10">
                             <option>Dogs</option>
@@ -18,7 +18,7 @@
                         <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
                     </div>
 
-                    <p class="mb-[10px]"><strong>Location</strong></p>
+                    <p class="mb-[10px]"><strong>{{ devTranslate('page.Location','Lokatie') }}</strong></p>
                     <div class="relative mb-4">
                         <select class="appearance-none p-3 rounded-full border border-gray-300 outline-none hover:border-gray-400 focus:ring-2 focus:ring-primary transition duration-300 ease-out w-full pr-10">
                             <option>Amsterdam</option>
@@ -26,12 +26,12 @@
                         <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
                     </div>
 
-                    <p class="mb-0"><strong>Search</strong></p>
+                    <p class="mb-0"><strong>{{ devTranslate('page.Search','Zoeken') }}</strong></p>
                     <button class="btn btn-primaryLight w-full mt-3 flex items-center justify-center gap-2 px-3 py-5 rounded-full relative">
-                        Search Now <i class="fa-solid fa-magnifying-glass text-primaryLight w-[50px] h-[50px] rounded-full flex justify-center items-center bg-black absolute right-4 top-2"></i>
+                        {{ devTranslate('page.Search Now','Zoek nu') }} <i class="fa-solid fa-magnifying-glass text-primaryLight w-[50px] h-[50px] rounded-full flex justify-center items-center bg-black absolute right-4 top-2"></i>
                     </button>
 
-                    <a class="underline text-center block mt-4 text-gray-800 font-bold hover:text-primary transition" href="#">Clear All Filters</a>
+                    <a class="underline text-center block mt-4 text-gray-800 font-bold hover:text-primary transition" href="#">{{ devTranslate('page.Clear All Filters','Reset Filters') }}</a>
                 </form>
             </div>
             <div class="map lg:col-span-3 col-span-2">
@@ -48,7 +48,7 @@
                         <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/dog.png') }}" alt="">
                     </figure>
                     <div class="content text-center p-4">
-                        <h3 class="title text-md font-semibold mb-2">Dogs</h3>
+                        <h3 class="title text-md font-semibold mb-2">{{devTranslate('page.Dogs', 'Honden')}}</h3>
                         <p class="paragraph text-sm">(150 Listings)</p>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
                         <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/cat.png') }}" alt="">
                     </figure>
                     <div class="content text-center p-4">
-                        <h3 class="title text-md font-semibold mb-2">Cats</h3>
+                        <h3 class="title text-md font-semibold mb-2">{{devTranslate('page.Cats', 'Katten')}}</h3>
                         <p class="paragraph text-sm">(150 Listings)</p>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                         <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/turtle.png')}}" alt="">
                     </figure>
                     <div class="content text-center p-4">
-                        <h3 class="title text-md font-semibold mb-2">Others</h3>
+                        <h3 class="title text-md font-semibold mb-2">{{devTranslate('page.Others', 'Overige')}}</h3>
                         <p class="paragraph text-sm">(100 Listings)</p>
                     </div>
                 </div>
@@ -78,7 +78,7 @@
                         <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/shelters.png')}}" alt="">
                     </figure>
                     <div class="content text-center p-4">
-                        <h3 class="title text-md font-semibold mb-2">Shelters</h3>
+                        <h3 class="title text-md font-semibold mb-2">{{devTranslate('page.Shelters', 'Asielen')}}</h3>
                         <p class="paragraph text-sm">(100 Listings)</p>
                     </div>
                 </div>
@@ -88,7 +88,7 @@
                         <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/specialists.png')}}" alt="">
                     </figure>
                     <div class="content text-center p-4">
-                        <h3 class="title text-md font-semibold mb-2">Specialists</h3>
+                        <h3 class="title text-md font-semibold mb-2">{{devTranslate('page.Specialists', 'Specialisten')}}</h3>
                         <p class="paragraph text-sm">(50 Listings)</p>
                     </div>
                 </div>
@@ -98,7 +98,7 @@
                         <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/emergencies.png')}}" alt="">
                     </figure>
                     <div class="content text-center p-4">
-                        <h3 class="title text-md font-semibold mb-2">Emergencies</h3>
+                        <h3 class="title text-md font-semibold mb-2">{{devTranslate('page.Emergencies', 'Noodgevallen')}}</h3>
                         <p class="paragraph text-sm">(50 Listings)</p>
                     </div>
                 </div>
@@ -113,20 +113,20 @@
                     <h4 class="subtitle w-fit text-md font-semibold relative before:content-[''] before:w-[20px] before:h-[2px] before:bg-primary before:absolute before:right-[-30px] before:top-1/2 before:-translate-y-1/2">
                         Lorem Ipsum Dolor
                     </h4>
-                    <h3 class="title title--section font-bold text-3xl text-gray-800 md:leading-tight leading-normal">
-                        <span class="text-primary">Top Clinics</span> Of The Month
+                    <h3 class="title title--section font-bold text-3xl text-gray-800 leading-tight md:leading-tight lg:leading-normal">
+                        <span class="text-primary">{{devTranslate('page.Top Clinics', 'Top klinieken')}}</span> {{devTranslate('page.Of The Month', 'van de Maand')}}
                     </h3>
                 </div>
-                <a href="#" class="btn btn-outline-black border border-gray-800 py-2 px-4 rounded-full font-bold whitespace-nowrap mt-4 lg:mt-0 transition duration-300 ease-out hover:bg-black hover:text-white">Explore All</a>
+                <a href="#" class="btn btn-outline-black border border-gray-800 py-2 px-4 rounded-full font-bold whitespace-nowrap mt-4 lg:mt-0 transition duration-300 ease-out hover:bg-black hover:text-white">{{devTranslate('page.Explore All', 'Bekijk alles')}}</a>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
                 <div class="block-hotspots col-span-4 sm:col-span-2 md:col-span-1 border bg-white border-gray-300 transition duration-300 ease-out hover:shadow-lg category-best-rated">
                     <figure class="m-0 overflow-hidden">
-                        <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/post-1.png')}}" alt=""></a>
+                        <a href="{{route('profile', ['slug' => 'dierenkliniek' , 'id' => 9])}}"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/post-1.png')}}" alt=""></a>
                     </figure>
                     <div class="content p-[20px]">
                         <h3 class="title font-bold text-lg">
-                            <a href="#">Amsterdam Clinic</a>
+                            <a href="{{route('profile', ['slug' => 'dierenkliniek' , 'id' => 9])}}">Amsterdam Clinic</a>
                         </h3>
                         <h4 class="subtitle text-sm text-gray-800 mb-2">Lorem Ipsum Dolor Sit Amet</h4>
                         <p class="location text-xs mb-0 font-semibold">
@@ -137,7 +137,7 @@
                         </a>
                         <h4 class="price font-bold text-lg mt-2">
                             From €60.00
-                            <a class="float-right text-sm font-normal underline hover:text-primary" href="#">View More</a>
+                            <a class="float-right text-sm font-normal underline hover:text-primary" href="#">{{devTranslate('page.View More', 'Bekijk meer')}}</a>
                         </h4>
                     </div>
                 </div>
@@ -158,7 +158,7 @@
                         </a>
                         <h4 class="price font-bold text-lg mt-2">
                             From €60.00
-                            <a class="float-right text-sm font-normal underline hover:text-primary" href="#">View More</a>
+                            <a class="float-right text-sm font-normal underline hover:text-primary" href="#">{{devTranslate('page.View More', 'Bekijk meer')}}</a>
                         </h4>
                     </div>
                 </div>
@@ -179,7 +179,7 @@
                         </a>
                         <h4 class="price font-bold text-lg mt-2">
                             From €60.00
-                            <a class="float-right text-sm font-normal underline hover:text-primary" href="#">View More</a>
+                            <a class="float-right text-sm font-normal underline hover:text-primary" href="#">{{devTranslate('page.View More', 'Bekijk meer')}}</a>
                         </h4>
                     </div>
                 </div>
@@ -200,7 +200,7 @@
                         </a>
                         <h4 class="price font-bold text-lg mt-2">
                             From €60.00
-                            <a class="float-right text-sm font-normal underline hover:text-primary" href="#">View More</a>
+                            <a class="float-right text-sm font-normal underline hover:text-primary" href="#">{{devTranslate('page.View More', 'Bekijk meer')}}</a>
                         </h4>
                     </div>
                 </div>
@@ -216,11 +216,11 @@
                     <h4 class="subtitle w-fit text-md font-semibold relative before:content-[''] before:w-[20px] before:h-[2px] before:bg-primary before:absolute before:right-[-30px] before:top-1/2 before:-translate-y-1/2">
                         Lorem Ipsum Dolor
                     </h4>
-                    <h3 class="title title--section font-bold text-3xl text-gray-800 md:leading-tight leading-normal">
-                        What Our Customers <span class="text-primary">Are Saying...</span>
+                    <h3 class="title title--section font-bold text-3xl text-gray-800 leading-tight md:leading-tight lg:leading-normal">
+                      {{devTranslate('page.What Our Customers', 'Wat onze klanten')}} <span class="text-primary">{{devTranslate('page.Are Saying...', 'zeggen...')}}</span>
                     </h3>
                 </div>
-                <a href="#" class="btn btn-outline-black border border-gray-800 py-2 px-4 rounded-full font-bold whitespace-nowrap mt-4 lg:mt-0 transition duration-300 ease-out hover:bg-black hover:text-white">Explore All</a>
+                <a href="#" class="btn btn-outline-black border border-gray-800 py-2 px-4 rounded-full font-bold whitespace-nowrap mt-4 lg:mt-0 transition duration-300 ease-out hover:bg-black hover:text-white">{{devTranslate('page.Explore All', 'Bekijk alles')}}</a>
             </div>
             <div class="testimonials grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div class="review border border-gray-300 py-[50px] px-[30px] md:p-[50px] bg-white">
@@ -267,7 +267,7 @@
         <div class="container mx-auto">
             <div class="grid grid-cols-2 gap-6">
                 <div class="lg:col-span-1 col-span-2">
-                    <h3 class="title title--section text-4xl font-bold mb-4 pb-4 border-b border-b-gray-300 w-fit md:leading-tight leading-normal">
+                    <h3 class="title title--section text-4xl font-bold mb-4 pb-4 border-b border-b-gray-300 w-fit leading-tight md:leading-tight lg:leading-normal">
                         <span class="text-primary">Lorem Ipsum</span> Dolor Sit
                     </h3>
                     <ul class="mb-[25px] lg:mb-[100px]">
@@ -281,8 +281,8 @@
                             <i class="fa-regular fa-circle-check text-primary"></i> Lorem ipsum dolor sit amet consectetur adipcing elit.
                         </li>
                     </ul>
-                    <a href="#" class="btn btn-primary min-w-[300px] md:min-w-[400px] py-5 bg-[#202428] text-center text-primaryLight block w-fit lg:mx-auto lg:mb-8 mb-4 relative">Find A Clinic <i class="fa-solid fa-magnifying-glass float-right text-xl  text-[#202428] w-[50px] h-[50px] rounded-full flex justify-center items-center bg-primaryLight absolute right-2 top-2"></i></a>
-                    <a href="#" class="btn btn-primary min-w-[300px] md:min-w-[400px] py-5 bg-[#202428] text-center text-primaryLight block w-fit lg:mx-auto relative">Add Your Clinic <i class="fa-solid fa-plus float-right text-xl  text-[#202428] w-[50px] h-[50px] rounded-full flex justify-center items-center bg-primaryLight absolute right-2 top-2"></i></a>
+                    <a href="#" class="btn btn-primary min-w-[300px] md:min-w-[400px] py-5 bg-[#202428] text-center text-primaryLight block w-fit lg:mx-auto lg:mb-8 mb-4 relative">{{devTranslate('page.Find A Clinic', 'Zoek een kliniek')}} <i class="fa-solid fa-magnifying-glass float-right text-xl  text-[#202428] w-[50px] h-[50px] rounded-full flex justify-center items-center bg-primaryLight absolute right-2 top-2"></i></a>
+                    <a href="#" class="btn btn-primary min-w-[300px] md:min-w-[400px] py-5 bg-[#202428] text-center text-primaryLight block w-fit lg:mx-auto relative">{{devTranslate('page.Add Your Clinic', 'Voeg jouw kliniek toe')}} <i class="fa-solid fa-plus float-right text-xl  text-[#202428] w-[50px] h-[50px] rounded-full flex justify-center items-center bg-primaryLight absolute right-2 top-2"></i></a>
                 </div>
             </div>
         </div>
@@ -292,7 +292,7 @@
         <div class="container px-2 mx-auto">
             <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-6 items-center">
                 <div class="col-span-1 lg:col-span-2 md:col-span-3 sm:col-span-3 text-center lg:text-left">
-                    <h3 class="title title--section text-4xl text-white font-bold mb-2 md:leading-tight leading-normal">
+                    <h3 class="title title--section text-4xl text-white font-bold mb-2 leading-tight md:leading-tight lg:leading-normal">
                         <span class="text-primary">Vergelijk</span>dierenarts.nl
                     </h3>
                     <p class="paragraph text-white">
@@ -300,15 +300,15 @@
                     </p>
                 </div>
                 <div class="text-center">
-                    <p class="text-white">CLINICS</p>
+                    <p class="text-white">{{devTranslate('page.Clinics', 'Klinieken')}} </p>
                     <span class="text-primaryLight font-medium text-5xl md:text-6xl block">+2k</span>
                 </div>
                 <div class="sm:border-x sm:border-x-white sm:border-x-2 text-center">
-                    <p class="text-white">LISTINGS</p>
+                    <p class="text-white">{{devTranslate('page.Listings', 'Advertenties')}}</p>
                     <span class="text-primaryLight font-medium text-5xl md:text-6xl block">+20k</span>
                 </div>
                 <div class="text-center">
-                    <p class="text-white">PETS</p>
+                    <p class="text-white">{{devTranslate('page.Pets', 'Huisdieren')}}</p>
                     <span class="text-primaryLight font-medium text-5xl md:text-6xl block">+200k</span>
                 </div>
             </div>
@@ -317,8 +317,8 @@
 
     <section class="section section--blog py-[40px]">
         <div class="container px-2 mx-auto relative">
-            <h3 class="title title--section text-center text-3xl text-gray-800 font-bold mb-8 md:leading-tight leading-normal">
-                From <span class="text-primary">Our Blog</span>
+            <h3 class="title title--section text-center text-3xl text-gray-800 font-bold mb-8 leading-tight md:leading-tight lg:leading-normal">
+            {{devTranslate('page.From', 'Het')}} <span class="text-primary">{{devTranslate('page.Our Blog', 'Laatste Nieuws')}}</span>
             </h3>
             <div class="posts grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg">
@@ -373,8 +373,8 @@
 
     <section class="section section--map pt-[40px] pb-0">
         <div class="container mx-auto">
-            <h3 class="title title--section text-center text-4xl text-gray-800 font-bold mb-8 md:leading-tight leading-normal">
-                Discover The Best <span class="text-primary">Veterinary Clinics</span>
+            <h3 class="title title--section text-center text-4xl text-gray-800 font-bold mb-8 leading-tight md:leading-tight lg:leading-normal">
+                {{devTranslate('page.Discover The Best', 'Ontdek de beste')}} <span class="text-primary">{{devTranslate('page.Veterinary Clinics', 'dierenklinieken')}}</span>
             </h3>
         </div>
         <div class="map w-full">
