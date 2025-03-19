@@ -1,7 +1,7 @@
 <header class="main-header border-b-2 border-solid border-[#edeff2] bg-white relative">
     <div class="flex items-center">
         <a class="block w-[180px] lg:w-[232px] py-5 px-7" href="#">
-            <img src="{{ asset('dieren-dashboard/src/public/img/logo.png')}}" alt="">
+            <img src="{{ asset('dieren-dashboard/src/public/img/Logo.png')}}" alt="">
         </a>
         <div class="flex items-center flex-1 py-5 border-s-2 border-solid border-[#edeff2] ps-5 pe-10 gap-3 lg:gap-6">
             <button id="toggleBtn" class="w-[50px] h-[50px] border border-solid border-[#e9e9e9] rounded-full flex flex-col items-center justify-center px-0 py-0 gap-[5px]">
