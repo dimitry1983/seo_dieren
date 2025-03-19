@@ -58,24 +58,27 @@ class CompanyInformation extends Component implements HasForms
                     Section::make('General Information')
                         ->schema([
                             TextInput::make('name')
+                                ->label('Naam')
                                 ->required()
                                 ->maxLength(255),
                             Textarea::make('short_description')
+                                ->label('Korte Beschrijving')
                                 ->columnSpanFull(),
                             Select::make('categories')
-                                ->label('Categories')
+                                ->label('Categorieën')
                                 ->multiple()
                                 ->relationship('categories', 'name') // Ensure this matches the model function
                                 ->searchable()
                                 ->preload(), 
                             Select::make('services')
-                                ->label('Services')
+                                ->label('Diensten')
                                 ->multiple()
                                 ->relationship('services', 'name') // Ensure this matches the model function
                                 ->searchable()
                                 ->preload(), 
 
                             RichEditor::make('description')
+                                ->label('Beschrijving')
                                 ->columnSpanFull(),
                             TextInput::make('lat')
                                 ->readOnly()
@@ -102,7 +105,7 @@ class CompanyInformation extends Component implements HasForms
                     Section::make('Contact Information')
                         ->schema([
                             Select::make('region_id')
-                                ->label('Province')
+                                ->label('Provincie')
                                 ->searchable(true)
                                 ->options(function (Get $get){
                                     $countryId = 1;
@@ -116,7 +119,7 @@ class CompanyInformation extends Component implements HasForms
                                     $livewire->validateOnly($component->getStatePath());
                                 }),
                             Select::make('city_id')
-                                    ->label('City')
+                                    ->label('Plaats')
                                     ->searchable(true)
                                     ->live()
                                     ->options(function (Get $get){
@@ -133,15 +136,20 @@ class CompanyInformation extends Component implements HasForms
                                     }),
         
                             TextInput::make('zipcode')
+                                ->label('Postcode')
                                 ->maxLength(255),
                             TextInput::make('street')
+                                ->label('Straat')
                                 ->maxLength(255),
                             TextInput::make('street_nr')
+                                ->label('Huisnummer')
                                 ->maxLength(255),
                             TextInput::make('phone')
+                                ->label('Telefoonnummer')
                                 ->tel()
                                 ->maxLength(255),
                             TextInput::make('website')
+                                ->label('Website')
                                 ->maxLength(255)
                                 ->type('url') // Optional: sets the HTML input type to "url"
                                 ->rules(['url']) // Ensures Laravel validates it as a URL
