@@ -20,7 +20,7 @@ Route::middleware(['auth'])->group(function () {
 require __DIR__.'/auth.php';
 
 
-Route::prefix('user')->middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('/cms/dashboard', \App\Livewire\Company\Dashboard::class)->name('company.dashboard');
     Route::get('/cms/bedrijfsinformatie', \App\Livewire\Company\CompanyInformation::class)->name('company.company-info');
     Route::get('/cms/media', \App\Livewire\Company\Media::class)->name('company.company-media');

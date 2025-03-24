@@ -6,6 +6,8 @@ use App\Models\City;
 use App\Models\Province;
 use App\Models\User;
 use App\Models\Veterinarian;
+use App\Models\VeterinarianCategory;
+use App\Models\VeterinarianService;
 use App\Services\GeoapifyService;
 use Livewire\Component;
 use Filament\Forms\Contracts\HasForms;
@@ -27,8 +29,8 @@ class CompanyInformation extends Component implements HasForms
 
     public $name;
     public $short_description;
-    public $categories;
-    public $services;
+    public $categories = [];
+    public $services = [];
     public $description;
     public $lon;
     public $lat;
@@ -52,14 +54,32 @@ class CompanyInformation extends Component implements HasForms
       $this -> company = new Veterinarian(); 
 
       $result = Veterinarian::where('user_id', Auth::user()->id)->first();
+      
       if (!empty($result)){
         $this -> company = $result;
       }
 
       if ($this -> company->exists) { // Only fill if editing an existing page
-        $this->form->fill($this -> company->toArray()); // Convert attributes to an array
+        // Get the categories and services from the database
+        $categories = VeterinarianCategory::where('veterinarian_id', $this->company->id)->pluck('category_id')->toArray();
+        $services = VeterinarianService::where('veterinarian_id', $this->company->id)->pluck('category_id')->toArray();
+
+        // Convert the model attributes to an array
+        $companyArray = $this->company->toArray();
+
+        // Add categories and services to the array
+        $companyArray['categories'] = $categories;
+        $companyArray['services'] = $services;
+
+        // Fill the form with the complete data array
+        $this->form->fill($companyArray);
+
+
+        //$this -> categories = [1];
+
       }
 
+    
     }
 
 
@@ -84,7 +104,7 @@ class CompanyInformation extends Component implements HasForms
                                 ->multiple()
                                 ->relationship('categories', 'name') // Ensure this matches the model function
                                 ->searchable()
-                                ->preload(), 
+                                ->preload(),
                             Select::make('services')
                                 ->label(devTranslate('cms_company.Diensten','Diensten')) 
                                 ->multiple()
@@ -95,7 +115,12 @@ class CompanyInformation extends Component implements HasForms
                                 ->label(devTranslate('cms_company.Beschrijving','Beschrijving')) 
                                 ->columnSpanFull(),
                         ])
-                        ->columnSpan(3),
+                        ->columnSpan([
+                            'default' => 5, // Full width on small screens
+                            'md' => 5,     // Full width on medium screens
+                            'lg' => 5,     // 3 columns on large screens
+                            'xl' => 3,
+                        ]),
 
                     // Right side - Contact info (2 columns)
                     Section::make('Contact Informatie')
@@ -150,7 +175,12 @@ class CompanyInformation extends Component implements HasForms
                                 ->rules(['url']) // Ensures Laravel validates it as a URL
                                 ->placeholder('https://example.com')
                         ])
-                        ->columnSpan(2),
+                        ->columnSpan([
+                            'default' => 5, // Full width on small screens
+                            'md' => 5,     // Full width on medium screens
+                            'lg' => 5,     // 2 columns on large screens
+                            'xl' => 2,
+                        ]),
                 ]),
         ])->model(Veterinarian::class);
     }
@@ -158,6 +188,7 @@ class CompanyInformation extends Component implements HasForms
 
     public function save()
     {
+        
         if (!empty($this->page->id)){
             $state = "update";
         }
@@ -168,18 +199,25 @@ class CompanyInformation extends Component implements HasForms
 
         $address = $result['street']." ".$result['street_nr'];
         $city = $result['city_id'];
-
         $city = City::find($city);
         $city = $city->name;
-
         $postcode = $result['zipcode'];
-
         $geoapifyService = new GeoapifyService();
         $coordinates = $geoapifyService->getCoordinates($address, $city, $postcode);
 
-  
-
         $data = $this->form->getState();
+        
+        if (!empty($this->categories)){
+            $categories = $this->categories;
+            unset($data['categories']);
+        }
+        if (!empty($this->services)){
+            $services = $this->services;
+            unset($data['services']);
+        }
+        
+        
+
         $data['user_id'] = Auth::user()->id;
 
         $data['lat'] = $coordinates['lat'] ?? null;
@@ -187,14 +225,37 @@ class CompanyInformation extends Component implements HasForms
 
         $this -> company ->fill($data);
         $this -> company ->save();
+
+        if (!empty($categories)){
+            VeterinarianCategory::where('veterinarian_id', $this -> company -> id)->delete();
+            foreach($categories as $category){
+                $categoryData = [
+                    'veterinarian_id' => $this -> company -> id,
+                    'category_id' => $category
+                ];
+                VeterinarianCategory::create($categoryData);
+            }
+        }
+
+        if(!empty($services)){
+            VeterinarianService::where('veterinarian_id', $this -> company -> id)->delete();
+            foreach($services as $service){
+                $serviceData = [
+                    'veterinarian_id' => $this -> company -> id,
+                    'category_id' => $service
+                ];
+                VeterinarianService::create($serviceData);
+            }
+        }
+
+        $this -> dispatch('saved');
        
         if ($state == "create"){
-            $this->reset();
-          
-            session()->flash('success', devTranslate('page.Bedrijfsinformatie succesvol aangemaakt','Bedrijfsinformatie succesvol aangemaakt'));
+         
+            session()->flash('success', devTranslate('page.Bedrijfsinformatie succesvol aangemaakt','Bedrijfsgegevens succesvol aangemaakt'));
         }
         else{
-            session()->flash('success', devTranslate('page.Bedrijfsinformatie succesvol bijgewerkt','Bedrijfsinformatie succesvol bijgewerkt'));
+            session()->flash('success', devTranslate('page.Bedrijfsinformatie succesvol bijgewerkt','Bedrijfsgegevens succesvol bijgewerkt'));
         }
 
     }

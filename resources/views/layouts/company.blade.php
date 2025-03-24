@@ -19,6 +19,8 @@
     @livewireStyles
     @stack('styles') <!-- For page-specific styles -->
 
+    @filepondScripts
+
     <style>
         :root {
             --primary: #3ec0bf;

@@ -280,3 +280,19 @@ select:not(.choices) {
 .filepond--root .fa-image:before{
     font-size: 22px;
 }
+
+.filepond--drop-label.filepond--drop-label label {
+    color: #3bb8b7;
+}
+
+.filepond--label-action {
+    --tw-text-opacity: 1;
+    color: #3bb8b7;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.filepond--label-action:hover {
+    --tw-text-opacity: 1;
+    color: #3bb8b7;
+}
