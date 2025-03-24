@@ -61,7 +61,7 @@ class BreadcrumbMiddleware
         if ($currentRouteName == 'company.company-info'){
             $breadcrumbData = [
                 'total' => 1,
-                'name' => devTranslate('bread.Bedrijven informatie', 'Bedrijven informatie')
+                'name' => devTranslate('bread.Bedrijf gegevens', 'Bedrijf gegevens')
             ];
         }
 

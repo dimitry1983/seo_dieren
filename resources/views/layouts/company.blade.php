@@ -18,6 +18,20 @@
     <link rel="stylesheet" href="{{ asset('dieren-dashboard/dist/public/css/app.css')}}">
     @livewireStyles
     @stack('styles') <!-- For page-specific styles -->
+
+    <style>
+        :root {
+            --primary: #3ec0bf;
+            --primaryLight:rgb(96, 236, 236);
+            --primaryDark:rgb(12, 141, 141);
+            --primaryDarker:rgb(0, 86, 86);
+            --secondary: #E8FF57;
+            --secondaryLight: #FFFF7F;
+            --secondaryDark: #A6BE1B;
+            --secondaryDarker: #86A600;
+        }
+    </style>
+
 </head>
 
 <body class="text-base">

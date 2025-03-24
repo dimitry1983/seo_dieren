@@ -20,17 +20,17 @@ Route::middleware(['auth'])->group(function () {
 require __DIR__.'/auth.php';
 
 
-
-Route::get('/cms/dashboard', \App\Livewire\Company\Dashboard::class)->name('company.dashboard');
-Route::get('/cms/bedrijfsinformatie', \App\Livewire\Company\CompanyInformation::class)->name('company.company-info');
-Route::get('/cms/media', \App\Livewire\Company\Media::class)->name('company.company-media');
-Route::get('/cms/openingstijden', \App\Livewire\Company\OpeningTimes::class)->name('company.openingstime');
-Route::get('/cms/prijzen', \App\Livewire\Company\Prices::class)->name('company.company-pricing');
-Route::get('/cms/recencies', \App\Livewire\Company\Reviews::class)->name('company.company-reviews');
-Route::get('/cms/blogs', \App\Livewire\Company\Blogs::class)->name('company.company-blogs');
-Route::get('/cms/inbox', \App\Livewire\Company\Inbox::class)->name('company.company-inbox');
-Route::get('/cms/facturen', \App\Livewire\Company\Invoices::class)->name('company.company-invoices');
-
+Route::prefix('user')->middleware(['auth'])->group(function () {
+    Route::get('/cms/dashboard', \App\Livewire\Company\Dashboard::class)->name('company.dashboard');
+    Route::get('/cms/bedrijfsinformatie', \App\Livewire\Company\CompanyInformation::class)->name('company.company-info');
+    Route::get('/cms/media', \App\Livewire\Company\Media::class)->name('company.company-media');
+    Route::get('/cms/openingstijden', \App\Livewire\Company\OpeningTimes::class)->name('company.openingstime');
+    Route::get('/cms/prijzen', \App\Livewire\Company\Prices::class)->name('company.company-pricing');
+    Route::get('/cms/recencies', \App\Livewire\Company\Reviews::class)->name('company.company-reviews');
+    Route::get('/cms/blogs', \App\Livewire\Company\Blogs::class)->name('company.company-blogs');
+    Route::get('/cms/inbox', \App\Livewire\Company\Inbox::class)->name('company.company-inbox');
+    Route::get('/cms/facturen', \App\Livewire\Company\Invoices::class)->name('company.company-invoices');
+});
 //routing for the website
 
 // Site Routes

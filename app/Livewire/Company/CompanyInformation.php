@@ -6,6 +6,7 @@ use App\Models\City;
 use App\Models\Province;
 use App\Models\User;
 use App\Models\Veterinarian;
+use App\Services\GeoapifyService;
 use Livewire\Component;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
@@ -40,11 +41,25 @@ class CompanyInformation extends Component implements HasForms
     public $phone;
     public $website;
 
+    public $company;
 
-    public function mount($id = null): void
+    protected $geoapifyService;
+
+
+    public function mount(): void
     {
-       
-      $this -> form;
+      //fill the form with logged in user @todo  
+      $this -> company = new Veterinarian(); 
+
+      $result = Veterinarian::where('user_id', Auth::user()->id)->first();
+      if (!empty($result)){
+        $this -> company = $result;
+      }
+
+      if ($this -> company->exists) { // Only fill if editing an existing page
+        $this->form->fill($this -> company->toArray()); // Convert attributes to an array
+      }
+
     }
 
 
@@ -55,57 +70,38 @@ class CompanyInformation extends Component implements HasForms
             Grid::make(5) // 3 columns for general info, 2 columns for contact info
                 ->schema([
                     // Left side - General info (3 columns)
-                    Section::make('General Information')
+                    Section::make(devTranslate('cms_company.Algemene Informatie','Algemene Informatie'))
                         ->schema([
                             TextInput::make('name')
-                                ->label('Naam')
+                                ->label(devTranslate('cms_company.Naam','Naam')) 
                                 ->required()
                                 ->maxLength(255),
                             Textarea::make('short_description')
-                                ->label('Korte Beschrijving')
+                                ->label(devTranslate('cms_company.Korte Beschrijving','Korte Beschrijving'))
                                 ->columnSpanFull(),
                             Select::make('categories')
-                                ->label('Categorieën')
+                                ->label(devTranslate('cms_company.Categorieën','Categorieën'))
                                 ->multiple()
                                 ->relationship('categories', 'name') // Ensure this matches the model function
                                 ->searchable()
                                 ->preload(), 
                             Select::make('services')
-                                ->label('Diensten')
+                                ->label(devTranslate('cms_company.Diensten','Diensten')) 
                                 ->multiple()
                                 ->relationship('services', 'name') // Ensure this matches the model function
                                 ->searchable()
                                 ->preload(), 
-
                             RichEditor::make('description')
-                                ->label('Beschrijving')
+                                ->label(devTranslate('cms_company.Beschrijving','Beschrijving')) 
                                 ->columnSpanFull(),
-                            TextInput::make('lat')
-                                ->readOnly()
-                                ->numeric(),
-                            TextInput::make('lon')
-                                ->readOnly()
-                                ->numeric(),
-                            Select::make('user_id')
-                                ->searchable()
-                                ->getSearchResultsUsing(
-                                    fn (string $search): array => User::where('name', 'like', "%{$search}%")
-                                        ->limit(50)
-                                        ->get()
-                                        // This produces an array like [1 => 'Alice', 2 => 'Bob', ...]
-                                        ->pluck('name', 'id')
-                                        ->toArray()
-                                )
-                                ->getOptionLabelUsing(fn ($value) => User::find($value)?->name)
-                                ->placeholder('Select a user')
                         ])
                         ->columnSpan(3),
 
                     // Right side - Contact info (2 columns)
-                    Section::make('Contact Information')
+                    Section::make('Contact Informatie')
                         ->schema([
                             Select::make('region_id')
-                                ->label('Provincie')
+                                ->label(devTranslate('cms_company.Provincie','Provincie'))
                                 ->searchable(true)
                                 ->options(function (Get $get){
                                     $countryId = 1;
@@ -119,7 +115,7 @@ class CompanyInformation extends Component implements HasForms
                                     $livewire->validateOnly($component->getStatePath());
                                 }),
                             Select::make('city_id')
-                                    ->label('Plaats')
+                                    ->label(devTranslate('cms_company.Plaats','Plaats')) 
                                     ->searchable(true)
                                     ->live()
                                     ->options(function (Get $get){
@@ -134,22 +130,21 @@ class CompanyInformation extends Component implements HasForms
                                     ->afterStateUpdated(function (HasForms $livewire,  Select $component) {
                                         $livewire->validateOnly($component->getStatePath());
                                     }),
-        
                             TextInput::make('zipcode')
-                                ->label('Postcode')
+                                ->label(devTranslate('cms_company.Postcode','Postcode'))
                                 ->maxLength(255),
                             TextInput::make('street')
-                                ->label('Straat')
+                                ->label(devTranslate('cms_company.Straat','Straat'))  
                                 ->maxLength(255),
                             TextInput::make('street_nr')
-                                ->label('Huisnummer')
+                                ->label(devTranslate('cms_company.Huisnummer','Huisnummer')) 
                                 ->maxLength(255),
                             TextInput::make('phone')
-                                ->label('Telefoonnummer')
+                                ->label(devTranslate('cms_company.Telefoonnummer','Telefoonnummer')) 
                                 ->tel()
                                 ->maxLength(255),
                             TextInput::make('website')
-                                ->label('Website')
+                                ->label(devTranslate('cms_company.Website','Website')) 
                                 ->maxLength(255)
                                 ->type('url') // Optional: sets the HTML input type to "url"
                                 ->rules(['url']) // Ensures Laravel validates it as a URL
@@ -169,12 +164,29 @@ class CompanyInformation extends Component implements HasForms
         else{
             $state = "create";
         }
+        $result = $this->form->getState();
 
+        $address = $result['street']." ".$result['street_nr'];
+        $city = $result['city_id'];
+
+        $city = City::find($city);
+        $city = $city->name;
+
+        $postcode = $result['zipcode'];
+
+        $geoapifyService = new GeoapifyService();
+        $coordinates = $geoapifyService->getCoordinates($address, $city, $postcode);
+
+  
 
         $data = $this->form->getState();
         $data['user_id'] = Auth::user()->id;
-        $this->page->fill($data);
-        $this->page->save();
+
+        $data['lat'] = $coordinates['lat'] ?? null;
+        $data['lon'] = $coordinates['lon'] ?? null;
+
+        $this -> company ->fill($data);
+        $this -> company ->save();
        
         if ($state == "create"){
             $this->reset();
