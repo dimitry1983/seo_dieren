@@ -44,22 +44,28 @@ class Media extends Component
         $this->count = count($images);
     }
 
-    public function deleteImage($image)
+    public function deleteImage($image, $id)
     {
-        $imagePath = ltrim($image, '/');
+         $imagePath = ltrim($image, '/');
         if (Storage::disk('public')->exists($imagePath)) {
+           
             $arrayDirectories = ['big', 'thumb', 'medium'];
             if (!empty($arrayDirectories)){
                 foreach ($arrayDirectories as $directory){
-                    $imagePath = str_replace('thumb', $directory, $imagePath);
-                    if (Storage::disk('public')->exists($imagePath)) {
-                        Storage::disk('public')->delete($imagePath);
+                     $imagePath1 = str_replace('thumb', $directory, $imagePath);
+                    
+                     if (Storage::disk('public')->exists($imagePath1)) {
+            
+                        Storage::disk('public')->delete($imagePath1);
                     }
                 }
             }
-
-            Storage::delete($image);
-            $this->images = array_filter($this->images, fn($img) => $img !== $image);
+            VeterinariansImage::where('id', $id)->delete();
+            Storage::disk('public')->delete($imagePath);
+            $result = Veterinarian::where('id', Auth::user()->id)->first();
+            $images = VeterinariansImage::where('veterinarian_id', $result -> id)->get();
+            $this->images = $images;
+            $this->count = count($images);
             $this->dispatch('imageDeleted');
         }
     }
@@ -119,13 +125,18 @@ class Media extends Component
                         'name' => $filename,
                         'featured' => $this->featured,
                         'veterinarian_id' => $result -> id,
-                    ]);
-
-                    
+                    ]);  
                     $teller++;
                 }
             }
         endif;
+
+
+        $result = Veterinarian::where('id', Auth::user()->id)->first();
+
+        $images = VeterinariansImage::where('veterinarian_id', $result -> id)->get();
+        $this->images = $images;
+        $this->count = count($images);
 
         //$data['veterinarian_id'] = Auth::user()->id;
 
