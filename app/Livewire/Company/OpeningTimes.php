@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Company;
 
+use App\Models\VegetarianOpeningTime;
 use App\Models\Veterinarian;
 use App\Models\VeterinariansOpeningTime;
 use Filament\Forms\Components\Section;
@@ -19,14 +20,51 @@ class OpeningTimes extends Component implements HasForms
 
     use \Filament\Forms\Concerns\InteractsWithForms;
 
+    public $day_of_week;
+    public $open_time;
+    public $close_time;
+    public $is_closed;
+    public $notes;
+
+    public $openingsTimes;
+
+    public $openingsTime;
+
+    public $veterinarian_id;
+
+    public function mount($id = null){
+        $result = Veterinarian::where('id', Auth::user()->id)->first();
+        $this -> veterinarian_id = $result -> id;
+        $this->openingsTimes = VegetarianOpeningTime::where('veterinarian_id', $result -> id)->get();
+
+        if ($id > 0){
+            $this->openingsTime  = VegetarianOpeningTime::find($id);
+            $this->openingsTime = $this->openingsTime->toArray();
+            $this->form->fill($this->openingsTime);
+        }
+        else{
+            $this->openingsTime = new VegetarianOpeningTime();
+        }
+    }
+
+    public function loadDay($id){
+    
+        $this->openingsTime  = VegetarianOpeningTime::find($id);
+        $this->openingsTime = $this->openingsTime->toArray();
+        $this->form->fill($this->openingsTime);
+        $result = Veterinarian::where('id', Auth::user()->id)->first();
+        $this -> veterinarian_id = $result -> id;
+        $this->openingsTimes = VegetarianOpeningTime::where('veterinarian_id', $result -> id)->get();
+    }
 
     public function form(Form $form): Form
     {
         return $form
         ->schema([
-            Section::make('Opening Hours')
+            Section::make('')
                 ->schema([
                     Select::make('day_of_week')
+                        ->label('Dag van de week')
                         ->options([
                             'Monday' => devTranslate('admin.Maandag', 'Maandag'), 
                             'Tuesday' => devTranslate('admin.Dinsdag', 'Dinsdag'),
@@ -38,26 +76,24 @@ class OpeningTimes extends Component implements HasForms
                         ])
                         ->required(),
                     TimePicker::make('open_time')
-                        ->label('Opening Time')
+                        ->label('Openingstijd')
                         ->required()
                         ->displayFormat('HH:mm') // 24-hour format
                         ->seconds(false), // Hides seconds (optional)     
                     TimePicker::make('close_time')
                         ->label('Closing Time')
+                        ->label('Sluitingstijd')
                         ->required()
                         ->displayFormat('HH:mm') // 24-hour format
                         ->seconds(false),
                     Toggle::make('is_closed')
-                        ->label('Closed for the day')
-                        ->required(),
+                        ->label('Gesloten')
+                        ->default(0)    
+                        ->label('Closed for the day'),
                     Textarea::make('notes')
+                        ->label('Notitie')
                         ->label('Additional Notes')
                         ->columnSpanFull(),
-                    Select::make('veterinarian_id')
-                        ->searchable()
-                        ->label('Veterinarian')
-                        ->options(Veterinarian::pluck('name', 'id')->toArray())    
-                        ->required(),
                 ])
                 ->columnSpanFull(), // Ensures the section spans full width
         ])->model(VeterinariansOpeningTime::class);
@@ -66,26 +102,42 @@ class OpeningTimes extends Component implements HasForms
 
     public function save()
     {
-        if (!empty($this->page->id)){
+       
+        if (!empty($this->openingsTime['id'])){
+            $this->openingsTime = VegetarianOpeningTime::find($this->openingsTime['id']);
+           
+
             $state = "update";
         }
         else{
             $state = "create";
         }
 
-
         $data = $this->form->getState();
-        $data['user_id'] = Auth::user()->id;
-        $this->page->fill($data);
-        $this->page->save();
+        $data['veterinarian_id'] =  $this -> veterinarian_id;
+        $data['is_closed'] = $this->is_closed !== null ? $this->is_closed : 0;
+        if (!empty($this->openingsTime['id'])){
+            $data['id'] = $this->openingsTime['id'];
+
+            if ($this->openingsTime->day_of_week !== $data['day_of_week']){
+                unset($data['id']);
+                $this->openingsTime = new VegetarianOpeningTime();
+            }
+        }
+        $this->openingsTime->fill($data);
+        $this->openingsTime->save();
        
+        $this -> dispatch('saved');
+        $result = Veterinarian::where('id', Auth::user()->id)->first();
+        $this -> veterinarian_id = $result -> id;
+        $this->openingsTimes = VegetarianOpeningTime::where('veterinarian_id', $result -> id)->get();
         if ($state == "create"){
             $this->reset();
           
-            session()->flash('success', devTranslate('page.Bedrijfsinformatie succesvol aangemaakt','Bedrijfsinformatie succesvol aangemaakt'));
+            session()->flash('success', devTranslate('cms.Openingstijden succesvol aangemaakt','Openingstijden succesvol aangemaakt'));
         }
         else{
-            session()->flash('success', devTranslate('page.Bedrijfsinformatie succesvol bijgewerkt','Bedrijfsinformatie succesvol bijgewerkt'));
+            session()->flash('success', devTranslate('cms.Openingstijden succesvol bijgewerkt','Openingstijden succesvol bijgewerkt'));
         }
 
     }

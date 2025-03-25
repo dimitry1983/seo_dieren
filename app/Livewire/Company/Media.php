@@ -81,7 +81,7 @@ class Media extends Component
             foreach ($this->file as $image) {
                 if ($teller < 11){
                     $extension = $image->getClientOriginalExtension(); 
-                    $filename = Str::random(10). '.' . $extension; // Unique filename
+                    $filename = Str::random(10). '.webp'; // Unique filename
 
                     // Process Big Image (1200px width)
                     
@@ -96,7 +96,7 @@ class Media extends Component
                     $mediumImage = Image::make($image->getRealPath())->resize(310, null, function ($constraint) {
                         $constraint->aspectRatio();
                     });
-
+                    $mediumImage = $mediumImage->encode('webp', 80);
                     // Load your watermark image
                     $watermark = Image::make(public_path('img/waterbrand.png'));
 

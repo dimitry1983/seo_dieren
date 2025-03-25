@@ -1528,6 +1528,11 @@ textarea.custom-switch input + span.h-full.w-full:after{
   margin-bottom: auto;
 }
 
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 .\!mb-0 {
   margin-bottom: 0px !important;
 }
@@ -2243,6 +2248,10 @@ textarea.custom-switch input + span.h-full.w-full:after{
 
 .w-px {
   width: 1px;
+}
+
+.w-24 {
+  width: 6rem;
 }
 
 .min-w-\[300px\] {
@@ -3637,6 +3646,10 @@ textarea.custom-switch input + span.h-full.w-full:after{
   line-height: 1.25;
 }
 
+.leading-6 {
+  line-height: 1.5rem;
+}
+
 .\!text-primary {
   color: var(--primary) !important;
 }
@@ -3906,6 +3919,16 @@ textarea.custom-switch input + span.h-full.w-full:after{
 .text-zinc-800 {
   --tw-text-opacity: 1;
   color: rgb(39 39 42 / var(--tw-text-opacity, 1));
+}
+
+.text-blue-500 {
+  --tw-text-opacity: 1;
+  color: rgb(59 130 246 / var(--tw-text-opacity, 1));
+}
+
+.text-gray-950 {
+  --tw-text-opacity: 1;
+  color: rgb(3 7 18 / var(--tw-text-opacity, 1));
 }
 
 .underline {
@@ -4608,6 +4631,11 @@ select:not(.choices) {
 .hover\:text-zinc-800:hover {
   --tw-text-opacity: 1;
   color: rgb(39 39 42 / var(--tw-text-opacity, 1));
+}
+
+.hover\:text-blue-700:hover {
+  --tw-text-opacity: 1;
+  color: rgb(29 78 216 / var(--tw-text-opacity, 1));
 }
 
 .hover\:decoration-neutral-700:hover {

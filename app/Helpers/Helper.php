@@ -391,6 +391,21 @@ function IsGooglebot()
 }
 
 
+function returnDays($data){
+    $days = [
+        'Monday' => 'maandag',
+        'Tuesday' => 'dinsdag',
+        'Wednesday' => 'woensdag',
+        'Thursday' => 'donderdag',
+        'Friday' => 'vrijdag',
+        'Saturday' => 'zaterdag',
+        'Sunday' => 'zondag',
+    ];
+
+    return $days[$data];
+}
+
+
 function timeago($date) {
     date_default_timezone_set(config('app.timezone'));
     $timestamp = strtotime($date);

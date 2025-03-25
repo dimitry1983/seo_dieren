@@ -37,7 +37,7 @@
 
                         <div class="mt-4">
                             <x-filament::button type="submit">
-                                {{ devTranslate('cms_company.Informatie opslaan','Informatie opslaan') }}
+                                {{ devTranslate('cms_company.Opslaan','Opslaan') }}
                             </x-filament::button>
                         </div>
                     </form>     
