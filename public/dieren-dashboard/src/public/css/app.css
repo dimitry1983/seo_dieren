@@ -4,7 +4,7 @@
 
 @layer base{
     .roboto{
-        font-family: 'Roboto', serif;
+        font-family: 'Montserrat', serif;
     }
 
     body{
@@ -135,13 +135,13 @@ input.bg-transparent{
     font-weight: 500 !important;
     font-size: 1.125rem !important;
     line-height: 1.75rem !important;
-    font-family: 'Roboto', serif !important;
+    font-family: 'Montserrat', serif !important;
 }
 
 h3.fi-section-header-heading.text-base.font-semibold.leading-6.text-gray-950{
     font-weight: 700;
     font-size: 28px;
-    font-family: 'Roboto', serif;
+    font-family: 'Montserrat', serif;
 }
 
 button.fi-btn.relative.grid-flow-col.items-center.justify-center.font-semibold.outline-none.transition.duration-75, .px-4.py-2.bg-blue-500.text-white.rounded.mt-4{

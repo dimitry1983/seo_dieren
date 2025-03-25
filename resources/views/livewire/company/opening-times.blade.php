@@ -23,34 +23,36 @@
                     @include('parts.company.breadcrumb' , ['breadcrumbs' => $breadcrumbData ?? ''] )
                 </div>
 
-                <div class="w-full border border-gray-300 bg-white p-4 rounded-lg mb-8">
-                    <h3 class="fi-section-header-heading text-base font-semibold leading-6 text-gray-950 dark:text-white mb-4">
+                <div class="w-full border border-gray-300 bg-white py-4 rounded-lg mb-8">
+                    <h3 class="fi-section-header-heading text-base px-4 font-semibold leading-6 text-gray-950 dark:text-white mb-4">
                         {{__('Openingstijden')}}
                     </h3>
-                    <ul class="space-y-2">
-                        @if (!empty($openingsTimes))
-                            @foreach($openingsTimes as $openingTime)
-                                <li class="flex items-center justify-between">
-                                    <!-- Fixed width for day of the week to maintain alignment -->
-                                    <span class="font-medium w-24">{{ returnDays($openingTime->day_of_week) }}</span>
-                                    
-                                    <!-- Times and edit button in a single flex row -->
-                                    <div class="flex items-center space-x-4">
-                                        <span>{{$openingTime->open_time}}</span>
-                                        <span>-</span>
-                                        <span>{{$openingTime->close_time}}</span>
+                    <div class="fi-section-content-ctn border-t p-4 border-gray-200 dark:border-white/10">
+                        <ul class="space-y-2">
+                            @if (!empty($openingsTimes[0]))
+                                @foreach($openingsTimes as $openingTime)
+                                    <li class="flex items-center justify-between">
+                                        <!-- Fixed width for day of the week to maintain alignment -->
+                                        <span class="font-medium w-24">{{ returnDays($openingTime->day_of_week) }}</span>
                                         
-                                        <!-- Edit button -->
-                                        <button class="text-primary hover:text-primary ml-4" wire:click="loadDay({{$openingTime->id}})">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </li>
-                            @endforeach    
-                        @endif
-                    </ul>
+                                        <!-- Times and edit button in a single flex row -->
+                                        <div class="flex items-center space-x-4">
+                                            <span>{{$openingTime->open_time}}</span>
+                                            <span>-</span>
+                                            <span>{{$openingTime->close_time}}</span>
+                                            
+                                            <!-- Edit button -->
+                                            <button class="text-primary hover:text-primary ml-4" wire:click="loadDay({{$openingTime->id}})">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </li>
+                                @endforeach    
+                            @endif
+                        </ul>
+                    </div>
                 </div>
 
                 @if (session()->has('success'))

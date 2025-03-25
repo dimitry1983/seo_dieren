@@ -73,10 +73,7 @@ class CompanyInformation extends Component implements HasForms
 
         // Fill the form with the complete data array
         $this->form->fill($companyArray);
-
       }
-
-    
     }
 
 

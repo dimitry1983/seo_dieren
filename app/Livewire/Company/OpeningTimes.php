@@ -48,8 +48,7 @@ class OpeningTimes extends Component implements HasForms
     }
 
     public function loadDay($id){
-    
-        $this->openingsTime  = VegetarianOpeningTime::find($id);
+        $this->openingsTime  = VegetarianOpeningTime::where('veterinarian_id', $this -> veterinarian_id)->find($id);
         $this->openingsTime = $this->openingsTime->toArray();
         $this->form->fill($this->openingsTime);
         $result = Veterinarian::where('id', Auth::user()->id)->first();
@@ -64,7 +63,7 @@ class OpeningTimes extends Component implements HasForms
             Section::make('')
                 ->schema([
                     Select::make('day_of_week')
-                        ->label('Dag van de week')
+                        ->label(__('Dag van de week'))
                         ->options([
                             'Monday' => devTranslate('admin.Maandag', 'Maandag'), 
                             'Tuesday' => devTranslate('admin.Dinsdag', 'Dinsdag'),
@@ -76,23 +75,21 @@ class OpeningTimes extends Component implements HasForms
                         ])
                         ->required(),
                     TimePicker::make('open_time')
-                        ->label('Openingstijd')
+                        ->label(__('Openingstijd'))
                         ->required()
                         ->displayFormat('HH:mm') // 24-hour format
                         ->seconds(false), // Hides seconds (optional)     
                     TimePicker::make('close_time')
-                        ->label('Closing Time')
-                        ->label('Sluitingstijd')
+                        ->label(__('Sluitingstijd'))
                         ->required()
                         ->displayFormat('HH:mm') // 24-hour format
                         ->seconds(false),
                     Toggle::make('is_closed')
-                        ->label('Gesloten')
+                        ->label(__('Gesloten'))
                         ->default(0)    
                         ->label('Closed for the day'),
                     Textarea::make('notes')
-                        ->label('Notitie')
-                        ->label('Additional Notes')
+                        ->label(__('Aanvullende Notities'))
                         ->columnSpanFull(),
                 ])
                 ->columnSpanFull(), // Ensures the section spans full width
@@ -105,8 +102,6 @@ class OpeningTimes extends Component implements HasForms
        
         if (!empty($this->openingsTime['id'])){
             $this->openingsTime = VegetarianOpeningTime::find($this->openingsTime['id']);
-           
-
             $state = "update";
         }
         else{
@@ -130,7 +125,7 @@ class OpeningTimes extends Component implements HasForms
         $this -> dispatch('saved');
         $result = Veterinarian::where('id', Auth::user()->id)->first();
         $this -> veterinarian_id = $result -> id;
-        $this->openingsTimes = VegetarianOpeningTime::where('veterinarian_id', $result -> id)->get();
+        $this -> openingsTimes = VegetarianOpeningTime::where('veterinarian_id', $result -> id)->get();
         if ($state == "create"){
             $this->reset();
           

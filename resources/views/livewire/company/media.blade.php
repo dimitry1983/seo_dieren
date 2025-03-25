@@ -26,9 +26,50 @@
             
 
                 <div class=" rounded-[8px] mb-6">
+
                     <section x-data="{
                             isCollapsed:  false ,
                         }" class="fi-section rounded-xl bg-white shadow-sm ring-1 ring-gray-950/5 dark:bg-gray-900 dark:ring-white/10" id="mediaupload">
+                       
+                        <br/>
+
+                        <h3 class="fi-section-header-heading block text-base px-4 mt-0 font-semibold leading-6 text-gray-950 dark:text-white mb-4">
+                            {{__('Media')}}
+                        </h3>
+                        <div class="fi-section-content-ctn border-t p-4 border-gray-200 dark:border-white/10">
+                            <div x-data="{ confirmDelete: false, imageToDelete: null }">
+                                @if ($images && count($images) > 0)
+                                    <div class="flex flex-wrap gap-2">
+                                        @foreach ($images as $image)
+                                            <div class="mt-2 relative w-32">
+                                                @php $imageLocation = '/dierenarsten/thumb/'.$image->name; @endphp
+                                                <img src="{{ Storage::url('dierenarsten/thumb/'.$image->name) }}" class="w-32 mr-2 mb-2">
+                                                <button @click="imageToDelete = '{{ $imageLocation }}'; imageId = '{{ $image -> id }}';  confirmDelete = true" class="absolute top-0 right-0 bg-red-500 text-white px-2 py-1 text-xs">
+                                                    X
+                                                </button>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                @else
+                                    <x-alert-box>
+                                        {{__('Er zijn nog geen foto\'s toegevoegd.')}}
+                                    </x-alert-box>
+                                @endif
+
+                                <!-- Confirmation Modal -->
+                                <div x-show="confirmDelete" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50" x-cloak>
+                                    <div class="bg-white p-4 rounded-lg shadow-lg">
+                                        <p class="text-lg font-bold mb-4">{{ devTranslate('media.Weet je het zeker?', 'Weet je het zeker?') }}</p>
+                                        <div class="flex justify-end space-x-2">
+                                            <button @click="confirmDelete = false" class="px-4 py-2 bg-gray-300 rounded-md">{{ devTranslate('media.Annuleren', 'Annuleren') }}</button>
+                                            <button @click="$wire.deleteImage(imageToDelete, imageId); confirmDelete = false" class="px-4 py-2 bg-red-500 text-white rounded-md">{{ devTranslate('media.Ja, verwijderen', 'Ja, verwijderen') }}</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
                         <div class="fi-section-content p-6">
                             <form wire:submit.prevent="save">
                                 <x-filepond::upload wire:model="file" multiple max-files="10" />
@@ -39,32 +80,7 @@
                             </form>   
                         </div>
 
-                        <div x-data="{ confirmDelete: false, imageToDelete: null }">
-                            @if ($images && count($images) > 0)
-                                <div class="flex flex-wrap gap-2">
-                                    @foreach ($images as $image)
-                                        <div class="mt-2 relative w-32">
-                                            @php $imageLocation = '/dierenarsten/thumb/'.$image->name; @endphp
-                                            <img src="{{ Storage::url('dierenarsten/thumb/'.$image->name) }}" class="w-32 mr-2 mb-2">
-                                            <button @click="imageToDelete = '{{ $imageLocation }}'; imageId = '{{ $image -> id }}';  confirmDelete = true" class="absolute top-0 right-0 bg-red-500 text-white px-2 py-1 text-xs">
-                                                X
-                                            </button>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            @endif
-
-                            <!-- Confirmation Modal -->
-                            <div x-show="confirmDelete" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50" x-cloak>
-                                <div class="bg-white p-4 rounded-lg shadow-lg">
-                                    <p class="text-lg font-bold mb-4">{{ devTranslate('media.Weet je het zeker?', 'Weet je het zeker?') }}</p>
-                                    <div class="flex justify-end space-x-2">
-                                        <button @click="confirmDelete = false" class="px-4 py-2 bg-gray-300 rounded-md">{{ devTranslate('media.Annuleren', 'Annuleren') }}</button>
-                                        <button @click="$wire.deleteImage(imageToDelete, imageId); confirmDelete = false" class="px-4 py-2 bg-red-500 text-white rounded-md">{{ devTranslate('media.Ja, verwijderen', 'Ja, verwijderen') }}</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                      
                     </section>      
                 </div>
             </div>

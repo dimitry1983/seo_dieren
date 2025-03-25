@@ -32,7 +32,7 @@ class Prices extends Component implements HasForms
     public function mount($id = null){
         $result = Veterinarian::where('id', Auth::user()->id)->first();
         $this -> veterinarian_id = $result -> id;
-        $this->prices = VeterinariansPricing::where('veterinarian_id', $result -> id)->get();
+        $this -> prices = VeterinariansPricing::with(['pricingGroup'])->where('veterinarian_id', $result -> id)->get();
 
         if ($id > 0){
             $this->price  = VeterinariansPricing::find($id);
@@ -49,33 +49,71 @@ class Prices extends Component implements HasForms
     {
         return $form
         ->schema([
-            Section::make('Pricing') // Title of the section
+            Section::make() // Title of the section
                 ->schema([
                     Select::make('pricing_group_id')
+                        ->label(__('Service'))
                         ->options(VeterinarianPricingGroup::pluck('name', 'id'))
                         ->required(),
                     TextInput::make('name')
+                            ->label(__('Naam dienst'))
                             ->required(), // Max file size in KB (2MB)
                     TextInput::make('consult_price')
+                            ->label(__('Prijs in euro\'s'))
                             ->required(),
-                    Select::make('veterinarian_id')
-                        ->searchable()
-                        ->label('Veterinarian')
-                        ->options(Veterinarian::pluck('name', 'id')->toArray())    
-                        ->required(),
                 ]),
         ])->model(VeterinariansPricing::class);
     }
 
     public function loadPrice($id){
-        $this->price  = VeterinariansPricing::find($id);
+        $this->price  = VeterinariansPricing::where('veterinarian_id', $this -> veterinarian_id)->find($id);
         $this->price = $this->price->toArray();
-        $this->form->fill($this->openingsTime);
+        $this->form->fill($this->price);
         $result = Veterinarian::where('id', Auth::user()->id)->first();
         $this -> veterinarian_id = $result -> id;
         $this -> prices = VeterinariansPricing::where('veterinarian_id', $result -> id)->get();
     }
 
+
+    public function save()
+    {
+       
+        if (!empty($this->price['id'])){
+            $this->price  = VeterinariansPricing::find($this->price['id']);
+            $state = "update";
+        }
+        else{
+            $state = "create";
+        }
+
+        $data = $this->form->getState();
+        $data['veterinarian_id'] =  $this -> veterinarian_id;
+        if (!empty($this->price['id'])){
+            $data['id'] = $this->price['id'];
+
+            if ($this->price->name  !== $data['name']){
+                unset($data['id']);
+                $this->price = new VeterinariansPricing();
+            }
+        }
+        $this->price->fill($data);
+        $this->price->save();
+       
+        $this -> dispatch('saved');
+        $result = Veterinarian::where('id', Auth::user()->id)->first();
+        $this -> veterinarian_id = $result -> id;
+        $this -> prices = VeterinariansPricing::with(['pricingGroup'])->where('veterinarian_id', $result -> id)->get();
+
+        if ($state == "create"){
+            $this->reset();
+          
+            session()->flash('success', devTranslate('cms.Prijs succesvol aangemaakt','Prijs succesvol aangemaakt'));
+        }
+        else{
+            session()->flash('success', devTranslate('cms.Prijs succesvol bijgewerkt','Prijs succesvol bijgewerkt'));
+        }
+
+    }
 
 
     public function render()

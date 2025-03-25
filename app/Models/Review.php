@@ -18,4 +18,9 @@ class Review extends Model
     {
         return $this->belongsTo(Veterinarian::class);
     }
+
+    public function responses()
+    {
+        return $this->hasMany(Review::class, 'parent_id');
+    }
 }

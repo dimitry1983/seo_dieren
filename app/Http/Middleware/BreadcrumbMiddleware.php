@@ -79,6 +79,13 @@ class BreadcrumbMiddleware
             ];
         }
 
+        if ($currentRouteName == 'company.company-pricing' ){
+            $breadcrumbData = [
+                'total' => 1,
+                'name' => devTranslate('bread.Prijzen', 'Prijzen')
+            ];
+        }
+
         if ($currentRouteName == 'company.company-reviews'){
             $breadcrumbData = [
                 'total' => 1,
