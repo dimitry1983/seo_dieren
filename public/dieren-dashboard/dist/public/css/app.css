@@ -2879,6 +2879,11 @@ textarea.custom-switch input + span.h-full.w-full:after{
   border-color: rgb(228 228 231 / var(--tw-border-opacity, 1));
 }
 
+.border-\[\#3ec1c0\] {
+  --tw-border-opacity: 1;
+  border-color: rgb(62 193 192 / var(--tw-border-opacity, 1));
+}
+
 .border-b-\[\#D2D3D4\] {
   --tw-border-opacity: 1;
   border-bottom-color: rgb(210 211 212 / var(--tw-border-opacity, 1));

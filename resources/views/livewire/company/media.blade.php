@@ -52,7 +52,7 @@
                                             @endphp 
 
                                             <!-- Image -->
-                                            <img src="{{ Storage::url('dierenarsten/thumb/'.$image->name) }}" class="w-32  mr-2 mb-2">
+                                            <img src="{{ Storage::url('dierenarsten/thumb/'.$image->name) }}" class="w-32 bg-gray-100 border border-[#3ec1c0] p-4 mr-2 mb-2">
 
                                             <!-- Featured Label -->
                                             @if($isFeatured)
