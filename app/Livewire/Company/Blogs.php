@@ -14,6 +14,8 @@ use Filament\Forms\Form;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\TemporaryUploadedFile;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 
 class Blogs extends Component implements HasForms
 {
@@ -34,7 +36,7 @@ class Blogs extends Component implements HasForms
 
     public function mount(){
         $this -> blog = new Blog(); 
-        $results = Veterinarian::where('id', Auth::user()->id)->first();
+        $this -> result = Veterinarian::where('id', Auth::user()->id)->first();
         $this->form->fill();
     }
 
@@ -43,7 +45,7 @@ class Blogs extends Component implements HasForms
     {
         return $form
         ->schema([
-            Section::make('Blog') // Title of the section
+            Section::make() // Title of the section
                 ->schema([
                 FileUpload::make('thumb')
                     ->label(__('Afbeelding'))
@@ -74,59 +76,79 @@ class Blogs extends Component implements HasForms
     }
 
 
-    /**
-     * @return void
-     */
-    public function upload()
-    {
-        dd("DD");
-    }
-
     public function save(){
         
-        dd($this->form);
-
-        if (!empty($this->blog->id)){
+        if (isset($this->blog['id']) && !empty($this->blog['id'])){
             $state = "update";
+            $results = Veterinarian::where('id', Auth::user()->id)->first();
+            $this->blog = Blog::where('veterinarian_id', $results -> id)->find($this->blog['id']);
         }
         else{
             $state = "create";
         }
-
+      
         if ($this->thumb) {
-            // Store the file in the 'blogs' directory under the 'public' disk
-            $tempPath = $this->thumb->getPathname(); // This gets the full path of the file in livewire-tmp
-
-            // You can create a new name for the file or use the original file name
-            $fileName = $this->thumb->getClientOriginalName(); // Or use something unique like uniqid() or a hash
-    
-            // Now, move the file to the 'public/blogs' directory
-            $filePath = $this->thumb->storeAs('blogs', $fileName, 'public'); // 'public' is the disk
-    
-            // If file is stored, delete the temporary file
-            if ($this->thumb instanceof TemporaryUploadedFile) {
-                // Delete the temporary file
-                $this->thumb->delete();
+            // Assuming $this->thumb is an associative array
+            // Example: ["003bba9c-e371-4b60-8c48-6ada533c479b" => "blogs/67e40d534e066.webp"]
+            
+            // Get the first file path from the array (or you can loop if needed)
+            $filePath = reset($this->thumb); // This will give you the first value in the array, i.e., file path
+            
+            // Get the full path of the file from storage
+            $tempPath = storage_path('app/public/' . $filePath); // Assuming public disk
+            
+            // Check if the file exists and is readable
+            if (!file_exists($tempPath)) {
+                // If the file does not exist, log an error or handle the issue
+              //  dd("File not found: " . $tempPath);
             }
+            
+            // Check if the file is a valid image before opening
+            try {
+                $image = Image::make($tempPath);
+            } catch (\Intervention\Image\Exception\NotReadableException $e) {
+                // If the image cannot be read, log the error or handle accordingly
+               // dd("Unable to read the image file: " . $tempPath);
+            }
+            
+            // Encode the image to webp with 80% quality
+            $image->encode('webp', 80);
+            
+            // Generate a unique file name
+            $fileName = uniqid() . '.webp'; 
+            
+            // Get the storage disk (public in this case)
+            $disk = Storage::disk('public');
+            
+            // Define the new path for the converted image
+            $newFilePath = 'blogs/' . $fileName;
+            
+            // Save the image to the disk
+            $disk->put($newFilePath, $image->__toString());
+            
+            // Optionally, get the file's public URL
+            $publicUrl = $disk->url($newFilePath);
+            
+            // You can use $publicUrl for further operations (e.g., storing it in the database or returning it)
         }
     
         $data = $this->form->getState();
-
         $data['thumb'] = $filePath;
-        $data['veterinarian_id'] = $this -> results -> id;
+        $data['veterinarian_id'] = $this -> result -> id;
 
         $this -> blog ->fill($data);
         $this -> blog ->save();
 
-
+        $this -> reset();
+    
         $this -> dispatch('saved');
        
         if ($state == "create"){
          
-            session()->flash('success', devTranslate('page.Bedrijfsinformatie succesvol aangemaakt','Bedrijfsgegevens succesvol aangemaakt'));
+            session()->flash('success', devTranslate('page.Nieuws item is succesvol aangemaakt','Nieuws item is succesvol aangemaakt'));
         }
         else{
-            session()->flash('success', devTranslate('page.Bedrijfsinformatie succesvol bijgewerkt','Bedrijfsgegevens succesvol bijgewerkt'));
+            session()->flash('success', devTranslate('page.Nieuws item is succesvol bijgewerkt','Nieuws item is succesvol bijgewerkt'));
         }
     }
 
@@ -142,7 +164,7 @@ class Blogs extends Component implements HasForms
         $active = "blogs";
 
         $results = Veterinarian::where('id', Auth::user()->id)->first();
-        $blogs = Blog::where('veterinarian_id', $results->id)->get();
+        $blogs = Blog::where('veterinarian_id', $results->id)->orderBy('id', 'DESC')->paginate(5);
         
         return view('livewire.company.blogs', ['active' => $active, 'blogs' => $blogs])->layout('layouts.company');
     }

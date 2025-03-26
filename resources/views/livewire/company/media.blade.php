@@ -43,26 +43,38 @@
                         <div class="fi-section-content-ctn border-t p-4 border-gray-200 dark:border-white/10">
                             <div x-data="{ confirmDelete: false, imageToDelete: null }">
                                 @if ($images && count($images) > 0)
-                                    <div class="flex flex-wrap gap-2">
-                                        @foreach ($images as $image)
-                                            <div class="mt-2 relative w-32 group">
-                                                @php $imageLocation = '/dierenarsten/thumb/'.$image->name; @endphp
-                                                <img src="{{ Storage::url('dierenarsten/thumb/'.$image->name) }}" class="w-32 mr-2 mb-2">
-                                                
-                                                <!-- Set as Logo Button on Hover -->
-                                                <button wire:click="setAsLogo({{ $image->id }})"
-                                                        class="absolute bottom-0 left-0 bg-primary text-white px-2 py-1 text-xs opacity-0 group-hover:opacity-100 transition duration-300">
-                                                         {{__('Instellen als logo')}}
-                                                </button>
+                                <div class="flex flex-wrap gap-2">
+                                    @foreach ($images as $image)
+                                        <div class="mt-2 relative w-32 group">
+                                            @php 
+                                                $imageLocation = '/dierenarsten/thumb/'.$image->name;
+                                                $isFeatured = $image->featured; // Assuming 'is_featured' indicates whether it’s the logo
+                                            @endphp
 
-                                                <!-- Delete Button -->
-                                                <button @click="imageToDelete = '{{ $imageLocation }}'; imageId = '{{ $image->id }}'; confirmDelete = true"
-                                                        class="absolute top-0 right-0 bg-red-500 text-white px-2 py-1 text-xs">
-                                                    X
-                                                </button>
-                                            </div>
-                                        @endforeach
-                                    </div>
+                                            <!-- Image -->
+                                            <img src="{{ Storage::url('dierenarsten/thumb/'.$image->name) }}" class="w-32 mr-2 mb-2">
+
+                                            <!-- Featured Label -->
+                                            @if($isFeatured)
+                                                <span class="absolute -bottom-8 left-0 bg-green-500 text-white px-2 py-1 text-xs">
+                                                    {{ __('Ingesteld als logo') }}
+                                                </span>
+                                            @endif
+
+                                            <!-- Set as Logo Button on Hover -->
+                                            <button wire:click="setAsLogo({{ $image->id }})"
+                                                    class="absolute bottom-0 left-0 bg-primary text-white px-2 py-1 text-xs opacity-0 group-hover:opacity-100 transition duration-300">
+                                                {{ __('Instellen als logo') }}
+                                            </button>
+
+                                            <!-- Delete Button -->
+                                            <button @click="imageToDelete = '{{ $imageLocation }}'; imageId = '{{ $image->id }}'; confirmDelete = true"
+                                                    class="absolute top-0 right-0 bg-red-500 text-white px-2 py-1 text-xs">
+                                                X
+                                            </button>
+                                        </div>
+                                    @endforeach
+                                </div>
                                 @else
                                     <x-alert-box>
                                         {{__('Er zijn nog geen foto\'s toegevoegd.')}}

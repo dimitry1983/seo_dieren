@@ -91,7 +91,7 @@
                     'text-primary' => $active === 'blogs',
                     'group-hover:text-primary' => $active !== 'blogs',
                 ])></i>
-        <span>{{devTranslate('menu_company.Blogs','Blogs')}}</span> </a></li>
+        <span>{{devTranslate('menu_company.Nieuws','Nieuws')}}</span> </a></li>
     </ul>
 
     <ul class="mt-auto">
