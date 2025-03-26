@@ -87,7 +87,7 @@ class OpeningTimes extends Component implements HasForms
                     Toggle::make('is_closed')
                         ->label(__('Gesloten'))
                         ->default(0)    
-                        ->label('Closed for the day'),
+                        ->label(__('Gesloten')),
                     Textarea::make('notes')
                         ->label(__('Aanvullende Notities'))
                         ->columnSpanFull(),

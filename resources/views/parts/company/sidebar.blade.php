@@ -92,34 +92,9 @@
                     'group-hover:text-primary' => $active !== 'blogs',
                 ])></i>
         <span>{{devTranslate('menu_company.Blogs','Blogs')}}</span> </a></li>
-        <li><a href="{{route('company.company-inbox')}}" 
-            @class([
-                'flex items-center px-6 py-3 duration-300',
-                'relative text-[#271F30] bg-[#F7F8FA] before:content-[""] before:bg-primary before:w-[4px] before:h-full before:absolute before:left-0 before:rounded' => $active === 'inbox',
-                'group text-[#ADB5C3] hover:text-[#271F30]' => $active !== 'inbox',
-            ])>
-            <i @class([
-                    'fa-solid fa-messages text-xl w-[20px] me-2 duration-300',
-                    'text-primary' => $active === 'inbox',
-                    'group-hover:text-primary' => $active !== 'inbox',
-                ])></i>
-        <span>{{devTranslate('menu_company.Inbox','Inbox')}}</span> </a></li>
-        <li><a href="{{route('company.company-invoices')}}" 
-            @class([
-                'flex items-center px-6 py-3 duration-300',
-                'relative text-[#271F30] bg-[#F7F8FA] before:content-[""] before:bg-primary before:w-[4px] before:h-full before:absolute before:left-0 before:rounded' => $active === 'invoices',
-                'group text-[#ADB5C3] hover:text-[#271F30]' => $active !== 'invoices',
-            ])>
-            <i @class([
-                    'fa-regular fa-file-invoice text-xl w-[20px] me-2 duration-300',
-                    'text-primary' => $active === 'invoices',
-                    'group-hover:text-primary' => $active !== 'invoices',
-                ])></i>
-        <span>{{devTranslate('menu_company.Facturen','Facturen')}}</span> </a></li>
     </ul>
 
     <ul class="mt-auto">
-        <li><a href="" class="group flex items-center px-6 py-3 text-[#ADB5C3] duration-300 hover:text-[#271F30]"><i class="fa-regular fa-gear text-xl w-[20px] me-2 duration-300 group-hover:text-primary"></i> <span>{{devTranslate('menu_company.Instellingen','Instellingen')}}</span></a></li>
         <li><a href="#" class="group flex items-center px-6 py-3 text-[#ADB5C3] duration-300 hover:text-[#271F30]"><i class="fa-solid fa-circle-question text-xl w-[20px] me-2 duration-300 group-hover:text-primary"></i> <span>{{devTranslate('menu_company.Hulp nodig?','Hulp nodig?')}}</span></a></li>
     </ul>
 </div>

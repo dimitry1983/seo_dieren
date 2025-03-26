@@ -58,13 +58,10 @@ Route::get('/zoekresultaat', [SearchController::class, 'search'])->name('search'
 
 
 
-
-
-
-
-Route::view('dashboard', 'dashboard')
+Route::redirect('dashboard', 'cms/dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
+
 
 Route::get('/convert', [SiteController::class, 'convertDB'])->name('site.convert');    
 Route::get('/convert2', [SiteController::class, 'convertDBAgain'])->name('site.convert2');    

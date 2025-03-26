@@ -28,48 +28,47 @@
                         {{__('Recencies')}}
                     </h3>
                     <div class="fi-section-content-ctn border-t py-4 border-gray-200 dark:border-white/10">
-                        <ul class="space-y-4 px-4">
-                            @if (!empty($veterinarians[0]))
-                                @foreach ($veterinarians as $veterinarian) 
-                                    @foreach ($veterinarian->reviews as $review) 
-                                        @if ($review->parent_id < 1)
-                                            <div class="bg-gray-800 text-white p-4 rounded-lg shadow-lg space-y-2">
-                                            
-                                                <div class="flex items-center justify-between">
-                                                    <h3 class="text-xl font-semibold">Review van: {{$review->name}}</h3>
-                                                    <span class="text-yellow-400 font-bold">Beoordeling: {{$review->rating}}/5</span>
-                                                    <button class="text-primary hover:text-primary ml-4" wire:click="loadReview({{$review->id}})">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
-                                                        </svg>
-                                                    </button>
-                                                </div>
-                                                <p class="text-gray-300">"{{$review->description}}"</p>
-                                            
-                                                @if($review->responses->isNotEmpty())
-                                                    <div class="mt-2 space-y-1 bg-gray-700 p-3 rounded-lg">
-                                                        <h4 class="text-lg font-semibold text-green-400">Reacties:</h4>
-                                                        @foreach ($review->responses as $response) 
-                                                            <p class="text-gray-200">- {{$response->description}}</p>
-                                                        @endforeach
-                                                    </div>
-                                                @endif
+                    <ul class="space-y-4 px-4">
+                        @if (!empty($veterinarians[0]))
+                            @foreach ($veterinarians as $veterinarian) 
+                                @foreach ($veterinarian->reviews as $review) 
+                                    @if ($review->parent_id < 1)
+                                        <div class="bg-white text-gray-800 p-4 rounded-lg shadow-md space-y-2 border border-gray-200">
+                                            <div class="flex items-center justify-between">
+                                                <h3 class="text-xl font-semibold">Review van: {{$review->name}}</h3>
+                                                <span class="text-primary ">Beoordeling: {{$review->rating}}/5</span>
+                                                <button class="text-primary hover:text-primary ml-4" wire:click="loadReview({{$review->id}})">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+                                                    </svg>
+                                                </button>
                                             </div>
-                                        @endif
-                                    @endforeach
-                                @endforeach 
-                            @else    
-                                <x-alert-box>
-                                    {{__('Er zijn nog geen recensies geplaatst.')}}
-                                </x-alert-box>
-                            @endif
+                                            <p class="text-gray-600">"{{$review->description}}"</p>
 
-                            @if (!empty($veterinarians[0]))
-                                <div class="mt-4">
-                                    {{ $veterinarians->links('pagination::tailwind') }}
-                                </div>
-                            @endif 
-                        </ul>
+                                            @if($review->responses->isNotEmpty())
+                                                <div class="mt-2 space-y-1 bg-gray-100 p-3 rounded-lg">
+                                                    <h4 class="text-lg font-semibold text-gray-800">Reacties:</h4>
+                                                    @foreach ($review->responses as $response) 
+                                                        <p class="text-gray-700">- {{$response->description}}</p>
+                                                    @endforeach
+                                                </div>
+                                            @endif
+                                        </div>
+                                    @endif
+                                @endforeach
+                            @endforeach 
+                        @else    
+                            <x-alert-box>
+                                {{__('Er zijn nog geen recensies geplaatst.')}}
+                            </x-alert-box>
+                        @endif
+
+                        @if (!empty($veterinarians[0]))
+                            <div class="mt-4">
+                                {{ $veterinarians->links('pagination::tailwind') }}
+                            </div>
+                        @endif 
+                    </ul>
                     </div>
                 </div>
 

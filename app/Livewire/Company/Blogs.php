@@ -14,12 +14,10 @@ use Filament\Forms\Form;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\TemporaryUploadedFile;
-use Livewire\WithFileUploads;
 
 class Blogs extends Component implements HasForms
 {
     use \Filament\Forms\Concerns\InteractsWithForms;
-    use WithFileUploads;
      
     public $thumb;
     public $name;
@@ -29,7 +27,6 @@ class Blogs extends Component implements HasForms
 
     public $files = [];
 
-    public $_finishUpload;
 
     public $result;
 
@@ -38,6 +35,7 @@ class Blogs extends Component implements HasForms
     public function mount(){
         $this -> blog = new Blog(); 
         $results = Veterinarian::where('id', Auth::user()->id)->first();
+        $this->form->fill();
     }
 
 
@@ -48,6 +46,7 @@ class Blogs extends Component implements HasForms
             Section::make('Blog') // Title of the section
                 ->schema([
                 FileUpload::make('thumb')
+                    ->label(__('Afbeelding'))
                     ->image()
                     ->required()
                     ->directory('blogs') // Adjust the directory where images should be stored
@@ -57,7 +56,7 @@ class Blogs extends Component implements HasForms
                     ->required()
                     ->maxLength(255),
                 TextInput::make('excerpt')
-                    ->label(__('Excerpt'))
+                    ->label(__('Korte Samenvatting'))
                     ->required()
                     ->maxLength(255),
                 RichEditor::make('description')
@@ -74,9 +73,18 @@ class Blogs extends Component implements HasForms
         ])->model(Blog::class);
     }
 
+
+    /**
+     * @return void
+     */
+    public function upload()
+    {
+        dd("DD");
+    }
+
     public function save(){
         
-        dd($this-> files);
+        dd($this->form);
 
         if (!empty($this->blog->id)){
             $state = "update";

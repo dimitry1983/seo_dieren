@@ -19,8 +19,6 @@
     @livewireStyles
     @stack('styles') <!-- For page-specific styles -->
 
-    @filepondScripts
-
     <style>
         :root {
             --primary: #3ec0bf;
@@ -42,7 +40,7 @@
 </body>
 @livewireScripts
 @filamentScripts
-
+@filepondScripts 
 <script src="{{ asset('dieren-dashboard/src/public/js/quill.js') }}"></script>
 
 @include('parts.company.footer')
