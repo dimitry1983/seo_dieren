@@ -32,10 +32,18 @@
 
 
                 <div class="w-full border border-gray-300 bg-white py-4 rounded-lg mb-8">
-                    <h3 class="fi-section-header-heading px-4 text-base font-semibold leading-6 text-gray-950 dark:text-white mb-4">
-                        {{__('Nieuws')}}
-                    </h3>
-                    <div class="fi-section-content-ctn border-t py-4 border-gray-200 dark:border-white/10">
+                    <div class="flex items-center justify-between px-4 mb-4">
+                        <h3 class="fi-section-header-heading text-base font-semibold leading-6 text-gray-950 dark:text-white">
+                            {{ __('Nieuws') }}
+                        </h3>
+                        <button onclick="document.getElementById('addNews').scrollIntoView({ behavior: 'smooth' });" class="flex text-white bg-primary hover:bg-primary font-semibold py-1 px-3 rounded">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 font-bold">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+                            {{ __('Toevoegen') }}
+                        </button>
+                    </div>
+                    <div class="fi-section-content-ctn border-t py-4 border-gray-200 dark:border-white/10" id="addNews">
                         <div x-data="{ confirmDelete: false, blogToDelete: null }">
                             <ul class="space-y-2 px-4">
                                 @if (!empty($blogs[0]))

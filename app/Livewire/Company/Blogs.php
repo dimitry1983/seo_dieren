@@ -29,7 +29,6 @@ class Blogs extends Component implements HasForms
 
     public $files = [];
 
-
     public $result;
 
     public $blog;
@@ -157,6 +156,14 @@ class Blogs extends Component implements HasForms
         $this->blog  = Blog::where('veterinarian_id', $results -> id)->find($id);
         $this->blog = $this->blog->toArray();
         $this->form->fill($this->blog);
+    }
+
+    public function deleteBlog($id){
+        $results = Veterinarian::where('id', Auth::user()->id)->first();
+        $blog = Blog::where('veterinarian_id', $results -> id)->findOrFail($id);
+        $blog->delete();
+        $this -> dispatch('saved');
+        session()->flash('success', devTranslate('page.Nieuws item is succesvol verwijderd','Nieuws item is succesvol verwijderd'));
     }
 
     public function render()

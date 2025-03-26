@@ -1,6 +1,6 @@
 <header class="main-header border-b-2 border-solid border-[#edeff2] bg-white relative">
     <div class="flex items-center">
-        <a class="block w-[180px] lg:w-[232px] py-5 px-7" href="#">
+        <a class="block w-[180px] lg:w-[232px] py-2 px-2" href="#">
             <img src="{{ asset('dieren-dashboard/src/public/img/Logo.png')}}" alt="">
         </a>
         <div class="flex items-center flex-1 py-5 border-s-2 border-solid border-[#edeff2] ps-5 pe-10 gap-3 lg:gap-6">
@@ -25,16 +25,12 @@
 
             <div id="sideMenu" class="hidden absolute top-full left-0 px-6 py-4 w-full items-center gap-6 flex-1 lg:static lg:flex lg:p-0 bg-white z-50">
 
-                <form action="." class="ms-auto relative border border-solid border-[#e9e9e9] h-[50px] w-[610px] max-w-full rounded-[25px] order-2 lg:order-1">
-                    <span class="absolute left-0 top-0 h-[50px] w-[50px] flex items-center justify-center text-[#D1D1D1]"><i class="fa-regular fa-search"></i></span>
-                    <input type="text" class="relative z-10 w-full bg-transparent h-full px-[50px] outline-none shadow-none placeholder:text-[#D1D1D1]" placeholder="Waar ben je naar op zoek?">
-                    <button type="submit" class="px-4 h-[50px] w-[50px] flex items-center justify-center absolute right-0 top-0 text-[#D1D1D1] z-20">
-                        <i class="fa-solid fa-angle-right"></i>
-                    </button>
-                </form>
+                <div class="ms-auto relative h-[50px] w-[610px] max-w-full rounded-[25px] order-2 lg:order-1">
+                    
+                </div>
 
                 <div class="flex items-center order-2 lg:order-1 gap-6 w-full lg:w-fit">
-                    <div class="hidden lg:block">
+                    <div class="hidden ">
                         <div>
                             <button class="relative w-[50px] h-[50px] border border-solid border-[#e9e9e9] rounded-full flex items-center justify-center text-[#D1D1D1] px-0 py-0">
                                 <i class="fa-solid fa-bell text-xl"></i>

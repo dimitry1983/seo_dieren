@@ -24,41 +24,68 @@
                 </div>
 
                 <div class="w-full border border-gray-300 bg-white py-4 rounded-lg mb-8">
-                    <h3 class="fi-section-header-heading px-4 text-base font-semibold leading-6 text-gray-950 dark:text-white mb-4">
-                        {{__('Prijzen')}}
-                    </h3>
-                    <div class="fi-section-content-ctn border-t py-4 border-gray-200 dark:border-white/10">
-                        <ul class="space-y-2 px-4">
-                            @if (!empty($this->prices[0]))
-                                @foreach($this->prices as $price)
-                                    <li class="flex items-center justify-between">
-                                        <!-- Fixed width for day of the week to maintain alignment -->
-                                        <span class="font-medium w-24">{{ $price -> name }}</span>
-                                        
-                                        <!-- Times and edit button in a single flex row -->
-                                        <div class="flex items-center space-x-4">
-                                            <span>{{$price -> pricingGroup -> name}}</span> 
-                                            <span>-</span> 
-                                            <span>&euro;{{$price -> consult_price}}</span> 
-                                        
-                                        
-                                            <!-- Edit button -->
-                                            <button class="text-primary hover:text-primary ml-4" wire:click="loadPrice({{$price->id}})">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </li>
-                                @endforeach   
-                            @else    
-                                <x-alert-box>
-                                    {{__('Er zijn nog geen prijzen toegevoegd.')}}
-                                </x-alert-box>
-                            @endif
-                        </ul>
+                    <div class="flex items-center justify-between px-4 mb-4">
+                        <h3 class="fi-section-header-heading px-4 text-base font-semibold leading-6 text-gray-950 dark:text-white mb-4">
+                            {{__('Prijzen')}}
+                        </h3>
+                        <div class="flex items-center justify-between px-4">
+                            <button onclick="document.getElementById('addPrice').scrollIntoView({ behavior: 'smooth' });" class="flex text-white bg-primary hover:bg-primary font-semibold py-1 px-3 rounded">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 font-bold">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                </svg>
+                                {{ __('Toevoegen') }}
+                            </button>
+                        </div>
+                    </div>
+                    <div class="fi-section-content-ctn border-t py-4 border-gray-200 dark:border-white/10" id="addPrice">
+                        <div x-data="{ confirmDelete: false, priceToDelete: null }">
+                            <ul class="space-y-2 px-4">
+                                @if (!empty($this->prices[0]))
+                                    @foreach($this->prices as $price)
+                                        <li class="flex items-center justify-between">
+                                            <!-- Price Name -->
+                                            <span class="font-medium w-24">{{ $price->name }}</span>
+                                            <!-- Price Details -->
+                                            <div class="flex items-center space-x-4">
+                                                <span>{{ $price->pricingGroup->name }}</span>
+                                                <span>-</span>
+                                                <span>&euro;{{ $price->consult_price }}</span>
+                                                <!-- Edit Button -->
+                                                <button class="text-primary hover:text-primary ml-4" wire:click="loadPrice({{ $price->id }})">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+                                                    </svg>
+                                                </button>
+                                                <!-- Delete Button -->
+                                                <button @click="priceToDelete = {{ $price->id }}; confirmDelete = true" class="text-red-500 hover:text-red-600">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </li>
+                                    @endforeach
+                                @else
+                                    <x-alert-box>
+                                        {{__('Er zijn nog geen prijzen toegevoegd.')}}
+                                    </x-alert-box>
+                                @endif
+                            </ul>
+
+                            <!-- Confirmation Modal -->
+                            <div x-show="confirmDelete" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50" x-cloak>
+                                <div class="bg-white p-4 rounded-lg shadow-lg">
+                                    <p class="text-lg font-bold mb-4">{{ devTranslate('media.Weet je het zeker?', 'Weet je het zeker?') }}</p>
+                                    <div class="flex justify-end space-x-2">
+                                        <button @click="confirmDelete = false" class="px-4 py-2 bg-gray-300 rounded-md">{{ devTranslate('media.Annuleren', 'Annuleren') }}</button>
+                                        <button @click="$wire.deletePrice(priceToDelete); confirmDelete = false" class="px-4 py-2 bg-red-500 text-white rounded-md">{{ devTranslate('media.Ja, verwijderen', 'Ja, verwijderen') }}</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
 
                 @if (session()->has('success'))
                     <x-success class="my-4" id="success-message">

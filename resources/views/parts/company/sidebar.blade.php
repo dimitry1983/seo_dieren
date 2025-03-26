@@ -79,7 +79,7 @@
                     'text-primary' => $active === 'reviews',
                     'group-hover:text-primary' => $active !== 'reviews',
                 ])></i>
-        <span>{{devTranslate('menu_company.Reviews','Reviews')}}</span> </a></li>
+        <span>{{devTranslate('menu_company.Recencies','Recencies')}}</span> </a></li>
         <li><a href="{{route('company.company-blogs')}}" 
             @class([
                 'flex items-center px-6 py-3 duration-300',

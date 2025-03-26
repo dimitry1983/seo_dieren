@@ -56,7 +56,7 @@
 
                                             <!-- Featured Label -->
                                             @if($isFeatured)
-                                                <span class="absolute -bottom-8 left-0 bg-green-500 text-white px-2 py-1 text-xs">
+                                                <span class="absolute -bottom-8 left-0 bg-primary text-white px-2 py-1 text-xs">
                                                     {{ __('Ingesteld als logo') }}
                                                 </span>
                                             @endif
