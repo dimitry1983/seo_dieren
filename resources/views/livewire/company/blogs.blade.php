@@ -61,8 +61,8 @@
 
                                                 <!-- Status and Created Date -->
                                                 <div class="mt-2 text-sm text-gray-500">
-                                                    <span>Status: {{ $blog->status }}</span>
-                                                    <span class="ml-4">Created: {{ $blog->created_at->format('d-m-Y') }}</span>
+                                                    <span>{{__('Status')}}: {{ $blog->status }}</span>
+                                                    <span class="ml-4">{{__('Aangemaakt op')}}: {{ $blog->created_at->format('d-m-Y') }}</span>
                                                 </div>
                                             </div>
 

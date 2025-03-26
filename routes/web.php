@@ -9,6 +9,7 @@ use App\Http\Controllers\OverviewController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
 
+
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
 
@@ -28,8 +29,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/cms/prijzen', \App\Livewire\Company\Prices::class)->name('company.company-pricing');
     Route::get('/cms/recencies', \App\Livewire\Company\Reviews::class)->name('company.company-reviews');
     Route::get('/cms/blogs', \App\Livewire\Company\Blogs::class)->name('company.company-blogs');
-    Route::get('/cms/inbox', \App\Livewire\Company\Inbox::class)->name('company.company-inbox');
-    Route::get('/cms/facturen', \App\Livewire\Company\Invoices::class)->name('company.company-invoices');
+    Route::get('/cms/support', App\Livewire\Company\SupportMessage::class)->name('company.support');
+    //Route::get('/cms/inbox', \App\Livewire\Company\Inbox::class)->name('company.company-inbox');
+    //Route::get('/cms/facturen', \App\Livewire\Company\Invoices::class)->name('company.company-invoices');
 });
 //routing for the website
 

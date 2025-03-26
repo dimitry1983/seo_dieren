@@ -49,10 +49,10 @@
                                             @php 
                                                 $imageLocation = '/dierenarsten/thumb/'.$image->name;
                                                 $isFeatured = $image->featured; // Assuming 'is_featured' indicates whether it’s the logo
-                                            @endphp
+                                            @endphp 
 
                                             <!-- Image -->
-                                            <img src="{{ Storage::url('dierenarsten/thumb/'.$image->name) }}" class="w-32 mr-2 mb-2">
+                                            <img src="{{ Storage::url('dierenarsten/thumb/'.$image->name) }}" class="w-32  mr-2 mb-2">
 
                                             <!-- Featured Label -->
                                             @if($isFeatured)

@@ -24,8 +24,8 @@
                 </div>
 
                 <div class="w-full border border-gray-300 bg-white py-4 rounded-lg mb-8">
-                    <div class="flex items-center justify-between px-4 mb-4">
-                        <h3 class="fi-section-header-heading px-4 text-base font-semibold leading-6 text-gray-950 dark:text-white mb-4">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="fi-section-header-heading px-4 text-base font-semibold leading-6 text-gray-950 dark:text-white">
                             {{__('Prijzen')}}
                         </h3>
                         <div class="flex items-center justify-between px-4">

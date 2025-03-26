@@ -95,6 +95,6 @@
     </ul>
 
     <ul class="mt-auto">
-        <li><a href="#" class="group flex items-center px-6 py-3 text-[#ADB5C3] duration-300 hover:text-[#271F30]"><i class="fa-solid fa-circle-question text-xl w-[20px] me-2 duration-300 group-hover:text-primary"></i> <span>{{devTranslate('menu_company.Hulp nodig?','Hulp nodig?')}}</span></a></li>
-    </ul>
+        <li><a href="{{route('company.support')}}" class="group flex items-center px-6 py-3 text-[#ADB5C3] duration-300 hover:text-[#271F30]"><i class="fa-solid fa-circle-question text-xl w-[20px] me-2 duration-300 group-hover:text-primary"></i> <span>{{devTranslate('menu_company.Hulp nodig?','Hulp nodig?')}}</span></a></li>
+    </ul>   
 </div>

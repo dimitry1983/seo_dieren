@@ -74,6 +74,13 @@ class Prices extends Component implements HasForms
         $this -> prices = VeterinariansPricing::where('veterinarian_id', $result -> id)->get();
     }
 
+    public function deletePrice($id){
+        $price  = VeterinariansPricing::where('veterinarian_id', $this -> veterinarian_id)->findOrFail($id);
+        $price->delete();
+        $this -> prices = VeterinariansPricing::where('veterinarian_id', $result -> id)->get();
+        $this -> dispatch('saved');
+        session()->flash('success', devTranslate('page.Nieuws item is succesvol verwijderd','Nieuws item is succesvol verwijderd'));
+    }
 
     public function save()
     {

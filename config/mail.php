@@ -15,7 +15,12 @@ return [
     */
 
     'default' => env('MAIL_MAILER', 'log'),
-
+    'markdown' => [
+        'theme' => 'default',
+        'paths' => [
+            resource_path('views/vendor/mail'),
+        ],
+    ],
     /*
     |--------------------------------------------------------------------------
     | Mailer Configurations

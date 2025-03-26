@@ -23,6 +23,8 @@ class Media extends Component
     public $veterinarian_id;
     public $file = [];
 
+    public $result;
+
     public $count;
     public $allowedImages = 10;
 
@@ -40,6 +42,7 @@ class Media extends Component
         $result = Veterinarian::where('id', Auth::user()->id)->first();
 
         $images = VeterinariansImage::where('veterinarian_id', $result -> id)->get();
+        $this -> result = $result -> id;
         $this->images = $images;
         $this->count = count($images);
     }
@@ -81,6 +84,8 @@ class Media extends Component
             session()->flash('success', __('Logo succesvol ingesteld!'));
         }
         $this -> dispatch('saved');
+        $result = Veterinarian::where('id', Auth::user()->id)->first();
+        $this -> images = VeterinariansImage::where('veterinarian_id', $result -> id )->get();
     }
 
     public function save()
