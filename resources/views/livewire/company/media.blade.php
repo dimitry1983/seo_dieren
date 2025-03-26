@@ -23,7 +23,11 @@
                     @include('parts.company.breadcrumb' , ['breadcrumbs' => $breadcrumbData ?? ''] )
                 </div>
 
-            
+                @if (session()->has('success'))
+                    <x-success class="mb-4" id="success-message">
+                        {{ session('success') }}
+                    </x-success>
+                @endif
 
                 <div class=" rounded-[8px] mb-6">
 
@@ -41,10 +45,19 @@
                                 @if ($images && count($images) > 0)
                                     <div class="flex flex-wrap gap-2">
                                         @foreach ($images as $image)
-                                            <div class="mt-2 relative w-32">
+                                            <div class="mt-2 relative w-32 group">
                                                 @php $imageLocation = '/dierenarsten/thumb/'.$image->name; @endphp
                                                 <img src="{{ Storage::url('dierenarsten/thumb/'.$image->name) }}" class="w-32 mr-2 mb-2">
-                                                <button @click="imageToDelete = '{{ $imageLocation }}'; imageId = '{{ $image -> id }}';  confirmDelete = true" class="absolute top-0 right-0 bg-red-500 text-white px-2 py-1 text-xs">
+                                                
+                                                <!-- Set as Logo Button on Hover -->
+                                                <button wire:click="setAsLogo({{ $image->id }})"
+                                                        class="absolute bottom-0 left-0 bg-primary text-white px-2 py-1 text-xs opacity-0 group-hover:opacity-100 transition duration-300">
+                                                         {{__('Instellen als logo')}}
+                                                </button>
+
+                                                <!-- Delete Button -->
+                                                <button @click="imageToDelete = '{{ $imageLocation }}'; imageId = '{{ $image->id }}'; confirmDelete = true"
+                                                        class="absolute top-0 right-0 bg-red-500 text-white px-2 py-1 text-xs">
                                                     X
                                                 </button>
                                             </div>
@@ -86,5 +99,24 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener("saved", function() {
+
+                // Add a small delay before scrolling to the top (0.5 seconds)
+                setTimeout(() => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 1000);
+                setTimeout(() => {
+                    const successMessage = document.getElementById('success-message');
+                    setTimeout(() => {
+                        successMessage.style.transition = 'opacity 0.5s ease';
+                        successMessage.style.opacity = '0';
+                        setTimeout(() => successMessage.remove(), 500); // Remove after fade out
+                    }, 3000);
+                }, 2000);
+                // Add a small delay before starting to fade out (1 second after scroll)
+            // Total time before fade-out (5 seconds including scroll delay)
+        });
+    </script>
 </div>            
 

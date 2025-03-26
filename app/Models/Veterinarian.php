@@ -107,4 +107,14 @@ class Veterinarian extends Model
     {
         return $this->hasMany(VeterinariansPricing::class, 'veterinarian_id', 'id');
     }
+
+    /**
+     * Relationship with the Veterinarian model.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function veterinarian()
+    {
+        return $this->belongsTo(Veterinarian::class);
+    }
 }

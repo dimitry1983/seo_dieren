@@ -45,7 +45,7 @@
 
                     <div class="ms-auto relative lg:ms-0">
                         <button class="group flex items-center" data-dropdown>
-                            <span class="block relative w-[50px] h-[50px] rounded-full overflow-hidden border-2 border-solid border-[#d1d1d1] group-hover:border-primary duration-300 me-3"><img class="abs-cover" src="{{ asset('pexilfy-dashboard/src/public/img/user.jpg')}}" alt=""></span>
+                            <span class="block relative w-[50px] h-[50px] rounded-full overflow-hidden border-2 border-solid border-[#d1d1d1] group-hover:border-primary duration-300 me-3"><img class="abs-cover" src="{{ asset('dieren-dashboard/src/public/img/user.jpg')}}" alt=""></span>
                             <span class="text-lg font-medium text-[#271F30]"> {{ Auth::user()->name }} <i class="fa-regular fa-angle-down text-primary ms-2"></i></span>
                         </button>
 

@@ -3116,6 +3116,11 @@ textarea.custom-switch input + span.h-full.w-full:after{
   background-color: rgb(39 39 42 / 0.05);
 }
 
+.bg-blue-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 130 246 / var(--tw-bg-opacity, 1));
+}
+
 .bg-opacity-25 {
   --tw-bg-opacity: 0.25;
 }
@@ -4734,6 +4739,10 @@ select:not(.choices) {
 
 .group:hover .group-hover\:text-primary {
   color: var(--primary);
+}
+
+.group:hover .group-hover\:opacity-100 {
+  opacity: 1;
 }
 
 .group.open .group-open\:-top-\[10px\] {

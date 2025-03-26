@@ -70,6 +70,19 @@ class Media extends Component
         }
     }
 
+    public function setAsLogo($imageId)
+    {
+        // Update the logo in your database or logic here
+        $image = VeterinariansImage::find($imageId);
+        if ($image) {
+            // Assuming your model has a "is_logo" field or similar
+            VeterinariansImage::where('featured', true)->update(['featured' => false]);
+            $image->update(['featured' => true]);
+            session()->flash('success', __('Logo succesvol ingesteld!'));
+        }
+        $this -> dispatch('saved');
+    }
+
     public function save()
     {
         $this->validate();
@@ -143,7 +156,7 @@ class Media extends Component
        // VeterinariansImage::create($data);
 
        // $this->resetForm();
-
+        $this -> dispatch('saved');
         session()->flash('success', 'Image uploaded and data saved successfully.');
     }
 
