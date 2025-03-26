@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\City;
 use App\Models\Veterinarian;
+use App\Services\ContentService;
 use App\Services\GeoapifyService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -11,13 +12,18 @@ use Illuminate\Support\Facades\DB;
 class SiteController extends Controller
 {
     protected $geoapifyService;
+    protected $contentService;
 
-    public function __construct(GeoapifyService $geoapifyService)
+    public function __construct(GeoapifyService $geoapifyService, ContentService $contentService)
     {
+        $this->contentService = $contentService;
         $this->geoapifyService = $geoapifyService;
     }
 
     public function index(){
+
+        //$response = $this->contentService->createText('test');
+        //dd($response);
         return view('website.index');
     }
 
