@@ -35,6 +35,7 @@ class OpeningTimes extends Component implements HasForms
     public function mount($id = null){
         $result = Veterinarian::where('id', Auth::user()->id)->first();
         $this -> veterinarian_id = $result -> id;
+       
         $this->openingsTimes = VegetarianOpeningTime::where('veterinarian_id', $result -> id)->get();
 
         if ($id > 0){
@@ -65,13 +66,13 @@ class OpeningTimes extends Component implements HasForms
                     Select::make('day_of_week')
                         ->label(__('Dag van de week'))
                         ->options([
-                            'Monday' => devTranslate('admin.Maandag', 'Maandag'), 
-                            'Tuesday' => devTranslate('admin.Dinsdag', 'Dinsdag'),
-                            'Wednesday' => devTranslate('admin.Woensdag', 'Woensdag'),
-                            'Thursday' => devTranslate('admin.Donderdag', 'Donderdag'),
-                            'Friday' => devTranslate('admin.Vrijdag', 'Vrijdag'),
-                            'Saturday' => devTranslate('admin.Zaterdag', 'Zaterdag'),
-                            'Sunday' => devTranslate('admin.Zondag', 'Zondag'),
+                            '1' => devTranslate('admin.Maandag', 'Maandag'), 
+                            '2' => devTranslate('admin.Dinsdag', 'Dinsdag'),
+                            '3' => devTranslate('admin.Woensdag', 'Woensdag'),
+                            '4' => devTranslate('admin.Donderdag', 'Donderdag'),
+                            '5' => devTranslate('admin.Vrijdag', 'Vrijdag'),
+                            '6' => devTranslate('admin.Zaterdag', 'Zaterdag'),
+                            '0' => devTranslate('admin.Zondag', 'Zondag'),
                         ])
                         ->required(),
                     TimePicker::make('open_time')
@@ -100,8 +101,8 @@ class OpeningTimes extends Component implements HasForms
     public function save()
     {
        
-        if (!empty($this->openingsTime['id'])){
-            $this->openingsTime = VegetarianOpeningTime::find($this->openingsTime['id']);
+        if (!empty($this->openingsTime['day_of_week'])){
+            $this->openingsTime = VegetarianOpeningTime::where('day_of_week',$this->openingsTime['day_of_week'] )->first();
             $state = "update";
         }
         else{

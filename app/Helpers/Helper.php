@@ -393,13 +393,13 @@ function IsGooglebot()
 
 function returnDays($data){
     $days = [
-        'Monday' => 'maandag',
-        'Tuesday' => 'dinsdag',
-        'Wednesday' => 'woensdag',
-        'Thursday' => 'donderdag',
-        'Friday' => 'vrijdag',
-        'Saturday' => 'zaterdag',
-        'Sunday' => 'zondag',
+        '1' => 'maandag',
+        '2' => 'dinsdag',
+        '3' => 'woensdag',
+        '4' => 'donderdag',
+        '5' => 'vrijdag',
+        '6' => 'zaterdag',
+        '0' => 'zondag',
     ];
 
     return $days[$data];

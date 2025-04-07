@@ -39,13 +39,13 @@ class VegetarianOpeningTimeResource extends Resource
                     ->schema([
                         Select::make('day_of_week')
                             ->options([
-                                'Monday' => devTranslate('admin.Maandag', 'Maandag'), 
-                                'Tuesday' => devTranslate('admin.Dinsdag', 'Dinsdag'),
-                                'Wednesday' => devTranslate('admin.Woensdag', 'Woensdag'),
-                                'Thursday' => devTranslate('admin.Donderdag', 'Donderdag'),
-                                'Friday' => devTranslate('admin.Vrijdag', 'Vrijdag'),
-                                'Saturday' => devTranslate('admin.Zaterdag', 'Zaterdag'),
-                                'Sunday' => devTranslate('admin.Zondag', 'Zondag'),
+                                '1' => devTranslate('admin.Maandag', 'Maandag'), 
+                                '2' => devTranslate('admin.Dinsdag', 'Dinsdag'),
+                                '3' => devTranslate('admin.Woensdag', 'Woensdag'),
+                                '4' => devTranslate('admin.Donderdag', 'Donderdag'),
+                                '5' => devTranslate('admin.Vrijdag', 'Vrijdag'),
+                                '6' => devTranslate('admin.Zaterdag', 'Zaterdag'),
+                                '0' => devTranslate('admin.Zondag', 'Zondag'),
                             ])
                             ->required(),
                         TimePicker::make('open_time')
