@@ -512,12 +512,15 @@ function getPageBuilderSchema(){
 
         FilamentBuilder\Block::make('insurances')
         ->schema([
-            FileUpload::make('image'),
-            TextInput::make('title'),
-            TextInput::make('discount'),
-            TextInput::make('cta_url'),
-            TextInput::make('cta_title'),
-            TextInput::make('small_text_under_button'),
+            Repeater::make('insurance')
+            ->schema([
+                    FileUpload::make('image'),
+                    TextInput::make('title'),
+                    TextInput::make('discount'),
+                    TextInput::make('cta_url'),
+                    TextInput::make('cta_title'),
+                    TextInput::make('small_text_under_button'),
+                ])
         ]),
 
 
@@ -536,7 +539,7 @@ function getPageBuilderSchema(){
         ->schema([
             TextInput::make('title'),
             Textarea::make('description'),
-            Repeater::make('usp')
+            Repeater::make('about')
             ->schema([
                 TextInput::make('title'),
                 TextInput::make('number'),

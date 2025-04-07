@@ -73,47 +73,56 @@
         </div>
     </section>
 
+    @if (!empty($insurances))
     <section class="section section--intro py-[80px]">
         <div class="container px-2 mx-auto relative">
             <div class="flex flex-col lg:flex-row gap-y-4 lg:gap-x-6">
+               
+            
                 <div class="w-full lg:w-1/2">
-                    <div class="block relative before:content-[''] before:w-full before:h-full before:absolute before:top-0 before:left-0 before:bg-gradient-to-t before:from-black/100 before:via-black/25 before:to-transparent bg-[url('../../../src/public/img/block-1.jpg')] bg-cover bg-center">
+                    <div class="block relative before:content-[''] before:w-full before:h-full before:absolute before:top-0 before:left-0 before:bg-gradient-to-t before:from-black/100 before:via-black/25 before:to-transparent bg-[url('{{ asset('storage/' . $insurances['insurance'][0]['image']) }}')] bg-cover bg-center" style="background-image: url('{{ asset('storage/' . $insurances['insurance'][0]['image']) }}');">   
                         <div class="block__content pt-[250px] pb-[30px] px-[30px] relative z-1">
-                            <h4 class="subtitle text-lg text-white">Lorem ipsum dolor</h4>
-                            <h3 class="title title--block text-white text-2xl mb-2"><strong>+30% Off</strong></h3>
-                            <a href="#" class="btn btn-primary mb-2">{{ devTranslate('page.View More','Meer informatie') }}</a>
+                            <h4 class="subtitle text-lg text-white">{{$insurances['insurance'][0]['title']}}</h4>
+                            <h3 class="title title--block text-white text-2xl mb-2"><strong>{{$insurances['insurance'][0]['discount']}}</strong></h3>
+                            <a href="{{$insurances['insurance'][0]['cta_url']}}" class="btn btn-primary mb-2">{{$insurances['insurance'][0]['cta_title']}}</a>
                             <p class="paragraph paragraph--small text-sm text-white">
-                                *Lorem ipsum dolor sit amet
+                                {{$insurances['insurance'][0]['small_text_under_button']}}
                             </p>
                         </div>
+
                     </div>
                 </div>
+
                 <div class="w-full lg:w-1/2">
-                    <div class="block relative block before:content-[''] before:w-full before:h-full before:absolute before:top-0 before:left-0 before:bg-gradient-to-t before:from-black/100 before:via-black/25 before:to-transparent bg-[url('../../../src/public/img/block-2.jpg')] bg-cover bg-center sm:mb-[40px] mb-[15px]">
+                    
+                <div class="block relative block before:content-[''] before:w-full before:h-full before:absolute before:top-0 before:left-0 before:bg-gradient-to-t before:from-black/100 before:via-black/25 before:to-transparent bg-cover bg-center sm:mb-[40px] mb-[15px]" style="background-image: url('{{ asset('storage/' . $insurances['insurance'][1]['image']) }}');">
                         <div class="block__content px-[30px] py-[20px] relative z-1">
-                            <h4 class="subtitle text-lg text-white">Lorem ipsum dolor</h4>
-                            <h3 class="title title--block text-white text-2xl mb-2"><strong>+25% Off</strong></h3>
-                            <a href="#" class="btn btn-primary mb-2">{{ devTranslate('page.View More','Meer informatie') }}</a>
+                            <h4 class="subtitle text-lg text-white">{{$insurances['insurance'][1]['title']}}</h4>
+                            <h3 class="title title--block text-white text-2xl mb-2"><strong>{{$insurances['insurance'][1]['discount']}}</strong></h3>
+                            <a href="{{$insurances['insurance'][1]['cta_url']}}" class="btn btn-primary mb-2">{{$insurances['insurance'][1]['cta_title']}}</a>
                             <p class="paragraph paragraph--small text-sm text-white">
-                                *Lorem ipsum dolor sit amet
+                                {{$insurances['insurance'][1]['small_text_under_button']}}
                             </p>
                         </div>
                     </div>
-                    <div class="block relative block before:content-[''] before:w-full before:h-full before:absolute before:top-0 before:left-0 before:bg-gradient-to-t before:from-black/100 before:via-black/25 before:to-transparent bg-[url('../../../src/public/img/block-3.jpg')] bg-cover bg-center">
+                    
+                    <div class="block relative block before:content-[''] before:w-full before:h-full before:absolute before:top-0 before:left-0 before:bg-gradient-to-t before:from-black/100 before:via-black/25 before:to-transparent  bg-cover bg-center" style="background-image: url('{{ asset('storage/' . $insurances['insurance'][2]['image']) }}');">
                         <div class="block__content px-[30px] py-[20px] relative z-1">
-                            <h4 class="subtitle text-lg text-white">Lorem ipsum dolor</h4>
-                            <h3 class="title title--block text-white text-2xl mb-2"><strong>+20% Off</strong></h3>
-                            <a href="#" class="btn btn-primary mb-2">{{ devTranslate('page.View More','Meer informatie') }}</a>
+                            <h4 class="subtitle text-lg text-white">{{$insurances['insurance'][2]['title']}}</h4>
+                            <h3 class="title title--block text-white text-2xl mb-2"><strong>{{$insurances['insurance'][2]['discount']}}</strong></h3>
+                            <a href="{{$insurances['insurance'][2]['cta_url']}}" class="btn btn-primary mb-2">{{$insurances['insurance'][2]['cta_title']}}</a>
                             <p class="paragraph paragraph--small text-sm text-white">
-                                *Lorem ipsum dolor sit amet
+                                {{$insurances['insurance'][2]['small_text_under_button']}}
                             </p>
                         </div>
                     </div>
+
                 </div>
             </div>
             <img src="{{ asset('dieren/src/public/img/bg-blocks.png')}}" alt="" class="absolute top-[-80px] left-[-60px] z-[-1]">
         </div>
     </section>
+    @endif    
 
     <section class="section section--hotspots">
         <div class="container px-2 mx-auto relative">
@@ -357,7 +366,7 @@
                                 <h4 class="subtitle text-sm text-gray-800 mb-2">{{ $vet->excerpt }}</h4>
                                 <p class="location text-sm mb-0 font-semibold">
                                     <i class="fa-solid fa-location-dot text-primary"></i>
-                                    {{ $vet->zipcode }} {{ $vet->street }}, Netherlands
+                                    {{ $vet->zipcode }} {{ $vet->street }}, Nederland
                                 </p>
                                 <a class="text-sm font-semibold" href="tel:{{ $vet->phone }}">
                                     <i class="fa-solid fa-phone text-primary"></i> {{ $vet->phone }}
@@ -392,32 +401,30 @@
         <div class="container px-2 mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div>
-                    <h3 class="title title--section text-4xl font-bold mb-8  leading-tight md:leading-tight lg:leading-normal">
-                    {{ devTranslate('page.Why To Choose','Bekijk de voordelen') }} <br><span class="text-primary">{{ devTranslate('page.Our Directory','Van onze listing') }} </span>
+                    <h3 class="adv title title--section text-4xl font-bold mb-8  leading-tight md:leading-tight lg:leading-normal">
+                     {!!$advantages['title']!!}   
                     </h3>
                     <div class="grid grid-cols-2 mb-3 pb-3 border-b border-b-gray-300">
                         <div class="number">
                             <h4 class="value text-primary font-medium text-4xl md:text-6xl">+1k</h4>
-                            <p class="description text-gray-400">Completed Listing</p>
+                            <p class="description text-gray-400">{{ devTranslate('page.Dierenartsen','Dierenartsen') }}</p>
                         </div>
                         <div class="number">
-                            <h4 class="value text-primary font-medium text-4xl md:text-6xl">+1M</h4>
-                            <p class="description text-gray-400">Listed Places</p>
+                            <h4 class="value text-primary font-medium text-4xl md:text-6xl">+1k</h4>
+                            <p class="description text-gray-400">{{ devTranslate('page.Plaatsen','Plaatsen') }}</p>
                         </div>
                     </div>
                     <p class="paragraph text-gray-400 mb-4">
-                        Lorem ipsum dolor sit amet consectetur adipiscing elit. In vel laoreet eros. Nullam vulputate, magna vel efficitur scelerisque.
+                        {!!$advantages['description']!!}   
                     </p>
                     <ul>
-                        <li class="font-medium mb-3">
-                            <i class="fa-regular fa-circle-check text-primary"></i> Lorem ipsum dolor sit amet consectetur adipcing elit.
-                        </li>
-                        <li class="font-medium mb-3">
-                            <i class="fa-regular fa-circle-check text-primary"></i> Lorem ipsum dolor sit amet consectetur adipcing elit.
-                        </li>
-                        <li class="font-medium mb-3">
-                            <i class="fa-regular fa-circle-check text-primary"></i> Lorem ipsum dolor sit amet consectetur adipcing elit.
-                        </li>
+                        @if (!empty($advantages['usp']))
+                            @foreach($advantages['usp'] as $item)
+                                <li class="font-medium mb-3">
+                                    <i class="fa-regular fa-circle-check text-primary"></i> {{$item['usp']}}
+                                </li>
+                            @endforeach
+                        @endif
                     </ul>
                 </div>
                 <div>
@@ -433,25 +440,22 @@
         <div class="container px-2 mx-auto">
             <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-6 items-center">
                 <div class="col-span-1 lg:col-span-2 md:col-span-3 sm:col-span-3 text-center lg:text-left">
-                    <h3 class="title title--section text-4xl text-white font-bold mb-2 leading-tight md:leading-tight lg:leading-normal">
-                        <span class="text-primary">Vergelijk</span>dierenarts.nl
+                    <h3 class="title title--section text-4xl text-white font-bold mb-2 leading-tight md:leading-tight lg:leading-normal adv">
+                        {!!$darkBanner['title']!!}   
                     </h3>
                     <p class="paragraph text-white">
-                        Lorem ipsum dolor sit amet consectetur<br>adipcing elit. In vel laoreet eros. Nullam<br>vulputate, magna vel efficitur scelerisque.
+                        {!!$darkBanner['description']!!}   
                     </p>
                 </div>
-                <div class="text-center">
-                    <p class="text-white">{{devTranslate('page.Clinics', 'Klinieken')}} </p>
-                    <span class="text-primaryLight font-medium text-5xl md:text-6xl block">+2k</span>
-                </div>
-                <div class="sm:border-x sm:border-x-white sm:border-x-2 text-center">
-                    <p class="text-white">{{devTranslate('page.Listings', 'Advertenties')}}</p>
-                    <span class="text-primaryLight font-medium text-5xl md:text-6xl block">+20k</span>
-                </div>
-                <div class="text-center">
-                    <p class="text-white">{{devTranslate('page.Pets', 'Huisdieren')}}</p>
-                    <span class="text-primaryLight font-medium text-5xl md:text-6xl block">+200k</span>
-                </div>
+                @if (!empty($darkBanner['about']))
+                    @foreach($darkBanner['about'] as $item)
+                    
+                    <div class="text-center">
+                        <p class="text-white">{{$item['title']}}</p>
+                        <span class="text-primaryLight font-medium text-5xl md:text-6xl block">{{$item['number']}}</span>
+                    </div>
+                    @endforeach
+                @endif
             </div>
         </div>
     </section>

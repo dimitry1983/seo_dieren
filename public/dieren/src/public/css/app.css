@@ -108,7 +108,9 @@
     .header__content span{
         @apply text-primary font-bold
     }
-
+    h3.adv span{
+        @apply text-primary 
+    }
     .check-block input{
         @apply hidden
     }

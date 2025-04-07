@@ -35,6 +35,9 @@ class SiteController extends Controller
 
         $page = Page::getCustomPage('home');
         $headerBlock = Page::getBlockInfo($page->blocks, 'Header-big');
+        $insurances = Page::getBlockInfo($page->blocks, 'insurances');
+        $advantages = Page::getBlockInfo($page->blocks, 'adventages');
+        $darkBanner = Page::getBlockInfo($page->blocks, 'dark_about_banner');
         $categories = Category::getCategories();
     
         $category = intval($request->query('categorie')); // Optional query parameter
@@ -42,11 +45,10 @@ class SiteController extends Controller
         if (is_int($category)) {
             $vets = Veterinarian::getWithFeaturedImage($category);
         } else {
-           
             $vets = Veterinarian::getWithFeaturedImage();
         }
       
-        return view('website.index', compact('page', 'headerBlock', 'categories', 'vets'));
+        return view('website.index', compact('page', 'headerBlock', 'categories', 'vets', 'insurances', 'advantages', 'darkBanner'));
     }
 
     //batches of 20
