@@ -35,7 +35,7 @@
                 </form>
             </div>
             <div class="map lg:col-span-3 col-span-2">
-                <div style="width: 100%"><iframe width="100%" height="545" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=525&amp;hl=es&amp;q=Netherlands+(Mi%20nombre%20de%20egocios)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.gps.ie/car-satnav-gps/">GPS car tracker</a></iframe></div>
+                <img src="{{ asset('dieren/src/public/img/map.jpg')}}" alt="Map Image" class="w-full h-[500px] object-cover">
             </div>
         </div>
     </section>

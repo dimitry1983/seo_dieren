@@ -405,6 +405,32 @@ function returnDays($data){
     return $days[$data];
 }
 
+if (!function_exists('render_stars')) {
+    function render_stars($rating, $maxStars = 5)
+    {
+        $html = '<span class="rating  text-yellow-500 text-xs">';
+        $fullStars = floor($rating);
+        $halfStar = ($rating - $fullStars >= 0.5) ? 1 : 0;
+        $emptyStars = $maxStars - $fullStars - $halfStar;
+
+        for ($i = 0; $i < $fullStars; $i++) {
+            $html .= '<i class="fa-solid fa-star"></i> ';
+        }
+
+        if ($halfStar) {
+            $html .= '<i class="fa-solid fa-star-half-stroke"></i> ';
+        }
+
+        for ($i = 0; $i < $emptyStars; $i++) {
+            $html .= '<i class="fa-regular fa-star"></i> ';
+        }
+
+        $html .= '</span>';
+
+        return $html;
+    }
+}
+
 
 function timeago($date) {
     date_default_timezone_set(config('app.timezone'));

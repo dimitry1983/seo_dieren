@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c0654639b40c57e1d8192f510b598c9c",
+    "content-hash": "05c9e33a09f7f9040de8e56bac351c7f",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -4080,6 +4080,59 @@
                 }
             ],
             "time": "2025-01-30T13:51:11+00:00"
+        },
+        {
+            "name": "outscraper/outscraper",
+            "version": "v4.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/outscraper/outscraper-php.git",
+                "reference": "695542a61e0f8d4ae93bb74874be308ade8feafe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/outscraper/outscraper-php/zipball/695542a61e0f8d4ae93bb74874be308ade8feafe",
+                "reference": "695542a61e0f8d4ae93bb74874be308ade8feafe",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "outscraper.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Outscraper",
+                    "email": "support@outscraper.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP bindings for the Outscraper API",
+            "homepage": "https://outscraper.com/",
+            "keywords": [
+                "Google Maps scraper",
+                "Google Reviews scraper",
+                "extractor",
+                "google",
+                "google maps",
+                "outscraper",
+                "scrape google maps",
+                "scraper",
+                "webscraper"
+            ],
+            "support": {
+                "issues": "https://github.com/outscraper/outscraper-php/issues",
+                "source": "https://github.com/outscraper/outscraper-php/tree/v4.1.0"
+            },
+            "time": "2024-11-22T16:42:43+00:00"
         },
         {
             "name": "phpoption/phpoption",

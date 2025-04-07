@@ -35,12 +35,12 @@ class Page extends Model
         return Page::where('slug', $name)->active()->first();
     }
 
-    function getHeaderInfo($pageData): array
+    public static function getBlockInfo($pageData, $type = 'Header-big'): array
     {
        
         // Find the first block of type "Header-big"
         foreach ($pageData as $block) {
-            if ($block['type'] === 'Header-big') {
+            if ($block['type'] === $type) {
                 return $block['data'];
             }
         }
@@ -49,7 +49,7 @@ class Page extends Model
         return [];
     }
 
-    function getContentBlocks(array $pageData): array
+    public static function getContentBlocks(array $pageData): array
     {
         // Decode the "blocks" JSON field
         $blocks = $pageData;

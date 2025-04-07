@@ -83,9 +83,6 @@
                         </button>
                     </div>
                 </div>
-                <div class="map mb-8">
-                    <div style="width: 100%"><iframe width="100%" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=500&amp;hl=es&amp;q=Netherlands+(Mi%20nombre%20de%20egocios)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.gps.ie/car-satnav-gps/">GPS car tracker</a></iframe></div>
-                </div>
                 <div class="grid grid-cols-4 gap-4 mb-8 pt-2">
                     <div class="categories-sidebar col-span-4 lg:col-span-1 bg-white border border-gray-300 p-[20px] h-fit">
                         <h3 class="title title--sidebar title title--section font-bold text-2xl text-gray-800 mb-2">
@@ -292,7 +289,7 @@
                 <div class="categories grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                     <div class="category border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
                         <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
-                            <img class="m-auto w-[120px] h-[120px]" src="public/img/dog.png" alt="">
+                            <img class="m-auto w-[120px] h-[120px]" src="{{ asset('/dieren/src/public/img/dog.png')}}" alt="">
                         </figure>
                         <div class="content text-center p-4">
                             <h3 class="title text-md font-semibold mb-2">Dogs</h3>
@@ -302,7 +299,7 @@
 
                     <div class="category border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
                         <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
-                            <img class="m-auto w-[120px] h-[120px]" src="public/img/cat.png" alt="">
+                            <img class="m-auto w-[120px] h-[120px]" src="{{ asset('/dieren/src/public/img/cat.png')}}" alt="">
                         </figure>
                         <div class="content text-center p-4">
                             <h3 class="title text-md font-semibold mb-2">Cats</h3>
@@ -312,7 +309,7 @@
 
                     <div class="category border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
                         <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
-                            <img class="m-auto w-[120px] h-[120px]" src="public/img/turtle.png" alt="">
+                            <img class="m-auto w-[120px] h-[120px]" src="{{ asset('/dieren/src/public/img/turtle.png')}}" alt="">
                         </figure>
                         <div class="content text-center p-4">
                             <h3 class="title text-md font-semibold mb-2">Others</h3>
@@ -322,7 +319,7 @@
 
                     <div class="category border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
                         <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
-                            <img class="m-auto w-[120px] h-[120px]" src="public/img/shelters.png" alt="">
+                            <img class="m-auto w-[120px] h-[120px]" src="{{ asset('/dieren/src/public/img/shelters.png')}}" alt="">
                         </figure>
                         <div class="content text-center p-4">
                             <h3 class="title text-md font-semibold mb-2">Shelters</h3>
@@ -332,7 +329,7 @@
 
                     <div class="category border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
                         <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
-                            <img class="m-auto w-[120px] h-[120px]" src="public/img/specialists.png" alt="">
+                            <img class="m-auto w-[120px] h-[120px]" src="{{ asset('/dieren/src/public/img/specialists.png')}}" alt="">
                         </figure>
                         <div class="content text-center p-4">
                             <h3 class="title text-md font-semibold mb-2">Specialists</h3>
@@ -342,7 +339,7 @@
 
                     <div class="category border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
                         <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
-                            <img class="m-auto w-[120px] h-[120px]" src="public/img/emergencies.png" alt="">
+                            <img class="m-auto w-[120px] h-[120px]" src="{{ asset('/dieren/src/public/img/emergencies.png')}}" alt="">
                         </figure>
                         <div class="content text-center p-4">
                             <h3 class="title text-md font-semibold mb-2">Emergencies</h3>

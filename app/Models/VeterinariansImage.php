@@ -16,4 +16,9 @@ class VeterinariansImage extends Model
     {
         return $this->belongsTo(Veterinarian::class);
     }
+
+    public function vegetarian()
+    {
+        return $this->belongsTo(Vegetarian::class);
+    }
 }

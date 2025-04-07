@@ -4,12 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Veterinarian extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
+
+    public function getExcerptAttribute(): string
+    {
+        return Str::limit(strip_tags($this->generateDescription($this)), 120);
+    }
+
 
     protected function mutateFormDataBeforeSave(array $data): array
     {
@@ -116,5 +123,73 @@ class Veterinarian extends Model
     public function veterinarian()
     {
         return $this->belongsTo(Veterinarian::class);
+    }
+
+    // All images
+    public function veterinariansImages()
+    {
+        return $this->hasMany(VeterinariansImage::class);
+    }
+
+    // Only the featured image
+    public function featuredImage()
+    {
+        return $this->hasOne(VeterinariansImage::class)->where('featured', 1);
+    }
+
+    public static function getWithFeaturedImage($categoryId = null)
+    {
+        return self::query()
+            ->with('featuredImage')
+            ->when($categoryId, function ($query) use ($categoryId) {
+                
+                $query->whereHas('categories', function ($q) use ($categoryId) {
+                    $q->where('categories.id', $categoryId);
+                });
+            })
+            ->orderByDesc('veterinarians.id')
+            ->paginate(6);
+    }
+
+    public function generateDescription(Veterinarian $vet): string
+    {
+        $name = $vet->name;
+        $city = optional($vet->city)->name ?? '';
+        $province = optional($vet->province)->name ?? '';
+        $services = $vet->services->pluck('name')->implode(', ');
+        $openings = $vet->openingstimes->count() ? "Bekijk de openingstijden voor meer informatie." : "";
+        $website = $vet->website ? "Bezoek hun website voor meer informatie." : "";
+
+        // Categorieteksten
+        $categoryTexts = [
+            'Honden' => 'gespecialiseerd in de zorg voor honden',
+            'Katten' => 'gespecialiseerd in de zorg voor katten',
+            'Overige' => 'beschikt over expertise voor diverse diersoorten',
+            'Asielen' => 'biedt opvang en herplaatsing van dieren',
+            'Specialisten' => 'beschikt over gespecialiseerde kennis voor complexe behandelingen',
+            'Noodgevallen' => 'biedt 24/7 hulp bij spoedgevallen'
+        ];
+
+        $foundCategories = $vet->categories->pluck('name')->filter()->toArray();
+        $descriptions = [];
+
+        foreach ($foundCategories as $cat) {
+            if (isset($categoryTexts[$cat])) {
+                $descriptions[] = $categoryTexts[$cat];
+            }
+        }
+
+        $categorySentence = '';
+        if (count($descriptions)) {
+            $categorySentence = 'Deze praktijk is ' . implode(', ', array_slice($descriptions, 0, -1));
+            if (count($descriptions) > 1) {
+                $categorySentence .= ' en ' . end($descriptions);
+            } else {
+                $categorySentence = 'Deze praktijk is ' . $descriptions[0];
+            }
+            $categorySentence .= '.';
+        }
+
+        return "{$name} is gevestigd in {$city}, provincie {$province}. {$categorySentence} Ze bieden diensten aan zoals {$services}. {$openings} {$website}";
     }
 }

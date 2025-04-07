@@ -100,8 +100,14 @@
     }
     .form-select{
         @apply form-control
+
     }
-    
+    .header__content h1{
+       @apply text-4xl sm:text-5xl md:text-6xl text-gray-800 leading-tight md:leading-tight lg:leading-normal 
+    }
+    .header__content span{
+        @apply text-primary font-bold
+    }
 
     .check-block input{
         @apply hidden

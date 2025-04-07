@@ -11,4 +11,14 @@ class Category extends Model
 
     // Define fillable properties if you want mass assignment.
     protected $guarded = [];
+
+    public static function getCategory($id)
+    {
+        return Category::where('id', $id)->first();
+    }
+
+    public static function getCategories(){
+        return Category::all();
+    }
+    
 }

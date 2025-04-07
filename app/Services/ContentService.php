@@ -25,81 +25,72 @@ class ContentService
      * @param  string  $personName
      * @return string
      */
-    public function createText($command)
+    public function createText($command, $step = 1)
     {
 
-        $command = "Geef mij meer informatie over het volgende bedrijf:
+         
+    $command4 = "
+        Services 
 
-Naam: Dierenkliniek Delfland
-Provincie: Noord-Holland
-Stad: Den Hoorn
-Adres: Tramkade 1
-Postcode: 2635 BA";
-        $command2 = "Geeft mij in json het volgende
-CompanyInfo 
-    Telephone
-    Website
-    Description - minimaal 300 woorden
+        Ons systeem heeft de volgende services
+        1. Vaccins
+        2. Accessoires
+        3. Consultaties
+        4. Ontwormen
+        5. Operaties
+        6. Spoedgevallen
+        7. Verkoop van medicijnen
+        8. Voedingsadvies
 
-Reviews 
-   Name 
-   Description
-   Rating
-   City - optional
-   Datum
+        Geef in een json string (Services) aan , separated welke id's van de services bij dit bedrijf van toepassing zijn  
+        Bijvoorbeeld: 1,2,4,6 , wanneer geen resultaat selecteer alle services
 
-Zoek alle (echte) reviews over dit bedrijf een geef een dit ook terug in a json format zie hierboven, liefst een stuk of 5, herschrijf de description in andere woorden, wanneer je geen reviews kan vinden dan niks teruggeven.
-";
+        Categorieen 
 
-$command3 = "Services 
+        Ons systeem heeft de volgende services
+        1. Honden
+        2. Katten
+        3. Overige
+        4. Asielen
+        5. Specialisten
+        6. Noodgevallen
 
-Ons systeem heeft de volgende services
-1. Vaccins
-2. Accessoires
-3. Consultaties
-4. Ontwormen
-5. Operaties
-6. Spoedgevallen
-7. Verkoop van medicijnen
-8. Voedingsadvies
+        Geef deze in een json string (Categorie) aan , separated welke id's van de services bij dit bedrijf van toepassing zijn 
+        Bijvoorbeeld: 1,2,4,6 , wanneer geen resultaat selecteer alle Categorieen
 
-Geef in een json string aan , separated welke id's van de services bij dit bedrijf van toepassing zijn  
+        Openingstijden
+        day_of_week (int)
+        open_time (time)
+        close_time (time)
+        is_closed (int)
+        notes (text)
 
-Categorieen 
+        ik heb iedere dag van de week nodig!
 
-Ons systeem heeft de volgende services
-1. Honden
-2. Katten
-3. Overige
-4. Asielen
-5. Specialisten
-6. Noodgevallen
+        Geef dit terug in a json string Openingstijden  dus response['Openingstijden'] (array) + response['Services'] (string , seperated) + response['Categorie']  (string , seperated), met hun attributen
+    ";
 
-Geef in een json string aan , separated welke id's van de services bij dit bedrijf van toepassing zijn ";   
 
- 
-$command4 = "
-Openingstijden
-  day_of_week
-  open_time
-  close_time
-  is_closed
-  notes 
+        $command .= ' ' . $command4;
+        
 
-ik heb iedere dag van de week nodig!
-
-Kijk of je blogs kan vinden en herschrijf dit in eigen woorden 1 blog is prima.
-
-Blogs
- Name 
- Excerpt
- Description //lees de title, verzin goeie h2 en h3 titels voor het artikel en maak een artikel hierover van 1200 woorden geeft het artikel terug in html
- CreatedAt";
-
-        $command = $command.' '.$command2;    
-        // Generate the email response with OpenAI and inject the template
+        sleep(3);
         $response = $this->generateResponseWithOpenAI($command);
 
+        // Retry once after 1 second if response is empty or null
+        if (empty($response)) {
+            sleep(1);
+            $response = $this->generateResponseWithOpenAI($command);
+        }
+        if (empty($response)) {
+            sleep(3);
+            $response = $this->generateResponseWithOpenAI($command);
+        }
+        if (empty($response)) {
+            sleep(10);
+            $response = $this->generateResponseWithOpenAI($command);
+        }
+       
         return $response;
     }
 
@@ -112,26 +103,36 @@ Blogs
      */
     protected function generateResponseWithOpenAI($command)
     {      
-        // OpenAI API request
-        $response = Http::withHeaders([
-            'Authorization' => 'Bearer ' . $this->openaiApiKey,
-        ])->post('https://api.openai.com/v1/chat/completions', [
-            'model' => 'gpt-3.5-turbo', 
-            'messages' => [
-                ['role' => 'system', 'content' => 'You are a TitleTag assistant.'],
-                ['role' => 'user', 'content' => $command], // Make sure $command is set and not empty
-            ],
-            'max_tokens' => 1800,
-            'temperature' => 0.5,
-        ]);
-        $response->throw();// Throw exception for non-success status codes
-            
-        //return $response->json()['choices'][0]['text'];
-            
-       
-        // Extract the generated response
-        $result = $response->json();
-        
-        return $result['choices'][0]['message']['content'] ?? 'Sorry, I couldn\'t generate a response.';
+        try {
+            $response = Http::withHeaders([
+                'Authorization' => 'Bearer ' . $this->openaiApiKey,
+            ])->post('https://api.openai.com/v1/chat/completions', [
+                'model' => 'gpt-3.5-turbo',
+                'messages' => [
+                    ['role' => 'system', 'content' => 'You are a TitleTag assistant.'],
+                    ['role' => 'user', 'content' => $command],
+                ],
+                'max_tokens' => 1800,
+                'temperature' => 0.5,
+            ]);
+          
+            $response->throw(); // Throws exception if status code is not 2xx
+    
+            $result = $response->json();
+
+            return $result['choices'][0]['message']['content'] ?? 'Sorry, I couldn\'t generate a response.';
+    
+        } catch (\Illuminate\Http\Client\RequestException $e) {
+            // Dump the full response body and status
+            dd([
+                'message' => $e->getMessage(),
+                'status' => $e->response->status(),
+                'body' => $e->response->body(),
+            ]);
+        } catch (\Exception $e) {
+            dd([
+                'message' => $e->getMessage(),
+            ]);
+        }
     }
 }

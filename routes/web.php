@@ -37,6 +37,9 @@ Route::middleware(['auth'])->group(function () {
 
 // Site Routes
 Route::get('/', [SiteController::class, 'index'])->name('home');
+Route::get('/more-information', [SiteController::class, 'getMoreInformation'])->name('more');
+//getMoreInformation
+Route::get('/results', [SiteController::class, 'results'])->name('results');
 Route::get('/over-ons', [SiteController::class, 'about'])->name('about');
 Route::get('/contact', [SiteController::class, 'contact'])->name('contact');
 

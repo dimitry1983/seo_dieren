@@ -2,12 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
+use App\Models\Category;
 use App\Models\City;
+use App\Models\Page;
+use App\Models\Province;
+use App\Models\Review;
+use App\Models\VegetarianOpeningTime;
 use App\Models\Veterinarian;
+use App\Models\VeterinarianCategory;
+use App\Models\VeterinarianService;
 use App\Services\ContentService;
 use App\Services\GeoapifyService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
+use App\Services\ScraperService;
 
 class SiteController extends Controller
 {
@@ -20,12 +30,194 @@ class SiteController extends Controller
         $this->geoapifyService = $geoapifyService;
     }
 
-    public function index(){
+    public function index(Request $request)
+    {
 
-        //$response = $this->contentService->createText('test');
-        //dd($response);
-        return view('website.index');
+        $page = Page::getCustomPage('home');
+        $headerBlock = Page::getBlockInfo($page->blocks, 'Header-big');
+        $categories = Category::getCategories();
+    
+        $category = intval($request->query('categorie')); // Optional query parameter
+    
+        if (is_int($category)) {
+            $vets = Veterinarian::getWithFeaturedImage($category);
+        } else {
+           
+            $vets = Veterinarian::getWithFeaturedImage();
+        }
+      
+        return view('website.index', compact('page', 'headerBlock', 'categories', 'vets'));
     }
+
+    //batches of 20
+    public function getMoreInformation(ScraperService $outscraper)
+    {
+
+        set_time_limit(0);
+        ini_set('max_execution_time', 0);
+    
+        // Veterinarian::where('id' , '>', 1563)->chunk(20, function ($vets) use ($outscraper) {
+        //     foreach ($vets as $vet) {
+        //         $city = City::find($vet->city_id)?->name ?? '';
+        //         $query = "{$vet->name}, {$vet->street} {$vet->street_nr}, {$vet->zipcode}, {$city}, Netherlands";
+        //         $coordinates = "{$vet->lat},{$vet->lon}";
+        
+        //         $searchResult = $outscraper->fetchCompanyInfo($query, $coordinates);
+      
+        //         if (!empty($searchResult['data'][0]['place_id'])) {
+        //             $placeId = $searchResult['data'][0]['place_id'];
+        
+        //             // Get full details using place_id
+        //             $details = $outscraper->fetchCompanyDetailsByPlaceId($placeId);
+        
+        //             if (!empty($details['data'][0])) {
+        //                 $info = $details['data'][0];
+        //                 $vet->location_link = $info['location_link'] ?? null;
+        //                 $vet->phone = $info['phone'] ?? null;
+        //                 $vet->website = $info['site'] ?? null;
+        //                 $vet->description = $info['description'] ?? null;
+        //                 $vet->rating = $info['rating'] ?? null;
+        //                 $vet->place_id = $placeId; // Save for future use if needed
+        //                 $vet->save();
+        
+        //                 // Save reviews
+        //                 if (!empty($info['reviews_data'])) {
+        //                     foreach ($info['reviews_data'] as $review) {
+        //                                 $reviews = new Review();
+        //                                 $reviews  -> type = 'Google';
+        //                                 $reviews  -> name = $review['author_title'];
+        //                                 $reviews -> description = $review['review_text'] ?? "Niet aanwezig";
+        //                                 $reviews  -> rating = $review['review_rating'];
+        //                                 $reviews -> city = $city;
+        //                                 $reviews  -> veterinarian_id = $vet -> id;
+        //                                 $reviews  -> created_at = $review['review_datetime_utc'] ?? now();
+        //                                 $reviews  -> save();
+        //                     }
+        //                 }
+
+        //                 // Save opening hours if available
+        //                 if (!empty($info['work_hours'])) {
+        //                     foreach ($info['work_hours'] as $day => $hours) {
+        //                         $vet->openingTimes()->create([
+        //                             'day_of_week' => $day,
+        //                             'open_time' => $hours['open_time'] ?? null,
+        //                             'close_time' => $hours['close_time'] ?? null,
+        //                             'is_closed' => $hours['is_closed'] ?? false,
+        //                             'notes' => $hours['notes'] ?? null,
+        //                         ]);
+        //                     }
+        //                 }
+        
+        //                 // Optional: save posts/blogs if needed later
+        //             }
+        //         }
+             
+        //         // Rate limiting
+        //         sleep(2);
+        //     }
+           
+        //     // Pause between chunks
+        //     sleep(6);
+        // });
+    
+        // return 'Finished';
+
+
+
+
+
+
+
+
+
+        // set_time_limit(0);
+        // ini_set('max_execution_time', 0);
+        Veterinarian::where('id' ,'>', 1645)->chunk(20, function ($veterinarians) {
+            foreach ($veterinarians as $vet) {
+                // Process each vet here
+                // Example: Log::info($vet->name);
+                $command = "Geef mij meer informatie over het volgende bedrijf:
+
+                    Naam: ".$vet -> name."  "."
+                    Provincie: ".Province::find($vet -> region_id)->name."  "."
+                    Stad: ".City::find($vet -> city_id)->name."  "."
+                    Adres: ".$vet -> street." ".$vet -> street_nr."  "."
+                    Postcode: ".$vet -> zipcode."  ";
+
+                    if (!empty($vet -> website)){
+                        $command .= 'Website: '.$vet -> website;
+                    }    
+
+
+                    $response = $this->contentService->createText($command, $teller = 1);
+                    $response = json_decode($response, true);
+                    if (isset($response['Services']) && isset($response['Categorie'])){
+                        $services = explode(',', $response['Services']);
+                        $cats     = explode(',', $response['Categorie']);
+                    }
+                    else{
+                        $response = $this->contentService->createText($command, $teller = 1);
+                        $response = json_decode($response, true);
+                        $services = explode(',', $response['Services']);
+                        $cats     = explode(',', $response['Categorie']);
+                    }
+
+                        if (!empty($services)){
+                            foreach($services as $service){
+                                if (!empty( $service)){
+                                    $ca = new VeterinarianService();
+                                    $ca -> veterinarian_id = $vet -> id;
+                                    $ca -> category_id  = $service;
+                                    $ca -> save();
+                                }
+                            }
+                        }
+                        if (!empty($cats)){
+                            foreach($cats as $cat){
+                                if (!empty($cat)){
+                                    $ca = new VeterinarianCategory();
+                                    $ca -> veterinarian_id = $vet -> id;
+                                    $ca -> category_id  = $cat;
+                                    $ca -> save();
+                                }
+                            }
+                        }
+                        if (!empty($response['Openingstijden'])){
+                            foreach($response['Openingstijden'] as $key => $value){
+                                $opening = new VegetarianOpeningTime();
+                                $opening -> day_of_week = $key;   
+                                if ($value['open_time'] !== 'Gesloten' && $value['open_time'] !== 'Closed' ){
+                                    $opening -> open_time = $value['open_time']; 
+                                }
+                                else{
+                                    $opening -> open_time = null;
+                                }
+                                if ($value['open_time'] !== 'Gesloten' && $value['open_time'] !== 'Closed'){
+                                    $opening -> close_time = $value['close_time']; 
+                                }
+                                else{
+                                    $opening -> close_time = null;
+                                }
+                                $opening -> is_closed = $value['is_closed'];
+                                $opening -> notes = $value['notes'];  
+                                $opening -> veterinarian_id = $vet -> id;
+                                $opening -> created_at = date('Y-m-d H:i:s');
+                                $opening -> save();
+                            }
+                        }
+                    
+             }
+ 
+            sleep(2);
+        });
+    }
+
+
+    public function results(){
+
+        return view('website.results');
+    }
+
 
     public function about(){
         return view('website.about');

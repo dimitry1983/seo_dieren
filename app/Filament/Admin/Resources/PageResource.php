@@ -6,10 +6,12 @@ use App\Filament\Admin\Resources\PageResource\Pages;
 use App\Filament\Admin\Resources\PageResource\RelationManagers;
 use App\Models\Page;
 use Filament\Forms;
+use Illuminate\Support\Str;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Builder as ComponentsBuilder;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
+use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\ActionGroup;
@@ -45,7 +47,6 @@ class PageResource extends Resource
                     ->required()
                     ->maxLength(255),    
                 RichEditor::make('content')
-                    ->required()
                     ->columnSpanFull()
                     ->live()
                     ->minLength(10)

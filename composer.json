@@ -14,6 +14,7 @@
         "laravel/tinker": "^2.10.1",
         "livewire/flux": "^2.0",
         "livewire/volt": "^1.6.7",
+        "outscraper/outscraper": "^4.1",
         "ralphjsmit/laravel-filament-seo": "^1.2",
         "spatie/livewire-filepond": "^1.4",
         "watson/rememberable": "^7.0.0"
