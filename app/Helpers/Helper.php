@@ -510,6 +510,40 @@ function getPageBuilderSchema(){
             TextInput::make('cta_title'),
         ]),
 
+        FilamentBuilder\Block::make('insurances')
+        ->schema([
+            FileUpload::make('image'),
+            TextInput::make('title'),
+            TextInput::make('discount'),
+            TextInput::make('cta_url'),
+            TextInput::make('cta_title'),
+            TextInput::make('small_text_under_button'),
+        ]),
+
+
+        FilamentBuilder\Block::make('adventages')
+        ->schema([
+            TextInput::make('title'),
+            Textarea::make('description'),
+            Repeater::make('usp')
+            ->schema([
+                TextInput::make('usp'),
+            ]),
+            FileUpload::make('image'),
+        ]),
+
+        FilamentBuilder\Block::make('dark_about_banner')
+        ->schema([
+            TextInput::make('title'),
+            Textarea::make('description'),
+            Repeater::make('usp')
+            ->schema([
+                TextInput::make('title'),
+                TextInput::make('number'),
+            ]),
+        ]),
+
+
         // Event block
         // FilamentBuilder\Block::make('events')
         // ->schema([
