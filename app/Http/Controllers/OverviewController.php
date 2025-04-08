@@ -2,12 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
+use App\Models\Category;
+use App\Models\Page;
+use App\Models\Review;
+use App\Models\Veterinarian;
 use Illuminate\Http\Request;
 
 class OverviewController extends Controller
 {
 
     public function map(){
-        return view('website.map');
+
+        $page = Page::getCustomPage('home');
+        $darkBanner = Page::getBlockInfo($page->blocks, 'dark_about_banner');
+        $blogs = Blog::get3LatestBlogs();
+
+        $page = Page::getCustomPage('overzicht');
+        $greenBanner = Page::getBlockInfo($page->blocks, 'green_usp');
+        $bestVets = Veterinarian::get3BestRatedVets(4);
+        $categoriesForCount = Category::withCount('veterinarians')->get();
+        $getRandomReviews = Review::getRandomReviews();
+
+        return view('website.map', ['blogs' => $blogs, 'darkBanner' => $darkBanner, 'bestVets' => $bestVets, 'greenBanner' => $greenBanner, 'categoriesForCount' => $categoriesForCount, 'getRandomReviews' => $getRandomReviews]);
     }
 }

@@ -39,13 +39,13 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/', [SiteController::class, 'index'])->name('home');
 Route::get('/more-information', [SiteController::class, 'getMoreInformation'])->name('more');
 //getMoreInformation
-Route::get('/results', [SiteController::class, 'results'])->name('results');
+Route::get('/zoekresultaten', [SiteController::class, 'results'])->name('results');
 Route::get('/over-ons', [SiteController::class, 'about'])->name('about');
 Route::get('/contact', [SiteController::class, 'contact'])->name('contact');
 
 // Blog Routes
 Route::get('/blog', [BlogController::class, 'overview'])->name('blog.overview');
-Route::get('/blog/{slug}', [BlogController::class, 'blogDetail'])->name('blog.detail');
+Route::get('/blog/{slug}/{id}', [BlogController::class, 'blogDetail'])->name('blog.detail');
 
 // Overview Routes
 Route::get('/overzicht', [OverviewController::class, 'map'])->name('map');

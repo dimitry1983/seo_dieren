@@ -157,6 +157,19 @@
     .agree-terms input:checked+span:before{
         @apply bg-[#11AF22] border-[#11AF22]
     }
+
+    .section--interior-blog h2{
+        @apply text-2xl lg:text-[32px] leading-tight  mt-5 mb-3
+    }
+
+    .section--interior-blog h3{
+        @apply text-2xl lg:text-[26px] leading-tight  mt-5 mb-3
+    }
+
+    .section--interior-blog .sidebar h3{
+        @apply text-2xl lg:text-[16px] leading-tight  mt-5 mb-3
+    }
+
 }
 .post-item{
     /*box-shadow: 0 4px 40px rgba(60, 30, 130, 0.1);*/

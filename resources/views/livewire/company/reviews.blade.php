@@ -30,7 +30,10 @@
                     <div class="fi-section-content-ctn border-t py-4 border-gray-200 dark:border-white/10">
                     <ul class="space-y-4 px-4">
                         @if (!empty($veterinarians[0]))
+                           
                             @foreach ($veterinarians as $veterinarian) 
+
+                                @if (!empty($veterinarian->reviews[0]))
                                 @foreach ($veterinarian->reviews as $review) 
                                     @if ($review->parent_id < 1)
                                         <div class="bg-white text-gray-800 p-4 rounded-lg shadow-md space-y-2 border border-gray-200">
@@ -52,11 +55,22 @@
                                                         <p class="text-gray-700">- {{$response->description}}</p>
                                                     @endforeach
                                                 </div>
+                                            
+
                                             @endif
                                         </div>
+
+                                        
                                     @endif
                                 @endforeach
+                                @else
+                                    <x-alert-box>
+                                        {{__('Er zijn nog geen recensies geplaatst.')}}
+                                    </x-alert-box>
+                                @endif
+
                             @endforeach 
+                            
                         @else    
                             <x-alert-box>
                                 {{__('Er zijn nog geen recensies geplaatst.')}}

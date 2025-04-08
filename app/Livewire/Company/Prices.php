@@ -30,7 +30,7 @@ class Prices extends Component implements HasForms
     public $price;
 
     public function mount($id = null){
-        $result = Veterinarian::where('id', Auth::user()->id)->first();
+        $result = Veterinarian::where('user_id', Auth::user()->id)->first();
         $this -> veterinarian_id = $result -> id;
         $this -> prices = VeterinariansPricing::with(['pricingGroup'])->where('veterinarian_id', $result -> id)->get();
 
@@ -77,7 +77,7 @@ class Prices extends Component implements HasForms
     public function deletePrice($id){
         $price  = VeterinariansPricing::where('veterinarian_id', $this -> veterinarian_id)->findOrFail($id);
         $price->delete();
-        $this -> prices = VeterinariansPricing::where('veterinarian_id', $result -> id)->get();
+        $this -> prices = VeterinariansPricing::where('veterinarian_id', $this -> veterinarian_id)->get();
         $this -> dispatch('saved');
         session()->flash('success', devTranslate('page.Nieuws item is succesvol verwijderd','Nieuws item is succesvol verwijderd'));
     }
@@ -107,9 +107,9 @@ class Prices extends Component implements HasForms
         $this->price->save();
        
         $this -> dispatch('saved');
-        $result = Veterinarian::where('id', Auth::user()->id)->first();
+        $result = Veterinarian::where('user_id', Auth::user()->id)->first();
         $this -> veterinarian_id = $result -> id;
-        $this -> prices = VeterinariansPricing::with(['pricingGroup'])->where('veterinarian_id', $result -> id)->get();
+       
 
         if ($state == "create"){
             $this->reset();
@@ -119,7 +119,7 @@ class Prices extends Component implements HasForms
         else{
             session()->flash('success', devTranslate('cms.Prijs succesvol bijgewerkt','Prijs succesvol bijgewerkt'));
         }
-
+        $this -> prices = VeterinariansPricing::with(['pricingGroup'])->where('veterinarian_id', $result -> id)->get();
     }
 
 

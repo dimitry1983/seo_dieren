@@ -395,21 +395,21 @@
             <div class="categories grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                 <div class="category border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
                     <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
-                        <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/dog.png')}}" alt="">
+                        <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/dog.png') }}" alt="">
                     </figure>
                     <div class="content text-center p-4">
-                        <h3 class="title text-md font-semibold mb-2">Dogs</h3>
-                        <p class="paragraph text-sm">(150 Listings)</p>
+                        <h3 class="title text-md font-semibold mb-2">{{devTranslate('page.Dogs', 'Honden')}}</h3>
+                        <p class="paragraph text-sm">({{$categoriesForCount[0]['veterinarians_count']}} {{ devTranslate('page.Vermeldingen','Vermeldingen') }})</p>
                     </div>
                 </div>
 
                 <div class="category border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
                     <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
-                        <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/cat.png')}}" alt="">
+                        <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/cat.png') }}" alt="">
                     </figure>
                     <div class="content text-center p-4">
-                        <h3 class="title text-md font-semibold mb-2">Cats</h3>
-                        <p class="paragraph text-sm">(150 Listings)</p>
+                        <h3 class="title text-md font-semibold mb-2">{{devTranslate('page.Cats', 'Katten')}}</h3>
+                        <p class="paragraph text-sm">({{$categoriesForCount[1]['veterinarians_count']}} {{ devTranslate('page.Vermeldingen','Vermeldingen') }})</p>
                     </div>
                 </div>
 
@@ -418,8 +418,8 @@
                         <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/turtle.png')}}" alt="">
                     </figure>
                     <div class="content text-center p-4">
-                        <h3 class="title text-md font-semibold mb-2">Others</h3>
-                        <p class="paragraph text-sm">(100 Listings)</p>
+                        <h3 class="title text-md font-semibold mb-2">{{devTranslate('page.Others', 'Overige')}}</h3>
+                        <p class="paragraph text-sm">({{$categoriesForCount[2]['veterinarians_count']}} {{ devTranslate('page.Vermeldingen','Vermeldingen') }})</p>
                     </div>
                 </div>
 
@@ -428,8 +428,8 @@
                         <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/shelters.png')}}" alt="">
                     </figure>
                     <div class="content text-center p-4">
-                        <h3 class="title text-md font-semibold mb-2">Shelters</h3>
-                        <p class="paragraph text-sm">(100 Listings)</p>
+                        <h3 class="title text-md font-semibold mb-2">{{devTranslate('page.Shelters', 'Asielen')}}</h3>
+                        <p class="paragraph text-sm">({{$categoriesForCount[3]['veterinarians_count']}} {{ devTranslate('page.Vermeldingen','Vermeldingen') }})</p>
                     </div>
                 </div>
 
@@ -438,8 +438,8 @@
                         <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/specialists.png')}}" alt="">
                     </figure>
                     <div class="content text-center p-4">
-                        <h3 class="title text-md font-semibold mb-2">Specialists</h3>
-                        <p class="paragraph text-sm">(50 Listings)</p>
+                        <h3 class="title text-md font-semibold mb-2">{{devTranslate('page.Specialists', 'Specialisten')}}</h3>
+                        <p class="paragraph text-sm">({{$categoriesForCount[4]['veterinarians_count']}} {{ devTranslate('page.Vermeldingen','Vermeldingen') }})</p>
                     </div>
                 </div>
 
@@ -448,8 +448,8 @@
                         <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/emergencies.png')}}" alt="">
                     </figure>
                     <div class="content text-center p-4">
-                        <h3 class="title text-md font-semibold mb-2">Emergencies</h3>
-                        <p class="paragraph text-sm">(50 Listings)</p>
+                        <h3 class="title text-md font-semibold mb-2">{{devTranslate('page.Emergencies', 'Noodgevallen')}}</h3>
+                        <p class="paragraph text-sm">({{$categoriesForCount[5]['veterinarians_count']}} {{ devTranslate('page.Vermeldingen','Vermeldingen') }})</p>
                     </div>
                 </div>
             </div>

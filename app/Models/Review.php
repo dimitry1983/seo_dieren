@@ -23,4 +23,14 @@ class Review extends Model
     {
         return $this->hasMany(Review::class, 'parent_id');
     }
+
+    public static function getRandomReviews($limit = 2)
+    {
+        return self::with('veterinarian')
+            ->where('parent_id', null)
+            ->where('description', '!=', 'Niet aanwezig')
+            ->inRandomOrder()
+            ->take($limit)
+            ->get();
+    }
 }

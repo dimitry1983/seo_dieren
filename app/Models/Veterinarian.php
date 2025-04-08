@@ -192,4 +192,31 @@ class Veterinarian extends Model
 
         return "{$name} is gevestigd in {$city}, provincie {$province}. {$categorySentence} Ze bieden diensten aan zoals {$services}. {$openings} {$website}";
     }
+
+    public static function get3latestVets(){
+        return self::query()
+            ->with('featuredImage')
+            ->orderByDesc('veterinarians.id')
+            ->take(3)
+            ->get();
+    }
+
+    public static function get3BestRatedVets($limit = 3){
+        return self::query()
+            ->with('featuredImage')
+            ->withAvg('reviews', 'rating')
+            ->orderByDesc('rating')
+            ->take($limit)
+            ->get();
+    }
+
+    public static function get3MostViewedVets(){
+        return self::query()
+            ->with('featuredImage')
+            ->orderByDesc('views')
+            ->take(3)
+            ->get();
+    }
+
+
 }

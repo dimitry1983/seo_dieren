@@ -35,7 +35,7 @@ class Blogs extends Component implements HasForms
 
     public function mount(){
         $this -> blog = new Blog(); 
-        $this -> result = Veterinarian::where('id', Auth::user()->id)->first();
+        $this -> result = Veterinarian::where('user_id', Auth::user()->id)->first();
         $this->form->fill();
     }
 
@@ -152,14 +152,14 @@ class Blogs extends Component implements HasForms
     }
 
     public function loadBlog($id){
-        $results = Veterinarian::where('id', Auth::user()->id)->first();
+        $results = Veterinarian::where('user_id', Auth::user()->id)->first();
         $this->blog  = Blog::where('veterinarian_id', $results -> id)->find($id);
         $this->blog = $this->blog->toArray();
         $this->form->fill($this->blog);
     }
 
     public function deleteBlog($id){
-        $results = Veterinarian::where('id', Auth::user()->id)->first();
+        $results = Veterinarian::where('user_id', Auth::user()->id)->first();
         $blog = Blog::where('veterinarian_id', $results -> id)->findOrFail($id);
         $blog->delete();
         $this -> dispatch('saved');
@@ -170,7 +170,7 @@ class Blogs extends Component implements HasForms
     {
         $active = "blogs";
 
-        $results = Veterinarian::where('id', Auth::user()->id)->first();
+        $results = Veterinarian::where('user_id', Auth::user()->id)->first();
         $blogs = Blog::where('veterinarian_id', $results->id)->orderBy('id', 'DESC')->paginate(5);
         
         return view('livewire.company.blogs', ['active' => $active, 'blogs' => $blogs])->layout('layouts.company');

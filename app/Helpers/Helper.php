@@ -546,6 +546,18 @@ function getPageBuilderSchema(){
             ]),
         ]),
 
+        FilamentBuilder\Block::make('green_usp')
+        ->schema([
+            TextInput::make('title'),
+            Repeater::make('usp')
+            ->schema([
+                TextInput::make('title')
+            ]),
+            TextInput::make('cta_url_btn1'),
+            TextInput::make('cta_title_btn1'),
+            TextInput::make('cta_url_btn2'),
+            TextInput::make('cta_title_btn2'),
+        ]),
 
         // Event block
         // FilamentBuilder\Block::make('events')

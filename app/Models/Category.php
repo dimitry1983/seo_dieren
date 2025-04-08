@@ -21,4 +21,9 @@ class Category extends Model
         return Category::all();
     }
     
+
+    public function veterinarians()
+    {
+        return $this->belongsToMany(Veterinarian::class, 'veterinarians_categories');
+    }
 }

@@ -854,6 +854,48 @@ h3.adv span {
   color: rgb(0 153 153 / var(--tw-text-opacity, 1));
 }
 
+.section--interior-blog h2 {
+  margin-top: 1.25rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  line-height: 1.25;
+}
+
+@media (min-width: 1024px) {
+  .section--interior-blog h2 {
+    font-size: 32px;
+  }
+}
+
+.section--interior-blog h3 {
+  margin-top: 1.25rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  line-height: 1.25;
+}
+
+@media (min-width: 1024px) {
+  .section--interior-blog h3 {
+    font-size: 26px;
+  }
+}
+
+.section--interior-blog .sidebar h3 {
+  margin-top: 1.25rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  line-height: 1.25;
+}
+
+@media (min-width: 1024px) {
+  .section--interior-blog .sidebar h3 {
+    font-size: 16px;
+  }
+}
+
 .container {
   width: 100%;
 }
@@ -2555,6 +2597,10 @@ h3.adv span {
   background-position: right;
 }
 
+.bg-no-repeat {
+  background-repeat: no-repeat;
+}
+
 .fill-\[\#3ec0bf\] {
   fill: #3ec0bf;
 }
@@ -2888,6 +2934,10 @@ h3.adv span {
 
 .pt-\[90px\] {
   padding-top: 90px;
+}
+
+.pt-5 {
+  padding-top: 1.25rem;
 }
 
 .text-left {
@@ -3468,11 +3518,6 @@ h3.adv span {
   position: absolute;
 }
 
-.before\:inset-0::before {
-  content: var(--tw-content);
-  inset: 0px;
-}
-
 .before\:bottom-0::before {
   content: var(--tw-content);
   bottom: 0px;
@@ -3595,13 +3640,6 @@ h3.adv span {
 .before\:bg-gradient-to-t::before {
   content: var(--tw-content);
   background-image: linear-gradient(to top, var(--tw-gradient-stops));
-}
-
-.before\:from-black::before {
-  content: var(--tw-content);
-  --tw-gradient-from: #000 var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(0 0 0 / 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
 .before\:from-black\/100::before {
@@ -4475,8 +4513,17 @@ h3.adv span {
     background-size: cover;
   }
 
+  .lg\:bg-contain {
+    background-size: contain;
+  }
+
   .lg\:bg-right {
     background-position: right;
+  }
+
+  .lg\:object-contain {
+    -o-object-fit: contain;
+       object-fit: contain;
   }
 
   .lg\:p-0 {

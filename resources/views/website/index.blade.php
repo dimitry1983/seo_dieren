@@ -1,6 +1,9 @@
 @extends('layouts.site')
 
 @section('content')
+@php
+    setlocale(LC_TIME, 'nl_NL.UTF-8');
+@endphp
 <div class="main-container relative w-full overflow-hidden">
     @php
         if (isset($headerBlock['background-image'])):
@@ -133,87 +136,108 @@
                 <button class="pill font-medium active border-b-4 border-b-primary px-4 sm:px-6 mb-2  hover:border-b-primary" data-filter="all">{{ devTranslate('page.All','Alles') }}</button>
                 <button class="pill font-medium border-b-2 border-b-[#D2D3D4] px-4 sm:px-6 mb-2  hover:border-b-primary" data-filter="best-rated">{{ devTranslate('page.Best Rated','Best Beoordeeld') }}</button>
                 <button class="pill font-medium border-b-2 border-b-[#D2D3D4] px-4 sm:px-6 mb-2  hover:border-b-primary" data-filter="most-viewed">{{ devTranslate('page.Most Viewed','Meest bekeken') }}</button>
-                <button class="pill font-medium border-b-2 border-b-[#D2D3D4] px-4 sm:px-6 mb-2  hover:border-b-primary" data-filter="veterinarians">{{ devTranslate('page.Veterinarians','Dierenartsen') }}</button>
-                <button class="pill font-medium border-b-2 border-b-[#D2D3D4] px-4 sm:px-6 mb-2  hover:border-b-primary" data-filter="clinics">{{ devTranslate('page.Clinics','Klinieken') }}</button>
             </div>
 
             <div class="content-blocks grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                <div class="block-hotspots bg-white border border-gray-300 transition duration-300 ease-out hover:shadow-lg category-best-rated">
-                    <figure class="m-0 overflow-hidden">
-                        <a href="{{route('profile', ['slug' => 'dierenkliniek' , 'id' => 9])}}"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/block-4.png')}}" alt=""></a>
-                    </figure>
-                    <div class="content p-[20px]">
-                        <h3 class="title font-bold text-lg">
-                            <a href="{{route('profile', ['slug' => 'dierenkliniek' , 'id' => 9])}}">Amsterdam Clinic</a>
-                            <span class="rating float-right text-yellow-500 text-xs">
-                                <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
-                            </span>
-                        </h3>
-                        <h4 class="subtitle text-sm text-gray-800 mb-2">Lorem Ipsum Dolor Sit Amet</h4>
-                        <p class="location text-xs mb-0">
-                            <i class="fa-solid fa-location-dot text-primary"></i> 9999 BP Amsterdam, Netherlands
-                        </p>
-                        <a class="text-xs" href="#">
-                            <i class="fa-solid fa-phone text-primary"></i> +1800 956 687
-                        </a>
-                        <h4 class="price font-bold text-lg mt-2">
-                            From €60.00
-                            <a class="float-right text-sm font-normal underline hover:text-primary" href="#">View More</a>
-                        </h4>
-                    </div>
-                </div>
-                <div class="block-hotspots bg-white border border-gray-300 transition duration-300 ease-out hover:shadow-lg category-most-viewed">
-                    <figure class="m-0 overflow-hidden">
-                        <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/block-5.jpg')}}" alt=""></a>
-                    </figure>
-                    <div class="content p-[20px]">
-                        <h3 class="title font-bold text-lg">
-                            <a href="#">VetCare</a>
-                            <span class="rating float-right text-yellow-500 text-xs">
-                                <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
-                            </span>
-                        </h3>
-                        <h4 class="subtitle text-sm text-gray-800 mb-2">Lorem Ipsum Dolor Sit Amet</h4>
-                        <p class="location text-xs mb-0">
-                            <i class="fa-solid fa-location-dot text-primary"></i> 9999 BP Amsterdam, Netherlands
-                        </p>
-                        <a class="text-xs" href="#">
-                            <i class="fa-solid fa-phone text-primary"></i> +1800 956 687
-                        </a>
-                        <h4 class="price font-bold text-lg mt-2">
-                            From €50.00
-                            <a class="float-right text-sm font-normal underline hover:text-primary" href="#">View More</a>
-                        </h4>
-                    </div>
-                </div>
-                <div class="block-hotspots bg-white border border-gray-300 transition duration-300 ease-out hover:shadow-lg category-clinics">
-                    <figure class="m-0 overflow-hidden">
-                        <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/block-6.jpg')}}" alt=""></a>
-                    </figure>
-                    <div class="content p-[20px]">
-                        <h3 class="title font-bold text-lg">
-                            <a href="#">Happy Pets Clinic</a>
-                            <span class="rating float-right text-yellow-500 text-xs">
-                                <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
-                            </span>
-                        </h3>
-                        <h4 class="subtitle text-sm text-gray-800 mb-2">Lorem Ipsum Dolor Sit Amet</h4>
-                        <p class="location text-xs mb-0">
-                            <i class="fa-solid fa-location-dot text-primary"></i> 9999 BP Amsterdam, Netherlands
-                        </p>
-                        <a class="text-xs" href="#">
-                            <i class="fa-solid fa-phone text-primary"></i> +1800 956 687
-                        </a>
-                        <h4 class="price font-bold text-lg mt-2">
-                            From €70.00
-                            <a class="float-right text-sm font-normal underline hover:text-primary" href="#">View More</a>
-                        </h4>
-                    </div>
-                </div>
+                
+                @if (!empty($bestVets))
+                    <?php $teller = 4; ?>
+                    @foreach($bestVets as $vet)
+                        <div class="block-hotspots bg-white border border-gray-300 transition duration-300 ease-out hover:shadow-lg category-best-rated">
+                            <figure class="m-0 overflow-hidden">
+                                <a href="{{ route('profile', ['slug' => slugify($vet->name), 'id' => $vet->id]) }}">
+                                    @if (!empty($vet->featuredImage->name))
+                                        <img class="w-full transition-transform duration-300 ease-out hover:scale-105"
+                                            src="{{ asset('storage/uploads/' . $vet->featuredImage->name) }}"
+                                            alt="{{ $vet->name }}">
+                                    @else
+                                        <img class="w-full transition-transform duration-300 ease-out hover:scale-105"
+                                            src="{{ asset('dieren/src/public/img/block-' . $teller . '.jpg') }}"
+                                            alt="{{ $vet->name }}">
+                                    @endif
+                                </a>
+                            </figure>
+                            <div class="content p-[20px]">
+                                <h3 class="title font-bold text-lg">
+                                    <a href="{{ route('profile', ['slug' => slugify($vet->name), 'id' => $vet->id]) }}">
+                                        {{ $vet->name }}
+                                    </a>
+                                    <span class="rating float-right text-yellow-500 text-xs">
+                                        {!! render_stars($vet->rating) !!}
+                                    </span>
+                                </h3>
+                                <h4 class="subtitle text-sm text-gray-800 mb-2">{{ $vet->excerpt }}</h4>
+                                <p class="location text-xs mb-0">
+                                    <i class="fa-solid fa-location-dot text-primary"></i> {{ $vet->zipcode }} {{ $vet->street }}, Nederland
+                                </p>
+                                <a class="text-xs" href="tel:{{ $vet->phone }}">
+                                    <i class="fa-solid fa-phone text-primary"></i> {{ $vet->phone }}
+                                </a>
+                                <h4 class="price font-bold text-lg mt-2">
+                                    {{-- You can add dynamic pricing here if available --}}
+                                    <a class="float-right text-sm font-normal underline hover:text-primary"
+                                    href="{{ route('profile', ['slug' => slugify($vet->name), 'id' => $vet->id]) }}">
+                                        {{ devTranslate('page.View more','Bekijk meer ') }}
+                                    </a>
+                                </h4>
+                                <br/>
+                            </div>
+                        </div>
+                        <?php $teller++; ?>
+                    @endforeach
+                @endif
+                
+                @if (!empty($mostViewedVets))
+                    <?php $teller = 4; ?>
+                    @foreach($mostViewedVets as $vet)
+                        <div class="block-hotspots bg-white border border-gray-300 transition duration-300 ease-out hover:shadow-lg category-most-viewed">
+                            <figure class="m-0 overflow-hidden">
+                                <a href="{{ route('profile', ['slug' => slugify($vet->name), 'id' => $vet->id]) }}">
+                                    @if (!empty($vet->featuredImage->name))
+                                        <img class="w-full transition-transform duration-300 ease-out hover:scale-105"
+                                            src="{{ asset('storage/uploads/' . $vet->featuredImage->name) }}"
+                                            alt="{{ $vet->name }}">
+                                    @else
+                                        <img class="w-full transition-transform duration-300 ease-out hover:scale-105"
+                                            src="{{ asset('dieren/src/public/img/block-' . $teller . '.jpg') }}"
+                                            alt="{{ $vet->name }}">
+                                    @endif
+                                </a>
+                            </figure>
+                            <div class="content p-[20px]">
+                                <h3 class="title font-bold text-lg">
+                                    <a href="{{ route('profile', ['slug' => slugify($vet->name), 'id' => $vet->id]) }}">
+                                        {{ $vet->name }}
+                                    </a>
+                                    <span class="rating float-right text-yellow-500 text-xs">
+                                        {!! render_stars($vet->rating) !!}
+                                    </span>
+                                </h3>
+                                <h4 class="subtitle text-sm text-gray-800 mb-2">{{ $vet->excerpt }}</h4>
+                                <p class="location text-xs mb-0">
+                                    <i class="fa-solid fa-location-dot text-primary"></i> {{ $vet->zipcode }} {{ $vet->street }}, Nederland
+                                </p>
+                                <a class="text-xs" href="tel:{{ $vet->phone }}">
+                                    <i class="fa-solid fa-phone text-primary"></i> {{ $vet->phone }}
+                                </a>
+                                <h4 class="price font-bold text-lg mt-2">
+                                    {{-- Add dynamic pricing here if you have it --}}
+                                    <a class="float-right text-sm font-normal underline hover:text-primary"
+                                    href="{{ route('profile', ['slug' => slugify($vet->name), 'id' => $vet->id]) }}">
+                                        {{ devTranslate('page.View more','Bekijk meer ') }}
+                                    </a>
+                                </h4>
+                                <br/>
+                            </div>
+                        </div>
+                        <?php $teller++; ?>
+                    @endforeach
+                @endif
+
+            
             </div>
+
+
             <img src="{{ asset('dieren/src/public/img/bg-blocks.png')}}" alt="" class="absolute top-[-80px] right-[-60px] z-[-1]">
         </div>
     </section>
@@ -232,13 +256,13 @@
                 <a href="#" class="btn btn-outline-black border border-gray-800 py-2 px-4 rounded-full font-bold whitespace-nowrap mt-4 md:mt-0 transition duration-300 ease-out hover:bg-black hover:text-white w-fit">{{devTranslate('page.Explore All', 'Bekijk alles')}}</a>
             </div>
             <div class="categories grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            <div class="category border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
+                <div class="category border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
                     <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
                         <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/dog.png') }}" alt="">
                     </figure>
                     <div class="content text-center p-4">
                         <h3 class="title text-md font-semibold mb-2">{{devTranslate('page.Dogs', 'Honden')}}</h3>
-                        <p class="paragraph text-sm">(150 Listings)</p>
+                        <p class="paragraph text-sm">({{$categoriesForCount[0]['veterinarians_count']}} {{ devTranslate('page.Vermeldingen','Vermeldingen') }})</p>
                     </div>
                 </div>
 
@@ -248,7 +272,7 @@
                     </figure>
                     <div class="content text-center p-4">
                         <h3 class="title text-md font-semibold mb-2">{{devTranslate('page.Cats', 'Katten')}}</h3>
-                        <p class="paragraph text-sm">(150 Listings)</p>
+                        <p class="paragraph text-sm">({{$categoriesForCount[1]['veterinarians_count']}} {{ devTranslate('page.Vermeldingen','Vermeldingen') }})</p>
                     </div>
                 </div>
 
@@ -258,7 +282,7 @@
                     </figure>
                     <div class="content text-center p-4">
                         <h3 class="title text-md font-semibold mb-2">{{devTranslate('page.Others', 'Overige')}}</h3>
-                        <p class="paragraph text-sm">(100 Listings)</p>
+                        <p class="paragraph text-sm">({{$categoriesForCount[2]['veterinarians_count']}} {{ devTranslate('page.Vermeldingen','Vermeldingen') }})</p>
                     </div>
                 </div>
 
@@ -268,7 +292,7 @@
                     </figure>
                     <div class="content text-center p-4">
                         <h3 class="title text-md font-semibold mb-2">{{devTranslate('page.Shelters', 'Asielen')}}</h3>
-                        <p class="paragraph text-sm">(100 Listings)</p>
+                        <p class="paragraph text-sm">({{$categoriesForCount[3]['veterinarians_count']}} {{ devTranslate('page.Vermeldingen','Vermeldingen') }})</p>
                     </div>
                 </div>
 
@@ -278,7 +302,7 @@
                     </figure>
                     <div class="content text-center p-4">
                         <h3 class="title text-md font-semibold mb-2">{{devTranslate('page.Specialists', 'Specialisten')}}</h3>
-                        <p class="paragraph text-sm">(50 Listings)</p>
+                        <p class="paragraph text-sm">({{$categoriesForCount[4]['veterinarians_count']}} {{ devTranslate('page.Vermeldingen','Vermeldingen') }})</p>
                     </div>
                 </div>
 
@@ -288,7 +312,7 @@
                     </figure>
                     <div class="content text-center p-4">
                         <h3 class="title text-md font-semibold mb-2">{{devTranslate('page.Emergencies', 'Noodgevallen')}}</h3>
-                        <p class="paragraph text-sm">(50 Listings)</p>
+                        <p class="paragraph text-sm">({{$categoriesForCount[5]['veterinarians_count']}} {{ devTranslate('page.Vermeldingen','Vermeldingen') }})</p>
                     </div>
                 </div>
             </div>
@@ -449,11 +473,10 @@
                 </div>
                 @if (!empty($darkBanner['about']))
                     @foreach($darkBanner['about'] as $item)
-                    
-                    <div class="text-center">
-                        <p class="text-white">{{$item['title']}}</p>
-                        <span class="text-primaryLight font-medium text-5xl md:text-6xl block">{{$item['number']}}</span>
-                    </div>
+                        <div class="text-center">
+                            <p class="text-white">{{$item['title']}}</p>
+                            <span class="text-primaryLight font-medium text-5xl md:text-6xl block">{{$item['number']}}</span>
+                        </div>
                     @endforeach
                 @endif
             </div>
@@ -468,49 +491,36 @@
                         {{ devTranslate('page.Read our references','Bekijk onze recencies') }}
                     </h4>
                     <h3 class="title title--section font-bold text-3xl text-gray-800  leading-tight md:leading-tight lg:leading-normal">
-                    {{ devTranslate('page.What Our Customers','Wat onze klanten') }} <span class="text-primary">{{ devTranslate('page.Are Saying...','Zeggen...') }}</span>
+                        {{ devTranslate('page.What Our Customers','Wat onze klanten') }} <span class="text-primary">{{ devTranslate('page.Are Saying...','Zeggen...') }}</span>
                     </h3>
                 </div>
                 <a href="#" class="btn btn-outline-black border border-gray-800 py-2 px-4 rounded-full font-bold whitespace-nowrap mt-4 lg:mt-0 transition duration-300 ease-out hover:bg-black hover:text-white">{{devTranslate('page.Explore All', 'Bekijk alles')}}</a>
             </div>
             <div class="testimonials grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div class="review border border-gray-300 py-[50px] px-[30px] md:p-[50px] bg-white">
-                    <div class="d-rating flex justify-center items-center">
-                        <figure class="w-[100px] h-[100px] rounded-full overflow-hidden mb-4">
-                            <img class="w-full h-full" src="{{ asset('dieren/src/public/img/review.png')}}" alt="">
-                        </figure>
-                        <p class="rating text-yellow-500 text-xs mb-0 mt-4 ml-2">
-                            <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
+                
+                @if (!empty($getRandomReviews))
+                    @foreach($getRandomReviews as $review)
+                    <div class="review border border-gray-300 py-[50px] px-[30px] md:p-[50px] bg-white">
+                        <div class="d-rating flex justify-center items-center">
+                            <figure class="w-[100px] h-[100px] rounded-full overflow-hidden mb-4">
+                                <img class="w-full h-full" src="{{ asset('dieren/src/public/img/review.png')}}" alt="">
+                            </figure>
+                            <p class="rating text-yellow-500 text-xs mb-0 mt-4 ml-2">
+                                {!! render_stars($review->rating) !!}
+                            </p>
+                        </div>
+                        <p class="review__content text-xl mb-4 text-center font-medium">
+                            <i>{{ \Illuminate\Support\Str::limit($review->description, 350) }}</i>
                         </p>
-                    </div>
-                    <p class="review__content text-xl mb-4 text-center font-medium">
-                        <i>Lorem ipsum dolor sit amet,<br>consectetur adipiscing elit.<br>Pellentesque nec varius neque.</i>
-                    </p>
-                    <p class="quote font-bold text-6xl text-center text-primary mb-0">"</p>
-                    <h3 class="name text-normal font-bold text-center">User Name
-                        <span class="location text-gray-400 font-normal text-sm">Amsterdam</span>
-                    </h3>
-                </div>
-                <div class="review border border-gray-300 py-[50px] px-[30px] md:p-[50px] bg-white">
-                    <div class="d-rating flex justify-center items-center">
-                        <figure class="w-[100px] h-[100px] rounded-full overflow-hidden mb-4">
-                            <img class="w-full h-full" src="{{ asset('dieren/src/public/img/review.png')}}" alt="">
-                        </figure>
-                        <p class="rating text-yellow-500 text-xs mb-0 mt-4 ml-2">
-                            <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
-                        </p>
-                    </div>
-                    <p class="review__content text-xl mb-4 text-center font-medium">
-                        <i>Lorem ipsum dolor sit amet,<br>consectetur adipiscing elit.<br>Pellentesque nec varius neque.</i>
-                    </p>
-                    <p class="quote font-bold text-6xl text-center text-primary mb-0">"</p>
-                    <h3 class="name text-normal font-bold text-center">User Name
-                        <span class="location text-gray-400 font-normal text-sm">Amsterdam</span>
-                    </h3>
-                </div>
-            </div>
+                        <p class="quote font-bold text-6xl text-center text-primary mb-0">"</p>
+                        <h3 class="name text-normal font-bold text-center">
+                            {{ $review->name }}
+                            <span class="location text-gray-400 font-normal text-sm">{{ $review->city }}</span>
+                        </h3>
+                    </div> 
+                    @endforeach
+                @endif
+             </div> 
         </div>
     </section>
 
@@ -520,51 +530,31 @@
             {{ devTranslate('page.From blog','Het laatste') }} <span class="text-primary">{{ devTranslate('page.Our Blog','Nieuws') }}</span>
             </h3>
             <div class="posts grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg">
-                    <figure class="m-0 overflow-hidden">
-                        <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/blog-1.png')}}" alt=""></a>
-                    </figure>
-                    <div class="content p-[20px] pb-[30px]">
-                        <p class="text-primary text-normal date">20 February, 2025</p>
-                        <h3 class="title font-bold text-lg">
-                            <a href="#">Lorem Ipsum Dolor</a>
-                        </h3>
-                        <p class="mb-5">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec varius.
-                        </p>
-                        <a href="#" class="btn btn-outline-black text-normal font-bold block w-fit mx-auto border border-gray-800 py-2 px-4 rounded-full transition duration-300 ease-out hover:bg-black hover:text-white">Read Article</a>
-                    </div>
-                </div>
-                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg">
-                    <figure class="m-0 overflow-hidden">
-                        <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/blog-2.png')}}" alt=""></a>
-                    </figure>
-                    <div class="content p-[20px] pb-[30px]">
-                        <p class="text-primary text-normal date">20 February, 2025</p>
-                        <h3 class="title font-bold text-lg">
-                            <a href="#">Lorem Ipsum Dolor</a>
-                        </h3>
-                        <p class="mb-5">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec varius.
-                        </p>
-                        <a href="#" class="btn btn-outline-black text-normal font-bold block w-fit mx-auto border border-gray-800 py-2 px-4 rounded-full transition duration-300 ease-out hover:bg-black hover:text-white">Read Article</a>
-                    </div>
-                </div>
-                <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg">
-                    <figure class="m-0 overflow-hidden">
-                        <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/blog-3.png')}}" alt=""></a>
-                    </figure>
-                    <div class="content p-[20px] pb-[30px]">
-                        <p class="text-primary text-normal date">20 February, 2025</p>
-                        <h3 class="title font-bold text-lg">
-                            <a href="#">Lorem Ipsum Dolor</a>
-                        </h3>
-                        <p class="mb-5">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec varius.
-                        </p>
-                        <a href="#" class="btn btn-outline-black text-normal font-bold block w-fit mx-auto border border-gray-800 py-2 px-4 rounded-full transition duration-300 ease-out hover:bg-black hover:text-white">Read Article</a>
-                    </div>
-                </div>
+                @if (!empty($blogs))
+                    @foreach($blogs as $blog)
+                        <div class="block-blog border border-gray-300 transition duration-300 ease-out hover:shadow-lg">
+                            <figure class="m-0 overflow-hidden">
+                                <a href="#">
+                                    <img class="w-full transition-transform duration-300 ease-out hover:scale-105"
+                                        src="{{ asset('storage/'.$blog->thumb ?? 'dieren/src/public/img/blog-2.png') }}"
+                                        alt="{{ $blog->name }}">
+                                </a>
+                            </figure>
+                            <div class="content p-[20px] pb-[30px]">
+                                <p class="text-primary text-normal date">{{ strftime('%d %B %Y', strtotime($blog->created_at)) }}</p>
+                                <h3 class="title font-bold text-lg">
+                                    <a href="{{ route('blog.detail', [ 'slug' => slugify($blog->name) , 'id' => $blog->id ]) }}">{{ $blog->name }}</a>
+                                </h3>
+                                <p class="mb-5">
+                                    {{ \Illuminate\Support\Str::limit(strip_tags($blog->description), 120) }}
+                                </p>
+                                <a href="{{ route('blog.detail', [ 'slug' => slugify($blog->name) , 'id' => $blog->id ]) }}" class="btn btn-outline-black text-normal font-bold block w-fit mx-auto border border-gray-800 py-2 px-4 rounded-full transition duration-300 ease-out hover:bg-black hover:text-white">
+                                    {{ devTranslate('page.Read Article','Lees verder') }}
+                                </a>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
             </div>
             <img src="{{ asset('dieren/src/public/img/bg-blocks.png')}}" alt="" class="absolute top-[-80px] right-[-60px] z-[-1]">
         </div>
