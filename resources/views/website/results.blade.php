@@ -3,9 +3,9 @@
 @section('content')
     <div class="main-container relative w-full overflow-hidden">
         <section class="section section--hero-interior bg-[url('../../../src/public/img/results-hero.png')] bg-cover bg-center bg-center">
-            <div class="container p-2 mx-auto lg:pt-[120px] sm:pt-[50px] sm:pb-[80px] pt-[30px] pb-[50px]">
+            <div class="container p-2 mx-auto lg:pt-[10px] sm:pt-[10px] sm:pb-[80px] pt-[30px] pb-[50px]">
                 <h1 class="text-6xl text-center font-regular text-gray-800 leading-tight md:leading-tight lg:leading-normal">
-                    Discover The Best<br><strong>Veterinary Clinics</strong>
+                    Discover The Best<strong>Veterinary Clinics</strong>
                 </h1>
             </div>
         </section>

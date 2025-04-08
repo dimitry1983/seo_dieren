@@ -6,7 +6,7 @@
     <section class="section section--hero-interior bg-cover bg-center" style="background-image: url('{{ asset('dieren/src/public/img/results-hero.png') }}');">
         <div class="container mx-auto lg:pt-[120px] lg:pb-[180px] md:pt-[80px] md:pb-[120px] sm:pt-[50px] sm:pb-[80px] pt-[30px] pb-[50px]">
             <h1 class="text-6xl text-center font-regular text-gray-800 leading-tight md:leading-tight lg:leading-normal">
-                Discover The Best<br><strong>Veterinary Clinics</strong>
+                Discover The Best <strong>Veterinary Clinics</strong>
             </h1>
         </div>
     </section>

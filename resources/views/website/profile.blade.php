@@ -12,10 +12,9 @@
                     <img src="{{ asset('dieren/src/public/img/clinic.png')}}" alt="">
                 </figure>
                 <h3 class="title title--profile text-md font-bold ml-4 leading-tight md:leading-tight lg:leading-normal">
-                    Amsterdam Clinic | <span class="rating text-yellow-500">
-                        <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
-                    </span> <span>9.0 - (10 beoordelingen)</span>
+                    {{ $veterinarian->name }} |
+                    {!! render_stars($veterinarian->rating) !!}
+                    <span>{{ number_format($veterinarian->rating, 1) }} - (.. beoordelingen)</span>
                 </h3>
             </div>
         </div>
@@ -28,133 +27,65 @@
                     <div class="pills border border-gray-300 shadow-lg mb-8">
                         <ul class="md:flex py-3">
                             <li class="px-1 xl:px-3">
-                                <button class="btn btn-primaryLight">Informatie</button>
+                                <button class="btn btn-primaryLight">{{ devTranslate('page.Informatie','Informatie') }}</button>
                             </li>
                             <li class="xl:px-3 md:border-l md:border-l-gray-300">
-                                <button class="btn btn-primary bg-white">Diensten</button>
+                                <button class="btn btn-primary bg-white">{{ devTranslate('page.Diensten','Diensten') }}</button>
                             </li>
                             <li class="xl:px-3 md:border-l md:border-l-gray-300">
-                                <button class="btn btn-primary bg-white">Galerij</button>
+                                <button class="btn btn-primary bg-white">{{ devTranslate('page.Galerij','Galerij') }}</button>
                             </li>
                             <li class="xl:px-3 md:border-l md:border-l-gray-300">
-                                <button class="btn btn-primary bg-white">Prijzen</button>
+                                <button class="btn btn-primary bg-white">{{ devTranslate('page.Prijzen','Prijzen') }}</button>
                             </li>
                             <li class="xl:px-3 md:border-l md:border-l-gray-300">
-                                <button class="btn btn-primary bg-white">Beoordelingen</button>
+                                <button class="btn btn-primary bg-white">{{ devTranslate('page.Beoordelingen','Beoordelingen') }}</button>
                             </li>
                         </ul>
                     </div>
                     <div class="content border border-gray-300 shadow-lg px-[30px] py-[50px] mb-6 relative">
                         <h4 class="subtitle w-fit text-md font-semibold relative before:content-[''] before:w-[20px] before:h-[2px] before:bg-primary before:absolute before:right-[-30px] before:top-1/2 before:-translate-y-1/2">
-                            Informatie
+                            {{ devTranslate('page.Informatie','Informatie') }}
                         </h4>
                         <h3 class="title title--section font-bold text-3xl text-gray-800">
-                            <span class="text-primary">Amsterdam</span> Clinic
+                            <span class="text-primary">{{$veterinarian->name}}</span>
                         </h3>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.
+                            {!!$veterinarian->description!!}
                         </p>
-                        <ul>
-                            <li class="font-semibold mb-3">
-                                <i class="fa-regular fa-circle-check text-primary"></i> Lorem ipsum dolor sit amet consectetur adipcing elit.
-                            </li>
-                            <li class="font-semibold mb-3">
-                                <i class="fa-regular fa-circle-check text-primary"></i> Lorem ipsum dolor sit amet consectetur adipcing elit.
-                            </li>
-                            <li class="font-semibold mb-3">
-                                <i class="fa-regular fa-circle-check text-primary"></i> Lorem ipsum dolor sit amet consectetur adipcing elit.
-                            </li>
-                        </ul>
                         <img src="{{ asset('dieren/src/public/img/paw.png')}}" alt="" class="absolute top-[20px] right-[20px] z-[0]">
                     </div>
                     <div class="content border border-gray-300 shadow-lg px-[30px] py-[50px] mb-6 relative">
                         <h4 class="subtitle w-fit text-md font-semibold relative before:content-[''] before:w-[20px] before:h-[2px] before:bg-primary before:absolute before:right-[-30px] before:top-1/2 before:-translate-y-1/2">
-                            Diensten
+                            {{ devTranslate('page.Diensten','Diensten') }}
                         </h4>
                         <h3 class="title title--section font-bold text-3xl text-gray-800 mb-6 leading-tight md:leading-tight lg:leading-normal">
-                            <span class="text-primary">Producten</span> En Diensten
+                            <span class="text-primary">{{ devTranslate('page.Producten','Producten') }}</span> {{ devTranslate('page.En Diensten','En Diensten') }}
                         </h3>
                         <div class="services grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-                            <div class="services mb-4 border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
-                                <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
-                                    <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/dog.png')}}" alt="">
-                                </figure>
-                                <div class="content text-center p-4">
-                                    <h3 class="title text-md font-semibold mb-2">Vaccins</h3>
-                                </div>
-                            </div>
-
-                            <div class="services mb-4 border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
-                                <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
-                                    <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/cat.png')}}" alt="">
-                                </figure>
-                                <div class="content text-center p-4">
-                                    <h3 class="title text-md font-semibold mb-2">Ontwormen</h3>
-                                </div>
-                            </div>
-
-                            <div class="services mb-4 border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
-                                <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
-                                    <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/turtle.png')}}" alt="">
-                                </figure>
-                                <div class="content text-center p-4">
-                                    <h3 class="title text-md font-semibold mb-2">Consultaties</h3>
-                                </div>
-                            </div>
-
-                            <div class="services mb-4 border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
-                                <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
-                                    <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/shelters.png')}}" alt="">
-                                </figure>
-                                <div class="content text-center p-4">
-                                    <h3 class="title text-md font-semibold mb-2">Operaties</h3>
-                                </div>
-                            </div>
-
-                            <div class="services mb-4 border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
-                                <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
-                                    <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/specialists.png')}}" alt="">
-                                </figure>
-                                <div class="content text-center p-4">
-                                    <h3 class="title text-md font-semibold mb-2">Spoedgevallen</h3>
-                                </div>
-                            </div>
-
-                            <div class="services mb-4 border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
-                                <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
-                                    <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/emergencies.png')}}" alt="">
-                                </figure>
-                                <div class="content text-center p-4">
-                                    <h3 class="title text-md font-semibold mb-2">Voedingsadvies</h3>
-                                </div>
-                            </div>
-
-                            <div class="services mb-4 border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
-                                <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
-                                    <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/emergencies.png')}}" alt="">
-                                </figure>
-                                <div class="content text-center p-4">
-                                    <h3 class="title text-md font-semibold mb-2">Accessoires</h3>
-                                </div>
-                            </div>
-
-                            <div class="services mb-4 border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
-                                <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
-                                    <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/emergencies.png')}}" alt="">
-                                </figure>
-                                <div class="content text-center p-4">
-                                    <h3 class="title text-md font-semibold mb-2">Verkoop Van Medicijen</h3>
-                                </div>
-                            </div>
+                           
+                        
+                            @if (!empty($veterinarian->services)) 
+                                @foreach($veterinarian->services as $item)
+                                    <div class="services mb-4 border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
+                                        <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
+                                            <img class="m-auto w-full h-full object-cover" src="{{ asset('storage/'.$item->image)}}" alt="">
+                                        </figure>
+                                        <div class="content text-center p-4">
+                                            <h3 class="title text-md font-semibold mb-2">{{$item->name}}</h3>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
                         </div>
                         <img src="{{ asset('dieren/src/public/img/paw.png')}}" alt="" class="absolute top-[20px] right-[20px] z-[0]">
                     </div>
                     <div class="gallery border border-gray-300 shadow-lg px-[30px] py-[50px] mb-6 relative">
                         <h4 class="subtitle w-fit text-md font-semibold relative before:content-[''] before:w-[20px] before:h-[2px] before:bg-primary before:absolute before:right-[-30px] before:top-1/2 before:-translate-y-1/2">
-                            Galerij
+                            {{ devTranslate('page.Galerij','Galerij') }}
                         </h4>
                         <h3 class="title title--section font-bold text-3xl text-gray-800 mb-6 leading-tight md:leading-tight lg:leading-normal">
-                            <span class="text-primary">Aenean</span> Massa
+                            <span class="text-primary">{{ devTranslate('page.Sfeer','Sfeer') }}</span> {{ devTranslate('page.Impressie','Impressie') }}
                         </h3>
                         <div class="splide" id="gallery-slider">
                             <div class="splide__track">
@@ -185,10 +116,10 @@
                     </div>
                     <div class="prices border border-gray-300 shadow-lg px-[30px] py-[50px] mb-6 relative">
                         <h4 class="subtitle w-fit text-md font-semibold relative before:content-[''] before:w-[20px] before:h-[2px] before:bg-primary before:absolute before:right-[-30px] before:top-1/2 before:-translate-y-1/2">
-                            Prijzen
+                            {{ devTranslate('page.Prijzen','Prijzen') }}
                         </h4>
                         <h3 class="title title--section font-bold text-3xl text-gray-800 mb-6 leading-tight md:leading-tight lg:leading-normal">
-                            <span class="text-primary">Aenean</span> Massa
+                            <span class="text-primary">{{ devTranslate('page.Wat kunt u','Wat kunt u') }}</span> {{ devTranslate('page.Verwachten','Verwachten') }}
                         </h3>
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
                             <div class="lg:col-span-1 border-gray-300 shadow-lg px-[30px] py-[50px] mb-6">
@@ -196,12 +127,14 @@
                                     <img src="{{ asset('dieren/src/public/img/icon1.png')}}" alt="">
                                 </figure>
                                 <h3 class="title title--services text-2xl font-bold text-gray-800 mb-4">
-                                    Diensten
+                                    {{ devTranslate('page.Diensten','Diensten') }}
                                 </h3>
                                 <ul>
+                                 
                                     <li class="mb-3 flex">
                                         <i class="fa-regular fa-circle-check text-primary mr-1"></i> Overleg <span class="price block ml-auto">€35,00</span>
                                     </li>
+
                                     <li class="mb-3 flex">
                                         <i class="fa-regular fa-circle-check text-primary mr-1"></i> Vaccins <span class="price block ml-auto">€35,00</span>
                                     </li>
@@ -252,10 +185,10 @@
                     </div>
                     <div class="reviews border border-gray-300 shadow-lg px-[30px] py-[50px] mb-6 relative">
                         <h4 class="subtitle w-fit text-md font-semibold relative before:content-[''] before:w-[20px] before:h-[2px] before:bg-primary before:absolute before:right-[-30px] before:top-1/2 before:-translate-y-1/2">
-                            Beoordelingen
+                            {{ devTranslate('page.Beoordelingen','Beoordelingen') }}
                         </h4>
                         <h3 class="title title--section font-bold text-3xl text-gray-800 mb-6 leading-tight md:leading-tight lg:leading-normal">
-                            <span class="text-primary">Aenean</span> Massa
+                            <span class="text-primary">{{ devTranslate('page.Wat andere mensen','Wat andere mensen') }}</span> {{ devTranslate('page.Vonden','Vonden') }}
                         </h3>
                         <div class="rate grid lg:grid-cols-3 grid-cols-1 mb-4 pb-6 border-b border-b-gray-300">
                             <div class="lg:col-span-1 col-span-3">
