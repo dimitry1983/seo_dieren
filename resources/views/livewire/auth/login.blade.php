@@ -21,6 +21,7 @@ new #[Layout('layouts.site')] class extends Component {
 
     public function login(): void
     {
+ 
         $this->validate();
         $this->ensureIsNotRateLimited();
 
