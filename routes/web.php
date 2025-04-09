@@ -5,9 +5,12 @@ use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CityController;
 use App\Http\Controllers\OverviewController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
+
+Route::get('/api/cities', [CityController::class, 'search']);
 
 
 Route::middleware(['auth'])->group(function () {
@@ -19,6 +22,8 @@ Route::middleware(['auth'])->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
 
 
 Route::middleware(['auth'])->group(function () {
@@ -36,28 +41,29 @@ Route::middleware(['auth'])->group(function () {
 //routing for the website
 
 // Site Routes
-Route::get('/', [SiteController::class, 'index'])->name('home');
-Route::get('/more-information', [SiteController::class, 'getMoreInformation'])->name('more');
-//getMoreInformation
-Route::get('/zoekresultaten', [SiteController::class, 'results'])->name('results');
-Route::get('/over-ons', [SiteController::class, 'about'])->name('about');
-Route::get('/contact', [SiteController::class, 'contact'])->name('contact');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/', [SiteController::class, 'index'])->name('home');
+    Route::get('/more-information', [SiteController::class, 'getMoreInformation'])->name('more');
+    //getMoreInformation
+    Route::get('/zoekresultaten', [SiteController::class, 'results'])->name('results');
+    Route::get('/over-ons', [SiteController::class, 'about'])->name('about');
+    Route::get('/contact', [SiteController::class, 'contact'])->name('contact');
 
-// Blog Routes
-Route::get('/blog', [BlogController::class, 'overview'])->name('blog.overview');
-Route::get('/blog/{slug}/{id}', [BlogController::class, 'blogDetail'])->name('blog.detail');
+    // Blog Routes
+    Route::get('/blog', [BlogController::class, 'overview'])->name('blog.overview');
+    Route::get('/blog/{slug}/{id}', [BlogController::class, 'blogDetail'])->name('blog.detail');
 
-// Overview Routes
-Route::get('/overzicht', [OverviewController::class, 'map'])->name('map');
+    // Overview Routes
+    Route::get('/overzicht', [OverviewController::class, 'map'])->name('map');
 
-// Profile Routes
-Route::get('/{slug}/{id}', [ProfileController::class, 'profile'])
-    ->where('slug', '^(?!admin).*') // Exclude "admin" as the first segment
-    ->name('profile');
+    // Profile Routes
+    Route::get('/{slug}/{id}', [ProfileController::class, 'profile'])
+        ->where('slug', '^(?!admin).*') // Exclude "admin" as the first segment
+        ->name('profile');
 
-// Search Routes
-Route::get('/zoekresultaat', [SearchController::class, 'search'])->name('search');
-
+    // Search Routes
+   // Route::get('/zoekresultaat', [SearchController::class, 'search'])->name('search');
+});
 
 //routings for dashboard
 

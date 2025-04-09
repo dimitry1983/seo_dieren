@@ -8,39 +8,44 @@
                             <img src="{{ asset('dieren/src/public/img/footer.png')}}" class="mx-auto lg:mx-0">
                         </a>
                     </figure>
+                    @if (!empty($navigations['footer1']))
                     <p class="text-white text-sm sm:text-base">
-                        Accumsan volutpat ocurrersolet numquam accom modare quo et. Et vidit choro aliquid pro inani eir mod vituperata duo.
+                        @foreach($navigations['footer1']['content'] as $item)
+                            {{$item['title']}}
+                        @endforeach
                     </p>
+                    @endif
                 </div>
                 <div class="widget col-span-1 lg:col-span-3">
                     <h4 class="title title--widget text-primary font-bold text-lg mb-[20px]">Home</h4>
                     <ul>
-                        <li class="mb-[15px]"><a class="text-white text-normal hover:font-bold transition" href="#">Browse Category</a></li>
-                        <li class="mb-[15px]"><a class="text-white text-normal hover:font-bold transition" href="#">Listing</a></li>
-                        <li class="mb-[15px]"><a class="text-white text-normal hover:font-bold transition" href="#">Pets</a></li>
-                        <li class="mb-[15px]"><a class="text-white text-normal hover:font-bold transition" href="#">Pricing</a></li>
-                        <li class="mb-[15px]"><a class="text-white text-normal hover:font-bold transition" href="#">Blogs & News</a></li>
+                        @if (!empty($navigations['footer2']))
+                            @foreach ($navigations['footer2']['content'] as $item)
+                                <li class="mb-[15px]"><a class="text-white text-normal hover:font-bold transition" href="{{$item['link']}}">{{$item['title']}}</a></li>
+                            @endforeach
+                        @endif
                     </ul>
                 </div>
                 <div class="widget col-span-1 lg:col-span-2">
                     <h4 class="title title--widget text-primary font-bold text-lg mb-[20px]">Links</h4>
                     <ul>
-                        <li class="mb-[15px]"><a class="text-white text-normal hover:font-bold transition" href="#">Advertise</a></li>
-                        <li class="mb-[15px]"><a class="text-white text-normal hover:font-bold transition" href="#">FAQ's</a></li>
-                        <li class="mb-[15px]"><a class="text-white text-normal hover:font-bold transition" href="{{route('contact')}}">Contact us</a></li>
-                        <li class="mb-[15px]"><a class="text-white text-normal hover:font-bold transition" href="#">Terms of Use</a></li>
-                        <li class="mb-[15px]"><a class="text-white text-normal hover:font-bold transition" href="#">Privacy Policy</a></li>
+                        @if (!empty($navigations['footer3']))
+                            @foreach ($navigations['footer3']['content'] as $item)
+                                <li class="mb-[15px]"><a class="text-white text-normal hover:font-bold transition" href="{{$item['link']}}">{{$item['title']}}</a></li>
+                            @endforeach
+                        @endif
                     </ul>
                 </div>
                 <div class="widget col-span-1 lg:col-span-3 text-left">
                     <h4 class="title title--widget text-primary font-bold text-lg mb-[20px]">Volg ons</h4>
                     <div class="flex justify-start  gap-3 mb-3">
-                        <a class="text-white text-xl hover:text-primary transition" href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a class="text-white text-xl hover:text-primary transition" href="#"><i class="fa-brands fa-instagram"></i></a>
-                        <a class="text-white text-xl hover:text-primary transition" href="#"><i class="fa-brands fa-youtube"></i></a>
-                        <a class="text-white text-xl hover:text-primary transition" href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                        @if (!empty($navigations['footer4']))
+                            @foreach ($navigations['footer4']['content'] as $item)
+                            <a class="text-white text-xl hover:text-primary transition" href="{{$item['link']}}">{!!$item['title']!!}</a>
+                            @endforeach
+                        @endif
                     </div>
-                    <a href="#" class="text-white text-normal block mb-6"><i class="fa-solid fa-envelope"></i> info@domain.com</a>
+                    <a href="#" class="text-white text-normal block mb-6"><i class="fa-solid fa-envelope"></i> info[@]vergelijkdierenarts.nl</a>
                     <a href="#" class="btn btn-primaryLight text-left w-fit mx-auto sm:mx-0 flex justify-start items-center py-2 px-5">Kliniek toevoegen <i class="fa-solid fa-circle-plus text-4xl ml-3"></i></a>
                 </div>
             </div>

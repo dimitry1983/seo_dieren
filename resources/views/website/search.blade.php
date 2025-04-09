@@ -53,6 +53,7 @@
 
     <section class="section section--clinics">
         <div class="container mx-auto relative">
+            @include('parts.breadcrumb' , ['breadcrumbs' => $breadcrumbData ?? ''] )
             <div class="section__header flex items-center justify-between mb-8">
                 <div>
                     <h4 class="subtitle w-fit text-md relative before:content-['']">

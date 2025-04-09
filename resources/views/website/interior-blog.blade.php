@@ -2,25 +2,16 @@
 
 @section('content')
 <div class="main-container relative w-full overflow-hidden">
-        <section class="section section--breadcrumb p-0 bg-primaryLight">
-            <div class="container p-2 mx-auto">
-            <nav class="breadcrumb py-4">
-                <ul class="breadcrumb flex">
-                    <li class="breadcrumb-item mr-2">
-                        <a href="/"><strong>Home /</strong></a>
-                    </li>
-                    <li class="breadcrumb-item mr-2">
-                        <a href="/blogs"><strong>Blog /</strong></a>
-                    </li>
-                    <li class="breadcrumb-item">
-                        <span>{{ $blog->name }}</span>
-                    </li>
-                </ul>
-            </nav>
+
+      
+
+        <section class="section section--breadcrumb p-0 ">
+            <div class="container pt-5 mx-auto">
+            @include('parts.breadcrumb' , ['breadcrumbs' => $breadcrumbData ?? ''] )
             </div>
         </section>
 
-        <section class="section section--interior-blog pb-[40px]">
+        <section class="section section--interior-blog pb-[10px] pt-[20px] mt-[0px]">
             <div class="container p-2 mx-auto">
                 <div class="grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-1 gap-6">
                     <div class="col-span-1 xl:col-span-3 lg:col-span-2">

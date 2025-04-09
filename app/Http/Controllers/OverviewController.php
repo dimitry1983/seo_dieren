@@ -23,7 +23,7 @@ class OverviewController extends Controller
         $bestVets = Veterinarian::get3BestRatedVets(4);
         $categoriesForCount = Category::withCount('veterinarians')->get();
         $getRandomReviews = Review::getRandomReviews();
-
-        return view('website.map', ['blogs' => $blogs, 'darkBanner' => $darkBanner, 'bestVets' => $bestVets, 'greenBanner' => $greenBanner, 'categoriesForCount' => $categoriesForCount, 'getRandomReviews' => $getRandomReviews]);
+        $categories = Category::getCategories();
+        return view('website.map', ['blogs' => $blogs, 'categories' => $categories ,'darkBanner' => $darkBanner, 'bestVets' => $bestVets, 'greenBanner' => $greenBanner, 'categoriesForCount' => $categoriesForCount, 'getRandomReviews' => $getRandomReviews]);
     }
 }

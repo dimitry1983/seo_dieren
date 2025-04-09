@@ -61,24 +61,26 @@ document.getElementById('toggleBtn').addEventListener('click', function () {
     });
 }));
 
-document.addEventListener("DOMContentLoaded", function() {
-    new Splide('#gallery-slider', {
-        type: 'loop',
-        perPage: 3,
-        perMove: 3,
-        gap: '10px',
-        pagination: false,
-        arrows: true,
-        breakpoints: {
-            1024: {
-                perPage: 2,
-                perMove: 2
-            },
-            768: {
-                perPage: 1,
-                perMove: 1
+document.addEventListener("DOMContentLoaded", function () {
+    var gallerySlider = document.querySelector('#gallery-slider');
+    if (gallerySlider) {
+        new Splide(gallerySlider, {
+            type: 'loop',
+            perPage: 3,
+            perMove: 3,
+            gap: '10px',
+            pagination: false,
+            arrows: true,
+            breakpoints: {
+                1024: {
+                    perPage: 2,
+                    perMove: 2
+                },
+                768: {
+                    perPage: 1,
+                    perMove: 1
+                }
             }
-        }
-    }).mount();
+        }).mount();
+    }
 });
-

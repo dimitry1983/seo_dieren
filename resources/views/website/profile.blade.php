@@ -21,10 +21,14 @@
                 </h3>
             </div>
         </div>
+        <div class="container mx-auto mt-5">
+            @include('parts.breadcrumb' , ['breadcrumbs' => $breadcrumbData ?? ''] )
+        </div>
     </section>
 
     <section class="section section--profile-interior">
         <div class="container mx-auto relative">
+           
             <div class="grid grid-cols-4 gap-4">
                 <div class="lg:col-span-3 col-span-4">
                     <div class="pills border border-gray-300 shadow-lg mb-8">

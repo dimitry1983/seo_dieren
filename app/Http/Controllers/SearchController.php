@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 class SearchController extends Controller
 {
     public function search(){
+        //not in use !important handled in sitecontroller
         $bestVets       = Veterinarian::get3BestRatedVets();
         $mostViewedVets = Veterinarian::get3MostViewedVets();
 

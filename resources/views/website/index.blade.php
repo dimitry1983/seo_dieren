@@ -38,19 +38,23 @@
 
     <section class="section section--search py-0 bg-transparent">
         <div class="container px-2 mx-auto bg-transparent">
-            <form action="{{route('search')}}" class="s-form lg:px-[40px] lg:py-[20px] md:px-[30px] md:py-[15px] px-[20px] py-8px z-30 flex flex-col md:flex-row items-center gap-y-4 md:gap-x-6 mt-[-50px] bg-white md:rounded-full border border-[#D2D3D4] relative before:hidden md:before:block before:absolute before:right-0 before:top-0 before:w-full md:before:w-1/4 before:h-full before:z-0 before:bg-primaryLight before:rounded-tr-full before:rounded-br-full">
+            <form action="{{route('results')}}" class="s-form lg:px-[40px] lg:py-[20px] md:px-[30px] md:py-[15px] px-[20px] py-8px z-30 flex flex-col md:flex-row items-center gap-y-4 md:gap-x-6 mt-[-50px] bg-white md:rounded-full border border-[#D2D3D4] relative before:hidden md:before:block before:absolute before:right-0 before:top-0 before:w-full md:before:w-1/4 before:h-full before:z-0 before:bg-primaryLight before:rounded-tr-full before:rounded-br-full">
                 <div class="w-full md:w-1/4 text-center md:text-left relative z-1">
                     <p class="lg:mb-0 block xl-custom:block md:hidden mb-4">
                         <strong>{{ devTranslate('page.What Are You Looking For?','Waar ben je naar opzoek?') }}</strong>
                     </p>
-                    <input type="text" placeholder="{{ devTranslate('page.Search For','Zoek naar') }}" class="form-control p-3 border border-none outline-none transition duration-300 ease-out w-full">
+                    <input type="text" name="zoeken" placeholder="{{ devTranslate('page.Search For','Zoek naar') }}" class="form-control p-3 border border-none outline-none transition duration-300 ease-out w-full">
                 </div>
 
                 <div class="w-full md:w-1/4 text-center md:text-left relative lg:border-l lg:border-l-[#20242866] lg:px-[20px]">
                     <p class="mb-0 hidden xl-custom:block"><strong>{{ devTranslate('page.Category','Categorie') }}</strong></p>
                     <div class="relative">
-                        <select class="form-control p-3 border border-none outline-none transition duration-300 ease-out w-full appearance-none pr-10">
-                            <option>Dogs</option>
+                        <select name="categorie" class="form-control p-3 border border-none outline-none transition duration-300 ease-out w-full appearance-none pr-10">
+                            @if (!empty($categories))
+                                @foreach($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                @endforeach
+                            @endif
                         </select>
                         <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-gray-600"></i>
                     </div>
@@ -58,9 +62,9 @@
 
                 <div class="w-full md:w-1/4 text-center md:text-left relative lg:border-l lg:border-l-[#20242866] lg:px-[20px]">
                     <p class="mb-0 hidden xl-custom:block"><strong>{{ devTranslate('page.Location','Lokatie') }}</strong></p>
-                    <div class="relative">
-                        <select class="form-control p-3 border border-none outline-none transition duration-300 ease-out w-full appearance-none pr-10">
-                            <option>Amsterdam</option>
+                    <div class="relative noborder">
+                        <select name="stad" id="city-select" class="noborder form-control p-3 border border-none outline-none transition duration-300 ease-out w-full appearance-none pr-10">
+                                <option value="">{{ devTranslate('page.Select a city','Selecteer een stad') }}</option>
                         </select>
                         <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-gray-600"></i>
                     </div>
@@ -588,4 +592,37 @@
         }
     });
 </script>
+@push('scripts')
+<script>
+  $(document).ready(function () {
+    $('#city-select').select2({
+      language: "nl",
+      placeholder: 'Zoek een stad',
+      minimumInputLength: 2,
+      ajax: {
+        url: '/api/cities',
+        dataType: 'json',
+        delay: 300,
+        data: function (params) {
+          return {
+            q: params.term
+          };
+        },
+        processResults: function (data) {
+          return {
+            results: data.map(function (city) {
+              return {
+                id: city.name,
+                text: city.name
+              };
+            })
+          };
+        },
+        cache: true
+      }
+    });
+  });
+</script>
+@endpush
+
 @endsection

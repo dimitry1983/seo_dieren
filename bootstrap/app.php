@@ -11,9 +11,13 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        
+        $middleware->alias([
+            'bread' =>  \App\Http\Middleware\BreadcrumbMiddleware::class,
+            'navigation' => \App\Http\Middleware\NavigationMiddleware::class,
+        ]);
         $middleware->web([
             \App\Http\Middleware\BreadcrumbMiddleware::class,
+            \App\Http\Middleware\NavigationMiddleware::class,
         ]); 
     })
     ->withExceptions(function (Exceptions $exceptions) {

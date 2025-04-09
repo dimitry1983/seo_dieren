@@ -226,14 +226,15 @@ class SiteController extends Controller
 
 
     public function results(Request $request){
-        $page = Page::getCustomPage('home');
-        $advantages = Page::getBlockInfo($page->blocks, 'adventages');
-        $bestVets       = Veterinarian::get3BestRatedVets();
-        $mostViewedVets = Veterinarian::get3MostViewedVets();
+        $page               = Page::getCustomPage('home');
+        $advantages         = Page::getBlockInfo($page->blocks, 'adventages');
+        $bestVets           = Veterinarian::get3BestRatedVets();
+        $mostViewedVets     = Veterinarian::get3MostViewedVets();
         $categoriesForCount = Category::withCount('veterinarians')->get();
-        $categories = Category::getCategories();
-        $category = intval($request->query('categorie')); // Optional query parameter
+        $categories         = Category::getCategories();
+        $category           = intval($request->query('categorie')); // Optional query parameter
     
+      
         if (is_int($category)) {
             $vets = Veterinarian::getWithFeaturedImage($category);
         } else {

@@ -21,7 +21,10 @@ class NavigationMiddleware
        
 
         // Fetch the navigation menus
-        $navigations = Navigation::getNavigations();
+        $navigations['footer1'] = Navigation::getByTitle('footer1');
+        $navigations['footer2'] = Navigation::getByTitle('footer2');
+        $navigations['footer3'] = Navigation::getByTitle('footer3');
+        $navigations['footer4'] = Navigation::getByTitle('footer4');
 
         // Share the navigation menus with all views
         view()->share('navigations', $navigations);

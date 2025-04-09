@@ -14,6 +14,7 @@
 
     <section class="section section--blog py-[40px]">
         <div class="container mx-auto relative">
+            @include('parts.breadcrumb' , ['breadcrumbs' => $breadcrumbData ?? ''] )
             <h3 class="title title--section text-center text-3xl text-gray-800 font-bold mb-8 leading-tight md:leading-tight lg:leading-normal">
                 {{devTranslate('page.From', 'Van')}} <span class="text-primary">{{devTranslate('page.Our Blog', 'Ons Blog')}}</span>
             </h3>

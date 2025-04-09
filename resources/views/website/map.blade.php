@@ -6,22 +6,26 @@
     <section class="section section--map py-0">
         <div class="grid md:grid-cols-4">
             <div class="search-form lg:col-span-1 col-span-2 bg-[#F3F6F9]">
-                <form class="py-[50px] px-[30px]">
+                <form action="{{route('results')}}" method="get" class="py-[50px] px-[30px]">
                     <p class="mb-[10px]"><strong>{{ devTranslate('page.What Are You Looking For?','Waar ben je naar opzoek?') }}</strong></p>
-                    <input type="text" placeholder="{{ devTranslate('page.Search For','Zoek naar') }}" class="form-control mb-4 p-3 rounded-full border border-gray-300 outline-none hover:border-gray-400 focus:ring-2 focus:ring-primary transition duration-300 ease-out w-full">
+                    <input type="text" name="zoeken" placeholder="{{ devTranslate('page.Search For','Zoek naar') }}" class="form-control mb-4 p-3 rounded-full border border-gray-300 outline-none hover:border-gray-400 focus:ring-2 focus:ring-primary transition duration-300 ease-out w-full">
 
                     <p class="mb-[10px]"><strong>{{ devTranslate('page.Category','Categorie') }}</strong></p>
                     <div class="relative mb-4">
-                        <select class="appearance-none p-3 rounded-full border border-gray-300 outline-none hover:border-gray-400 focus:ring-2 focus:ring-primary transition duration-300 ease-out w-full pr-10">
-                            <option>Dogs</option>
+                        <select name="categorie" class="appearance-none p-3 rounded-full border border-gray-300 outline-none hover:border-gray-400 focus:ring-2 focus:ring-primary transition duration-300 ease-out w-full pr-10">
+                            @if (!empty($categories))
+                                @foreach($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                @endforeach
+                            @endif
                         </select>
                         <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
                     </div>
 
                     <p class="mb-[10px]"><strong>{{ devTranslate('page.Location','Lokatie') }}</strong></p>
                     <div class="relative mb-4">
-                        <select class="appearance-none p-3 rounded-full border border-gray-300 outline-none hover:border-gray-400 focus:ring-2 focus:ring-primary transition duration-300 ease-out w-full pr-10">
-                            <option>Amsterdam</option>
+                        <select name="stad" id="city-select" class="appearance-none p-3 rounded-full border border-gray-300 outline-none hover:border-gray-400 focus:ring-2 focus:ring-primary transition duration-300 ease-out w-full pr-10">
+
                         </select>
                         <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
                     </div>
@@ -41,7 +45,9 @@
     </section>
 
     <section class="section section--categories bg-[url('{{ asset('dieren/src/public/img/categories.jpg') }}')] bg-cover bg-center pt-[80px] pb-[100px]">
+       
         <div class="container mx-auto">
+            @include('parts.breadcrumb' , ['breadcrumbs' => $breadcrumbData ?? ''] )
             <div class="categories grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                 <div class="category border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
                     <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
@@ -252,7 +258,6 @@
                 </div>
                 @if (!empty($darkBanner['about']))
                     @foreach($darkBanner['about'] as $item)
-                    
                     <div class="text-center">
                         <p class="text-white">{{$item['title']}}</p>
                         <span class="text-primaryLight font-medium text-5xl md:text-6xl block">{{$item['number']}}</span>
@@ -312,4 +317,37 @@
         </div>
     </section>
 </div>
+
+@push('scripts')
+<script>
+  $(document).ready(function () {
+    $('#city-select').select2({
+      language: "nl",
+      placeholder: 'Zoek een stad',
+      minimumInputLength: 2,
+      ajax: {
+        url: '/api/cities',
+        dataType: 'json',
+        delay: 300,
+        data: function (params) {
+          return {
+            q: params.term
+          };
+        },
+        processResults: function (data) {
+          return {
+            results: data.map(function (city) {
+              return {
+                id: city.name,
+                text: city.name
+              };
+            })
+          };
+        },
+        cache: true
+      }
+    });
+  });
+</script>
+@endpush
 @endsection

@@ -3,7 +3,9 @@
 namespace App\Http\Middleware;
 
 use App\Models\Advertisement;
+use App\Models\Blog;
 use App\Models\Category;
+use App\Models\Veterinarian;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,7 +21,7 @@ class BreadcrumbMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-   
+        return $next($request);
         // Get the current route name
         $currentRouteName   = Route::currentRouteName();
       
@@ -30,11 +32,97 @@ class BreadcrumbMiddleware
         $routeParameters    = Route::current()?->parameters();
         $breadcrumbData     = '';
 
+
+
+
+
+
+
+
+
+
+
         if ($currentRouteName == 'livewire.update'){
             $breadcrumbData = session('breadcrumbData');
         }
 
      
+        /*
+        * SITES URLS
+        */
+
+        if ($currentRouteName == 'results'){
+            $breadcrumbData = [
+                'total' => 1,
+                'name' => devTranslate('bread.zoekresultaten', 'zoekresultaten')
+            ];
+        }
+
+        if ($currentRouteName == 'registeren'){
+            $breadcrumbData = [
+                'total' => 1,
+                'name' => devTranslate('bread.Contact', 'Registreren')
+            ];
+        }
+
+        if ($currentRouteName == 'about'){
+            $breadcrumbData = [
+                'total' => 1,
+                'name' => devTranslate('bread.Over ons', 'Over ons')
+            ];
+        }
+
+        if ($currentRouteName == 'contact'){
+            $breadcrumbData = [
+                'total' => 1,
+                'name' => devTranslate('bread.Contact', 'Contact')
+            ];
+        }
+
+        if ($currentRouteName == 'map'){
+            $breadcrumbData = [
+                'total' => 1,
+                'name' => devTranslate('bread.Overzicht', 'Overzicht')
+            ];
+        }
+
+        if ($currentRouteName == 'blog.overview'){
+            $breadcrumbData = [
+                'total' => 1,
+                'name' => devTranslate('bread.Nieuws', 'Nieuws')
+            ];
+        }
+
+    
+
+
+        if ($currentRouteName == 'blog.detail'){
+
+            $slug = $routeParameters['slug'];
+            $id = $routeParameters['id'];
+            $blogName = Blog::find($id);
+
+            $breadcrumbData = [
+                'url_one' => route('blog.overview'),
+                'name_one' => __('Winkel'), 
+                'total' => 2,
+                'name_two' =>  $blogName->title
+            ];
+        }
+
+        if ($currentRouteName == 'profile'){
+            $slug = $routeParameters['slug'];
+            $id = $routeParameters['id'];
+            $veterarian = Veterinarian::find($id);
+            $breadcrumbData = [
+                'url_one' => route('map'),
+                'name_one' => __('Overzicht'), 
+                'total' => 2,
+                'name_two' =>  $veterarian->name ?? ""
+            ];
+        }
+
+
         if ($currentRouteName == 'login'){
             $breadcrumbData = [
                 'total' => 1,

@@ -30,6 +30,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="{{ asset('dieren/src/public/css/splide.min.css') }}" >
     <link rel="stylesheet" href="{{ asset('dieren/src/public/css/all.min.css') }}" >
@@ -114,8 +115,10 @@
     @include('parts.footer')
 </body>
 <script src="{{ asset('dieren/src/public/js/jquery.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/i18n/nl.js"></script>
 <script src="{{ asset('dieren/src/public/js/splide.min.js')}}"></script>
 <script src="{{ asset('dieren/src/public/js/custom.js')}}"></script>
-
+@stack('scripts')
 @livewireScripts
 </html>

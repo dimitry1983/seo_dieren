@@ -104,6 +104,7 @@ class NavigationResource extends Resource
                     TextColumn::make('location')
                 ])
                 ->filters([
+
                 ])
                 ->actions([
                     Tables\Actions\ActionGroup::make([
