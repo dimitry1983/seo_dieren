@@ -406,7 +406,7 @@
                                 <h4 class="subtitle text-sm text-gray-800 mb-2">{{ $vet->excerpt }}</h4>
                                 <p class="location text-sm mb-0 font-semibold">
                                     <i class="fa-solid fa-location-dot text-primary"></i>
-                                    {{ $vet->zipcode }} {{ $vet->street }} {{ $vet->street_nr }} {{ $vet->street_nr }} <br/> {{ $vet->city->name }}, Nederland
+                                    {{ $vet->zipcode }} {{ $vet->street }} {{ $vet->street_nr }} <br/> {{ $vet->city->name }}, Nederland
                                 </p>
                                 <a class="text-sm font-semibold" href="tel:{{ $vet->phone }}">
                                     <i class="fa-solid fa-phone text-primary"></i> {{ $vet->phone }}

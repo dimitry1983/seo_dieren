@@ -306,7 +306,7 @@
                                 {{$veterinarian->name}}
                             </h3>
                             <p class="location text-xs mb-0">
-                                <i class="fa-solid fa-location-dot text-primary"></i> {{$veterinarian->zipcode}} {{$veterinarian->city->name}}, Nederland
+                                <i class="fa-solid fa-location-dot text-primary"></i>         {{ $veterinarian->zipcode }} {{ $veterinarian->street }} {{ $veterinarian->street_nr }} <br/> {{ $veterinarian->city->name }}, Nederland
                             </p>
                             <a class="text-xs" href="#">
                                 <i class="fa-solid fa-phone text-primary"></i> {{$veterinarian->phone}}
