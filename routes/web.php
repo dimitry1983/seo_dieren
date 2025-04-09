@@ -41,29 +41,29 @@ Route::middleware(['auth'])->group(function () {
 //routing for the website
 
 // Site Routes
+Route::middleware(['bread'])->group(function () {
+    Route::get('/', [SiteController::class, 'index'])->name('home');
+    Route::get('/more-information', [SiteController::class, 'getMoreInformation'])->name('more');
+    //getMoreInformation
+    Route::get('/zoekresultaten', [SiteController::class, 'results'])->name('results');
+    Route::get('/over-ons', [SiteController::class, 'about'])->name('about');
+    Route::get('/contact', [SiteController::class, 'contact'])->name('contact');
 
-Route::get('/', [SiteController::class, 'index'])->name('home');
-Route::get('/more-information', [SiteController::class, 'getMoreInformation'])->name('more');
-//getMoreInformation
-Route::get('/zoekresultaten', [SiteController::class, 'results'])->name('results');
-Route::get('/over-ons', [SiteController::class, 'about'])->name('about');
-Route::get('/contact', [SiteController::class, 'contact'])->name('contact');
+    // Blog Routes
+    Route::get('/blog', [BlogController::class, 'overview'])->name('blog.overview');
+    Route::get('/blog/{slug}/{id}', [BlogController::class, 'blogDetail'])->name('blog.detail');
 
-// Blog Routes
-Route::get('/blog', [BlogController::class, 'overview'])->name('blog.overview');
-Route::get('/blog/{slug}/{id}', [BlogController::class, 'blogDetail'])->name('blog.detail');
+    // Overview Routes
+    Route::get('/overzicht', [OverviewController::class, 'map'])->name('map');
 
-// Overview Routes
-Route::get('/overzicht', [OverviewController::class, 'map'])->name('map');
-
-// Profile Routes
-Route::get('/{slug}/{id}', [ProfileController::class, 'profile'])
-    ->where('slug', '^(?!admin).*') // Exclude "admin" as the first segment
-    ->name('profile');
+    // Profile Routes
+    Route::get('/{slug}/{id}', [ProfileController::class, 'profile'])
+        ->where('slug', '^(?!admin).*') // Exclude "admin" as the first segment
+        ->name('profile');
 
     // Search Routes
    // Route::get('/zoekresultaat', [SearchController::class, 'search'])->name('search');
-
+});
 
 //routings for dashboard
 

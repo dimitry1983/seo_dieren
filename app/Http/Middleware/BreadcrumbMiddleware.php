@@ -21,7 +21,6 @@ class BreadcrumbMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        return $next($request);
         // Get the current route name
         $currentRouteName   = Route::currentRouteName();
       
