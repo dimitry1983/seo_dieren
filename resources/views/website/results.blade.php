@@ -5,7 +5,7 @@
         <section class="section section--hero-interior bg-[url('../../../src/public/img/results-hero.png')] bg-cover bg-center bg-center">
             <div class="container p-2 mx-auto lg:pt-[10px] sm:pt-[10px] sm:pb-[80px] pt-[30px] pb-[50px]">
                 <h1 class="text-6xl text-center font-regular text-gray-800 leading-tight md:leading-tight lg:leading-normal">
-                    Discover The Best<strong>Veterinary Clinics</strong>
+                    {{ devTranslate('page.Discover The Best','Ontdek de beste') }} <strong>{{ devTranslate('page.Veterinary Clinics','Dieren klinieken') }} </strong>
                 </h1>
             </div>
         </section>
@@ -107,7 +107,7 @@
                  @if (!empty($vets[0]))
                     <?php $teller = 1; ?>   
                     @foreach ($vets as $vet)
-                        <div class="block-hotspots bg-white border border-gray-300 transition duration-300 ease-out hover:shadow-lg category-best-rated">
+                        <div class="block-hotspots bg-white border border-gray-300 transition duration-300 ease-out hover:shadow-lg ">
                             <figure class="m-0 overflow-hidden">
                                 <!-- Replace the static image with one based on your vet data or use a default image -->
                                 <a href="{{route('profile', ['slug' => slugify($vet->name) , 'id' => $vet->id])}}">
@@ -274,11 +274,9 @@
         <section class="section section--hotspots">
             <div class="container px-2 mx-auto relative">
                 <div class="header-pills flex flex-wrap justify-center mb-6">
-                    <button class="pill font-medium active border-b-4 border-b-primary px-4 sm:px-6 mb-2  hover:border-b-primary" data-filter="all">All</button>
-                    <button class="pill font-medium border-b-2 border-b-[#D2D3D4] px-4 sm:px-6 mb-2  hover:border-b-primary" data-filter="best-rated">Best Rated</button>
-                    <button class="pill font-medium border-b-2 border-b-[#D2D3D4] px-4 sm:px-6 mb-2  hover:border-b-primary" data-filter="most-viewed">Most Viewed</button>
-                    <button class="pill font-medium border-b-2 border-b-[#D2D3D4] px-4 sm:px-6 mb-2  hover:border-b-primary" data-filter="veterinarians">Veterinarians</button>
-                    <button class="pill font-medium border-b-2 border-b-[#D2D3D4] px-4 sm:px-6 mb-2  hover:border-b-primary" data-filter="clinics">Clinics</button>
+                    <button class="pill font-medium active border-b-4 border-b-primary px-4 sm:px-6 mb-2  hover:border-b-primary" data-filter="all"> {{ devTranslate('page.All','All') }}</button>
+                    <button class="pill font-medium border-b-2 border-b-[#D2D3D4] px-4 sm:px-6 mb-2  hover:border-b-primary" data-filter="best-rated">{{ devTranslate('page.Best Rated','Best beoordeeld') }}</button>
+                    <button class="pill font-medium border-b-2 border-b-[#D2D3D4] px-4 sm:px-6 mb-2  hover:border-b-primary" data-filter="most-viewed">{{ devTranslate('page.Most Viewed','Meest bekeken') }}</button>
                 </div>
 
                 <div class="content-blocks grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">

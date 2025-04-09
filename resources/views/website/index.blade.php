@@ -367,7 +367,7 @@
                  @if (!empty($vets[0]))
                     <?php $teller = 1; ?>   
                     @foreach ($vets as $vet)
-                        <div class="block-hotspots bg-white border border-gray-300 transition duration-300 ease-out hover:shadow-lg category-best-rated">
+                        <div class="block-hotspots bg-white border border-gray-300 transition duration-300 ease-out hover:shadow-lg">
                             <figure class="m-0 overflow-hidden">
                                 <!-- Replace the static image with one based on your vet data or use a default image -->
                                 <a href="{{route('profile', ['slug' => slugify($vet->name) , 'id' => $vet->id])}}">

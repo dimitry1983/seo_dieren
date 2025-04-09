@@ -17,6 +17,35 @@ class Veterinarian extends Model
         return Str::limit(strip_tags($this->generateDescription($this)), 120);
     }
 
+    public static function incrementViewsIfHuman(self $veterinarian): void
+    {
+        $userAgent = request()->userAgent();
+
+        if (!$userAgent || self::isBot($userAgent)) {
+            return;
+        }
+
+        $veterinarian->increment('views');
+    }
+
+    protected static function isBot(string $userAgent): bool
+    {
+        $bots = [
+            'bot', 'crawl', 'slurp', 'spider', 'mediapartners', 
+            'facebookexternalhit', 'google', 'bingpreview', 
+            'yandex', 'baidu', 'duckduckbot'
+        ];
+
+        $userAgent = strtolower($userAgent);
+
+        foreach ($bots as $bot) {
+            if (str_contains($userAgent, $bot)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     protected function mutateFormDataBeforeSave(array $data): array
     {

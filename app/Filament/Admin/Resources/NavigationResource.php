@@ -12,6 +12,9 @@ use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Repeater;
+use Filament\Forms\Get;
+use Filament\Forms\Set;
+use Illuminate\Support\Str;
 use Filament\Tables;
 use Filament\Tables\Actions\ReplicateAction;
 use Filament\Tables\Columns\TextColumn;
@@ -101,16 +104,12 @@ class NavigationResource extends Resource
                     TextColumn::make('location')
                 ])
                 ->filters([
-                    //
-                    Tables\Filters\TrashedFilter::make(),
                 ])
                 ->actions([
                     Tables\Actions\ActionGroup::make([
                         ReplicateAction::make(),
                         Tables\Actions\EditAction::make(),
-                        Tables\Actions\DeleteAction::make(),
-                        Tables\Actions\ForceDeleteAction::make(),
-                        Tables\Actions\RestoreAction::make()
+                        Tables\Actions\DeleteAction::make()
                     ])
                 ])
                 ->bulkActions([

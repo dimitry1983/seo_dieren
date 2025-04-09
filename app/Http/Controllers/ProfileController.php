@@ -28,8 +28,26 @@ class ProfileController extends Controller
             abort(404); // Slug does not match, return 404
         }
 
+        $reviews = $veterinarian->reviews()
+        ->where('veterinarian_id', $id)
+        ->orderBy('created_at', 'desc')
+        ->paginate(5);
+    
+        // Calculate the average rating
+        $rating = $reviews->avg('rating');
+        
+        // Prepare the rating counts (normalize to 5–1 stars)
+        $rawCounts = $reviews->groupBy('rating')
+            ->map(fn($group) => $group->count())
+            ->toArray();
+        
+        $ratingCounts = collect([5, 4, 3, 2, 1])
+            ->mapWithKeys(fn($star) => [$star => $rawCounts[$star] ?? 0])
+            ->toArray();
 
-        return view('website.profile', ['veterinarian' => $veterinarian]);
+        Veterinarian::incrementViewsIfHuman($veterinarian);
+
+        return view('website.profile', ['veterinarian' => $veterinarian, 'rating' => $rating ,'reviews' => $reviews, 'ratingCounts' => $ratingCounts]);
     }
 
 }

@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="main-container relative w-full overflow-hidden">
+    @php
+        $totalRatings = array_sum($ratingCounts);
+    @endphp
 
     <section class="section section--hero-interior bg-cover bg-right bg-center h-[300px]" style="background-image: url('{{ asset('dieren/src/public/img/profile.png') }}')"></section>
 
@@ -14,7 +17,7 @@
                 <h3 class="title title--profile text-md font-bold ml-4 leading-tight md:leading-tight lg:leading-normal">
                     {{ $veterinarian->name }} |
                     {!! render_stars($veterinarian->rating) !!}
-                    <span>{{ number_format($veterinarian->rating, 1) }} - (.. beoordelingen)</span>
+                    <span>{{ number_format($veterinarian->rating, 1) }} - ({{ $totalRatings }} {{ devTranslate('page.beoordelingen','beoordelingen') }})</span>
                 </h3>
             </div>
         </div>
@@ -30,16 +33,29 @@
                                 <button class="btn btn-primaryLight">{{ devTranslate('page.Informatie','Informatie') }}</button>
                             </li>
                             <li class="xl:px-3 md:border-l md:border-l-gray-300">
-                                <button class="btn btn-primary bg-white">{{ devTranslate('page.Diensten','Diensten') }}</button>
+                            <button 
+                                    onclick="document.getElementById('diensten').scrollIntoView({ behavior: 'smooth' });"
+                                    class="btn btn-primary bg-white"
+                                >{{ devTranslate('page.Diensten','Diensten') }}</button>
                             </li>
                             <li class="xl:px-3 md:border-l md:border-l-gray-300">
-                                <button class="btn btn-primary bg-white">{{ devTranslate('page.Galerij','Galerij') }}</button>
+                            <button 
+                                    onclick="document.getElementById('galerij').scrollIntoView({ behavior: 'smooth' });"
+                                    class="btn btn-primary bg-white"
+                                >
+                                {{ devTranslate('page.Galerij','Galerij') }}</button>
                             </li>
                             <li class="xl:px-3 md:border-l md:border-l-gray-300">
-                                <button class="btn btn-primary bg-white">{{ devTranslate('page.Prijzen','Prijzen') }}</button>
+                            <button 
+                                    onclick="document.getElementById('prijzen').scrollIntoView({ behavior: 'smooth' });"
+                                    class="btn btn-primary bg-white"
+                                >{{ devTranslate('page.Prijzen','Prijzen') }}</button>
                             </li>
                             <li class="xl:px-3 md:border-l md:border-l-gray-300">
-                                <button class="btn btn-primary bg-white">{{ devTranslate('page.Beoordelingen','Beoordelingen') }}</button>
+                                <button 
+                                        onclick="document.getElementById('reviews').scrollIntoView({ behavior: 'smooth' });"
+                                        class="btn btn-primary bg-white"
+                                    >{{ devTranslate('page.Beoordelingen','Beoordelingen') }}</button>
                             </li>
                         </ul>
                     </div>
@@ -55,7 +71,7 @@
                         </p>
                         <img src="{{ asset('dieren/src/public/img/paw.png')}}" alt="" class="absolute top-[20px] right-[20px] z-[0]">
                     </div>
-                    <div class="content border border-gray-300 shadow-lg px-[30px] py-[50px] mb-6 relative">
+                    <div class="content border border-gray-300 shadow-lg px-[30px] py-[50px] mb-6 relative" id="diensten">
                         <h4 class="subtitle w-fit text-md font-semibold relative before:content-[''] before:w-[20px] before:h-[2px] before:bg-primary before:absolute before:right-[-30px] before:top-1/2 before:-translate-y-1/2">
                             {{ devTranslate('page.Diensten','Diensten') }}
                         </h4>
@@ -80,7 +96,7 @@
                         </div>
                         <img src="{{ asset('dieren/src/public/img/paw.png')}}" alt="" class="absolute top-[20px] right-[20px] z-[0]">
                     </div>
-                    <div class="gallery border border-gray-300 shadow-lg px-[30px] py-[50px] mb-6 relative">
+                    <div class="gallery border border-gray-300 shadow-lg px-[30px] py-[50px] mb-6 relative" id="galerij">
                         <h4 class="subtitle w-fit text-md font-semibold relative before:content-[''] before:w-[20px] before:h-[2px] before:bg-primary before:absolute before:right-[-30px] before:top-1/2 before:-translate-y-1/2">
                             {{ devTranslate('page.Galerij','Galerij') }}
                         </h4>
@@ -114,7 +130,7 @@
 
                         <img src="{{ asset('dieren/src/public/img/paw.png')}}" alt="" class="absolute top-[20px] right-[20px] z-[0]">
                     </div>
-                    <div class="prices border border-gray-300 shadow-lg px-[30px] py-[50px] mb-6 relative">
+                    <div class="prices border border-gray-300 shadow-lg px-[30px] py-[50px] mb-6 relative" id="prijzen">
                         <h4 class="subtitle w-fit text-md font-semibold relative before:content-[''] before:w-[20px] before:h-[2px] before:bg-primary before:absolute before:right-[-30px] before:top-1/2 before:-translate-y-1/2">
                             {{ devTranslate('page.Prijzen','Prijzen') }}
                         </h4>
@@ -130,7 +146,6 @@
                                     {{ devTranslate('page.Diensten','Diensten') }}
                                 </h3>
                                 <ul>
-                                 
                                     <li class="mb-3 flex">
                                         <i class="fa-regular fa-circle-check text-primary mr-1"></i> Overleg <span class="price block ml-auto">€35,00</span>
                                     </li>
@@ -183,108 +198,83 @@
                         </div>
                         <img src="{{ asset('dieren/src/public/img/paw.png')}}" alt="" class="absolute top-[20px] right-[20px] z-[0]">
                     </div>
-                    <div class="reviews border border-gray-300 shadow-lg px-[30px] py-[50px] mb-6 relative">
+                    <div class="reviews border border-gray-300 shadow-lg px-[30px] py-[50px] mb-6 relative" id="reviews">
                         <h4 class="subtitle w-fit text-md font-semibold relative before:content-[''] before:w-[20px] before:h-[2px] before:bg-primary before:absolute before:right-[-30px] before:top-1/2 before:-translate-y-1/2">
                             {{ devTranslate('page.Beoordelingen','Beoordelingen') }}
                         </h4>
                         <h3 class="title title--section font-bold text-3xl text-gray-800 mb-6 leading-tight md:leading-tight lg:leading-normal">
                             <span class="text-primary">{{ devTranslate('page.Wat andere mensen','Wat andere mensen') }}</span> {{ devTranslate('page.Vonden','Vonden') }}
                         </h3>
+
+
+                        
                         <div class="rate grid lg:grid-cols-3 grid-cols-1 mb-4 pb-6 border-b border-b-gray-300">
                             <div class="lg:col-span-1 col-span-3">
                                 <h4 class="qualify font-bold text-2xl">
-                                    9.0
+                                    {{ number_format($rating, 1) }}
                                 </h4>
                                 <h4 class="starts text-yellow-500 text-lg">
-                                    <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
+                                    {!! render_stars($rating) !!}
                                 </h4>
                                 <p class="font-bold">
-                                    9.0 - (10 beoordelingen)
+                                    {{ number_format($rating, 1) }} - ({{ $totalRatings }} {{ devTranslate('page.beoordelingen','beoordelingen') }})
                                 </p>
                             </div>
+
                             <div class="col-span-3 lg:col-span-2">
-                                <div class="flex items-center gap-2">
-                                    <span class="text-gray-800 font-semibold w-[90px]">5 Stars</span>
-                                    <div class="relative w-full h-6 bg-gray-200 rounded-lg overflow-hidden flex items-center">
-                                        <div class="absolute left-0 top-0 h-full bg-yellow-500 w-[40%]"></div>
+                                @foreach([5, 4, 3, 2, 1] as $star)
+                                    @php
+                                        $count = $ratingCounts[$star] ?? 0;
+                                        $percentage = $totalRatings > 0 ? ($count / $totalRatings) * 100 : 0;
+                                    @endphp
+                                    <div class="flex items-center gap-2 {{ $star !== 5 ? 'mt-2' : '' }}">
+                                        <span class="text-gray-800 font-semibold w-[90px]">{{ $star }} {{ devTranslate('page.Stars','Sterren') }}</span>
+                                        <div class="relative w-full h-6 bg-gray-200 rounded-lg overflow-hidden flex items-center">
+                                            <div class="absolute left-0 top-0 h-full bg-yellow-500" style="width: {{ $percentage }}%"></div>
+                                        </div>
+                                        <span class="text-gray-800 font-semibold">{{ $count }}</span>
                                     </div>
-                                    <span class="text-gray-800 font-semibold">5</span>
-                                </div>
-
-                                <div class="flex items-center gap-2 mt-2">
-                                    <span class="text-gray-800 font-semibold w-[90px]">4 Stars</span>
-                                    <div class="relative w-full h-6 bg-gray-200 rounded-lg overflow-hidden flex items-center">
-                                        <div class="absolute left-0 top-0 h-full bg-yellow-500 w-[20%]"></div>
-                                    </div>
-                                    <span class="text-gray-800 font-semibold">1</span>
-                                </div>
-
-                                <div class="flex items-center gap-2 mt-2">
-                                    <span class="text-gray-800 font-semibold w-[90px]">3 Stars</span>
-                                    <div class="relative w-full h-6 bg-gray-200 rounded-lg overflow-hidden flex items-center">
-                                        <div class="absolute left-0 top-0 h-full bg-yellow-500 w-[o%]"></div>
-                                    </div>
-                                    <span class="text-gray-800 font-semibold">0</span>
-                                </div>
-
-                                <div class="flex items-center gap-2 mt-2">
-                                    <span class="text-gray-800 font-semibold w-[90px]">2 Stars</span>
-                                    <div class="relative w-full h-6 bg-gray-200 rounded-lg overflow-hidden flex items-center">
-                                        <div class="absolute left-0 top-0 h-full bg-yellow-500 w-[o%]"></div>
-                                    </div>
-                                    <span class="text-gray-800 font-semibold">0</span>
-                                </div>
-
-                                <div class="flex items-center gap-2 mt-2">
-                                    <span class="text-gray-800 font-semibold w-[90px]">1 Stars</span>
-                                    <div class="relative w-full h-6 bg-gray-200 rounded-lg overflow-hidden flex items-center">
-                                        <div class="absolute left-0 top-0 h-full bg-yellow-500 w-[o%]"></div>
-                                    </div>
-                                    <span class="text-gray-800 font-semibold">0</span>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
+
                         <div class="reviews">
-                            <div class="review pb-6 mb-4 border-b border-b-gray-300">
-                                <p class="text-gray-700 date">Januari 15, 2025</p>
-                                <h4 class="starts text-yellow-500 text-lg mb-2">
-                                    <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <span class="text-black font-bold">9.0</span>
-                                </h4>
-                                <h3 class="name text-lg font-bold mb-2">
-                                    Alberto Speankelink
-                                </h3>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. 
-                                </p>
+                            
+                        @if (!empty($reviews[0]))
+                            @foreach ($reviews as $review)
+                                <div class="review pb-6 mb-4 border-b border-b-gray-300">
+                                    <p class="text-gray-700 date">
+                                        {{ \Carbon\Carbon::parse($review->created_at)->translatedFormat('F d, Y') }}
+                                    </p>
+
+                                    <h4 class="starts text-yellow-500 text-lg mb-2">
+                                        {!! render_stars($review->rating) !!}
+                                        <span class="text-black font-bold">{{ number_format($review->rating, 1) }}</span>
+                                    </h4>
+
+                                    <h3 class="name text-lg font-bold mb-2">
+                                        {{ $review->name }}, {{ $review->city }}
+                                    </h3>
+
+                                    <p>{{ $review->description }}</p>
+                                    @if ($review->type == 'Google')
+                                        <div class="mt-2 inline-flex items-center text-sm text-blue-600 bg-blue-100 px-2 py-1 rounded-full">
+                                            <i class="fa-brands fa-google mr-1"></i> Google review
+                                        </div>
+                                    @endif
+                                </div>
+                            @endforeach
+                        @else
+                            <div class="text-center py-10 text-gray-500">
+                                <p class="text-lg font-semibold">{{ devTranslate('page.No reviews found','Geen recencies gevonden.') }}</p>
                             </div>
-                            <div class="review pb-6 mb-4 border-b border-b-gray-300">
-                                <p class="text-gray-700 date">Januari 15, 2025</p>
-                                <h4 class="starts text-yellow-500 text-lg mb-2">
-                                    <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <span class="text-black font-bold">9.0</span>
-                                </h4>
-                                <h3 class="name text-lg font-bold mb-2">
-                                    Alberto Speankelink
-                                </h3>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. 
-                                </p>
+                        @endif
+
+                        @if (!empty($reviews[0]))
+                            <div class="pagination flex justify-center gap-2">
+                                {{ $reviews->appends(request()->query())->links('vendor.pagination.custom') }}
                             </div>
-                            <div class="review pb-6 mb-4">
-                                <p class="text-gray-700 date">Januari 15, 2025</p>
-                                <h4 class="starts text-yellow-500 text-lg mb-2">
-                                    <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <span class="text-black font-bold">9.0</span>
-                                </h4>
-                                <h3 class="name text-lg font-bold mb-2">
-                                    Alberto Speankelink
-                                </h3>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. 
-                                </p>
-                            </div>
+                        @endif
                         </div>
                         <img src="{{ asset('dieren/src/public/img/paw.png')}}" alt="" class="absolute top-[20px] right-[20px] z-[0]">
                     </div>
@@ -292,21 +282,31 @@
                 <div class="lg:col-span-1 col-span-4">
                     <div class="sidebar border border-gray-300 transition duration-300 ease-out shadow-lg">
                         <div class="map">
-                            <div style="width: 100%"><iframe width="100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=300&amp;hl=es&amp;q=Netherlands+(Mi%20nombre%20de%20egocios)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.gps.ie/car-satnav-gps/">GPS car tracker</a></iframe></div>
+                            @if ($veterinarian->lat && $veterinarian->lon)
+                                <div class="w-full h-[300px] rounded overflow-hidden shadow-lg">
+                                    <iframe 
+                                        width="100%" 
+                                        height="100%" 
+                                        frameborder="0" 
+                                        style="border:0" 
+                                        src="https://maps.google.com/maps?q={{ $veterinarian->lat }},{{ $veterinarian->lon }}&hl=nl&z=15&output=embed" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                            @else
+                                <p class="text-sm text-gray-500">Locatie niet beschikbaar</p>
+                            @endif
                         </div>
                         <div class="content py-3 px-2">
                             <h3 class="title title--block font-bold text-sm mb-3">
-                                Amsterdam Clinic
+                                {{$veterinarian->name}}
                             </h3>
                             <p class="location text-xs mb-0">
-                                <i class="fa-solid fa-location-dot text-primary"></i> 9999 BP Amsterdam, Netherlands
+                                <i class="fa-solid fa-location-dot text-primary"></i> {{$veterinarian->zipcode}} {{$veterinarian->city->name}}, Nederland
                             </p>
                             <a class="text-xs" href="#">
-                                <i class="fa-solid fa-phone text-primary"></i> +1800 956 687
+                                <i class="fa-solid fa-phone text-primary"></i> {{$veterinarian->phone}}
                             </a>
-                            <h4 class="price font-bold text-sm mt-2">
-                                From €30.00
-                            </h4>
                         </div>
                     </div>
                 </div>
