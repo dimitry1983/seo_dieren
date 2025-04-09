@@ -232,18 +232,16 @@ class SiteController extends Controller
         $mostViewedVets     = Veterinarian::get3MostViewedVets();
         $categoriesForCount = Category::withCount('veterinarians')->get();
         $categories         = Category::getCategories();
-        $category           = intval($request->query('categorie')); // Optional query parameter
     
-      
-        if (is_int($category)) {
-            $vets = Veterinarian::getWithFeaturedImage($category);
-        } else {
-            $vets = Veterinarian::getWithFeaturedImage();
-        }
+        $categoryId = $request->filled('categorie') ? intval($request->query('categorie')) : null;
+        $city       = $request->query('stad');
+        $search     = $request->query('zoeken');
+    
+        $vets = Veterinarian::getWithFeaturedImage($categoryId, $city, $search);
 
         return view('website.results', [
             'vets' => $vets,
-            'category' => $category,
+            'category' => $categoryId,
             'bestVets' => $bestVets,
             'mostViewedVets' => $mostViewedVets,
             'categoriesForCount' => $categoriesForCount,

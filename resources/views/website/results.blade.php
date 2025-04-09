@@ -61,19 +61,19 @@
                 <div class="section__header md:flex items-center justify-between mb-8">
                     <div>
                         <h4 class="subtitle w-fit text-md relative before:content-['']">
-                        {{ devTranslate('page.Search Results:','Zoek Resultaten:') }}  <strong>199 {{ devTranslate('page.Clinics','Dierenarsten') }}</strong>
+                        {{ devTranslate('page.Search Results:','Zoek Resultaten:') }}  <strong>{{$vets->total()}} {{ devTranslate('page.Clinics','Dierenarsten') }}</strong>
                         </h4>
                     </div>
                     <div class="flex mt-4 md:mt-0">
                         <div class="relative ml-auto">
                             <select class="appearance-none border border-gray-300 rounded-full p-[10px] w-full px-2 text-black font-semibold bg-white pr-10">
-                                <option>All Filters</option>
+                                <option>{{ devTranslate('page.All Filters','Alle Filters') }} </option>
                             </select>
                             <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-black"></i>
                         </div>
                         <div class="relative ml-2">
                             <select class="appearance-none border border-gray-300 rounded-full p-[10px] w-full px-2 text-black font-semibold bg-white pr-10">
-                                <option>Sort By</option>
+                                <option>{{ devTranslate('page.Sort By','Sorteren op') }}</option>
                             </select>
                             <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-black"></i>
                         </div>
@@ -136,7 +136,7 @@
                                 <h4 class="subtitle text-sm text-gray-800 mb-2">{{ $vet->excerpt }}</h4>
                                 <p class="location text-sm mb-0 font-semibold">
                                     <i class="fa-solid fa-location-dot text-primary"></i>
-                                    {{ $vet->zipcode }} {{ $vet->street }}, Nederland
+                                    {{ $vet->zipcode }} {{ $vet->street }} {{ $vet->street_nr }} <br/>{{ $vet->city->name }}, Nederland
                                 </p>
                                 <a class="text-sm font-semibold" href="tel:{{ $vet->phone }}">
                                     <i class="fa-solid fa-phone text-primary"></i> {{ $vet->phone }}
@@ -159,21 +159,7 @@
                 </div>
                 </div>
                 <div class="pagination flex justify-center gap-2">
-                    <button class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-lg font-semibold text-black transition duration-300 ease-out bg-white hover:bg-primary hover:text-white">
-                        1
-                    </button>
-                    <button class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-lg font-semibold text-black transition duration-300 ease-out bg-white hover:bg-primary hover:text-white">
-                        2
-                    </button>
-                    <button class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-lg font-semibold text-black transition duration-300 ease-out bg-white hover:bg-primary hover:text-white">
-                        3
-                    </button>
-                    <button class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-lg font-semibold text-black transition duration-300 ease-out bg-white hover:bg-primary hover:text-white">
-                        4
-                    </button>
-                    <button class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-lg font-semibold text-black transition duration-300 ease-out bg-white hover:bg-primary hover:text-white">
-                        <i class="fa-solid fa-arrow-right-long"></i>
-                    </button>
+                    {{ $vets->appends(request()->query())->links('vendor.pagination.custom') }}
                 </div>
                 <img src="public/img/bg-blocks.png" alt="" class="absolute bottom-[-80px] left-[-60px] z-[-1]"> 
             </div>
@@ -214,65 +200,77 @@
                     <a href="#" class="btn btn-outline-black whitespace-nowrap">Explore All</a>
                 </div>
                 <div class="categories grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                <div class="category border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
-                    <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
-                        <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/dog.png') }}" alt="">
-                    </figure>
-                    <div class="content text-center p-4">
-                        <h3 class="title text-md font-semibold mb-2">{{devTranslate('page.Dogs', 'Honden')}}</h3>
-                        <p class="paragraph text-sm">({{$categoriesForCount[0]['veterinarians_count']}} {{ devTranslate('page.Vermeldingen','Vermeldingen') }})</p>
-                    </div>
-                </div>
+                    <a href="{{route('results')}}?categorie=1">
+                        <div class="category border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
+                            <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
+                                <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/dog.png') }}" alt="">
+                            </figure>
+                            <div class="content text-center p-4">
+                                <h3 class="title text-md font-semibold mb-2">{{devTranslate('page.Dogs', 'Honden')}}</h3>
+                                <p class="paragraph text-sm">({{$categoriesForCount[0]['veterinarians_count']}} {{ devTranslate('page.Vermeldingen','Vermeldingen') }})</p>
+                            </div>
+                        </div>
+                    </a>
 
-                <div class="category border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
-                    <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
-                        <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/cat.png') }}" alt="">
-                    </figure>
-                    <div class="content text-center p-4">
-                        <h3 class="title text-md font-semibold mb-2">{{devTranslate('page.Cats', 'Katten')}}</h3>
-                        <p class="paragraph text-sm">({{$categoriesForCount[1]['veterinarians_count']}} {{ devTranslate('page.Vermeldingen','Vermeldingen') }})</p>
-                    </div>
-                </div>
+                    <a href="{{route('results')}}?categorie=2">
+                        <div class="category border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
+                            <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
+                                <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/cat.png') }}" alt="">
+                            </figure>
+                            <div class="content text-center p-4">
+                                <h3 class="title text-md font-semibold mb-2">{{devTranslate('page.Cats', 'Katten')}}</h3>
+                                <p class="paragraph text-sm">({{$categoriesForCount[1]['veterinarians_count']}} {{ devTranslate('page.Vermeldingen','Vermeldingen') }})</p>
+                            </div>
+                        </div>
+                    </a>
 
-                <div class="category border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
-                    <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
-                        <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/turtle.png')}}" alt="">
-                    </figure>
-                    <div class="content text-center p-4">
-                        <h3 class="title text-md font-semibold mb-2">{{devTranslate('page.Others', 'Overige')}}</h3>
-                        <p class="paragraph text-sm">({{$categoriesForCount[2]['veterinarians_count']}} {{ devTranslate('page.Vermeldingen','Vermeldingen') }})</p>
-                    </div>
-                </div>
+                    <a href="{{route('results')}}?categorie=3">
+                        <div class="category border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
+                            <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
+                                <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/turtle.png')}}" alt="">
+                            </figure>
+                            <div class="content text-center p-4">
+                                <h3 class="title text-md font-semibold mb-2">{{devTranslate('page.Others', 'Overige')}}</h3>
+                                <p class="paragraph text-sm">({{$categoriesForCount[2]['veterinarians_count']}} {{ devTranslate('page.Vermeldingen','Vermeldingen') }})</p>
+                            </div>
+                        </div>
+                    </a>    
 
-                <div class="category border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
-                    <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
-                        <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/shelters.png')}}" alt="">
-                    </figure>
-                    <div class="content text-center p-4">
-                        <h3 class="title text-md font-semibold mb-2">{{devTranslate('page.Shelters', 'Asielen')}}</h3>
-                        <p class="paragraph text-sm">({{$categoriesForCount[3]['veterinarians_count']}} {{ devTranslate('page.Vermeldingen','Vermeldingen') }})</p>
-                    </div>
-                </div>
+                    <a href="{{route('results')}}?categorie=4">
+                        <div class="category border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
+                            <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
+                                <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/shelters.png')}}" alt="">
+                            </figure>
+                            <div class="content text-center p-4">
+                                <h3 class="title text-md font-semibold mb-2">{{devTranslate('page.Shelters', 'Asielen')}}</h3>
+                                <p class="paragraph text-sm">({{$categoriesForCount[3]['veterinarians_count']}} {{ devTranslate('page.Vermeldingen','Vermeldingen') }})</p>
+                            </div>
+                        </div>
+                    </a>    
 
-                <div class="category border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
-                    <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
-                        <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/specialists.png')}}" alt="">
-                    </figure>
-                    <div class="content text-center p-4">
-                        <h3 class="title text-md font-semibold mb-2">{{devTranslate('page.Specialists', 'Specialisten')}}</h3>
-                        <p class="paragraph text-sm">({{$categoriesForCount[4]['veterinarians_count']}} {{ devTranslate('page.Vermeldingen','Vermeldingen') }})</p>
+                    <a href="{{route('results')}}?categorie=5">
+                    <div class="category border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
+                        <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
+                            <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/specialists.png')}}" alt="">
+                        </figure>
+                        <div class="content text-center p-4">
+                            <h3 class="title text-md font-semibold mb-2">{{devTranslate('page.Specialists', 'Specialisten')}}</h3>
+                            <p class="paragraph text-sm">({{$categoriesForCount[4]['veterinarians_count']}} {{ devTranslate('page.Vermeldingen','Vermeldingen') }})</p>
+                        </div>
                     </div>
-                </div>
+                    </a>
 
-                <div class="category border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
-                    <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
-                        <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/emergencies.png')}}" alt="">
-                    </figure>
-                    <div class="content text-center p-4">
-                        <h3 class="title text-md font-semibold mb-2">{{devTranslate('page.Emergencies', 'Noodgevallen')}}</h3>
-                        <p class="paragraph text-sm">({{$categoriesForCount[5]['veterinarians_count']}} {{ devTranslate('page.Vermeldingen','Vermeldingen') }})</p>
-                    </div>
-                </div>
+                    <a href="{{route('results')}}?categorie=6">
+                        <div class="category border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">
+                            <figure class="bg-gray-300 w-full h-[170px] flex overflow-hidden">
+                                <img class="m-auto w-[120px] h-[120px]" src="{{ asset('dieren/src/public/img/emergencies.png')}}" alt="">
+                            </figure>
+                            <div class="content text-center p-4">
+                                <h3 class="title text-md font-semibold mb-2">{{devTranslate('page.Emergencies', 'Noodgevallen')}}</h3>
+                                <p class="paragraph text-sm">({{$categoriesForCount[5]['veterinarians_count']}} {{ devTranslate('page.Vermeldingen','Vermeldingen') }})</p>
+                            </div>
+                        </div>
+                    </a>
             </div>
             </div>
         </section>
@@ -362,7 +360,7 @@
                                 </h3>
                                 <h4 class="subtitle text-sm text-gray-800 mb-2">{{ $vet->excerpt }}</h4>
                                 <p class="location text-xs mb-0">
-                                    <i class="fa-solid fa-location-dot text-primary"></i> {{ $vet->zipcode }} {{ $vet->street }}, Nederland
+                                    <i class="fa-solid fa-location-dot text-primary"></i> {{ $vet->zipcode }} {{ $vet->street }} {{ $vet->street_nr }} <br/> {{ $vet->city->name }}, Nederland
                                 </p>
                                 <a class="text-xs" href="tel:{{ $vet->phone }}">
                                     <i class="fa-solid fa-phone text-primary"></i> {{ $vet->phone }}

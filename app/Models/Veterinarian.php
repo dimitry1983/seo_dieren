@@ -166,17 +166,47 @@ class Veterinarian extends Model
         return $this->hasOne(VeterinariansImage::class)->where('featured', 1);
     }
 
-    public static function getWithFeaturedImage($categoryId = null)
+
+    public static function getWithFeaturedImage($categoryId = null, $cityName = null, $search = null)
     {
+        $lat = null;
+        $lon = null;
+
+        // Fetch lat/lon from the city if a city name is provided
+        if ($cityName) {
+            $city = \App\Models\City::where('name', 'like', '%' . $cityName . '%')->first();
+            if ($city) {
+                $lat = $city->lat;
+                $lon = $city->lon;
+            }
+        }
+
         return self::query()
-            ->with('featuredImage')
+            ->with(['featuredImage', 'city'])
             ->when($categoryId, function ($query) use ($categoryId) {
-                
                 $query->whereHas('categories', function ($q) use ($categoryId) {
                     $q->where('categories.id', $categoryId);
                 });
             })
-            ->orderByDesc('veterinarians.id')
+            ->when($cityName, function ($query) use ($cityName) {
+                $query->whereHas('city', function ($q) use ($cityName) {
+                    $q->where('name', 'like', '%' . $cityName . '%');
+                });
+            })
+            ->when($search, function ($query) use ($search) {
+                $query->where(function ($q) use ($search) {
+                    $q->where('name', 'like', '%' . $search . '%')
+                        ->orWhere('description', 'like', '%' . $search . '%');
+                });
+            })
+            ->when($lat && $lon, function ($query) use ($lat, $lon) {
+                // Add distance calculation using the Haversine formula
+                $query->selectRaw("*, (6371 * acos(cos(radians(?)) * cos(radians(lat)) * cos(radians(lon) - radians(?)) + sin(radians(?)) * sin(radians(lat)))) as distance", [
+                    $lat, $lon, $lat
+                ])->orderBy('distance');
+            }, function ($query) {
+                $query->orderByDesc('veterinarians.id');
+            })
             ->paginate(6);
     }
 
@@ -224,7 +254,7 @@ class Veterinarian extends Model
 
     public static function get3latestVets(){
         return self::query()
-            ->with('featuredImage')
+            ->with(['featuredImage', 'city'])
             ->orderByDesc('veterinarians.id')
             ->take(3)
             ->get();
@@ -232,7 +262,7 @@ class Veterinarian extends Model
 
     public static function get3BestRatedVets($limit = 3){
         return self::query()
-            ->with('featuredImage')
+            ->with(['featuredImage', 'city'])
             ->withAvg('reviews', 'rating')
             ->orderByDesc('rating')
             ->take($limit)
@@ -241,7 +271,7 @@ class Veterinarian extends Model
 
     public static function get3MostViewedVets(){
         return self::query()
-            ->with('featuredImage')
+            ->with(['featuredImage', 'city'])
             ->orderByDesc('views')
             ->take(3)
             ->get();
