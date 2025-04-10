@@ -171,7 +171,7 @@ class Veterinarian extends Model
     {
         $lat = null;
         $lon = null;
-
+    
         // Fetch lat/lon from the city if a city name is provided
         if ($cityName) {
             $city = \App\Models\City::where('name', 'like', '%' . $cityName . '%')->first();
@@ -180,17 +180,12 @@ class Veterinarian extends Model
                 $lon = $city->lon;
             }
         }
-
+    
         return self::query()
             ->with(['featuredImage', 'city'])
             ->when($categoryId, function ($query) use ($categoryId) {
                 $query->whereHas('categories', function ($q) use ($categoryId) {
                     $q->where('categories.id', $categoryId);
-                });
-            })
-            ->when($cityName, function ($query) use ($cityName) {
-                $query->whereHas('city', function ($q) use ($cityName) {
-                    $q->where('name', 'like', '%' . $cityName . '%');
                 });
             })
             ->when($search, function ($query) use ($search) {

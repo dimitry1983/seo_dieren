@@ -33,14 +33,6 @@ class BreadcrumbMiddleware
 
 
 
-
-
-
-
-
-
-
-
         if ($currentRouteName == 'livewire.update'){
             $breadcrumbData = session('breadcrumbData');
         }

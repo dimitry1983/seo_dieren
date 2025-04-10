@@ -7,7 +7,7 @@
 
         <section class="section section--breadcrumb p-0 ">
             <div class="container pt-5 mx-auto">
-            @include('parts.breadcrumb' , ['breadcrumbs' => $breadcrumbData ?? ''] )
+                @include('parts.breadcrumb' , ['breadcrumbs' => $breadcrumbData ?? ''] )
             </div>
         </section>
 
