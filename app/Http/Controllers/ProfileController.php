@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Review;
 use App\Models\Veterinarian;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -50,8 +51,12 @@ class ProfileController extends Controller
 
         $seo['title'] = $veterinarian -> name;
         $seo['description'] = Str::limit(strip_tags($veterinarian -> description), 100, '...');
+        $totalRatings = $this -> countReviews($id);
+        return view('website.profile', ['seo' => $seo, 'veterinarian' => $veterinarian, 'rating' => $rating , 'totalRatings' => $totalRatings,'reviews' => $reviews, 'ratingCounts' => $ratingCounts]);
+    }
 
-        return view('website.profile', ['seo' => $seo, 'veterinarian' => $veterinarian, 'rating' => $rating ,'reviews' => $reviews, 'ratingCounts' => $ratingCounts]);
+    private function countReviews($id){
+        return Review::where('veterinarian_id', $id)->count();
     }
 
 }

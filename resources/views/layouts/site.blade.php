@@ -98,6 +98,7 @@
             }
         </style>
         <link rel="stylesheet" href="{{ asset('dieren/dist/public/css/app.css')}}">
+        @yield('structured-data')
 </head>
 <body class="text-base">
     <header class="header relative header--main">
