@@ -212,7 +212,7 @@
             </div>
         </section>
 
-        <section class="section section--intro py-[80px]">
+        <section class="section section--intro py-[40px] md:py-[80px]">
             <div class="container mx-auto relative">
                 <h1 class="text-4xl text-center font-bold text-gray-800 relative z-1 mb-8">
                     News

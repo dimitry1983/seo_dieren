@@ -1693,6 +1693,10 @@ h3.adv span {
   height: 50px;
 }
 
+.h-\[60vh\] {
+  height: 60vh;
+}
+
 .h-\[77px\] {
   height: 77px;
 }
@@ -1720,14 +1724,6 @@ h3.adv span {
 
 .h-px {
   height: 1px;
-}
-
-.h-\[80vh\] {
-  height: 80vh;
-}
-
-.h-\[60vh\] {
-  height: 60vh;
 }
 
 .min-h-\[calc\(100vh-92px\)\] {
@@ -3000,6 +2996,10 @@ h3.adv span {
   padding-top: 90px;
 }
 
+.pt-\[60px\] {
+  padding-top: 60px;
+}
+
 .text-left {
   text-align: left;
 }
@@ -3139,6 +3139,11 @@ h3.adv span {
 }
 
 .text-\[\#009999\] {
+  --tw-text-opacity: 1;
+  color: rgb(0 153 153 / var(--tw-text-opacity, 1));
+}
+
+.text-\[\#099\] {
   --tw-text-opacity: 1;
   color: rgb(0 153 153 / var(--tw-text-opacity, 1));
 }
@@ -3330,11 +3335,6 @@ h3.adv span {
 .text-zinc-800 {
   --tw-text-opacity: 1;
   color: rgb(39 39 42 / var(--tw-text-opacity, 1));
-}
-
-.text-\[\#099\] {
-  --tw-text-opacity: 1;
-  color: rgb(0 153 153 / var(--tw-text-opacity, 1));
 }
 
 .underline {
@@ -3634,6 +3634,17 @@ select2-container--default
     /* Remove any previously set background image */
     background-image: none !important;
   }
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  color: #1b1b1b;
+  line-height: 28px;
+  text-align: left !important;
+  padding-left: 0px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__placeholder {
+  color: #262626 !important;
 }
 
 .\*\:opacity-0 > * {
@@ -4179,6 +4190,10 @@ select2-container--default
     padding-top: 50px;
   }
 
+  .sm\:pb-\[50px\] {
+    padding-bottom: 50px;
+  }
+
   .sm\:text-left {
     text-align: left;
   }
@@ -4222,6 +4237,10 @@ select2-container--default
 
   .md\:block {
     display: block;
+  }
+
+  .md\:inline-block {
+    display: inline-block;
   }
 
   .md\:flex {
@@ -4328,6 +4347,11 @@ select2-container--default
   .md\:py-\[15px\] {
     padding-top: 15px;
     padding-bottom: 15px;
+  }
+
+  .md\:py-\[80px\] {
+    padding-top: 80px;
+    padding-bottom: 80px;
   }
 
   .md\:pb-\[120px\] {

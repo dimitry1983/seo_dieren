@@ -65,7 +65,7 @@
             </div>
         </section>
 
-        <section class="section section--intro py-[80px]">
+        <section class="section section--intro py-[40px] md:py-[80px]">
             <div class="container mx-auto relative">
                 <div class="flex flex-col lg:flex-row gap-y-4 lg:gap-x-6">
                     <div class="w-full lg:w-1/2">

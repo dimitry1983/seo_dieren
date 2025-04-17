@@ -280,3 +280,14 @@
       background-image: none !important;
     }
   }
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #1b1b1b;
+    line-height: 28px;
+    text-align: left !important;
+    padding-left: 0px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__placeholder {
+    color: #262626 !important;
+}

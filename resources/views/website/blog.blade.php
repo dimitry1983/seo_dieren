@@ -63,7 +63,7 @@
     </section>
 
     @if (!empty($insurances))
-    <section class="section section--intro py-[80px]">
+    <section class="section section--intro py-[40px] md:py-[80px]">
         <div class="container px-2 mx-auto relative">
             <div class="flex flex-col lg:flex-row gap-y-4 lg:gap-x-6">
                

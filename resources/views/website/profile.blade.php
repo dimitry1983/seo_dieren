@@ -51,7 +51,7 @@
         $totalRatings = array_sum($ratingCounts);
     @endphp
 
-    <section class="section section--hero-interior bg-cover bg-right bg-center h-[300px]" style="background-image: url('{{ asset('dieren/src/public/img/profile.png') }}')"></section>
+    <section class="section section--hero-interior bg-cover bg-right bg-center" style="background-image: url('{{ asset('dieren/src/public/img/profile.png') }}'); min-height: 120px;"></section>
 
     <section class="section section--profile p-0 mt-[-90px] bg-transparent">
         <div class="container mx-auto">
@@ -77,36 +77,35 @@
             <div class="grid grid-cols-4 gap-4">
                 <div class="lg:col-span-3 col-span-4">
                     <div class="pills border border-gray-300 shadow-lg mb-8">
-                        <ul class="md:flex py-3">
-                            <li class="px-1 xl:px-3">
-                                <button class="btn btn-primaryLight">{{ devTranslate('page.Informatie','Informatie') }}</button>
-                            </li>
-                            <li class="xl:px-3 md:border-l md:border-l-gray-300">
+                        <ul class="flex flex-col md:flex-row flex-wrap w-full py-3">
+                        <li class="w-full md:w-auto px-1 xl:px-3 mb-1">
+                            <button class="btn btn-primaryLight w-full md:w-auto">{{ devTranslate('page.Informatie','Informatie') }}</button>
+                        </li>
+                        <li class="w-full md:w-auto xl:px-3 md:border-l mb-1 md:border-l-gray-300">
                             <button 
-                                    onclick="document.getElementById('diensten').scrollIntoView({ behavior: 'smooth' });"
-                                    class="btn btn-primary bg-white"
-                                >{{ devTranslate('page.Diensten','Diensten') }}</button>
-                            </li>
-                            <li class="xl:px-3 md:border-l md:border-l-gray-300">
+                                onclick="document.getElementById('diensten').scrollIntoView({ behavior: 'smooth' });"
+                                class="btn btn-primary bg-white w-full md:w-auto"
+                            >{{ devTranslate('page.Diensten','Diensten') }}</button>
+                        </li>
+                        <li class="w-full md:w-auto xl:px-3 md:border-l mb-1 md:border-l-gray-300">
                             <button 
-                                    onclick="document.getElementById('galerij').scrollIntoView({ behavior: 'smooth' });"
-                                    class="btn btn-primary bg-white"
-                                >
-                                {{ devTranslate('page.Galerij','Galerij') }}</button>
-                            </li>
-                            <li class="xl:px-3 md:border-l md:border-l-gray-300">
+                                onclick="document.getElementById('galerij').scrollIntoView({ behavior: 'smooth' });"
+                                class="btn btn-primary bg-white w-full md:w-auto"
+                            >{{ devTranslate('page.Galerij','Galerij') }}</button>
+                        </li>
+                        <li class="w-full md:w-auto xl:px-3 md:border-l mb-1 md:border-l-gray-300">
                             <button 
-                                    onclick="document.getElementById('prijzen').scrollIntoView({ behavior: 'smooth' });"
-                                    class="btn btn-primary bg-white"
-                                >{{ devTranslate('page.Prijzen','Prijzen') }}</button>
-                            </li>
-                            <li class="xl:px-3 md:border-l md:border-l-gray-300">
-                                <button 
-                                        onclick="document.getElementById('reviews').scrollIntoView({ behavior: 'smooth' });"
-                                        class="btn btn-primary bg-white"
-                                    >{{ devTranslate('page.Beoordelingen','Beoordelingen') }}</button>
-                            </li>
-                        </ul>
+                                onclick="document.getElementById('prijzen').scrollIntoView({ behavior: 'smooth' });"
+                                class="btn btn-primary bg-white w-full md:w-auto"
+                            >{{ devTranslate('page.Prijzen','Prijzen') }}</button>
+                        </li>
+                        <li class="w-full md:w-auto xl:px-3 md:border-l mb-1 md:border-l-gray-300">
+                            <button 
+                                onclick="document.getElementById('reviews').scrollIntoView({ behavior: 'smooth' });"
+                                class="btn btn-primary bg-white w-full md:w-auto"
+                            >{{ devTranslate('page.Beoordelingen','Beoordelingen') }}</button>
+                        </li>
+                    </ul>
                     </div>
                     <div class="content border border-gray-300 shadow-lg px-[30px] py-[50px] mb-6 relative">
                         <h4 class="subtitle w-fit text-md font-semibold relative before:content-[''] before:w-[20px] before:h-[2px] before:bg-primary before:absolute before:right-[-30px] before:top-1/2 before:-translate-y-1/2">
@@ -127,9 +126,7 @@
                         <h3 class="title title--section font-bold text-3xl text-gray-800 mb-6 leading-tight md:leading-tight lg:leading-normal">
                             <span class="text-primary">{{ devTranslate('page.Producten','Producten') }}</span> {{ devTranslate('page.En Diensten','En Diensten') }}
                         </h3>
-                        <div class="services grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-                           
-                        
+                        <div class="services grid md:grid-cols-2 lg:grid-cols-4 gap-2">
                             @if (!empty($veterinarian->services)) 
                                 @foreach($veterinarian->services as $item)
                                     <div class="services mb-4 border-2 border-white shadow-lg bg-white transition-transform duration-300 ease-out hover:scale-y-105">

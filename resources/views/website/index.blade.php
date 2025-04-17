@@ -21,7 +21,7 @@
             <div class="absolute top-0 left-0 w-full h-full bg-white bg-opacity-65 z-2"></div>
 
             <!-- Content container -->
-            <div class="container mx-auto lg:pt-[120px] lg:pb-[180px] md:pt-[90px] md:pb-[120px] sm:pt-[50px] sm:pb-[80px] pt-[100px] pb-[100px] xl-custom:py-[100px] relative z-20">
+            <div class="container mx-auto lg:pt-[120px] lg:pb-[180px] md:pt-[90px] md:pb-[120px] sm:pt-[50px] sm:pb-[50px] pt-[60px] pb-[100px] xl-custom:py-[100px] relative z-20">
                 <div class="flex flex-col lg:flex-row items-center">
                     <div class="w-full lg:w-1/2 text-center lg:text-left">
                         <div class="mb-6 header__content">
@@ -73,7 +73,7 @@
                 </div>
 
                 <div class="w-full md:w-1/4 text-center flex items-center justify-center relative z-1">
-                    <span class="font-bold mr-8 text-lg">{{ devTranslate('page.Search','Zoeken') }}</span>
+                    <span class="hidden md:inline-block search-span font-bold mr-8 text-lg">{{ devTranslate('page.Search','Zoeken') }}</span>
                     <button type="submit" class="btn btn-secondary text-3xl md:text-5xl p-2 md:p-[20px] md:rounded-full w-full md:w-fit">
                         <i class="fa-regular fa-magnifying-glass"></i>
                     </button>
@@ -83,7 +83,7 @@
     </section>
 
     @if (!empty($insurances))
-    <section class="section section--intro py-[80px]">
+    <section class="section section--intro py-[40px] md:py-[80px]">
         <div class="container px-2 mx-auto relative">
             <div class="flex flex-col lg:flex-row gap-y-4 lg:gap-x-6">
                
