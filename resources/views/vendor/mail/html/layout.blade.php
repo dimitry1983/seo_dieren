@@ -8,8 +8,11 @@
 <meta name="supported-color-schemes" content="light">
 <style>
 @media only screen and (max-width: 600px) {
+table.wrapper{
+    background-color: #202428 !important;
+}    
 .inner-body {
-width: 100% !important;
+    width: 100% !important;
 }
 
 .footer {
@@ -18,16 +21,16 @@ width: 100% !important;
 }
 
 @media only screen and (max-width: 500px) {
-.button {
-width: 100% !important;
-}
+    .button {
+    width: 100% !important;
+    }
 }
 </style>
 {{ $head ?? '' }}
 </head>
 <body>
 
-<table class="wrapper" width="100%" cellpadding="0" cellspacing="0" role="presentation">
+<table class="wrapper" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="background-color: #fff !important">
 <tr>
 <td align="center">
 <table class="content" width="100%" cellpadding="0" cellspacing="0" role="presentation">
@@ -35,8 +38,8 @@ width: 100% !important;
 
 <!-- Email Body -->
 <tr>
-<td class="body" width="100%" cellpadding="0" cellspacing="0" style="border: hidden !important;">
-<table class="inner-body" align="center" width="570" cellpadding="0" cellspacing="0" role="presentation">
+<td class="body" width="100%" cellpadding="0" cellspacing="0" style="border: hidden !important;background-color: #fff !important" >
+<table class="inner-body" align="center" width="570" cellpadding="0" cellspacing="0" role="presentation" >
 <!-- Body content -->
 <tr>
 <td class="content-cell">

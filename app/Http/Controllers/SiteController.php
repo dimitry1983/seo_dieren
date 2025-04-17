@@ -17,6 +17,7 @@ use App\Services\GeoapifyService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+
 use App\Services\ScraperService;
 
 class SiteController extends Controller
@@ -32,8 +33,11 @@ class SiteController extends Controller
 
     public function index(Request $request)
     {
-
+      
         $page = Page::getCustomPage('home');
+        $seo = $page?->seo;
+       
+
         $headerBlock = Page::getBlockInfo($page->blocks, 'Header-big');
         $insurances = Page::getBlockInfo($page->blocks, 'insurances');
         $advantages = Page::getBlockInfo($page->blocks, 'adventages');
@@ -58,7 +62,7 @@ class SiteController extends Controller
 
         $getRandomReviews = Review::getRandomReviews();
 
-        return view('website.index', compact('page', 'headerBlock', 'bestVets',  'blogs', 'getRandomReviews', 'mostViewedVets', 'categoriesForCount', 'categories', 'vets', 'insurances', 'advantages', 'darkBanner'));
+        return view('website.index', compact('page', 'seo', 'headerBlock', 'bestVets',  'blogs', 'getRandomReviews', 'mostViewedVets', 'categoriesForCount', 'categories', 'vets', 'insurances', 'advantages', 'darkBanner'));
     }
 
     //batches of 20
@@ -226,6 +230,8 @@ class SiteController extends Controller
 
 
     public function results(Request $request){
+        $page = Page::getCustomPage('search');
+        $seo = $page?->seo;
         $page               = Page::getCustomPage('home');
         $advantages         = Page::getBlockInfo($page->blocks, 'adventages');
         $bestVets           = Veterinarian::get3BestRatedVets();
@@ -240,6 +246,7 @@ class SiteController extends Controller
         $vets = Veterinarian::getWithFeaturedImage($categoryId, $city, $search);
 
         return view('website.results', [
+            'seo' => $seo,
             'vets' => $vets,
             'category' => $categoryId,
             'bestVets' => $bestVets,
@@ -250,13 +257,25 @@ class SiteController extends Controller
         ]);
     }
 
-
     public function about(){
-        return view('website.about');
+        $page = Page::getCustomPage('about');
+        $seo = $page?->seo;
+
+        return view('website.about', ['seo' => $seo]);
     }
 
     public function contact(){
-        return view('website.contact');
+        $page = Page::getCustomPage('contact');
+        $seo = $page?->seo;
+        
+        return view('website.contact', ['seo' => $seo]);
+    }
+
+    public function page($slug){
+        $page = Page::getCustomPage($slug);
+        $seo = $page?->seo;
+
+        return view('website.page', ['page' => $page, 'seo' => $seo]);
     }
 
     // public function convertDB(){

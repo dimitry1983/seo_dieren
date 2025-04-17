@@ -15,6 +15,7 @@ use App\Models\User;
 use App\Models\Veterinarian;
 use Filament\Forms;
 use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
@@ -25,6 +26,7 @@ use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use RalphJSmit\Filament\SEO\SEO;
 
 class VeterinarianResource extends Resource
 {
@@ -40,103 +42,90 @@ class VeterinarianResource extends Resource
     {
         return $form
             ->schema([
-                Grid::make(5) // 3 columns for general info, 2 columns for contact info
-                    ->schema([
-                        // Left side - General info (3 columns)
-                        Section::make('General Information')
-                            ->schema([
-                                Forms\Components\TextInput::make('name')
-                                    ->required()
-                                    ->maxLength(255),
-                                Forms\Components\Textarea::make('short_description')
-                                    ->columnSpanFull(),
-                                Select::make('categories')
-                                    ->label('Categories')
-                                    ->multiple()
-                                    ->relationship('categories', 'name') // Ensure this matches the model function
-                                    ->searchable()
-                                    ->preload(), 
-                                Select::make('services')
-                                    ->label('Services')
-                                    ->multiple()
-                                    ->relationship('services', 'name') // Ensure this matches the model function
-                                    ->searchable()
-                                    ->preload(), 
+                Grid::make(5)
+    ->schema([
+        // Left side - General info (3 columns)
+        Section::make('General Information')
+            ->schema([
+                Forms\Components\TextInput::make('name')->required()->maxLength(255),
+                Forms\Components\Textarea::make('short_description')->columnSpanFull(),
+                Select::make('categories')
+                    ->label('Categories')
+                    ->multiple()
+                    ->relationship('categories', 'name')
+                    ->searchable()
+                    ->preload(),
+                Select::make('services')
+                    ->label('Services')
+                    ->multiple()
+                    ->relationship('services', 'name')
+                    ->searchable()
+                    ->preload(),
+                Forms\Components\RichEditor::make('description')->columnSpanFull(),
+                Forms\Components\TextInput::make('lat')->readOnly()->numeric(),
+                Forms\Components\TextInput::make('lon')->readOnly()->numeric(),
+                Select::make('user_id')
+                    ->searchable()
+                    ->getSearchResultsUsing(
+                        fn (string $search): array => User::where('name', 'like', "%{$search}%")
+                            ->limit(50)
+                            ->get()
+                            ->pluck('name', 'id')
+                            ->toArray()
+                    )
+                    ->getOptionLabelUsing(fn ($value) => User::find($value)?->name)
+                    ->placeholder('Select a user'),
+            ])
+            ->columnSpan(3),
 
-                                Forms\Components\RichEditor::make('description')
-                                    ->columnSpanFull(),
-                                Forms\Components\TextInput::make('lat')
-                                    ->readOnly()
-                                    ->numeric(),
-                                Forms\Components\TextInput::make('lon')
-                                    ->readOnly()
-                                    ->numeric(),
-                                Select::make('user_id')
-                                    ->searchable()
-                                    ->getSearchResultsUsing(
-                                        fn (string $search): array => User::where('name', 'like', "%{$search}%")
-                                            ->limit(50)
-                                            ->get()
-                                            // This produces an array like [1 => 'Alice', 2 => 'Bob', ...]
-                                            ->pluck('name', 'id')
-                                            ->toArray()
-                                    )
-                                    ->getOptionLabelUsing(fn ($value) => User::find($value)?->name)
-                                    ->placeholder('Select a user')
-                            ])
-                            ->columnSpan(3),
-    
-                        // Right side - Contact info (2 columns)
-                        Section::make('Contact Information')
-                            ->schema([
-                                Forms\Components\Select::make('region_id')
-                                    ->label('Province')
-                                    ->searchable(true)
-                                    ->options(function (Get $get){
-                                        $countryId = 1;
-                
-                                        if (!empty($countryId)){
-                                            return Province::getStateByCountry($countryId);
-                                        }
-                                    })
-                                    ->live()
-                                    ->afterStateUpdated(function (Forms\Contracts\HasForms $livewire,  Forms\Components\Select $component) {
-                                        $livewire->validateOnly($component->getStatePath());
-                                    }),
-                                Forms\Components\Select::make('city_id')
-                                        ->label('City')
-                                        ->searchable(true)
-                                        ->live()
-                                        ->options(function (Get $get){
-                                            $countryId = 1;
-                                            $stateId = $get('region_id');
-                    
-                                            if (!empty($countryId) && !empty($stateId)){
-                                                return City::getCityByCountryAndState($countryId, $stateId);
-                                            }
-                                        })
-                                        ->required()
-                                        ->afterStateUpdated(function (Forms\Contracts\HasForms $livewire,  Forms\Components\Select $component) {
-                                            $livewire->validateOnly($component->getStatePath());
-                                        }),
-            
-                                Forms\Components\TextInput::make('zipcode')
-                                    ->maxLength(255),
-                                Forms\Components\TextInput::make('street')
-                                    ->maxLength(255),
-                                Forms\Components\TextInput::make('street_nr')
-                                    ->maxLength(255),
-                                Forms\Components\TextInput::make('phone')
-                                    ->tel()
-                                    ->maxLength(255),
-                                Forms\Components\TextInput::make('website')
-                                    ->maxLength(255)
-                                    ->type('url') // Optional: sets the HTML input type to "url"
-                                    ->rules(['url']) // Ensures Laravel validates it as a URL
-                                    ->placeholder('https://example.com')
-                            ])
-                            ->columnSpan(2),
-                    ]),
+            // Right side - stack Contact Info + SEO
+            Group::make()
+                ->schema([
+                    Section::make('Contact Information')
+                        ->schema([
+                            Forms\Components\Select::make('region_id')
+                                ->label('Province')
+                                ->searchable(true)
+                                ->options(function (Get $get){
+                                    $countryId = 1;
+                                    return Province::getStateByCountry($countryId);
+                                })
+                                ->live()
+                                ->afterStateUpdated(fn (Forms\Contracts\HasForms $livewire, Forms\Components\Select $component) =>
+                                    $livewire->validateOnly($component->getStatePath())
+                                ),
+                            Forms\Components\Select::make('city_id')
+                                ->label('City')
+                                ->searchable(true)
+                                ->live()
+                                ->options(function (Get $get){
+                                    $countryId = 1;
+                                    $stateId = $get('region_id');
+                                    return City::getCityByCountryAndState($countryId, $stateId);
+                                })
+                                ->required()
+                                ->afterStateUpdated(fn (Forms\Contracts\HasForms $livewire, Forms\Components\Select $component) =>
+                                    $livewire->validateOnly($component->getStatePath())
+                                ),
+                            Forms\Components\TextInput::make('zipcode')->maxLength(255),
+                            Forms\Components\TextInput::make('street')->maxLength(255),
+                            Forms\Components\TextInput::make('street_nr')->maxLength(255),
+                            Forms\Components\TextInput::make('phone')->tel()->maxLength(255),
+                            Forms\Components\TextInput::make('website')
+                                ->maxLength(255)
+                                ->type('url')
+                                ->rules(['url'])
+                                ->placeholder('https://example.com'),
+                        ])
+                        ->columns(2),
+
+                    Section::make('SEO Settings')
+                        ->schema([
+                            SEO::make(),
+                        ]),
+                ])
+                ->columnSpan(2),
+        ]),
             ]);
     }
     

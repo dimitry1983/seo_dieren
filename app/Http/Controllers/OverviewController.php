@@ -19,11 +19,13 @@ class OverviewController extends Controller
         $blogs = Blog::get3LatestBlogs();
 
         $page = Page::getCustomPage('overzicht');
+        $seo = $page?->seo;
+
         $greenBanner = Page::getBlockInfo($page->blocks, 'green_usp');
         $bestVets = Veterinarian::get3BestRatedVets(4);
         $categoriesForCount = Category::withCount('veterinarians')->get();
         $getRandomReviews = Review::getRandomReviews();
         $categories = Category::getCategories();
-        return view('website.map', ['blogs' => $blogs, 'categories' => $categories ,'darkBanner' => $darkBanner, 'bestVets' => $bestVets, 'greenBanner' => $greenBanner, 'categoriesForCount' => $categoriesForCount, 'getRandomReviews' => $getRandomReviews]);
+        return view('website.map', ['blogs' => $blogs, 'seo' => $seo ,'categories' => $categories ,'darkBanner' => $darkBanner, 'bestVets' => $bestVets, 'greenBanner' => $greenBanner, 'categoriesForCount' => $categoriesForCount, 'getRandomReviews' => $getRandomReviews]);
     }
 }

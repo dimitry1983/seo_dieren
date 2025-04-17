@@ -23,7 +23,8 @@ class SupportMessageMail extends Mailable
     public function __construct($user, $messageContent)
     {
         $this->user = $user;
-        $this->messageContent = $messageContent.'/n/n'.__('Contact gegevens').': '.$this->user->email.'/n'.$this->user->name.'/n';
+        $this->messageContent = $messageContent."\n\n".__('Contact gegevens').': '.$this->user->email."\n".$this->user->name."\n";
+       
     }
 
 
@@ -40,7 +41,7 @@ class SupportMessageMail extends Mailable
         ->markdown('emails.support-message')
         ->with([
             'user' => $this->user,
-            'messageContent' => nl2br(e($this->messageContent))
+            'messageContent' => $this->messageContent
         ]);
     }
 }

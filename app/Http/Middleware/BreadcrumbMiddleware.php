@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use App\Models\Advertisement;
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\Page;
 use App\Models\Veterinarian;
 use Closure;
 use Illuminate\Http\Request;
@@ -84,9 +85,6 @@ class BreadcrumbMiddleware
             ];
         }
 
-    
-
-
         if ($currentRouteName == 'blog.detail'){
 
             $slug = $routeParameters['slug'];
@@ -113,6 +111,15 @@ class BreadcrumbMiddleware
             ];
         }
 
+     
+        if ($currentRouteName == 'custom.page'){
+            $slug = $routeParameters['slug'];
+            $page = Page::getCustomPage($slug);
+            $breadcrumbData = [
+                'total' => 1,
+                'name' => $page -> title
+            ];
+        }
 
         if ($currentRouteName == 'login'){
             $breadcrumbData = [

@@ -8,6 +8,7 @@ use App\Models\Blog;
 use App\Models\Veterinarian;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
@@ -17,6 +18,7 @@ use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use RalphJSmit\Filament\SEO\SEO;
 
 class BlogResource extends Resource
 {
@@ -32,36 +34,48 @@ class BlogResource extends Resource
     {
         return $form
         ->schema([
-            Section::make('Blog') // Title of the section
+            Grid::make(5)
                 ->schema([
-                FileUpload::make('thumb')
-                    ->image()
-                    ->required()
-                    ->directory('blogs') // Adjust the directory where images should be stored
-                    ->maxSize(2048),
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('excerpt')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\RichEditor::make('description')
-                    ->required()
-                    ->columnSpanFull(),
-                Select::make('status')
-                    ->required()
-                    ->options([
-                        'pending' => 'Pending',
-                        'active' => 'active',
-                        'declined' => 'declined',
-                    ]),    
-                Select::make('veterinarian_id')
-                    ->searchable()
-                    ->label('Veterinarian')
-                    ->options(Veterinarian::pluck('name', 'id')->toArray())    
+                    // Left side – Blog content (3 columns)
+                    Section::make('Blog')
+                        ->columnSpan(3)
+                        ->schema([
+                            FileUpload::make('thumb')
+                                ->image()
+                                ->required()
+                                ->directory('blogs')
+                                ->maxSize(2048),
+                            Forms\Components\TextInput::make('name')
+                                ->required()
+                                ->maxLength(255),
+                            Forms\Components\TextInput::make('excerpt')
+                                ->required()
+                                ->maxLength(255),
+                            Forms\Components\RichEditor::make('description')
+                                ->required()
+                                ->columnSpanFull(),
+                            Select::make('status')
+                                ->required()
+                                ->options([
+                                    'pending' => 'Pending',
+                                    'active' => 'Active',
+                                    'declined' => 'Declined',
+                                ]),
+                            Select::make('veterinarian_id')
+                                ->searchable()
+                                ->label('Veterinarian')
+                                ->options(Veterinarian::pluck('name', 'id')->toArray()),
+                        ]),
+    
+                    // Right side – SEO (2 columns)
+                    Section::make('SEO Settings')
+                        ->columnSpan(2)
+                        ->schema([
+                            SEO::make(), // Your custom SEO component
+                        ]),
                 ]),
-            ]);    
-        }
+        ]);   
+    }
 
     public static function table(Table $table): Table
     {

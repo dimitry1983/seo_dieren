@@ -23,6 +23,7 @@ class BlogController extends Controller
             ->where('status', 'active')
             ->firstOrFail();
 
+        $seo = $blog?->seo;   
         // Compare the current slug with the slugified blog name
         if ($slug !== slugify($blog->name)) {
             abort(404);
@@ -30,7 +31,7 @@ class BlogController extends Controller
 
         $blogs = Blog::get3LatestBlogs(6);
 
-        return view('website.interior-blog', ['blog' => $blog, 'blogs' => $blogs]);
+        return view('website.interior-blog', ['blog' => $blog, 'seo' => $seo , 'blogs' => $blogs]);
     }
 
 }

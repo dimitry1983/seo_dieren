@@ -524,6 +524,13 @@ function getPageBuilderSchema(){
         ]),
 
 
+        FilamentBuilder\Block::make('content')
+        ->schema([
+            TextInput::make('title'),
+            RichEditor::make('description'),
+        ]),
+
+
         FilamentBuilder\Block::make('adventages')
         ->schema([
             TextInput::make('title'),

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Veterinarian;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProfileController extends Controller
 {
@@ -47,7 +48,10 @@ class ProfileController extends Controller
 
         Veterinarian::incrementViewsIfHuman($veterinarian);
 
-        return view('website.profile', ['veterinarian' => $veterinarian, 'rating' => $rating ,'reviews' => $reviews, 'ratingCounts' => $ratingCounts]);
+        $seo['title'] = $veterinarian -> name;
+        $seo['description'] = Str::limit(strip_tags($veterinarian -> description), 100, '...');
+
+        return view('website.profile', ['seo' => $seo, 'veterinarian' => $veterinarian, 'rating' => $rating ,'reviews' => $reviews, 'ratingCounts' => $ratingCounts]);
     }
 
 }

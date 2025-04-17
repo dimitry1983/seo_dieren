@@ -11,6 +11,8 @@
         else:
             $backgroundImageUrl = asset('dieren/src/public/img/hero.jpg') ;
         endif;
+
+        $backgroundImageUrl = asset('dieren/src/public/img/categories.jpg');
     @endphp
 
     <section class="section section--hero bg-cover bg-right bg-center pb-0 pt-0 md:pt-0 px-0 md:px-0 lg:px-0" style="background-image: url('{{ $backgroundImageUrl }}');">
@@ -19,7 +21,7 @@
             <div class="absolute top-0 left-0 w-full h-full bg-white bg-opacity-65 z-2"></div>
 
             <!-- Content container -->
-            <div class="container mx-auto lg:pt-[120px] lg:pb-[180px] md:pt-[90px] md:pb-[120px] sm:pt-[50px] sm:pb-[80px] pt-[100px] pb-[100px] xl-custom:py-[200px] relative z-20">
+            <div class="container mx-auto lg:pt-[120px] lg:pb-[180px] md:pt-[90px] md:pb-[120px] sm:pt-[50px] sm:pb-[80px] pt-[100px] pb-[100px] xl-custom:py-[100px] relative z-20">
                 <div class="flex flex-col lg:flex-row items-center">
                     <div class="w-full lg:w-1/2 text-center lg:text-left">
                         <div class="mb-6 header__content">

@@ -9,6 +9,9 @@ use App\Http\Controllers\CityController;
 use App\Http\Controllers\OverviewController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\SitemapController;
+use App\Mail\SupportMessageMail;
+use App\Models\User;
 
 Route::get('/api/cities', [CityController::class, 'search']);
 
@@ -23,9 +26,6 @@ Route::middleware(['auth'])->group(function () {
 
 require __DIR__.'/auth.php';
 
-
-
-
 Route::middleware(['auth'])->group(function () {
     Route::get('/cms/dashboard', \App\Livewire\Company\Dashboard::class)->name('company.dashboard');
     Route::get('/cms/bedrijfsinformatie', \App\Livewire\Company\CompanyInformation::class)->name('company.company-info');
@@ -39,6 +39,15 @@ Route::middleware(['auth'])->group(function () {
     //Route::get('/cms/facturen', \App\Livewire\Company\Invoices::class)->name('company.company-invoices');
 });
 //routing for the website
+
+Route::get('/preview-mail', function () {
+    $fakeUser = User::find(1);
+   
+    $content = "dddd";
+    return (new SupportMessageMail($fakeUser, $content))->render();
+});
+
+Route::get('/sitemap', [SitemapController::class, 'sitemap'])->name('site.map.ads');
 
 // Site Routes
 Route::middleware(['bread'])->group(function () {
@@ -61,12 +70,17 @@ Route::middleware(['bread'])->group(function () {
         ->where('slug', '^(?!admin).*') // Exclude "admin" as the first segment
         ->name('profile');
 
+    Route::get('/{slug}', [SiteController::class, 'page'])->name('custom.page'); 
+
+
+
     // Search Routes
    // Route::get('/zoekresultaat', [SearchController::class, 'search'])->name('search');
 });
 
 //routings for dashboard
 
+ 
 
 
 Route::redirect('dashboard', 'cms/dashboard')

@@ -6,7 +6,7 @@
 
 ---
 
-{{ $messageContent }}
+{!! nl2br($messageContent) !!}
 
 Thanks,  
 {{ config('app.name') }}
