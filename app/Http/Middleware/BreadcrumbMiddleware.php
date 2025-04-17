@@ -115,10 +115,15 @@ class BreadcrumbMiddleware
         if ($currentRouteName == 'custom.page'){
             $slug = $routeParameters['slug'];
             $page = Page::getCustomPage($slug);
+            if (!empty($page)){
             $breadcrumbData = [
                 'total' => 1,
                 'name' => $page -> title
             ];
+            }
+            else{
+                $breadcrumbData = []; 
+            }
         }
 
         if ($currentRouteName == 'login'){

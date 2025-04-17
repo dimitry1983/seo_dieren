@@ -274,6 +274,9 @@ class SiteController extends Controller
     public function page($slug){
         $page = Page::getCustomPage($slug);
         $seo = $page?->seo;
+        if (empty($page)){
+            abort(404);
+        }
 
         return view('website.page', ['page' => $page, 'seo' => $seo]);
     }

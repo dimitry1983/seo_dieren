@@ -3,46 +3,46 @@
 @section('content')
 
 @section('structured-data')
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "VeterinaryCare",
-  "name": "{{ $veterinarian->name }}",
-  "image": "{{ asset('storage/' . $veterinarian->image ?? 'dieren/src/public/img/clinic.png') }}",
-  "description": @json(strip_tags($veterinarian->description)),
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "{{ $veterinarian->street }} {{ $veterinarian->street_nr }}",
-    "addressLocality": "{{ $veterinarian->city->name }}",
-    "postalCode": "{{ $veterinarian->zipcode }}",
-    "addressCountry": "NL"
-  },
-  "telephone": "{{ $veterinarian->phone }}",
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "{{ number_format($veterinarian->rating, 1) }}",
-    "reviewCount": "{{ $totalRatings }}"
-  },
-  "review": [
-    @foreach ($reviews->take(3) as $review)
-      {
-        "@type": "Review",
-        "author": {
-          "@type": "Person",
-          "name": "{{ $review->name }}"
+    <script type="application/ld+json">
+        {
+        "@context": "https://schema.org",
+        "@type": "VeterinaryCare",
+        "name": "{{ $veterinarian->name }}",
+        "image": "{{ asset('storage/' . $veterinarian->image ?? 'dieren/src/public/img/clinic.png') }}",
+        "description": @json(strip_tags($veterinarian->description)),
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "{{ $veterinarian->street }} {{ $veterinarian->street_nr }}",
+            "addressLocality": "{{ $veterinarian->city->name }}",
+            "postalCode": "{{ $veterinarian->zipcode }}",
+            "addressCountry": "NL"
         },
-        "datePublished": "{{ \Carbon\Carbon::parse($review->created_at)->toDateString() }}",
-        "reviewBody": @json($review->description),
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "{{ $review->rating }}",
-          "bestRating": "5"
+        "telephone": "{{ $veterinarian->phone }}",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "{{ number_format($veterinarian->rating, 1) }}",
+            "reviewCount": "{{ $totalRatings }}"
+        },
+        "review": [
+            @foreach ($reviews->take(3) as $review)
+            {
+                "@type": "Review",
+                "author": {
+                "@type": "Person",
+                "name": "{{ $review->name }}"
+                },
+                "datePublished": "{{ \Carbon\Carbon::parse($review->created_at)->toDateString() }}",
+                "reviewBody": @json($review->description),
+                "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "{{ $review->rating }}",
+                "bestRating": "5"
+                }
+            }@if (!$loop->last),@endif
+            @endforeach
+        ]
         }
-      }@if (!$loop->last),@endif
-    @endforeach
-  ]
-}
-</script>
+    </script>
 @endsection
 
 
