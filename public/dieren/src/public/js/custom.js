@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const btn6Cols = document.getElementById("btn-6-cols");
 
     if (btn2Cols && btn4Cols && btn6Cols) {
-
+       
         btn2Cols.addEventListener("click", () => {
             postsContainer.classList.remove("grid-cols-3", "grid-cols-2");
             postsContainer.classList.add("grid-cols-1");

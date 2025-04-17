@@ -87,7 +87,6 @@
         <div class="container px-2 mx-auto relative">
             <div class="flex flex-col lg:flex-row gap-y-4 lg:gap-x-6">
                
-            
                 <div class="w-full lg:w-1/2">
                     <div class="block relative before:content-[''] before:w-full before:h-full before:absolute before:top-0 before:left-0 before:bg-gradient-to-t before:from-black/100 before:via-black/25 before:to-transparent bg-[url('{{ asset('storage/' . $insurances['insurance'][0]['image']) }}')] bg-cover bg-center" style="background-image: url('{{ asset('storage/' . $insurances['insurance'][0]['image']) }}');">   
                         <div class="block__content pt-[250px] pb-[30px] px-[30px] relative z-1">
@@ -381,7 +380,7 @@
                        {{ devTranslate('page.View All Categories','Bekijk alle categorieën') }}
                     </a>
                 </div>
-                <div class="posts col-span-4 lg:col-span-3 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4" id="categories_posts">
+                <div class="posts col-span-4 lg:col-span-3 grid grid-cols-3  gap-4" id="categories_posts">
                  @if (!empty($vets[0]))
                     <?php $teller = 1; ?>   
                     @foreach ($vets as $vet)

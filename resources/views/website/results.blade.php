@@ -109,7 +109,7 @@
                        {{ devTranslate('page.View All Categories','Bekijk alle categorieën') }}
                     </a>
                 </div>
-                <div class="posts col-span-4 lg:col-span-3 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4" id="categories_posts">
+                <div class="posts col-span-4 lg:col-span-3 grid grid-cols-3 gap-4" id="categories_posts">
                  @if (!empty($vets[0]))
                     <?php $teller = 1; ?>   
                     @foreach ($vets as $vet)
