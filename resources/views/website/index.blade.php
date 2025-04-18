@@ -52,6 +52,7 @@
                     <p class="mb-0 hidden xl-custom:block"><strong>{{ devTranslate('page.Category','Categorie') }}</strong></p>
                     <div class="relative">
                         <select name="categorie" class="form-control p-3 border border-none outline-none transition duration-300 ease-out w-full appearance-none pr-10">
+                            <option value="">{{__('Maak een keuze')}}</option>
                             @if (!empty($categories))
                                 @foreach($categories as $category)
                                     <option value="{{$category->id}}">{{$category->name}}</option>
@@ -384,7 +385,7 @@
                  @if (!empty($vets[0]))
                     <?php $teller = 1; ?>   
                     @foreach ($vets as $vet)
-                        <div class="block-hotspots bg-white border border-gray-300 transition duration-300 ease-out hover:shadow-lg">
+                        <div class=" bg-white border border-gray-300 transition duration-300 ease-out hover:shadow-lg">
                             <figure class="m-0 overflow-hidden">
                                 <!-- Replace the static image with one based on your vet data or use a default image -->
                                 <a href="{{route('profile', ['slug' => slugify($vet->name) , 'id' => $vet->id])}}">
@@ -512,8 +513,7 @@
                     </h3>
                 </div>
             </div>
-            <div class="testimonials grid grid-cols-1 sm:grid-cols-2 gap-6">
-                
+            <div class="testimonials grid grid-cols-1 sm:grid-cols-2 gap-6">      
                 @if (!empty($getRandomReviews))
                     @foreach($getRandomReviews as $review)
                     <div class="review border border-gray-300 py-[50px] px-[30px] md:p-[50px] bg-white">

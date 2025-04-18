@@ -84,3 +84,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }).mount();
     }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById('resetfilters').addEventListener('click', function (e) {
+        e.preventDefault(); // Prevent anchor default behavior
+        const form = document.getElementById('searchform');
+        if (form) {
+            form.reset(); // Reset the form fields
+            form.dispatchEvent(new Event('submit')); // Optional: resubmit the form
+        }
+    });
+});

@@ -24,6 +24,7 @@
                         <p class="mb-0 hidden xl-custom:block"><strong>{{ devTranslate('page.Category','Categorie') }}</strong></p>
                         <div class="relative no-border">
                             <select name="categorie" class="no-border form-control p-3 border border-none outline-none transition duration-300 ease-out w-full appearance-none pr-10">
+                                <option value="">{{__('Maak een keuze')}}</option>
                                 @if (!empty($categories))
                                     @foreach($categories as $category)
                                         <option value="{{$category->id}}">{{$category->name}}</option>
@@ -66,16 +67,10 @@
                     </div>
                     <div class="flex mt-4 md:mt-0">
                         <div class="relative ml-auto">
-                            <select class="appearance-none border border-gray-300 rounded-full p-[10px] w-full px-2 text-black font-semibold bg-white pr-10">
-                                <option>{{ devTranslate('page.All Filters','Alle Filters') }} </option>
-                            </select>
-                            <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-black"></i>
+                           
                         </div>
                         <div class="relative ml-2">
-                            <select class="appearance-none border border-gray-300 rounded-full p-[10px] w-full px-2 text-black font-semibold bg-white pr-10">
-                                <option>{{ devTranslate('page.Sort By','Sorteren op') }}</option>
-                            </select>
-                            <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-black"></i>
+                           
                         </div>
 
                         <button id="btn-2cols" class="w-[45px] h-[45px] flex items-center justify-center rounded-full border border-gray-300 text-gray-400 transition duration-300 ease-out hover:text-black hover:border-black ml-2">

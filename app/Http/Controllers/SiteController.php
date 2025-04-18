@@ -261,7 +261,10 @@ class SiteController extends Controller
         $page = Page::getCustomPage('about');
         $seo = $page?->seo;
 
-        return view('website.about', ['seo' => $seo]);
+        $getRandomReviews = Review::getRandomReviews();
+        $intro = Page::getBlockInfo($page->blocks, 'about_us_content');
+        $cta = Page::getBlockInfo($page->blocks, 'about_us_cta');
+        return view('website.about', ['seo' => $seo, 'getRandomReviews' => $getRandomReviews, 'cta' => $cta, 'intro' => $intro]);
     }
 
   

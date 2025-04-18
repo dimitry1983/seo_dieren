@@ -530,6 +530,28 @@ function getPageBuilderSchema(){
             RichEditor::make('description'),
         ]),
 
+        FilamentBuilder\Block::make('about_us_content')
+        ->schema([
+            TextInput::make('title_first'),
+            TextInput::make('title_second'),
+            RichEditor::make('description'),
+            TextInput::make('cta_url_btn1'),
+            TextInput::make('cta_title_btn1'),
+            FileUpload::make('image'),
+        ]),
+
+        FilamentBuilder\Block::make('about_us_cta')
+        ->schema([
+            TextInput::make('title'),
+            Textarea::make('description'),
+            Repeater::make('usp')
+            ->schema([
+                TextInput::make('usp'),
+            ]),
+            TextInput::make('cta_url_btn1'),
+            TextInput::make('cta_title_btn1'),
+            FileUpload::make('image'),
+        ]),
 
         FilamentBuilder\Block::make('adventages')
         ->schema([

@@ -6,13 +6,14 @@
     <section class="section section--map py-0">
         <div class="grid md:grid-cols-4">
             <div class="search-form lg:col-span-1 col-span-2 bg-[#F3F6F9]">
-                <form action="{{route('results')}}" method="get" class="py-[50px] px-[30px]">
+                <form action="{{route('results')}}" id="searchform" method="get" class="py-[50px] px-[30px]">
                     <p class="mb-[10px]"><strong>{{ devTranslate('page.What Are You Looking For?','Waar ben je naar opzoek?') }}</strong></p>
                     <input type="text" name="zoeken" placeholder="{{ devTranslate('page.Search For','Zoek naar') }}" class="form-control mb-4 p-3 rounded-full border border-gray-300 outline-none hover:border-gray-400 focus:ring-2 focus:ring-primary transition duration-300 ease-out w-full">
 
                     <p class="mb-[10px]"><strong>{{ devTranslate('page.Category','Categorie') }}</strong></p>
                     <div class="relative mb-4">
                         <select name="categorie" class="appearance-none p-3 rounded-full border border-gray-300 outline-none hover:border-gray-400 focus:ring-2 focus:ring-primary transition duration-300 ease-out w-full pr-10">
+                            <option value="">{{__('Maak een keuze')}}</option>
                             @if (!empty($categories))
                                 @foreach($categories as $category)
                                     <option value="{{$category->id}}">{{$category->name}}</option>
@@ -35,7 +36,7 @@
                         {{ devTranslate('page.Search Now','Zoek nu') }} <i class="fa-solid fa-magnifying-glass text-primaryLight w-[50px] h-[50px] rounded-full flex justify-center items-center bg-black absolute right-4 top-2"></i>
                     </button>
 
-                    <a class="underline text-center block mt-4 text-gray-800 font-bold hover:text-primary transition" href="#">{{ devTranslate('page.Clear All Filters','Reset Filters') }}</a>
+                    <a class="underline text-center block mt-4 text-gray-800 font-bold hover:text-primary transition" id="resetfilters" href="#">{{ devTranslate('page.Clear All Filters','Reset Filters') }}</a>
                 </form>
             </div>
             <div class="map lg:col-span-3 col-span-2">
@@ -135,13 +136,13 @@
                         <span class="text-primary">{{devTranslate('page.Top Clinics', 'Top klinieken')}}</span> {{devTranslate('page.Of The Month', 'van de Maand')}}
                     </h3>
                 </div>
-                <a href="#" class="btn btn-outline-black border border-gray-800 py-2 px-4 rounded-full font-bold whitespace-nowrap mt-4 lg:mt-0 transition duration-300 ease-out hover:bg-black hover:text-white">{{devTranslate('page.Explore All', 'Bekijk alles')}}</a>
+                <a href="{{route('results')}}" class="btn btn-outline-black border border-gray-800 py-2 px-4 rounded-full font-bold whitespace-nowrap mt-4 lg:mt-0 transition duration-300 ease-out hover:bg-black hover:text-white">{{devTranslate('page.Explore All', 'Bekijk alles')}}</a>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
                 @if (!empty($bestVets))
                     <?php $teller = 1; ?>
                     @foreach($bestVets as $vet)
-                        <div class="block-hotspots col-span-4 sm:col-span-2 md:col-span-1 border bg-white border-gray-300 transition duration-300 ease-out hover:shadow-lg category-best-rated">
+                        <div class="col-span-4 sm:col-span-2 md:col-span-1 border bg-white border-gray-300 transition duration-300 ease-out hover:shadow-lg category-best-rated">
                             <figure class="m-0 overflow-hidden">
                                 <a href="{{ route('profile', ['slug' => slugify($vet->name), 'id' => $vet->id]) }}">
                                     @if (!empty($vet->featuredImage->name))
@@ -205,7 +206,6 @@
                       {{devTranslate('page.What Our Customers', 'Wat onze klanten')}} <span class="text-primary">{{devTranslate('page.Are Saying...', 'zeggen...')}}</span>
                     </h3>
                 </div>
-                <a href="#" class="btn btn-outline-black border border-gray-800 py-2 px-4 rounded-full font-bold whitespace-nowrap mt-4 lg:mt-0 transition duration-300 ease-out hover:bg-black hover:text-white">{{devTranslate('page.Explore All', 'Bekijk alles')}}</a>
             </div>
             <div class="testimonials grid grid-cols-1 sm:grid-cols-2 gap-6">
                 @if (!empty($getRandomReviews))
