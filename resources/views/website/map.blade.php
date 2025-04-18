@@ -45,7 +45,7 @@
         </div>
     </section>
 
-    <section class="section section--categories bg-[url('{{ asset('dieren/src/public/img/categories.jpg') }}')] bg-cover bg-center pt-[80px] pb-[100px]">
+    <section class="section section--categories bg-[url('{{ asset('dieren/src/public/img/categories.jpg') }}')] bg-cover bg-center pt-[40px] pb-[50px] lg:pt-[80px] lg:pb-[100px]">
        
         <div class="container mx-auto">
             @include('parts.breadcrumb' , ['breadcrumbs' => $breadcrumbData ?? ''] )
@@ -195,7 +195,7 @@
         </div>
     </section>
 
-    <section class="section section--testimonial pt-[80px] pb-[40px]">
+    <section class="section section--testimonial pt-[40px] pb-[20px] lg:pt-[80px] lg:pb-[40px]">
         <div class="container px-2 mx-auto">
             <div class="section__header flex flex-col lg:flex-row items-center justify-between mb-6">
                 <div class="text-center lg:text-left">
@@ -257,7 +257,7 @@
         </div>
     </section>
 
-    <section class="section section--stats bg-[#202428] pt-[90px] pb-[75px]">
+    <section class="section section--stats bg-[#202428] pt-[45px] pb-[40px] lg:pt-[90px] lg:pb-[75px]">
         <div class="container px-2 mx-auto">
             <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-6 items-center">
                 <div class="col-span-1 lg:col-span-2 md:col-span-3 sm:col-span-3 text-center lg:text-left">

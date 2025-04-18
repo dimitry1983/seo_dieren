@@ -1923,6 +1923,10 @@ h3.adv span {
   max-width: 24rem;
 }
 
+.max-w-\[350px\] {
+  max-width: 350px;
+}
+
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -2998,6 +3002,14 @@ h3.adv span {
 
 .pt-\[90px\] {
   padding-top: 90px;
+}
+
+.pt-\[45px\] {
+  padding-top: 45px;
+}
+
+.pb-\[20px\] {
+  padding-bottom: 20px;
 }
 
 .text-left {
@@ -4115,6 +4127,10 @@ input{
     grid-column: span 3 / span 3;
   }
 
+  .sm\:col-span-1 {
+    grid-column: span 1 / span 1;
+  }
+
   .sm\:mx-0 {
     margin-left: 0px;
     margin-right: 0px;
@@ -4629,6 +4645,10 @@ input{
     gap: 1.5rem;
   }
 
+  .lg\:gap-8 {
+    gap: 2rem;
+  }
+
   .lg\:gap-x-6 {
     -moz-column-gap: 1.5rem;
          column-gap: 1.5rem;
@@ -4761,6 +4781,26 @@ input{
 
   .lg\:pt-\[120px\] {
     padding-top: 120px;
+  }
+
+  .lg\:pb-\[100px\] {
+    padding-bottom: 100px;
+  }
+
+  .lg\:pt-\[80px\] {
+    padding-top: 80px;
+  }
+
+  .lg\:pb-\[75px\] {
+    padding-bottom: 75px;
+  }
+
+  .lg\:pt-\[90px\] {
+    padding-top: 90px;
+  }
+
+  .lg\:pb-\[40px\] {
+    padding-bottom: 40px;
   }
 
   .lg\:text-left {

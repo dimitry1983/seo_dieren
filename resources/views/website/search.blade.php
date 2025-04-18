@@ -382,7 +382,7 @@
         </div>
     </section>
 
-    <section class="section section--categories bg-[url('{{ asset('dieren/src/public/img/categories.jpg')}}')] bg-cover bg-center pt-[80px] pb-[100px]">
+    <section class="section section--categories bg-[url('{{ asset('dieren/src/public/img/categories.jpg')}}')] bg-cover bg-center pt-[40px] pb-[50px] lg:pt-[80px] lg:pb-[100px]">
         <div class="container mx-auto">
             <div class="section__header flex flex-col lg:flex-row items-center justify-between mb-6">
                 <div>

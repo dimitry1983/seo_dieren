@@ -73,7 +73,7 @@
                     </div>
                 </div>
 
-                <div class="w-full md:w-1/4 text-center flex items-center justify-end relative z-1">
+                <div class="w-full md:w-1/4 text-center flex items-center justify-center relative z-1">
                     <span class="hidden md:inline-block search-span font-bold mr-8 text-lg">{{ devTranslate('page.Search','Zoeken') }}</span>
                     <button type="submit" class="btn btn-secondary text-3xl md:text-5xl p-2 md:p-[20px] md:rounded-full w-full md:w-fit">
                         <i class="fa-regular fa-magnifying-glass"></i>
@@ -248,7 +248,7 @@
         </div>
     </section>
 
-    <section class="section section--categories bg-[url('../../../src/public/img/categories.jpg')] bg-cover bg-center pt-[80px] pb-[100px]">
+    <section class="section section--categories bg-[url('../../../src/public/img/categories.jpg')] bg-cover bg-center pt-[40px] pb-[50px] lg:pt-[80px] lg:pb-[100px]">
         <div class="container p-2 mx-auto">
             <div class="section__header flex flex-col md:flex-row md:items-center md:justify-between mb-6">
                 <div class="text-left">
@@ -381,7 +381,7 @@
                        {{ devTranslate('page.View All Categories','Bekijk alle categorieën') }}
                     </a>
                 </div>
-                <div class="posts col-span-4 lg:col-span-3 grid grid-cols-3  gap-4" id="categories_posts">
+                <div class="posts col-span-4 lg:col-span-3 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4" id="categories_posts">
                  @if (!empty($vets[0]))
                     <?php $teller = 1; ?>   
                     @foreach ($vets as $vet)
@@ -478,7 +478,7 @@
         </div>
     </section>
 
-    <section class="section section--stats bg-[#202428] pt-[90px] pb-[75px]">
+    <section class="section section--stats bg-[#202428] pt-[45px] pb-[40px] lg:pt-[90px] lg:pb-[75px]">
         <div class="container px-2 mx-auto">
             <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-6 items-center">
                 <div class="col-span-1 lg:col-span-2 md:col-span-3 sm:col-span-3 text-center lg:text-left">
@@ -501,7 +501,7 @@
         </div>
     </section>
 
-    <section class="section section--testimonial pt-[80px] pb-[40px]">
+    <section class="section section--testimonial pt-[40px] pb-[20px] lg:pt-[80px] lg:pb-[40px]">
         <div class="container px-2 mx-auto">
             <div class="section__header flex flex-col lg:flex-row items-center justify-between mb-6">
                 <div class="text-center lg:text-left">

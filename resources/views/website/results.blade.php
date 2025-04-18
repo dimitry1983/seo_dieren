@@ -183,16 +183,17 @@
             </script>
         </section>
 
-        <section class="section section--categories bg-[url('../../../src/public/img/categories.jpg')] bg-cover bg-center pt-[80px] pb-[100px]">
+        <section class="section section--categories bg-[url('../../../src/public/img/categories.jpg')] bg-cover bg-center pt-[40px] pb-[50px] lg:pt-[80px] lg:pb-[100px]">
             <div class="container p-2 mx-auto">
                 <div class="section__header flex flex-col lg:flex-row items-center justify-between mb-6">
                     <div>
-                        <h4 class="subtitle w-fit text-md font-semibold relative before:content-[''] before:w-[20px] before:h-[2px] before:bg-primary before:absolute before:right-[-30px] before:top-1/2 before:-translate-y-1/2">Choose Your Category</h4>
-                        <h3 class="title title--section font-bold text-3xl text-gray-800 leading-tight md:leading-tight lg:leading-normal">
-                            <span class="text-primary">Browse</span> Categories
+                        <h4 class="subtitle w-fit text-md font-semibold relative before:content-[''] before:w-[20px] before:h-[2px] before:bg-primary before:absolute before:right-[-30px] before:top-1/2 before:-translate-y-1/2 leading-tight md:leading-tight lg:leading-normal">
+                            {{ devTranslate('page.Choose Your Category','Kies een categorie') }}
+                        </h4>
+                        <h3 class="title title--section font-bold text-3xl text-gray-800">
+                            <span class="text-primary">{{ devTranslate('page.Browse','Doorzoek') }}</span> {{ devTranslate('page.Categories','de Categorieën') }}
                         </h3>
                     </div>
-                    <a href="#" class="btn btn-outline-black whitespace-nowrap">Explore All</a>
                 </div>
                 <div class="categories grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                     <a href="{{route('results')}}?categorie=1">

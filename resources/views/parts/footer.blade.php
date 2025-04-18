@@ -1,7 +1,7 @@
 <footer class="footer footer--main bg-[#202428] text-white">
     <div class="footer--content py-[60px]">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 w-full lg:w-12/12 mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4 lg:gap-8 w-full lg:w-12/12 mx-auto">
                 <div class="col-span-1 lg:col-span-4 text-center lg:text-left">
                     <figure class="mb-4">
                         <a href="{{route('home')}}">

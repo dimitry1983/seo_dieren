@@ -38,7 +38,7 @@
         </div>
     </section>
 
-    <section class="section section--stats bg-[#202428] pt-[90px] pb-[75px]">
+    <section class="section section--stats bg-[#202428] pt-[45px] pb-[40px] lg:pt-[90px] lg:pb-[75px]">
         <div class="container mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-12">
                 <div class="lg:col-span-7">
@@ -71,7 +71,7 @@
         </div>
     </section>
 
-    <section class="section section--testimonial pt-[80px] pb-[40px]">
+    <section class="section section--testimonial pt-[40px] pb-[20px] lg:pt-[80px] lg:pb-[40px]">
         <div class="container px-2 mx-auto">
             <div class="section__header flex flex-col lg:flex-row items-center justify-between mb-6">
             <div class="text-center lg:text-left">
