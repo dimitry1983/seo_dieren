@@ -46,7 +46,7 @@
                         </div>
                     </div>
 
-                    <div class="w-full md:w-1/4 text-center flex items-center justify-center relative z-1">
+                    <div class="w-full md:w-1/4 text-center flex items-center justify-end relative z-1">
                         <span class="hidden md:inline-block search-span font-bold mr-8 text-lg">{{ devTranslate('page.Search','Zoeken') }}</span>
                         <button type="submit" class="btn btn-secondary text-3xl md:text-5xl p-4 md:p-[20px] md:rounded-full w-full md:w-fit">
                             <i class="fa-regular fa-magnifying-glass"></i>

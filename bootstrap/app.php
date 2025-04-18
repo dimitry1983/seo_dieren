@@ -13,6 +13,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'bread' =>  \App\Http\Middleware\BreadcrumbMiddleware::class,
+            'claim.pending.redirect' =>  \App\Http\Middleware\RedirectIfClaimPending::class,
             'navigation' => \App\Http\Middleware\NavigationMiddleware::class,
         ]);
         $middleware->web([

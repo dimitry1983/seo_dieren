@@ -20,6 +20,17 @@
 
                     <div class="pane-white__table h-[42vh] overflow-auto">
                         
+                        @if (!empty($claim))
+                            <x-alert-warning class="my-4" id="error-message">
+                                {{ __('Jouw account moet nog goedgekeurd worden. Goedkeuring vind meestal plaats binnen 24 uur.') }}
+                            </x-alert-warning>
+                        @else
+                            <x-success class="mb-4" id="success-message">
+                                {{ __('Om zoveel mogelijk nieuwe klanten te werken is het aan te raden jouw profiel zo volledig mogelijk te maken.') }}
+                            </x-success>
+                        @endif
+
+
                     </div>
                 </div>
             </div>

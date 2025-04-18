@@ -1,12 +1,15 @@
 <?php
 
+use App\Models\Claim;
 use App\Models\User;
+use App\Models\Veterinarian;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
+use PhpParser\Node\NullableType;
 
 new #[Layout('layouts.site')] class extends Component {
     public string $name = '';
@@ -14,12 +17,20 @@ new #[Layout('layouts.site')] class extends Component {
     public string $password = '';
     public string $password_confirmation = '';
 
+    public array $notClaimedVeterinarians = [];
+
+
+    public function mount(){
+        $this->notClaimedVeterinarians = Veterinarian::where('user_id', 1)->get()->pluck('name', 'id')->toArray(); 
+    }
+
     /**
      * Handle an incoming registration request.
      */
     public function register(): void
     {
         $validated = $this->validate([
+            'claim_vet_id' => ['nullable', 'exists:veterinarians,id'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
@@ -28,6 +39,17 @@ new #[Layout('layouts.site')] class extends Component {
         $validated['password'] = Hash::make($validated['password']);
 
         event(new Registered(($user = User::create($validated))));
+
+        if (!empty($validated['claim_vet_id'])){
+            $claim                    = new Claim();
+            $claim -> veterinarian_id = $validated['claim_vet_id'];
+            $claim -> email           = $validated['email'];
+            $claim -> details         = "Geclaimd account";
+            $claim -> status          = "Pending";
+            $claim -> created_at      = date('Y-m-d H:i:s');
+            $claim -> updated_at      = date('Y-m-d H:i:s');
+            $claim -> save();
+        }
 
         Auth::login($user);
 
@@ -123,8 +145,33 @@ new #[Layout('layouts.site')] class extends Component {
                 />
                 <flux:error name="password_confirmation" />
             </flux:field>   
-
         </div>
+
+        <!-- Optional Business Claim -->
+        <div class="grid">
+            <flux:field class="my-2">
+                <flux:label class="!text-base !font-normal !text-white block mb-2">
+                    {{ devTranslate('Claim your business (optional)', 'Claim uw bedrijf (optioneel)') }}
+                </flux:label>
+                <p class="text-sm text-white mb-2">
+                    {{ devTranslate(
+                        'To claim your business, please use your business email that matches your domain.',
+                        'Voor het claimen van uw bedrijf dien je je zakelijk mail te gebruiken die bij uw domein past.'
+                    ) }}
+                </p>
+                <select
+                    wire:model="claim_vet_id"
+                    class="!rounded-lg w-full px-3 py-2 border-gray-300 focus:ring focus:ring-primary focus:outline-none"
+                >
+                    <option value="">{{ devTranslate('Do not claim a business', 'Claim geen bedrijf') }}</option>
+                    @foreach($notClaimedVeterinarians as $id => $name)
+                        <option value="{{ $id }}">{{ $name }}</option>
+                    @endforeach
+                </select>
+                <flux:error name="claim_vet_id" />
+            </flux:field>
+        </div>
+
 
         <div class="flex items-center mt-5 justify-end">
             <button type="submit" variant="primary" class="btn btn-primaryLight w-full rounded-[5px] text-white">
