@@ -11,10 +11,31 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Livewire\ContactForm;
+use App\Livewire\Actions\Logout;
 use App\Mail\SupportMessageMail;
 use App\Models\User;
 
 Route::get('/api/cities', [CityController::class, 'search']);
+
+//Volt::routes(); 
+
+// Register (Registreren)
+Volt::route('/registreren', 'auth.register')->name('register');
+
+// Login
+Volt::route('/inloggen', 'auth.login')->name('login');
+
+// Forgot Password (Wachtwoord vergeten)
+Volt::route('/wachtwoord-vergeten', 'auth.forgot-password')->name('password.request');
+
+// Password Reset
+Volt::route('/wachtwoord-herstellen/{token}', 'auth.reset-password')->name('password.reset');
+Volt::route('/wachtwoord-herstellen', 'auth.reset-password')->name('password.update');
+
+// Optional: Logout post route
+
+Route::post('/uitloggen', Logout::class)->name('logout');
+
 
 
 Route::middleware(['auth'])->group(function () {
@@ -25,7 +46,7 @@ Route::middleware(['auth'])->group(function () {
     Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
 });
 
-require __DIR__.'/auth.php';
+//require __DIR__.'/auth.php';
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/cms/dashboard', \App\Livewire\Company\Dashboard::class)->name('company.dashboard');

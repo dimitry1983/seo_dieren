@@ -15,7 +15,11 @@
             <a class="pl-[10px]" href="{{route('contact')}}">Contact</a>
         </li>
         <li class="mb-0 text-white ml-2 border-l border-l-white">
-            <a class="pl-[10px]" href="{{route('login')}}">Mijn Account</a>
+          @guest
+              <a class="pl-[10px]" href="{{ route('login') }}">Mijn Account</a>
+          @else
+              <a class="pl-[10px]" href="{{ route('company.dashboard') }}">Mijn Account</a>
+          @endguest
         </li>
     </ul>
     </div>
