@@ -87,9 +87,9 @@ class BreadcrumbMiddleware
 
             $breadcrumbData = [
                 'url_one' => route('blog.overview'),
-                'name_one' => __('Winkel'), 
+                'name_one' => __('Blog'), 
                 'total' => 2,
-                'name_two' =>  $blogName->title
+                'name_two' =>  $blogName->name
             ];
         }
 
