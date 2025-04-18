@@ -48,7 +48,7 @@ class ContactForm extends Component
         $this->reset();
 
         // Process the form data (e.g., send an email, save to DB, etc.)
-        session()->flash('message', 'Thank you for your message! We will get back to you soon.');
+        session()->flash('message', 'Bedankt voor je bericht! We nemen zo snel mogelijk contact met je op.');
 
         // Or redirect if needed
         // return redirect()->route('thank-you');
