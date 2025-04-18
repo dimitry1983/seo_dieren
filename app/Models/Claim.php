@@ -12,8 +12,8 @@ class Claim extends Model
     protected $guarded = [];
 
     // Define the relationship with User
-    public function user()
+    public function veterinarian()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Veterinarian::class);
     }
 }
