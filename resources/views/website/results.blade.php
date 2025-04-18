@@ -17,7 +17,7 @@
                         <p class="mb-0 block xl-custom:block md:hidden">
                             <strong>{{ devTranslate('page.What Are You Looking For?','Waar ben je naar opzoek?') }}</strong>
                         </p>
-                        <input name="zoeken" type="text" placeholder="{{ devTranslate('page.Search For','Zoek naar') }}" class="form-control p-3 border border-none outline-none transition duration-300 ease-out w-full">
+                        <input name="zoeken" type="text" value="{{$_GET['zoeken']}}" placeholder="{{ devTranslate('page.Search For','Zoek naar') }}" class="form-control p-3 border border-none outline-none transition duration-300 ease-out w-full">
                     </div>
 
                     <div class="w-full md:w-1/4 text-center md:text-left relative lg:border-l lg:border-l-[#20242866] lg:px-[20px] ">
@@ -27,7 +27,7 @@
                                 <option value="">{{__('Maak een keuze')}}</option>
                                 @if (!empty($categories))
                                     @foreach($categories as $category)
-                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                        <option value="{{$category->id}}" @if($_GET['categorie'] == $category->id) selected="selected" @endif>{{$category->name}}</option>
                                     @endforeach
                                 @endif
                             </select>
@@ -419,39 +419,42 @@
     </section>
     </div>
     @push('scripts')
-        <script>
-            $(document).ready(function () {
-            $('#city-select').select2({
-                language: "nl",
-                placeholder: 'Zoek een stad',
-                minimumInputLength: 2,
-                ajax: {
-                url: '/api/cities',
-                type: 'POST', // Switch to POST
-                dataType: 'json',
-                delay: 300,
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // CSRF token for Laravel
-                },
-                data: function (params) {
-                    return {
-                    q: params.term
-                    };
-                },
-                processResults: function (data) {
-                    return {
-                    results: data.map(function (city) {
-                        return {
-                        id: city.name,
-                        text: city.name
-                        };
-                    })
-                    };
-                },
-                cache: true
-                }
-            });
-            });
-    </script>
+    <script>
+  $(document).ready(function () {
+    const selectedCity = "{{ request('stad') }}";
+    // If a city is pre-selected, manually add it as an option
+    if (selectedCity) {
+      $('#city-select').append(new Option(selectedCity, selectedCity, true, true)).trigger('change');
+    }
+
+    // Now initialize select2
+    $('#city-select').select2({
+      language: "nl",
+      placeholder: 'Zoek een stad',
+      minimumInputLength: 2,
+      ajax: {
+        url: '/api/cities',
+        dataType: 'json',
+        delay: 300,
+        data: function (params) {
+          return {
+            q: params.term
+          };
+        },
+        processResults: function (data) {
+          return {
+            results: data.map(function (city) {
+              return {
+                id: city.name,
+                text: city.name
+              };
+            })
+          };
+        },
+        cache: true
+      }
+    });
+  });
+</script>
     @endpush    
 @endsection

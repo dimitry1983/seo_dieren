@@ -26,7 +26,7 @@
                     <p class="mb-[10px]"><strong>{{ devTranslate('page.Location','Lokatie') }}</strong></p>
                     <div class="relative mb-4">
                         <select name="stad" id="city-select" class="appearance-none p-3 rounded-full border border-gray-300 outline-none hover:border-gray-400 focus:ring-2 focus:ring-primary transition duration-300 ease-out w-full pr-10">
-
+                    
                         </select>
                         <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
                     </div>
