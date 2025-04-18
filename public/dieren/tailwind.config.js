@@ -24,7 +24,10 @@ module.exports = {
         secondaryLight: 'var(--primaryLight)',
         secondaryDark: 'var(--primaryDark)',
         secondaryDarker: 'var(--primaryDarker)'
-      }
+      },
+      animation: {
+        spin: 'spin 1s linear infinite',  // Ensuring the spin animation is available
+      },
     },
   },
   plugins: [

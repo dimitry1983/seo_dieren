@@ -98,6 +98,7 @@
             }
         </style>
         <link rel="stylesheet" href="{{ asset('dieren/dist/public/css/app.css')}}">
+        @livewireStyles
         @yield('structured-data')
 </head>
 <body class="text-base">

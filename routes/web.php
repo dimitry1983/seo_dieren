@@ -10,6 +10,7 @@ use App\Http\Controllers\OverviewController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SitemapController;
+use App\Http\Livewire\ContactForm;
 use App\Mail\SupportMessageMail;
 use App\Models\User;
 
@@ -56,7 +57,6 @@ Route::middleware(['bread'])->group(function () {
     //getMoreInformation
     Route::get('/zoekresultaten', [SiteController::class, 'results'])->name('results');
     Route::get('/over-ons', [SiteController::class, 'about'])->name('about');
-    Route::get('/contact', [SiteController::class, 'contact'])->name('contact');
 
     // Blog Routes
     Route::get('/blog', [BlogController::class, 'overview'])->name('blog.overview');
@@ -70,9 +70,10 @@ Route::middleware(['bread'])->group(function () {
         ->where('slug', '^(?!admin).*') // Exclude "admin" as the first segment
         ->name('profile');
 
+    Route::get('/contact', App\Livewire\ContactForm::class)->name('contact');
     Route::get('/{slug}', [SiteController::class, 'page'])->name('custom.page'); 
 
-
+   
 
     // Search Routes
    // Route::get('/zoekresultaat', [SearchController::class, 'search'])->name('search');

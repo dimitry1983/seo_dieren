@@ -258,7 +258,7 @@
                         <span class="text-primary">{{ devTranslate('page.Browse','Doorzoek') }}</span> {{ devTranslate('page.Categories','de Categorieën') }}
                     </h3>
                 </div>
-                <a href="#" class="btn btn-outline-black border border-gray-800 py-2 px-4 rounded-full font-bold whitespace-nowrap mt-4 md:mt-0 transition duration-300 ease-out hover:bg-black hover:text-white w-fit">{{devTranslate('page.Explore All', 'Bekijk alles')}}</a>
+                <a href="{{route('results')}}" class="btn btn-outline-black border border-gray-800 py-2 px-4 rounded-full font-bold whitespace-nowrap mt-4 md:mt-0 transition duration-300 ease-out hover:bg-black hover:text-white w-fit">{{devTranslate('page.Explore All', 'Bekijk alles')}}</a>
             </div>
             <div class="categories grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                 <a href="{{route('results')}}?categorie=1">
@@ -376,7 +376,7 @@
                             @endforeach
                         @endif
                     </ul>
-                    <a href="#" class="btn btn-primaryLight mx-auto block w-fit">
+                    <a href="{{route('results')}}" class="btn btn-primaryLight mx-auto block w-fit">
                        {{ devTranslate('page.View All Categories','Bekijk alle categorieën') }}
                     </a>
                 </div>
@@ -511,7 +511,6 @@
                         {{ devTranslate('page.What Our Customers','Wat onze klanten') }} <span class="text-primary">{{ devTranslate('page.Are Saying...','Zeggen...') }}</span>
                     </h3>
                 </div>
-                <a href="#" class="btn btn-outline-black border border-gray-800 py-2 px-4 rounded-full font-bold whitespace-nowrap mt-4 lg:mt-0 transition duration-300 ease-out hover:bg-black hover:text-white">{{devTranslate('page.Explore All', 'Bekijk alles')}}</a>
             </div>
             <div class="testimonials grid grid-cols-1 sm:grid-cols-2 gap-6">
                 

@@ -33,12 +33,12 @@ class BreadcrumbMiddleware
         $breadcrumbData     = '';
 
 
-
+    
         if ($currentRouteName == 'livewire.update'){
             $breadcrumbData = session('breadcrumbData');
         }
 
-     
+       
         /*
         * SITES URLS
         */
@@ -64,12 +64,6 @@ class BreadcrumbMiddleware
             ];
         }
 
-        if ($currentRouteName == 'contact'){
-            $breadcrumbData = [
-                'total' => 1,
-                'name' => devTranslate('bread.Contact', 'Contact')
-            ];
-        }
 
         if ($currentRouteName == 'map'){
             $breadcrumbData = [
@@ -102,13 +96,15 @@ class BreadcrumbMiddleware
         if ($currentRouteName == 'profile'){
             $slug = $routeParameters['slug'];
             $id = $routeParameters['id'];
-            $veterarian = Veterinarian::find($id);
-            $breadcrumbData = [
-                'url_one' => route('map'),
-                'name_one' => __('Overzicht'), 
-                'total' => 2,
-                'name_two' =>  $veterarian->name ?? ""
-            ];
+            if (!empty($id) && !empty($slug)){
+                $veterarian = Veterinarian::find($id);
+                $breadcrumbData = [
+                    'url_one' => route('map'),
+                    'name_one' => __('Overzicht'), 
+                    'total' => 2,
+                    'name_two' =>  $veterarian->name ?? ""
+                ];
+            }
         }
 
      
@@ -198,12 +194,21 @@ class BreadcrumbMiddleware
             ];
         }
 
+        if ($currentRouteName == 'contact'){
+            $breadcrumbData = [
+                'total' => 1,
+                'name' => devTranslate('bread.Contact', 'Contact')
+            ];
+        }
+
         if (!empty($breadcrumbData)){
             session(['breadcrumbData' => $breadcrumbData]);
+        
         }
 
         if (empty($breadcrumbData)){
             $breadcrumbData = session('breadcrumbData'); 
+          
         }
  
         view()->share('breadcrumbData', $breadcrumbData);

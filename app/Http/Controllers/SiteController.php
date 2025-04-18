@@ -264,12 +264,7 @@ class SiteController extends Controller
         return view('website.about', ['seo' => $seo]);
     }
 
-    public function contact(){
-        $page = Page::getCustomPage('contact');
-        $seo = $page?->seo;
-        
-        return view('website.contact', ['seo' => $seo]);
-    }
+  
 
     public function page($slug){
         $page = Page::getCustomPage($slug);
