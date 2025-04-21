@@ -19,6 +19,9 @@
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Equivalent to shadow-sm */
         border: 1px solid rgba(0, 0, 0, 0.05); /* Equivalent to ring-1 ring-gray-950/5 */
     }
+    .border-gray-200{
+        border-color: #e5e7eb !important;
+    }
     
     /* For dark mode override */
     @media (prefers-color-scheme: dark) {
@@ -28,6 +31,9 @@
         }
         .text-white{
             color: black !important
+        }
+        .border-gray-200{
+            border-color: #e5e7eb !important;
         }
     }
     .abs-cover{

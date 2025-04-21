@@ -28,7 +28,7 @@
                         {{__('Openingstijden')}}
                     </h3>
                     <div class="fi-section-content-ctn border-t p-4 border-gray-200 dark:border-white/10">
-                        <ul class="space-y-2">
+                        <ul class="space-y-2 overflow-x-auto sm:overflow-x-hidden">
                             @if (!empty($openingsTimes[0]))
                                 @foreach($openingsTimes as $openingTime)
                                     <li class="flex items-center justify-between">

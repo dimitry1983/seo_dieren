@@ -574,6 +574,10 @@ p {
   /* Equivalent to ring-1 ring-gray-950/5 */
 }
 
+.border-gray-200{
+  border-color: #e5e7eb !important;
+}
+
 /* For dark mode override */
 
 @media (prefers-color-scheme: dark) {
@@ -588,6 +592,10 @@ p {
     color: black !important
   }
 
+  .border-gray-200{
+    border-color: #e5e7eb !important;
+  }
+
    {
     background-color: white !important;
     /* dark:bg-gray-900 */
@@ -597,6 +605,10 @@ p {
 
   .\!text-white{
     color: black !important
+  }
+
+  {
+    border-color: #e5e7eb !important;
   }
 }
 
@@ -2308,6 +2320,10 @@ textarea.custom-switch input + span.h-full.w-full:after{
   width: 1px;
 }
 
+.w-28 {
+  width: 7rem;
+}
+
 .min-w-\[300px\] {
   min-width: 300px;
 }
@@ -2601,6 +2617,10 @@ textarea.custom-switch input + span.h-full.w-full:after{
 
 .overflow-visible {
   overflow: visible;
+}
+
+.overflow-x-auto {
+  overflow-x: auto;
 }
 
 .truncate {
@@ -5008,6 +5028,10 @@ select:not(.choices) {
     justify-content: space-between;
   }
 
+  .sm\:overflow-x-hidden {
+    overflow-x: hidden;
+  }
+
   .sm\:px-0 {
     padding-left: 0px;
     padding-right: 0px;
@@ -5064,6 +5088,10 @@ select:not(.choices) {
 
   .md\:mt-0 {
     margin-top: 0px;
+  }
+
+  .md\:mb-0 {
+    margin-bottom: 0px;
   }
 
   .md\:block {

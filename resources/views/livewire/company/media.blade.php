@@ -43,16 +43,16 @@
                         <div class="fi-section-content-ctn border-t p-4 border-gray-200 dark:border-white/10">
                             <div x-data="{ confirmDelete: false, imageToDelete: null }">
                                 @if ($images && count($images) > 0)
-                                <div class="flex flex-wrap gap-2">
+                                <div class="flex flex-wrap gap-2 ">
                                     @foreach ($images as $image)
-                                        <div class="mt-2 relative w-32 group">
+                                        <div class="mt-2 relative w-28 group mb-8 md:mb-0">
                                             @php 
                                                 $imageLocation = '/dierenarsten/thumb/'.$image->name;
                                                 $isFeatured = $image->featured; // Assuming 'is_featured' indicates whether it’s the logo
                                             @endphp 
 
                                             <!-- Image -->
-                                            <img src="{{ Storage::url('dierenarsten/thumb/'.$image->name) }}" class="w-32 bg-gray-100 border border-[#3ec1c0] p-4 mr-2 mb-2">
+                                            <img src="{{ Storage::url('dierenarsten/thumb/'.$image->name) }}" class="w-30 bg-gray-100 border border-[#3ec1c0] p-4 mr-2 mb-2">
 
                                             <!-- Featured Label -->
                                             @if($isFeatured)

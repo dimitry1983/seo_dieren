@@ -1887,6 +1887,10 @@ h3.adv span {
   width: 1px;
 }
 
+.w-28 {
+  width: 7rem;
+}
+
 .min-w-\[300px\] {
   min-width: 300px;
 }
@@ -2168,6 +2172,10 @@ h3.adv span {
 
 .overflow-visible {
   overflow: visible;
+}
+
+.overflow-x-auto {
+  overflow-x: auto;
 }
 
 .truncate {
@@ -4200,6 +4208,10 @@ input{
     justify-content: space-between;
   }
 
+  .sm\:overflow-x-hidden {
+    overflow-x: hidden;
+  }
+
   .sm\:px-0 {
     padding-left: 0px;
     padding-right: 0px;
@@ -4265,6 +4277,10 @@ input{
 
   .md\:mt-0 {
     margin-top: 0px;
+  }
+
+  .md\:mb-0 {
+    margin-bottom: 0px;
   }
 
   .md\:block {
