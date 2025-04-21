@@ -1,7 +1,7 @@
 <div class="py-4">
     <div class="container px-4 mx-auto flex justify-center items-center">
         <a href="{{route('home')}}" class="castoro text-2xl lg:text-3xl text-white">
-            <img class="max-w-[260px]  sm:max-w-[260px] md:max-w-[310px]" src="{{ asset('dieren/src/public/img/Logo.png')}}" alt="">
+            <img class="max-w-[280px]  sm:max-w-[280px] md:max-w-[310px]" src="{{ asset('dieren/src/public/img/Logo.png')}}" alt="">
         </a>
 
         <button id="toggleBtn" class="group peer lg:hidden ml-auto bg-primary text-white peer-open:mt-10 px-3 py-3 ">
