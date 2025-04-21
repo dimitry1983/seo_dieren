@@ -4,8 +4,8 @@
 <div class="main-container relative w-full overflow-hidden">
 
     <section class="section section--hero-interior bg-primaryLight relative py-[60px]">
-        <div class="container mx-auto relative z-10">
-            <h1 class="text-6xl text-center font-regular text-gray-800 relative z-1 leading-tight md:leading-tight lg:leading-normal">
+        <div class="container mx-auto relative z-10 header__content">
+            <h1 class="text-center font-regular text-gray-800 relative z-1 leading-tight md:leading-tight lg:leading-normal">
                 {{devTranslate('page.Blog', 'Blog')}} & <strong>{{devTranslate('page.News', 'Nieuws')}}</strong>
             </h1>
         </div>
