@@ -372,7 +372,7 @@
                         ?>
                         @if (!empty($categories))
                             @foreach($categories as $item)
-                                <li class="text-xl mb-3 font-semibold border-t border-t-gray-300 py-3"><span class="text-primary">0{{$teller}}</span> <a href="?categorie={{$item->id}}">{{$item -> name}}</a></li>
+                                <li class="text-xl mb-3 font-semibold border-t border-t-gray-300 py-3"><span class="text-primary">0{{$teller}}</span> <a href="?categorie={{$item->id}}" @if(isset($_GET['categorie']) && $_GET['categorie'] == $item->id) class="text-primary" @endif>{{$item -> name}}</a></li>
                                 @php $teller++; @endphp
                             @endforeach
                         @endif

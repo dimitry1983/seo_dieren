@@ -15,7 +15,7 @@
     @endif
 
     <!-- Meta robots -->
-    <meta name="robots" content="{{ $seo['robots'] ?? 'index, follow' }}">
+    <meta name="robots" content="{{ $seo['robots'] ?? 'noindex, nofollow' }}">
 
     <!-- Canonical URL -->
     @if(!empty($seo['canonical_url']))

@@ -17,7 +17,7 @@
                         <p class="mb-0 block xl-custom:block md:hidden">
                             <strong>{{ devTranslate('page.What Are You Looking For?','Waar ben je naar opzoek?') }}</strong>
                         </p>
-                        <input name="zoeken" type="text" value="{{$_GET['zoeken']}}" placeholder="{{ devTranslate('page.Search For','Zoek naar') }}" class="form-control p-3 border border-none outline-none transition duration-300 ease-out w-full">
+                        <input name="zoeken" type="text" value="{{$_GET['zoeken'] ?? ""}}" placeholder="{{ devTranslate('page.Search For','Zoek naar') }}" class="form-control p-3 border border-none outline-none transition duration-300 ease-out w-full">
                     </div>
 
                     <div class="w-full md:w-1/4 text-center md:text-left relative lg:border-l lg:border-l-[#20242866] lg:px-[20px] ">
@@ -27,7 +27,7 @@
                                 <option value="">{{__('Maak een keuze')}}</option>
                                 @if (!empty($categories))
                                     @foreach($categories as $category)
-                                        <option value="{{$category->id}}" @if($_GET['categorie'] == $category->id) selected="selected" @endif>{{$category->name}}</option>
+                                        <option value="{{$category->id}}" @if(isset($_GET['categorie']) && $_GET['categorie'] == $category->id) selected="selected" @endif>{{$category->name}}</option>
                                     @endforeach
                                 @endif
                             </select>
@@ -95,7 +95,7 @@
                         ?>
                         @if (!empty($categories))
                             @foreach($categories as $item)
-                                <li class="text-xl mb-3 font-semibold border-t border-t-gray-300 py-3"><span class="text-primary">0{{$teller}}</span> <a href="?categorie={{$item->id}}">{{$item -> name}}</a></li>
+                                <li class="text-xl mb-3 font-semibold border-t border-t-gray-300 py-3"><span class="text-primary">0{{$teller}}</span> <a href="?categorie={{$item->id}}" @if(isset($_GET['categorie']) && $_GET['categorie'] == $item->id) class="text-primary" @endif >{{$item -> name}}</a></li>
                                 @php $teller++; @endphp
                             @endforeach
                         @endif

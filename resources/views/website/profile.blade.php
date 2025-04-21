@@ -372,6 +372,13 @@
                             <a class="text-xs" href="#">
                                 <i class="fa-solid fa-phone text-primary"></i> {{$veterinarian->phone}}
                             </a>
+                            <p>
+                                @if ($veterinarian->user_id == 1)
+                                    <a href="{{route('register')}}" class="text-primary underline mt-4">{{__('Account claimen')}}</a>
+                                @else
+
+                                @endif
+                            </p>
                         </div>
                     </div>
                 </div>
