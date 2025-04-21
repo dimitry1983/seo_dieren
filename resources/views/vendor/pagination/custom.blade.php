@@ -1,5 +1,5 @@
 @if ($paginator->hasPages())
-    <div class="pagination flex justify-center gap-2 mt-6">
+    <div class="pagination flex flex-wrap justify-center gap-2 gap-y-3 mt-6">
         {{-- Previous Page Link --}}
         @if ($paginator->onFirstPage())
             <button class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-lg font-semibold text-gray-400 bg-white cursor-not-allowed" disabled>

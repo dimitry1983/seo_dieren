@@ -1923,6 +1923,10 @@ h3.adv span {
   max-width: 24rem;
 }
 
+.max-w-\[310px\] {
+  max-width: 310px;
+}
+
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -2076,6 +2080,10 @@ h3.adv span {
 
 .gap-y-4 {
   row-gap: 1rem;
+}
+
+.gap-y-3 {
+  row-gap: 0.75rem;
 }
 
 .space-x-0\.5 > :not([hidden]) ~ :not([hidden]) {
@@ -4154,6 +4162,10 @@ input{
 
   .sm\:max-w-\[350px\] {
     max-width: 350px;
+  }
+
+  .sm\:max-w-\[310px\] {
+    max-width: 310px;
   }
 
   .sm\:flex-1 {
