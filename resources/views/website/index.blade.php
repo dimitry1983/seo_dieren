@@ -594,12 +594,15 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.has('categorie')) {
+        const hasCategorie = urlParams.has('categorie');
+        const hasPage = urlParams.has('page');
+
+        if (hasCategorie || hasPage) {
             const target = document.getElementById('categories_posts');
             if (target) {
                 setTimeout(() => {
                     target.scrollIntoView({ behavior: 'smooth' });
-                }, 300); // slight delay to ensure everything is rendered
+                }, 300); // wait a bit for render
             }
         }
     });

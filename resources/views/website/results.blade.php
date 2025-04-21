@@ -420,6 +420,24 @@
     </section>
     </div>
     @push('scripts')
+
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const hasCategorie = urlParams.has('categorie');
+        const hasPage = urlParams.has('page');
+
+        if (hasCategorie || hasPage) {
+            const target = document.getElementById('categories_posts');
+            if (target) {
+                setTimeout(() => {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }, 300); // wait a bit for render
+            }
+        }
+    });
+</script>    
     <script>
   $(document).ready(function () {
     const selectedCity = "{{ request('stad') }}";
