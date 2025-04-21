@@ -1515,6 +1515,10 @@ h3.adv span {
   margin-top: -0.75rem;
 }
 
+.mt-\[6px\] {
+  margin-top: 6px;
+}
+
 .\!block {
   display: block !important;
 }
@@ -4105,6 +4109,10 @@ input{
 
 .group.open .group-open\:top-\[11px\] {
   top: 11px;
+}
+
+.group.open .group-open\:top-\[10px\] {
+  top: 10px;
 }
 
 .group.open .group-open\:-rotate-45 {

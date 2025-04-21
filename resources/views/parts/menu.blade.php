@@ -4,10 +4,10 @@
             <img class="max-w-[280px]  sm:max-w-[280px] md:max-w-[310px]" src="{{ asset('dieren/src/public/img/logo.png')}}" alt="">
         </a>
 
-        <button id="toggleBtn" class="group peer lg:hidden ml-auto bg-primary text-white peer-open:mt-10 px-3 py-3 ">
-            <span class="top-0 block bg-white w-7 h-[2px]  transition origin-top-center relative group-open:rotate-45 group-open:top-[11px] group-open:border-none"></span>
-            <span class="block mt-2 bg-white w-7 h-[2px] transition duration-300 group-open:opacity-0"></span>
-            <span class="top-0 block mt-2 bg-white w-7 h-[2px] transition origin-top-center relative group-open:-rotate-45 group-open:-top-[10px] group-open:border-none"></span>
+        <button id="toggleBtn" class="group peer lg:hidden ml-auto bg-primary text-white peer-open:mt-10 px-3 py-3 rounded-xl shadow-md transition-all duration-300">
+            <span class="block bg-white w-7 h-[2px] rounded-full transition origin-top-center relative group-open:rotate-45 group-open:top-[10px] group-open:border-none"></span>
+            <span class="block mt-[6px] bg-white w-7 h-[2px] rounded-full transition duration-300 group-open:opacity-0"></span>
+            <span class="block mt-[6px] bg-white w-7 h-[2px] rounded-full transition origin-top-center relative group-open:-rotate-45 group-open:-top-[10px] group-open:border-none"></span>
         </button>
         <nav id="mainMenu" class="peer-open:border-t peer-open:border-gray-800 hidden absolute top-[100%] left-0 lg:static bg-primaryAlt w-full lg:w-[fit-content] lg:block mx-auto z-50 bg-white">
             <ul class="text-center py-5 lg:py-0 lg:text-left lg:flex lg:space-x-8 text-lg text-black font-medium">
