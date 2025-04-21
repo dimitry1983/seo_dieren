@@ -49,6 +49,8 @@
 <div class="main-container relative w-full overflow-hidden">
     @php
         $totalRatings = array_sum($ratingCounts);
+        $days = [ 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag', 'Zondag'];
+
     @endphp
 
     <section class="section section--hero-interior bg-cover bg-right bg-center" style="background-image: url('{{ asset('dieren/src/public/img/profile.png') }}'); min-height: 120px;"></section>
@@ -117,6 +119,23 @@
                         <p>
                             {!!$veterinarian->description!!}
                         </p>
+
+                        @if (!empty($veterinarian->openingstimes))
+                            <h3 class="title title--section font-bold text-3xl mb-4 text-gray-800">
+                                <span class="text-primary">{{__('Openingstijden')}}</span>
+                            </h3>
+                            <ul class="space-y-2">
+                                @foreach($veterinarian->openingstimes as $times)
+                                    <li class="grid grid-cols-3 gap-4">
+                                        <span>{{$days[$times->day_of_week]}}</span>
+                                        <span>{{$times->open_time}}</span>
+                                        <span>{{$times->close_time}}</span>
+                                    </li>     
+                                @endforeach
+                            </ul>
+                        @endif
+
+
                         <img src="{{ asset('dieren/src/public/img/paw.png')}}" alt="" class="absolute top-[20px] right-[20px] z-[0]">
                     </div>
                     <div class="content border border-gray-300 shadow-lg px-[30px] py-[50px] mb-6 relative" id="diensten">
