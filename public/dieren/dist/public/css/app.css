@@ -1931,6 +1931,10 @@ h3.adv span {
   max-width: 280px;
 }
 
+.max-w-\[260px\] {
+  max-width: 260px;
+}
+
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -4174,6 +4178,10 @@ input{
 
   .sm\:max-w-\[280px\] {
     max-width: 280px;
+  }
+
+  .sm\:max-w-\[260px\] {
+    max-width: 260px;
   }
 
   .sm\:flex-1 {
