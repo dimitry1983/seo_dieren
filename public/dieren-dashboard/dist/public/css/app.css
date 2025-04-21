@@ -3624,6 +3624,10 @@ textarea.custom-switch input + span.h-full.w-full:after{
   padding-top: 60px;
 }
 
+.pr-6 {
+  padding-right: 1.5rem;
+}
+
 .text-left {
   text-align: left;
 }

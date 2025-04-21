@@ -33,7 +33,7 @@
                                 @foreach($openingsTimes as $openingTime)
                                     <li class="flex items-center justify-between">
                                         <!-- Fixed width for day of the week to maintain alignment -->
-                                        <span class="font-medium w-24">{{ returnDays($openingTime->day_of_week) }}</span>
+                                        <span class="font-medium w-24 pr-6">{{ returnDays($openingTime->day_of_week) }}</span>
                                         
                                         <!-- Times and edit button in a single flex row -->
                                         <div class="flex items-center space-x-4">

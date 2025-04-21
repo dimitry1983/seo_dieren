@@ -3028,6 +3028,10 @@ h3.adv span {
   padding-top: 90px;
 }
 
+.pr-6 {
+  padding-right: 1.5rem;
+}
+
 .text-left {
   text-align: left;
 }
