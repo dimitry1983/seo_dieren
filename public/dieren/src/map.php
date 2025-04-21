@@ -139,7 +139,7 @@
                             <a href="#">Amsterdam Clinic</a>
                         </h3>
                         <h4 class="subtitle text-sm text-gray-800 mb-2">Lorem Ipsum Dolor Sit Amet</h4>
-                        <p class="location text-xs mb-0 font-semibold">
+                        <p class="location text-sm mb-0 font-semibold">
                             <i class="fa-solid fa-location-dot text-primary"></i> 9999 BP Amsterdam, Netherlands
                         </p>
                         <a class="text-xs font-semibold" href="#">
@@ -160,7 +160,7 @@
                             <a href="#">Amsterdam Clinic</a>
                         </h3>
                         <h4 class="subtitle text-sm text-gray-800 mb-2">Lorem Ipsum Dolor Sit Amet</h4>
-                        <p class="location text-xs mb-0 font-semibold">
+                        <p class="location text-sm mb-0 font-semibold">
                             <i class="fa-solid fa-location-dot text-primary"></i> 9999 BP Amsterdam, Netherlands
                         </p>
                         <a class="text-xs font-semibold" href="#">
@@ -181,7 +181,7 @@
                             <a href="#">Amsterdam Clinic</a>
                         </h3>
                         <h4 class="subtitle text-sm text-gray-800 mb-2">Lorem Ipsum Dolor Sit Amet</h4>
-                        <p class="location text-xs mb-0 font-semibold">
+                        <p class="location text-sm mb-0 font-semibold">
                             <i class="fa-solid fa-location-dot text-primary"></i> 9999 BP Amsterdam, Netherlands
                         </p>
                         <a class="text-xs font-semibold" href="#">
@@ -202,7 +202,7 @@
                             <a href="#">Amsterdam Clinic</a>
                         </h3>
                         <h4 class="subtitle text-sm text-gray-800 mb-2">Lorem Ipsum Dolor Sit Amet</h4>
-                        <p class="location text-xs mb-0 font-semibold">
+                        <p class="location text-sm mb-0 font-semibold">
                             <i class="fa-solid fa-location-dot text-primary"></i> 9999 BP Amsterdam, Netherlands
                         </p>
                         <a class="text-xs font-semibold" href="#">

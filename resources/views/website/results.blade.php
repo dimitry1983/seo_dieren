@@ -308,7 +308,7 @@
                                     </span>
                                 </h3>
                                 <h4 class="subtitle text-sm text-gray-800 mb-2">{{ $vet->excerpt }}</h4>
-                                <p class="location text-xs mb-0">
+                                <p class="location text-sm mb-0">
                                     <i class="fa-solid fa-location-dot text-primary"></i> {{ $vet->zipcode }} {{ $vet->street }}, Nederland
                                 </p>
                                 <a class="text-xs" href="tel:{{ $vet->phone }}">
@@ -355,7 +355,7 @@
                                     </span>
                                 </h3>
                                 <h4 class="subtitle text-sm text-gray-800 mb-2">{{ $vet->excerpt }}</h4>
-                                <p class="location text-xs mb-0">
+                                <p class="location text-sm mb-0">
                                     <i class="fa-solid fa-location-dot text-primary"></i> {{ $vet->zipcode }} {{ $vet->street }} {{ $vet->street_nr }} <br/> {{ $vet->city->name }}, Nederland
                                 </p>
                                 <a class="text-xs" href="tel:{{ $vet->phone }}">

@@ -390,7 +390,7 @@
                                 <h3 class="title title--block font-bold text-sm mb-3">
                                     Amsterdam Clinic
                                 </h3>
-                                <p class="location text-xs mb-0">
+                                <p class="location text-sm mb-0">
                                     <i class="fa-solid fa-location-dot text-primary"></i> 9999 BP Amsterdam, Netherlands
                                 </p>
                                 <a class="text-xs" href="#">

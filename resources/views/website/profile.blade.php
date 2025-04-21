@@ -366,7 +366,7 @@
                             <h3 class="title title--block font-bold text-sm mb-3">
                                 {{$veterinarian->name}}
                             </h3>
-                            <p class="location text-xs mb-0">
+                            <p class="location text-sm mb-0">
                                 <i class="fa-solid fa-location-dot text-primary"></i>         {{ $veterinarian->zipcode }} {{ $veterinarian->street }} {{ $veterinarian->street_nr }} <br/> {{ $veterinarian->city->name }}, Nederland
                             </p>
                             <a class="text-xs" href="#">

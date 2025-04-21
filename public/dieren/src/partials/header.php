@@ -2,7 +2,7 @@
     <div class="head bg-[#202428]">
         <div class="container mx-auto">
             <div class="flex py-2">
-                <p class="location text-xs mb-0 text-white">
+                <p class="location text-sm mb-0 text-white">
                     <i class="fa-solid fa-location-dot text-primary"></i> 9999 BP Amsterdam, Netherlands
                 </p>
                 <a class="text-xs text-white ml-2" href="#">

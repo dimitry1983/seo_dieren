@@ -168,7 +168,7 @@
                                 <h4 class="subtitle text-sm text-gray-800 mb-2">
                                     {{ \Illuminate\Support\Str::limit($vet->excerpt, 80) }}
                                 </h4>
-                                <p class="location text-xs mb-0 font-semibold">
+                                <p class="location text-sm mb-0 font-semibold">
                                     <i class="fa-solid fa-location-dot text-primary"></i>
                                     {{ $vet->zipcode }} {{ $vet->street }} {{ $vet->street_nr }} <br/> {{ $vet->city->name }}, Nederland
                                 </p>
