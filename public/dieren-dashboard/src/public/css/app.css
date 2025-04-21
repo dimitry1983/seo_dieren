@@ -14,7 +14,7 @@
         @apply mb-4
     }
     .fi-section {
-        background-color: white;
+        background-color: white !important;
         border-radius: 0.75rem; /* Equivalent to rounded-xl */
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Equivalent to shadow-sm */
         border: 1px solid rgba(0, 0, 0, 0.05); /* Equivalent to ring-1 ring-gray-950/5 */
@@ -23,7 +23,7 @@
     /* For dark mode override */
     @media (prefers-color-scheme: dark) {
         .fi-section {
-            background-color: #1a202c; /* dark:bg-gray-900 */
+            background-color: white !important; /* dark:bg-gray-900 */
             border: 1px solid rgba(255, 255, 255, 0.1); /* dark:ring-white/10 */
         }
     }
