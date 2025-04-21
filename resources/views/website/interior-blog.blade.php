@@ -36,13 +36,13 @@
                             @if (!empty($blogs))
                             @foreach($blogs as $related)
                                 <div class="article relative border border-gray-300 transition duration-300 ease-out shadow-lg mb-3">
-                                    <div class="grid grid-cols-4 lg:grid-cols-3 gap-4">
-                                        <figure class="col-span-1 lg:col-span-1 mb-0 h-full">
+                                    <div class="grid grid-cols-5 lg:grid-cols-5 gap-4">
+                                        <figure class="col-span-2 lg:col-span-2 mb-0 h-full">
                                             <div class="w-full h-full bg-cover bg-center"
                                                 style="background-image: url('{{ $related->thumb ? Storage::url($related->thumb) : asset('dieren/src/public/img/article1.jpg') }}');">
                                             </div>
                                         </figure>
-                                        <div class="col-span-3 lg:col-span-2 pr-4 py-2 relative">
+                                        <div class="col-span-3 lg:col-span-3 pr-4 py-2 relative">
                                             <h3 class="title title--article text-normal font-bold">
                                                 <a href="{{ route('blog.detail', ['slug' => Str::slug($related->name), 'id' => $related->id]) }}">
                                                     {{ Str::limit($related->name, 50) }}
