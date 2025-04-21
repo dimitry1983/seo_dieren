@@ -3,7 +3,7 @@
 @section('content')
 <div class="main-container relative w-full overflow-hidden">
 
-    <section class="section section--hero-interior bg-primaryLight relative py-[140px]">
+    <section class="section section--hero-interior bg-primaryLight relative py-[60px]">
         <div class="container mx-auto relative z-10">
             <h1 class="text-6xl text-center font-regular text-gray-800 relative z-1 leading-tight md:leading-tight lg:leading-normal">
                 {{devTranslate('page.Blog', 'Blog')}} & <strong>{{devTranslate('page.News', 'Nieuws')}}</strong>

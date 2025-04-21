@@ -3,7 +3,7 @@
 @section('content')
 <div class="main-container relative w-full overflow-hidden">
 
-    <section class="section section--hero-interior bg-primaryLight relative py-[140px]">
+    <section class="section section--hero-interior bg-primaryLight relative py-[60px]">
         <img class="absolute bottom-0 left-0 z-0" src="{{ asset('dieren/src/public/img/about1.png')}}" alt="">
         <div class="container mx-auto relative z-1">
             <h1 class="text-6xl text-center font-regular text-gray-800 relative z-3 leading-tight md:leading-tight lg:leading-normal">

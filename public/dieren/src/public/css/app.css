@@ -295,3 +295,9 @@ input{
     background-color: white !important;
     color: #1f2937 !important;
 }
+
+@media (max-width: 640px) {
+    .section--hero-interior img {
+      display: none;
+    }
+  }
