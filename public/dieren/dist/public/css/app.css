@@ -4148,6 +4148,10 @@ input{
     margin-bottom: 40px;
   }
 
+  .sm\:block {
+    display: block;
+  }
+
   .sm\:flex {
     display: flex;
   }

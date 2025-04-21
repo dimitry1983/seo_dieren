@@ -12,7 +12,7 @@
 
                     <p class="mb-[10px]"><strong>{{ devTranslate('page.Category','Categorie') }}</strong></p>
                     <div class="relative mb-4">
-                        <select name="categorie" class="appearance-none p-3 rounded-full border border-gray-300 outline-none hover:border-gray-400 focus:ring-2 focus:ring-primary transition duration-300 ease-out w-full pr-10">
+                        <select name="categorie" class="appearance-none p-3 bg-white rounded-full border border-gray-300 outline-none hover:border-gray-400 focus:ring-2 focus:ring-primary transition duration-300 ease-out w-full pr-10">
                             <option value="">{{__('Maak een keuze')}}</option>
                             @if (!empty($categories))
                                 @foreach($categories as $category)
@@ -39,7 +39,7 @@
                     <a class="underline text-center block mt-4 text-gray-800 font-bold hover:text-primary transition" id="resetfilters" href="#">{{ devTranslate('page.Clear All Filters','Reset Filters') }}</a>
                 </form>
             </div>
-            <div class="map lg:col-span-3 col-span-2">
+            <div class="map lg:col-span-3 col-span-2 hidden md:block">
                 <img src="{{ asset('dieren/src/public/img/map.jpg')}}" alt="Map Image" class="w-full h-[500px] object-cover">
             </div>
         </div>
