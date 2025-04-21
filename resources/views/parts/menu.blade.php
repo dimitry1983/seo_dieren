@@ -14,6 +14,7 @@
                 <li class="nav-item hover:text-primary"><a href="{{route('home')}}">Home</a></li>
                 <li class="nav-item hover:text-primary mt-2 lg:mt-0"><a href="{{route('map')}}">Overzicht</a></li>
                 <li class="nav-item hover:text-primary mt-2 lg:mt-0"><a href="{{route('blog.overview')}}">Blog & Nieuws</a></li>
+                <li class="nav-item hover:text-primary mt-2 lg:mt-0"><a href="{{route('login')}}">Inloggen</a></li>
             </ul>
 
             <div class="flex flex-col lg:hidden px-4 pb-4 gap-4">

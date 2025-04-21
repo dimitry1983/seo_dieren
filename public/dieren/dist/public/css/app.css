@@ -1507,6 +1507,14 @@ h3.adv span {
   margin-top: auto;
 }
 
+.-mt-5 {
+  margin-top: -1.25rem;
+}
+
+.-mt-3 {
+  margin-top: -0.75rem;
+}
+
 .\!block {
   display: block !important;
 }
