@@ -23,7 +23,7 @@
                     <div class="w-full md:w-1/4 text-center md:text-left relative lg:border-l lg:border-l-[#20242866] lg:px-[20px] ">
                         <p class="mb-0 hidden xl-custom:block"><strong>{{ devTranslate('page.Category','Categorie') }}</strong></p>
                         <div class="relative no-border">
-                            <select name="categorie" class="no-border form-control p-3 border border-none outline-none transition duration-300 ease-out w-full appearance-none pr-10">
+                            <select name="categorie" class="no-border bg-white form-control p-3 border border-none outline-none transition duration-300 ease-out w-full appearance-none pr-10">
                                 <option value="">{{__('Maak een keuze')}}</option>
                                 @if (!empty($categories))
                                     @foreach($categories as $category)
