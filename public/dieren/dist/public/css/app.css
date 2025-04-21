@@ -1559,6 +1559,10 @@ h3.adv span {
   aspect-ratio: 16 / 9;
 }
 
+.aspect-\[3\/2\] {
+  aspect-ratio: 3/2;
+}
+
 .size-4 {
   width: 1rem;
   height: 1rem;
