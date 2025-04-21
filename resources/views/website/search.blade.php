@@ -106,7 +106,7 @@
                         View All Categories
                     </a>
                 </div>
-                <div class="posts col-span-4 lg:col-span-3 grid grid-cols-3 gap-4">
+                <div class="posts col-span-4 lg:col-span-3 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
                     <div class="block-hotspots border border-gray-300 transition duration-300 ease-out hover:shadow-lg category-best-rated">
                         <figure class="m-0 overflow-hidden">
                             <a href="#"><img class="w-full transition-transform duration-300 ease-out hover:scale-105" src="{{ asset('dieren/src/public/img/post-1.png')}}" alt=""></a>
