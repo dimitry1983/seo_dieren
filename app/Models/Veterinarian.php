@@ -273,5 +273,31 @@ class Veterinarian extends Model
             ->get();
     }
 
+    public function get10VeterinariansPerProvince($provinceId)
+    {
+        // Get a random city from the province
+        $city = City::where('province_id', $provinceId)->inRandomOrder()->first();
+    
+        if (!$city) {
+            return []; // Return empty if no city is found
+        }
+    
+        $lat = $city->lat;
+        $lon = $city->lon;
+    
+        // Get the 10 closest veterinarians based on the Haversine formula
+        $veterinarians = Veterinarian::selectRaw(
+                "id, name, lat, lon, 
+                ( 6371 * acos( cos( radians(?) ) * cos( radians(lat) ) * cos( radians(lon) - radians(?) ) + sin( radians(?) ) * sin( radians(lat) ) ) ) AS distance",
+                [$lat, $lon, $lat]
+            )
+            ->having('distance', '<', 50) // Optional, set maximum distance (50 km in this case)
+            ->orderBy('distance')
+            ->limit(10)
+            ->get();
+    
+        return $veterinarians;
+    }
+
 
 }

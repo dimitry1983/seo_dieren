@@ -31,6 +31,10 @@ class CategoryResource extends Resource
             ->schema([
                 Section::make('Categorieën') // Title of the section
                     ->schema([
+                    Tables\Columns\ImageColumn::make('images')
+                        ->square() // Optional: Makes the image a square preview
+                        ->circular() // Optional: Makes the image circular
+                        ->size(50), // Adjust the image size in pixels    
                     Forms\Components\TextInput::make('name')
                         ->required()
                         ->maxLength(255),
@@ -53,6 +57,10 @@ class CategoryResource extends Resource
         return $table
             ->defaultSort('id', 'desc')
             ->columns([
+                Tables\Columns\ImageColumn::make('images')
+                    ->square() // Optional: Makes the image a square preview
+                    ->circular() // Optional: Makes the image circular
+                    ->size(50), // Adjust the image size in pixels
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
