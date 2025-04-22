@@ -40,6 +40,10 @@ class CreateSite extends CreateRecord
             $newCategory->site_id = $lastSite -> id; // Assign the new site_id
             $newCategory->save(); // Save the new duplicated page
         }
+        //provinces
+
+        //import Veterinian + reviews, + rewrite with chatgpt
+        //we need to add old_id to table
 
         // Runs after the form fields are saved to the database.
     }

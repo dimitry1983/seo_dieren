@@ -12,6 +12,11 @@ class Category extends Model
     // Define fillable properties if you want mass assignment.
     protected $guarded = [];
 
+    public function scopeForSite($query)
+    {
+        return $query->where('site_id', session('website')->id);
+    }
+
     public static function getCategory($id)
     {
         return Category::where('id', $id)->first();

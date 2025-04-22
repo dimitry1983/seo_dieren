@@ -12,6 +12,11 @@ class Blog extends Model
 
     protected $guarded = [];
 
+    public function scopeForSite($query)
+    {
+        return $query->where('site_id', session('website')->id);
+    }
+
     // Define the relationship with the Veterinarian model
     public function veterinarian()
     {

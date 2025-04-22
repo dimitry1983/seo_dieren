@@ -18,6 +18,11 @@ class Navigation extends Model
         'content' => 'array',
     ];
 
+    public function scopeForSite($query)
+    {
+        return $query->where('site_id', session('website')->id);
+    }
+
     public static function getNavigations(){
         return Navigation::get();
     }

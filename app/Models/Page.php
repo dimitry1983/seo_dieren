@@ -27,7 +27,11 @@ class Page extends Model
 
     public function scopeActive($query){
         return $query->whereNull('deleted_at');
-   
+    }
+
+    public function scopeForSite($query)
+    {
+        return $query->where('site_id', session('website')->id);
     }
 
     // You can define any other methods you need for your pages

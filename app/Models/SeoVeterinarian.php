@@ -15,6 +15,11 @@ class SeoVeterinarian extends Model
 
     protected $guarded = [];
 
+    public function scopeForSite($query)
+    {
+        return $query->where('site_id', session('website')->id);
+    }
+
     public function getExcerptAttribute(): string
     {
         return Str::limit(strip_tags($this->generateDescription($this)), 120);

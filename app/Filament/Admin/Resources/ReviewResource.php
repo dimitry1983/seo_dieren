@@ -5,7 +5,7 @@ namespace App\Filament\Admin\Resources;
 use App\Filament\Admin\Resources\ReviewResource\Pages;
 use App\Filament\Admin\Resources\ReviewResource\RelationManagers;
 use App\Models\City;
-use App\Models\Review;
+use App\Models\SeoReview;
 use App\Models\Veterinarian;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
@@ -20,7 +20,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ReviewResource extends Resource
 {
-    protected static ?string $model = Review::class;
+    protected static ?string $model = SeoReview::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-left-ellipsis';
    
@@ -66,6 +66,18 @@ class ReviewResource extends Resource
                 ]),
             ]);    
         }
+
+
+    public static function getEloquentQuery(): Builder
+    {
+        if (session('website')) {
+            return static::getModel()::query()->where('site_id', session('website')->id);
+        }
+    
+        // If session('website') is not set, you can return an empty query or handle the fallback behavior
+        return static::getModel()::query(); // Or handle as needed
+    }   
+    
 
     public static function table(Table $table): Table
     {

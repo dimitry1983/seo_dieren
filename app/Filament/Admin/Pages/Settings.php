@@ -12,7 +12,6 @@ use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Toggle;
 use Illuminate\Support\Facades\Cache;
 use Filament\Notifications\Notification;
-
 use Filament\Pages\Page;
 
 class Settings extends Page
@@ -27,20 +26,25 @@ class Settings extends Page
 
     protected static ?int $navigationSort = 15;
 
-    public $settings, $site_name, $noindex, $adminmail, $emailContact ,$site_description, $facebook, $twitter, $instagram;
+    public $settings, $site_name, $noindex, $adminmail, $emailContact, $site_description, $facebook, $twitter, $instagram, $site_id;
 
     protected $rules = [
         'site_name',
         'site_description'
     ];
 
-    public function mount(){
+    public function mount()
+    {
+        $this->site_id = session('website')->id;
 
-        $settings = ['site_name','site_description', 'emailContact','noindex' ,'adminmail' , 'facebook', 'twitter', 'instagram'];
+        $settings = ['site_name', 'site_description', 'emailContact', 'noindex', 'adminmail', 'facebook', 'twitter', 'instagram'];
 
         $this->settings = $settings;
 
-        $settings = ModelsSetting::whereIn('option_name', $settings)->get();
+        // Fetch settings based on site_id
+        $settings = ModelsSetting::whereIn('option_name', $settings)
+            ->where('site_id', $this->site_id)
+            ->get();
 
         foreach ($settings as $setting) {
             $propertyName = $setting->option_name;
@@ -83,19 +87,19 @@ class Settings extends Page
 
     public function submit()
     {
-        if(!empty($this->settings)){
-            foreach($this->settings as $option_name){
-                $attributes = ['option_name' => $option_name];
+        if (!empty($this->settings)) {
+            foreach ($this->settings as $option_name) {
+                $attributes = ['option_name' => $option_name, 'site_id' => $this->site_id]; // Include site_id here
                 $values = ['option_value' => $this->{$option_name}, 'autoload' => 1];
 
                 ModelsSetting::updateOrCreate($attributes, $values);
                 Cache::forget('app_settings');
             }
 
-            Notification::make() 
-            ->title('Saved')
-            ->success()
-            ->send();
+            Notification::make()
+                ->title('Saved')
+                ->success()
+                ->send();
         }
-    }   
+    }
 }
