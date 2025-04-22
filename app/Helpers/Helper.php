@@ -16,6 +16,31 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Toggle;
 
+
+if(!function_exists('domain')){
+    function domain(){
+        if(!empty(@$_SERVER['HTTP_X_FORWARDED_HOST'])) {
+            $domain = @$_SERVER['HTTP_X_FORWARDED_HOST'];
+        } else {
+            if(!empty(@$_SERVER['HTTP_HOST'])) {
+                $domain = $_SERVER['HTTP_HOST'];
+            } else {
+                return '';
+            }
+        }
+
+        $domain = str_ireplace('www.', '', $domain);
+
+        if(substr_count($domain, '.') > 1) {
+            $domain = explode('.', $domain);
+            return $domain[count($domain)-2] . '.' . end($domain);
+        }
+
+        return $domain;
+    }
+}
+
+
 if(!function_exists('pr')){
     function pr($data){
         echo '<pre>';

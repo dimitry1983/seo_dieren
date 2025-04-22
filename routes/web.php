@@ -15,6 +15,14 @@ use App\Livewire\Actions\Logout;
 use App\Mail\SupportMessageMail;
 use App\Models\User;
 
+$domain   = domain();
+$domain   = "https://www.seosite1.nl";
+$website  = \App\Models\Site::get_info($domain);
+
+if(!empty($website)) {
+    session(['website'  => $website]);
+}
+
 Route::get('/api/cities', [CityController::class, 'search']);
 
 //Volt::routes(); 

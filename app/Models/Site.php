@@ -14,4 +14,10 @@ class Site extends Model
         'url',
         'ip',
     ];
+
+    public static function get_info($url) {
+        $website  = Site::where('url', 'like', '%'.$url.'%')->first();
+        return $website;
+    }
+
 }
