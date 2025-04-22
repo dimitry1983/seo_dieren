@@ -6,6 +6,7 @@ use App\Filament\Admin\Resources\SiteResource;
 use App\Models\Category;
 use App\Models\Navigation;
 use App\Models\Page;
+use App\Models\Province;
 use App\Models\Site;
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
@@ -41,9 +42,17 @@ class CreateSite extends CreateRecord
             $newCategory->save(); // Save the new duplicated page
         }
         //provinces
-
+        $provinces = Province::where('site_id', 0)->get();
+        foreach ($provinces as $province) {
+            // Create a new navigation record with the same attributes, except for site_id
+            $province = $category->replicate(); // Replicate the existing page
+            $province->site_id = $lastSite -> id; // Assign the new site_id
+            $province->save(); // Save the new duplicated page
+        }
         //import Veterinian + reviews, + rewrite with chatgpt
         //we need to add old_id to table
+
+        //rewrite this description and make the content longer and seooptimized, using h2 h3 tags and return in html so i can insert the html into the database.
 
         // Runs after the form fields are saved to the database.
     }
