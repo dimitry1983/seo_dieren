@@ -8,6 +8,7 @@ use App\Models\City;
 use App\Models\Page;
 use App\Models\Province;
 use App\Models\Review;
+use App\Models\Seopage;
 use App\Models\VegetarianOpeningTime;
 use App\Models\Veterinarian;
 use App\Models\VeterinarianCategory;
@@ -275,8 +276,22 @@ class SiteController extends Controller
         if (empty($page)){
             abort(404);
         }
+        //dd($page->blocks);
+        $title = $page->blocks[0]['data']['title'];
+        $content = $page->blocks[0]['data']['description'];
+        //dd($title.' '.$content);
 
-        return view('website.page', ['page' => $page, 'seo' => $seo]);
+        $checkHasSeoPage = Seopage::where('parent_page', $page)->first();
+
+        $tenRandomPlaces = '';
+        $biggestCities   = '';
+
+        if (!empty($checkHasSeoPage)):
+            $tenRandomPlaces = City::inRandomOrder()->take(10)->get();
+            $biggestCities   = City::where('biggest', '>', 0)->get();
+        endif;    
+
+        return view('website.page', ['page' => $page, 'title' => $title, 'tenRandomPlaces' => $tenRandomPlaces, 'biggestCities' => $biggestCities,'content' => $content, 'seo' => $seo]);
     }
 
     // public function convertDB(){

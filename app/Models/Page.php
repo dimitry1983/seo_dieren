@@ -72,6 +72,6 @@ class Page extends Model
 
     public static function getCustomPage($page){
       
-        return Page::where('slug', $page)->first();
+        return Page::ForSite()->where('slug', $page)->first();
     }
 }

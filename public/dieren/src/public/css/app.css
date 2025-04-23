@@ -172,6 +172,31 @@
     .select2.select2-container{
         @apply appearance-none p-3 rounded-full bg-white border border-gray-300 outline-none hover:border-gray-400 focus:ring-2 focus:ring-primary transition duration-300 ease-out w-full pr-10
     }
+    .detail-content h1{
+        @apply text-3xl font-semibold leading-tight mb-4 text-gray-800;
+    }
+    .detail-content h2{
+        @apply text-2xl font-semibold leading-tight mb-4 text-gray-800;
+    }
+    .detail-content h3, .detail-content h4 {
+        @apply text-lg font-semibold leading-tight mb-4 text-gray-800;
+    }
+
+    .detail-content p {
+        @apply mb-4 text-base text-gray-600;
+    }
+
+    .detail-content ul, .detail-content ol {
+        @apply list-inside list-disc pl-5 mb-4;
+    }
+
+    .detail-content li {
+        @apply mb-2 text-base text-gray-600;
+    }
+
+    .detail-content strong {
+        @apply font-semibold text-gray-800;
+    }
 
 }
 .select2-container--default .select2-selection--single, .noborder .select2-container--default .select2-selection--single{
