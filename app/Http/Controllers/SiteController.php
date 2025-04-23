@@ -294,6 +294,31 @@ class SiteController extends Controller
         return view('website.page', ['page' => $page, 'title' => $title, 'tenRandomPlaces' => $tenRandomPlaces, 'biggestCities' => $biggestCities,'content' => $content, 'seo' => $seo]);
     }
 
+    public function seoPage($slug, $provincie, $city){
+        $page = Page::ForSite()->where('slug', $slug)->first();
+        if (empty($page)){
+            abort(404);
+        }
+        $slugForSearch = '/'.$provincie.'/'.$city;
+        $nearByCities    = '';    
+        $biggestCities   = City::where('biggest', '>', 0)->get();
+
+        $city = City::where('path', $city)->first();
+
+        $lat  =  $city -> lat;
+        $lon  =  $city -> lon;
+
+       $tenClosestCities = City::getClosestCities($lat, $lon, $limit = 10);
+        
+        $seoPage = SeoPage::where('parent_page', $page->id)->where('slug', $slugForSearch)->first();
+        if (empty($seoPage)){
+            abort(404);
+        }
+
+        return view('website.seopage', ['page' => $seoPage, 'tenClosestCities' => $tenClosestCities  , 'biggestCities' => $biggestCities]);
+    }
+
+
     // public function convertDB(){
     //     return;
     //     ini_set("memory_limit", "-1");

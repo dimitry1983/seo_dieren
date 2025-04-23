@@ -22,14 +22,23 @@ class City extends Model
         })->first();
         
         if (!empty($city)){
-                    
-                $prov = Province::find($city->province_id); // Using findOrFail to throw an exception if the record doesn't exist
-                return @$prov->slug;
-         
+            $prov = Province::find($city->province_id); // Using findOrFail to throw an exception if the record doesn't exist
+            return @$prov->slug;
         }
         else{
             return false;
         }
+    }
+
+    public static function getClosestCities($lat, $lon, $limit = 10)
+    {
+        return self::select('*')
+            ->selectRaw("(
+                6371 * acos(cos(radians(?)) * cos(radians(lat)) * cos(radians(lon) - radians(?)) + sin(radians(?)) * sin(radians(lat)))
+            ) AS distance", [$lat, $lon, $lat]) // Haversine formula
+            ->orderBy('distance')
+            ->limit($limit)
+            ->get();
     }
 
 }
