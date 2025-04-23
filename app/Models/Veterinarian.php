@@ -291,7 +291,7 @@ class Veterinarian extends Model
                 ( 6371 * acos( cos( radians(?) ) * cos( radians(lat) ) * cos( radians(lon) - radians(?) ) + sin( radians(?) ) * sin( radians(lat) ) ) ) AS distance",
                 [$lat, $lon, $lat]
             )
-            ->having('distance', '<', 50) // Optional, set maximum distance (50 km in this case)
+            ->having('distance', '<', 75) // Optional, set maximum distance (50 km in this case)
             ->orderBy('distance')
             ->limit(10)
             ->get();

@@ -39,6 +39,10 @@ class PageResource extends Resource
         ->schema([
             Section::make()
             ->schema([
+                Forms\Components\TextInput::make('site_id')
+                    ->hidden()
+                    ->default(session('website')->id)
+                    ->required(),
                 Forms\Components\TextInput::make('title')
                     ->live(onBlur:true)
                     ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))

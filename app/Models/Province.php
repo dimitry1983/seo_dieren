@@ -10,6 +10,8 @@ class Province extends Model
 {
     use HasFactory;
 
+    public $timestamps = false; 
+
     protected $fillable = [
         'country',
         'name',

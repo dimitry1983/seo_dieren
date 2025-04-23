@@ -45,6 +45,10 @@ class BlogResource extends Resource
                                 ->required()
                                 ->directory('blogs')
                                 ->maxSize(2048),
+                            Forms\Components\TextInput::make('site_id')
+                                ->hidden()
+                                ->default(session('website')->id)
+                                ->required(),    
                             Forms\Components\TextInput::make('name')
                                 ->required()
                                 ->maxLength(255),

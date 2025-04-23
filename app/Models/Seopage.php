@@ -9,18 +9,7 @@ class Seopage extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'city',
-        'parent_page',
-        'custom_link',
-        'meta_title',
-        'meta_description',
-        'title',
-        'description',
-        'slug',
-        'active',
-        'site_id'
-    ];
+    protected $guarded = [];
 
     /**
      * Get the parent page for this SEO page.
