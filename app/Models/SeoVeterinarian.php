@@ -156,65 +156,67 @@ class SeoVeterinarian extends Model
             foreach($provincies as $provincie){
                 $veterinarians = (new Veterinarian())->get10VeterinariansPerProvince($provincie -> id);
                 //here we make the insert 
+                foreach($veterinarians as $veterinarian){
+                  
+             
+                        $command = "Kan je deze informatie herschrijven in een SEO-vriendelijke tekst? Zorg ervoor dat de tekst uniek is en niet lijkt op de originele tekst, ik wil in de tekst goede keywoorden, h2 h3 tags en het moet overzichtelijk en duidelijk zijn liefst minimaal 600 woorden, de tekst moet in html terug worden gegeven want het word opgeslagen in de database, ik wil alleen maar de tags die normaal gesproken in de <body></body> zitten. Gebruik de volgende informatie: ";
+                
+                
+                        $command .= ' ' . $veterinarian -> description;
+                        $response = '';
+                
+                        sleep(3);
+                        $response =  $this->contentService->createText($command);
 
-                $command = "Kan je deze informatie herschrijven in een SEO-vriendelijke tekst? Zorg ervoor dat de tekst uniek is en niet lijkt op de originele tekst, ik wil in de tekst goede keywoorden, h2 h3 tags en het moet overzichtelijk en duidelijk zijn liefst minimaal 600 woorden, de tekst moet in html terug worden gegeven want het word opgeslagen in de database. Gebruik de volgende informatie: ";
-        
-        
-                $command .= ' ' . $veterinarians -> html;
-                $response = '';
-        
-                sleep(3);
-                $response =  $this->contentService->createText($command);
+                        $seoVeterinarians = new SeoVeterinarian();
+                        $seoVeterinarians -> old_id = $veterinarian -> id;
+                        $seoVeterinarians -> name = $veterinarian -> name;
+                        $seoVeterinarians -> short_description = $veterinarian -> short_description ?? "";
+                        $seoVeterinarians -> description =  $response;
+                        $seoVeterinarians -> region_id = $veterinarian -> region_id;
+                        $seoVeterinarians -> city_id = $veterinarian -> city_id;
+                        $seoVeterinarians -> zipcode = $veterinarian -> zipcode;
+                        $seoVeterinarians -> street = $veterinarian -> street;
+                        $seoVeterinarians -> street_nr = $veterinarian -> street_nr;
+                        $seoVeterinarians -> phone = $veterinarian -> phone;
+                        $seoVeterinarians -> website = $veterinarian -> website;
+                        $seoVeterinarians -> location_link = $veterinarian -> location_link;
+                        $seoVeterinarians -> views = 1;
+                        $seoVeterinarians -> place_id = $veterinarian -> place_id;
+                        $seoVeterinarians -> lat = $veterinarian -> lat;
+                        $seoVeterinarians -> lon = $veterinarian -> lon;
+                        $seoVeterinarians -> user_id = $veterinarian -> user_id;
+                        $seoVeterinarians -> site_id = session('website')->id;
+                        $seoVeterinarians -> created_at = date('Y-m-d H:i:s');
+                        $seoVeterinarians -> updated_at = date('Y-m-d H:i:s');
+                        $seoVeterinarians -> save();
 
-                $seoVeterinarians = new SeoVeterinarian();
-                $seoVeterinarians -> old_id = $veterinarians -> old_id;
-                $seoVeterinarians -> name = $veterinarians -> name;
-                $seoVeterinarians -> short_description = $veterinarians -> short_description ?? "";
-                $seoVeterinarians -> description =  $response;
-                $seoVeterinarians -> region_id = $veterinarians -> region_id;
-                $seoVeterinarians -> city_id = $veterinarians -> city_id;
-                $seoVeterinarians -> zipcode = $veterinarians -> zipcode;
-                $seoVeterinarians -> street = $veterinarians -> street;
-                $seoVeterinarians -> street_nr = $veterinarians -> street_nr;
-                $seoVeterinarians -> phone = $veterinarians -> phone;
-                $seoVeterinarians -> website = $veterinarians -> website;
-                $seoVeterinarians -> location_link = $veterinarians -> location_link;
-                $seoVeterinarians -> views = $veterinarians -> views;
-                $seoVeterinarians -> place_id = $veterinarians -> place_id;
-                $seoVeterinarians -> lat = $veterinarians -> lat;
-                $seoVeterinarians -> lon = $veterinarians -> lon;
-                $seoVeterinarians -> user_id = $veterinarians -> user_id;
-                $seoVeterinarians -> site_id = $veterinarians -> site_id;
-                $seoVeterinarians -> created_at = date('Y-m-d H:i:s');
-                $seoVeterinarians -> updated_at = date('Y-m-d H:i:s');
-                $seoVeterinarians -> save();
+                        //we import the reviews also
+                        $reviews = (new Review())->getReviews($veterinarian -> id);
+                        if (!empty($reviews)){
+                            foreach($reviews as $review){
 
-                //we import the reviews also
-                $reviews = (new Review())->getReviews($veterinarians -> old_id);
-                if (!empty($reviews)){
-                    foreach($reviews as $review){
+                                $command = "Kan je deze informatie herschrijven in een SEO-vriendelijke tekst? Zorg ervoor dat de tekst uniek is en niet lijkt op de originele tekst, ik wil in de tekst goede keywoorden. Gebruik de volgende informatie: ";
+                
+                
+                                $command .= ' ' . $veterinarians -> html;
+                                
+                                $response2 = '';
+                           
+                                $response2 = $this->contentService->createText($command);
 
-                        $command = "Kan je deze informatie herschrijven in een SEO-vriendelijke tekst? Zorg ervoor dat de tekst uniek is en niet lijkt op de originele tekst, ik wil in de tekst goede keywoorden. Gebruik de volgende informatie: ";
-        
-        
-                        $command .= ' ' . $veterinarians -> html;
-                        
-                        $response2 = '';
-                        sleep(2);
-                        $response2 = $this->contentService->createText($command);
-
-                        $seoReview                        = new SeoReview();
-                        $seoReview -> name                = $review -> name;
-                        $seoReview -> description         = $response2;
-                        $seoReview -> rating              = $review -> rating;
-                        $seoReview -> city                = $review -> city;
-                        $seoReview -> created_at          = date('Y-m-d H:i:s');
-                        $seoReview -> updated_at          = date('Y-m-d H:i:s');
-                        $seoReview -> seo_veterinarian_id = $seoVeterinarians -> id;
-                        $seoReview -> save();
+                                $seoReview                        = new SeoReview();
+                                $seoReview -> name                = $review -> name;
+                                $seoReview -> description         = $response2;
+                                $seoReview -> rating              = $review -> rating;
+                                $seoReview -> city                = $review -> city;
+                                $seoReview -> created_at          = date('Y-m-d H:i:s');
+                                $seoReview -> updated_at          = date('Y-m-d H:i:s');
+                                $seoReview -> seo_veterinarian_id = $seoVeterinarians -> id;
+                                $seoReview -> save();
+                            }
+                        }
                     }
-                }
-
 
                 die('We test first');
             }

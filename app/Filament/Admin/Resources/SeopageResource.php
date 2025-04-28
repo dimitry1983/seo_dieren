@@ -69,6 +69,17 @@ class SeopageResource extends Resource
          
     }
 
+    public static function getEloquentQuery(): Builder
+    {
+        if (session('website')) {
+            return static::getModel()::query()->where('site_id', session('website')->id);
+        }
+    
+        // If session('website') is not set, you can return an empty query or handle the fallback behavior
+        return static::getModel()::query(); // Or handle as needed
+    }  
+
+
     public static function table(Table $table): Table
     {
         return $table

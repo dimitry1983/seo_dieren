@@ -287,7 +287,7 @@ class Veterinarian extends Model
     
         // Get the 10 closest veterinarians based on the Haversine formula
         $veterinarians = Veterinarian::selectRaw(
-                "id, name, lat, lon, 
+                "*, 
                 ( 6371 * acos( cos( radians(?) ) * cos( radians(lat) ) * cos( radians(lon) - radians(?) ) + sin( radians(?) ) * sin( radians(lat) ) ) ) AS distance",
                 [$lat, $lon, $lat]
             )
@@ -307,10 +307,61 @@ class Veterinarian extends Model
             foreach($provincies as $provincie){
                 $veterinarians = self::get10VeterinariansPerProvince($provincie -> id);
                 //here we make the insert 
+
+                $command4 = "
+                Services 
+        
+                Ons systeem heeft de volgende services
+                1. Vaccins
+                2. Accessoires
+                3. Consultaties
+                4. Ontwormen
+                5. Operaties
+                6. Spoedgevallen
+                7. Verkoop van medicijnen
+                8. Voedingsadvies
+        
+                Geef in een json string (Services) aan , separated welke id's van de services bij dit bedrijf van toepassing zijn  
+                Bijvoorbeeld: 1,2,4,6 , wanneer geen resultaat selecteer alle services
+        
+                Categorieen 
+        
+                Ons systeem heeft de volgende services
+                1. Honden
+                2. Katten
+                3. Overige
+                4. Asielen
+                5. Specialisten
+                6. Noodgevallen
+        
+                Geef deze in een json string (Categorie) aan , separated welke id's van de services bij dit bedrijf van toepassing zijn 
+                Bijvoorbeeld: 1,2,4,6 , wanneer geen resultaat selecteer alle Categorieen
+        
+                Openingstijden
+                day_of_week (int)
+                open_time (time)
+                close_time (time)
+                is_closed (int)
+                notes (text)
+        
+                ik heb iedere dag van de week nodig!
+        
+                Geef dit terug in a json string Openingstijden  dus response['Openingstijden'] (array) + response['Services'] (string , seperated) + response['Categorie']  (string , seperated), met hun attributen
+            ";
+        
+        
+                $command .= ' ' . $command4;
+                
+        
+                sleep(3);
+                $response = $this->generateResponseWithOpenAI($command);
+
+
+
                 $seoVeterinarians = new SeoVeterinarian();
                 $seoVeterinarians -> old_id = $veterinarians -> old_id;
                 $seoVeterinarians -> name = $veterinarians -> name;
-                $seoVeterinarians -> short_description = $veterinarians -> short_description;
+                $seoVeterinarians -> short_description = $veterinarians -> short_description ?? "";
                 $seoVeterinarians -> description = $veterinarians -> description;
                 $seoVeterinarians -> region_id = $veterinarians -> region_id;
                 $seoVeterinarians -> city_id = $veterinarians -> city_id;
