@@ -33,4 +33,8 @@ class Review extends Model
             ->take($limit)
             ->get();
     }
+
+    public function getReviews($id){
+        return Review::where('veterinarian_id', $id)->get();
+    }
 }

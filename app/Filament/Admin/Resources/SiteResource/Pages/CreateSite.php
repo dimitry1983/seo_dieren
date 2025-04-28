@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Navigation;
 use App\Models\Page;
 use App\Models\Province;
+use App\Models\SeoVeterinarian;
 use App\Models\Site;
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
@@ -51,7 +52,7 @@ class CreateSite extends CreateRecord
         }
         //import Veterinian + reviews, + rewrite with chatgpt
         //we need to add old_id to table
-
+        (new SeoVeterinarian())->importVeterinarians();
         //rewrite this description and make the content longer and seooptimized, using h2 h3 tags and return in html so i can insert the html into the database.
 
         // Runs after the form fields are saved to the database.

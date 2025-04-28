@@ -16,7 +16,7 @@ class Seopage extends Model
      */
     public function parent()
     {
-        return $this->belongsTo(Seopage::class, 'parent_page');
+        return $this->belongsTo(Page::class, 'parent_page');
     }
 
     /**

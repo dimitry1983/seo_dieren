@@ -300,4 +300,38 @@ class Veterinarian extends Model
     }
 
 
+    public static function importVeterinarians($data)
+    {
+        $provincies = Province::where('country', 'nl')->get();
+        if (!empty($provincies)){
+            foreach($provincies as $provincie){
+                $veterinarians = self::get10VeterinariansPerProvince($provincie -> id);
+                //here we make the insert 
+                $seoVeterinarians = new SeoVeterinarian();
+                $seoVeterinarians -> old_id = $veterinarians -> old_id;
+                $seoVeterinarians -> name = $veterinarians -> name;
+                $seoVeterinarians -> short_description = $veterinarians -> short_description;
+                $seoVeterinarians -> description = $veterinarians -> description;
+                $seoVeterinarians -> region_id = $veterinarians -> region_id;
+                $seoVeterinarians -> city_id = $veterinarians -> city_id;
+                $seoVeterinarians -> zipcode = $veterinarians -> zipcode;
+                $seoVeterinarians -> street = $veterinarians -> street;
+                $seoVeterinarians -> street_nr = $veterinarians -> street_nr;
+                $seoVeterinarians -> phone = $veterinarians -> phone;
+                $seoVeterinarians -> website = $veterinarians -> website;
+                $seoVeterinarians -> location_link = $veterinarians -> location_link;
+                $seoVeterinarians -> views = $veterinarians -> views;
+                $seoVeterinarians -> place_id = $veterinarians -> place_id;
+                $seoVeterinarians -> lat = $veterinarians -> lat;
+                $seoVeterinarians -> lon = $veterinarians -> lon;
+                $seoVeterinarians -> user_id = $veterinarians -> user_id;
+                $seoVeterinarians -> site_id = $veterinarians -> site_id;
+                $seoVeterinarians -> created_at = date('Y-m-d H:i:s');
+                $seoVeterinarians -> updated_at = date('Y-m-d H:i:s');
+                $seoVeterinarians -> save();
+            }
+        }
+    }
+
+
 }
