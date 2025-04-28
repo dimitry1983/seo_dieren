@@ -62,6 +62,7 @@ class SiteController extends Controller
         $blogs = Blog::get3LatestBlogs();
 
         $getRandomReviews = Review::getRandomReviews();
+ 
 
         return view('website.index', compact('page', 'seo', 'headerBlock', 'bestVets',  'blogs', 'getRandomReviews', 'mostViewedVets', 'categoriesForCount', 'categories', 'vets', 'insurances', 'advantages', 'darkBanner'));
     }
@@ -268,7 +269,6 @@ class SiteController extends Controller
         return view('website.about', ['seo' => $seo, 'getRandomReviews' => $getRandomReviews, 'cta' => $cta, 'intro' => $intro]);
     }
 
-  
 
     public function page($slug){
         $page = Page::getCustomPage($slug);
@@ -280,26 +280,32 @@ class SiteController extends Controller
         $title = $page->blocks[0]['data']['title'];
         $content = $page->blocks[0]['data']['description'];
         //dd($title.' '.$content);
-
-        $checkHasSeoPage = Seopage::where('parent_page', $page)->first();
+        $page = Page::where('slug', $slug)->first();
+        if (empty($page)){
+            abort(404);
+        }
+        $checkHasSeoPage = Seopage::where('parent_page',  $page -> id)->first();
 
         $tenRandomPlaces = '';
         $biggestCities   = '';
-
+      
         if (!empty($checkHasSeoPage)):
-            $tenRandomPlaces = City::inRandomOrder()->take(10)->get();
+           
+            $tenRandomPlaces = City::where('country_id', 1)->inRandomOrder()->take(10)->get();
             $biggestCities   = City::where('biggest', '>', 0)->get();
         endif;    
-
-        return view('website.page', ['page' => $page, 'title' => $title, 'tenRandomPlaces' => $tenRandomPlaces, 'biggestCities' => $biggestCities,'content' => $content, 'seo' => $seo]);
+        
+        return view('website.page', ['page' => $page, 'checkHasSeoPage' => $checkHasSeoPage,'slug' => $slug, 'title' => $title, 'tenRandomPlaces' => $tenRandomPlaces, 'biggestCities' => $biggestCities,'content' => $content, 'seo' => $seo]);
     }
 
-    public function seoPage($slug, $provincie, $city){
+    public function seoPage($slug, $city){
         $page = Page::ForSite()->where('slug', $slug)->first();
         if (empty($page)){
             abort(404);
         }
-        $slugForSearch = '/'.$provincie.'/'.$city;
+
+
+        $slugForSearch = '/'.$city;
         $nearByCities    = '';    
         $biggestCities   = City::where('biggest', '>', 0)->get();
 
@@ -315,7 +321,13 @@ class SiteController extends Controller
             abort(404);
         }
 
-        return view('website.seopage', ['page' => $seoPage, 'tenClosestCities' => $tenClosestCities  , 'biggestCities' => $biggestCities]);
+        $top_description = $seoPage->top_description;
+        $bottom_description = $seoPage->bottom_description;
+
+        $seo['title'] = $seoPage->meta_title;
+        $seo['description'] = strip_tags($seoPage->meta_description);
+    
+        return view('website.seopage', ['seo' => $seo, 'page' => $seoPage,'slug' => $slug, 'top_description' => $top_description , 'bottom_description' => $bottom_description ,'tenClosestCities' => $tenClosestCities  , 'biggestCities' => $biggestCities]);
     }
 
 

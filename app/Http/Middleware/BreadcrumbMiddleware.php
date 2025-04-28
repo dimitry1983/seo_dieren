@@ -6,6 +6,7 @@ use App\Models\Advertisement;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Page;
+use App\Models\Seopage;
 use App\Models\Veterinarian;
 use Closure;
 use Illuminate\Http\Request;
@@ -193,6 +194,25 @@ class BreadcrumbMiddleware
                 'name' => devTranslate('bread.Inbox', 'Inbox')
             ];
         }
+
+        //Route::get('/{slug}/{city}', [SiteController::class, 'seopage'])->name('page.city'); 
+        if ($currentRouteName == 'page.city'){
+            $slug = $routeParameters['slug'];
+            $city = $routeParameters['city'];
+           
+            $page = Page::ForSite()->where('slug', $slug)->first();
+            $slugForSearch = '/'.$city;
+            if (!empty($page)){
+                $seoPage = Seopage::where('parent_page', $page->id)->where('slug', $slugForSearch)->first();
+                $breadcrumbData = [
+                    'url_one' => route('custom.page', ['slug' => $slug]),
+                    'name_one' => $page -> title, 
+                    'total' => 2,
+                    'name_two' =>  $city
+                ];
+            }
+        }
+
 
         if ($currentRouteName == 'contact'){
             $breadcrumbData = [

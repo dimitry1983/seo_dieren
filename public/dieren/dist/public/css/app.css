@@ -1222,10 +1222,6 @@ h3.adv span {
   grid-column: span 8 / span 8;
 }
 
-.col-span-12 {
-  grid-column: span 12 / span 12;
-}
-
 .float-right {
   float: right;
 }
@@ -1273,14 +1269,14 @@ h3.adv span {
   margin-bottom: 1.5rem;
 }
 
-.my-\[\.3125rem\] {
-  margin-top: .3125rem;
-  margin-bottom: .3125rem;
-}
-
 .my-8 {
   margin-top: 2rem;
   margin-bottom: 2rem;
+}
+
+.my-\[\.3125rem\] {
+  margin-top: .3125rem;
+  margin-bottom: .3125rem;
 }
 
 .\!mb-0 {
@@ -1563,6 +1559,10 @@ h3.adv span {
   margin-top: 1.5rem;
 }
 
+.mt-8 {
+  margin-top: 2rem;
+}
+
 .mt-\[-50px\] {
   margin-top: -50px;
 }
@@ -1585,10 +1585,6 @@ h3.adv span {
 
 .mt-auto {
   margin-top: auto;
-}
-
-.mt-8 {
-  margin-top: 2rem;
 }
 
 .\!block {
@@ -2009,18 +2005,6 @@ h3.adv span {
 
 .max-w-sm {
   max-width: 24rem;
-}
-
-.max-w-3xl {
-  max-width: 48rem;
-}
-
-.max-w-5xl {
-  max-width: 64rem;
-}
-
-.max-w-6xl {
-  max-width: 72rem;
 }
 
 .flex-1 {
@@ -4385,10 +4369,6 @@ input{
     grid-column: span 8 / span 8;
   }
 
-  .md\:col-span-12 {
-    grid-column: span 12 / span 12;
-  }
-
   .md\:mb-0 {
     margin-bottom: 0px;
   }
@@ -4415,6 +4395,10 @@ input{
 
   .md\:hidden {
     display: none;
+  }
+
+  .md\:w-1\/2 {
+    width: 50%;
   }
 
   .md\:w-1\/4 {
@@ -4591,10 +4575,6 @@ input{
     order: 1;
   }
 
-  .lg\:order-2 {
-    order: 2;
-  }
-
   .lg\:col-span-1 {
     grid-column: span 1 / span 1;
   }
@@ -4621,14 +4601,6 @@ input{
 
   .lg\:col-span-8 {
     grid-column: span 8 / span 8;
-  }
-
-  .lg\:col-span-12 {
-    grid-column: span 12 / span 12;
-  }
-
-  .lg\:col-span-10 {
-    grid-column: span 10 / span 10;
   }
 
   .lg\:mx-0 {
@@ -4793,10 +4765,6 @@ input{
 
   .lg\:justify-center {
     justify-content: center;
-  }
-
-  .lg\:gap-16 {
-    gap: 4rem;
   }
 
   .lg\:gap-6 {
@@ -4989,20 +4957,8 @@ input{
     grid-column: span 9 / span 9;
   }
 
-  .xl\:col-span-12 {
-    grid-column: span 12 / span 12;
-  }
-
-  .xl\:col-span-7 {
-    grid-column: span 7 / span 7;
-  }
-
   .xl\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  .xl\:gap-32 {
-    gap: 8rem;
   }
 
   .xl\:px-16 {

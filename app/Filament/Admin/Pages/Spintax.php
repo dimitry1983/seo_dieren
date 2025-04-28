@@ -222,7 +222,7 @@ class Spintax extends Page implements HasForms
                     'title' => $this -> example_text_title,
                     'top_description' => $this -> example_description_top,
                     'bottom_description' => $this -> example_description_bottom,
-                    'slug' => '/'.$provinceSlug.'/'.sanitize_title($city->name),
+                    'slug' => '/'.sanitize_title($city->name),
                     'active' => 1,
                     'created_at' => date('Y-m-d H:i:s')
                     // Other columns as needed

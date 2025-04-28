@@ -107,8 +107,8 @@ Route::middleware(['bread'])->group(function () {
     Route::get('/contact', App\Livewire\ContactForm::class)->name('contact');
     Route::get('/{slug}', [SiteController::class, 'page'])->name('custom.page'); 
 
-    Route::get('/{slug}/{provincie}', [SiteController::class, 'page'])->name('page.province'); 
-    Route::get('/{slug}/{provincie}/{city}', [SiteController::class, 'page'])->name('page.province.city'); 
+    Route::get('/{slug}/{city}', [SiteController::class, 'seopage'])->name('page.city'); 
+    //Route::get('/{slug}/{provincie}/{city}', [SiteController::class, 'seopage'])->name('page.province.city'); 
     // Search Routes
    // Route::get('/zoekresultaat', [SearchController::class, 'search'])->name('search');
 });
