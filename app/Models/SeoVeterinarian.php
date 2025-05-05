@@ -149,7 +149,7 @@ class SeoVeterinarian extends Model
             ->get();
     }
 
-    public function importVeterinarians()
+    public function importVeterinarians($siteId)
     {
         $provincies = Province::where('country', 'nl')->get();
         if (!empty($provincies)){
@@ -159,13 +159,13 @@ class SeoVeterinarian extends Model
                 foreach($veterinarians as $veterinarian){
                   
              
-                        $command = "Kan je deze informatie herschrijven in een SEO-vriendelijke tekst? Zorg ervoor dat de tekst uniek is en niet lijkt op de originele tekst, ik wil in de tekst goede keywoorden, h2 h3 tags en het moet overzichtelijk en duidelijk zijn liefst minimaal 600 woorden, de tekst moet in html terug worden gegeven want het word opgeslagen in de database, ik wil alleen maar de tags die normaal gesproken in de <body></body> zitten. Gebruik de volgende informatie: ";
+                        $command = "Kan je deze informatie herschrijven in een SEO-vriendelijke tekst? Zorg ervoor dat de tekst uniek is en niet lijkt op de originele tekst, ik wil in de tekst goede keywoorden, h2 h3 tags en het moet overzichtelijk en duidelijk zijn liefst minimaal 600 woorden, de tekst moet in html terug worden gegeven want het word opgeslagen in de database, ik wil alleen maar de tags die normaal gesproken in de <body></body> zitten, Return the HTML content **without wrapping it in a code block** or any markdown formatting. Only return plain HTML. Ik wil alleen de omschrijving terugkrijgen, geef geen extra commentaar. Gebruik de volgende informatie: ";
                 
                 
                         $command .= ' ' . $veterinarian -> description;
                         $response = '';
                 
-                        sleep(3);
+                        sleep(2);
                         $response =  $this->contentService->createText($command);
 
                         $seoVeterinarians = new SeoVeterinarian();
@@ -181,12 +181,13 @@ class SeoVeterinarian extends Model
                         $seoVeterinarians -> phone = $veterinarian -> phone;
                         $seoVeterinarians -> website = $veterinarian -> website;
                         $seoVeterinarians -> location_link = $veterinarian -> location_link;
+                        $seoVeterinarians -> rating = $veterinarian -> rating;
                         $seoVeterinarians -> views = 1;
                         $seoVeterinarians -> place_id = $veterinarian -> place_id;
                         $seoVeterinarians -> lat = $veterinarian -> lat;
                         $seoVeterinarians -> lon = $veterinarian -> lon;
                         $seoVeterinarians -> user_id = $veterinarian -> user_id;
-                        $seoVeterinarians -> site_id = session('website')->id;
+                        $seoVeterinarians -> site_id = $siteId;
                         $seoVeterinarians -> created_at = date('Y-m-d H:i:s');
                         $seoVeterinarians -> updated_at = date('Y-m-d H:i:s');
                         $seoVeterinarians -> save();
@@ -196,14 +197,17 @@ class SeoVeterinarian extends Model
                         if (!empty($reviews)){
                             foreach($reviews as $review){
 
-                                $command = "Kan je deze informatie herschrijven in een SEO-vriendelijke tekst? Zorg ervoor dat de tekst uniek is en niet lijkt op de originele tekst, ik wil in de tekst goede keywoorden. Gebruik de volgende informatie: ";
+                                $command = "Kan je deze informatie herschrijven in een SEO-vriendelijke tekst? Zorg ervoor dat de tekst uniek is en niet lijkt op de originele tekst, ik wil in de tekst goede seo keywoorden, Return the HTML content **without wrapping it in a code block** or any markdown formatting. Only return plain HTML. Ik wil alleen de review terugkrijgen, geef geen extra commentaar. Gebruik de volgende informatie: ";
                 
-                
-                                $command .= ' ' . $veterinarians -> html;
+                                $command .= ' ' . $review -> description;
                                 
                                 $response2 = '';
-                           
-                                $response2 = $this->contentService->createText($command);
+                                if ($review -> description != "Niet aanwezig"){
+                                    $response2 = $this->contentService->createText($command);
+                                }
+                                else{
+                                    $response2 = $review -> description;
+                                }
 
                                 $seoReview                        = new SeoReview();
                                 $seoReview -> name                = $review -> name;
@@ -212,13 +216,13 @@ class SeoVeterinarian extends Model
                                 $seoReview -> city                = $review -> city;
                                 $seoReview -> created_at          = date('Y-m-d H:i:s');
                                 $seoReview -> updated_at          = date('Y-m-d H:i:s');
-                                $seoReview -> seo_veterinarian_id = $seoVeterinarians -> id;
+                                $seoReview -> veterinarian_id     = $seoVeterinarians -> id;
+                                $seoReview -> site_id             = $siteId;
                                 $seoReview -> save();
                             }
                         }
                     }
 
-                die('We test first');
             }
         }
     }

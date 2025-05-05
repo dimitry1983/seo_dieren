@@ -5,7 +5,7 @@
 namespace App\Services;
 
 use Illuminate\Support\Facades\Http;
-
+use Illuminate\Support\Facades\Log;
 
 class ContentService
 {
@@ -48,7 +48,7 @@ class ContentService
      * @return string
      */
     protected function generateResponseWithOpenAI($command)
-    {      
+    {
         try {
             $response = Http::withHeaders([
                 'Authorization' => 'Bearer ' . $this->openaiApiKey,
@@ -61,24 +61,25 @@ class ContentService
                 'max_tokens' => 1800,
                 'temperature' => 0.5,
             ]);
-          
-            $response->throw(); // Throws exception if status code is not 2xx
-    
-            $result = $response->json();
 
-            return $result['choices'][0]['message']['content'] ?? 'Sorry, I couldn\'t generate a response.';
-    
-        } catch (\Illuminate\Http\Client\RequestException $e) {
-            // Dump the full response body and status
-            dd([
-                'message' => $e->getMessage(),
-                'status' => $e->response->status(),
-                'body' => $e->response->body(),
+            if ($response->successful()) {
+                return $response['choices'][0]['message']['content'] ?? null;
+            }
+
+            // Log non-successful responses
+            Log::error('OpenAI API error', [
+                'status' => $response->status(),
+                'body' => $response->body(),
             ]);
-        } catch (\Exception $e) {
-            dd([
+
+            return null;
+
+        } catch (\Throwable $e) {
+            Log::error('OpenAI API exception', [
                 'message' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
             ]);
+            return null;
         }
     }
 }
