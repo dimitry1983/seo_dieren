@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Veterinarian;
 use App\Models\VeterinarianCategory;
 use App\Models\VeterinarianService;
+use App\Models\VeterinariansPricing;
 use App\Services\GeoapifyService;
 use Livewire\Component;
 use Filament\Forms\Contracts\HasForms;
@@ -245,7 +246,7 @@ class CompanyInformation extends Component implements HasForms
         $this -> dispatch('saved');
        
         if ($state == "create"){
-         
+            VeterinariansPricing::insertNewCompanyPrices($this -> company -> id); 
             session()->flash('success', devTranslate('page.Bedrijfsinformatie succesvol aangemaakt','Bedrijfsgegevens succesvol aangemaakt'));
         }
         else{

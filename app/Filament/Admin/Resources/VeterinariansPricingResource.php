@@ -11,6 +11,7 @@ use Filament\Forms;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Get;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -38,6 +39,13 @@ class VeterinariansPricingResource extends Resource
                     Forms\Components\Select::make('pricing_group_id')
                         ->options(VeterinarianPricingGroup::pluck('name', 'id'))
                         ->required(),
+                    Forms\Components\Select::make('animal_name')
+                        ->options([
+                            'Honden (Teefjes)' => 'Honden (Teefjes)',
+                            'Kat (Poes)' => 'Kat (Poes)',
+                            'Konijn (Voedster)' => 'Konijn (Voedster)'
+                        ])
+                        ->visible(fn (Get $get) => $get('pricing_group_id') == 2),  
                     TextInput::make('name')
                             ->required(), // Max file size in KB (2MB)
                     TextInput::make('consult_price')

@@ -33,8 +33,7 @@ class SiteController extends Controller
     }
 
     public function index(Request $request)
-    {
-      
+    {      
         $page = Page::getCustomPage('home');
         $seo = $page?->seo;
        
@@ -66,6 +65,7 @@ class SiteController extends Controller
 
         return view('website.index', compact('page', 'seo', 'headerBlock', 'bestVets',  'blogs', 'getRandomReviews', 'mostViewedVets', 'categoriesForCount', 'categories', 'vets', 'insurances', 'advantages', 'darkBanner'));
     }
+
 
     //batches of 20
     // public function getMoreInformation(ScraperService $outscraper)

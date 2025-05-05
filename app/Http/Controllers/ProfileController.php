@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Review;
 use App\Models\Veterinarian;
+use App\Models\VeterinariansPricing;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -52,7 +53,18 @@ class ProfileController extends Controller
         $seo['title'] = $veterinarian -> name;
         $seo['description'] = Str::limit(strip_tags($veterinarian -> description), 100, '...');
         $totalRatings = $this -> countReviews($id);
-        return view('website.profile', ['seo' => $seo, 'veterinarian' => $veterinarian, 'rating' => $rating , 'totalRatings' => $totalRatings,'reviews' => $reviews, 'ratingCounts' => $ratingCounts]);
+
+        $pricingGroup2 = VeterinariansPricing::where('pricing_group_id', 2)
+                ->where('veterinarian_id', $id)
+                ->get()
+                ->groupBy('animal_name');
+
+        $honden = $pricingGroup2['Hond (Teef)'] ?? collect();
+        $katten = $pricingGroup2['Kat (Poes)'] ?? collect();
+        $konijnen = $pricingGroup2['Konijn (Voedster)'] ?? collect();
+
+
+        return view('website.profile', ['honden' => $honden, 'katten' => $katten, 'konijnen' => $konijnen, 'seo' => $seo, 'veterinarian' => $veterinarian, 'rating' => $rating , 'totalRatings' => $totalRatings,'reviews' => $reviews, 'ratingCounts' => $ratingCounts]);
     }
 
     private function countReviews($id){

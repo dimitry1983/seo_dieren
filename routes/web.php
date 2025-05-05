@@ -15,6 +15,9 @@ use App\Livewire\Actions\Logout;
 use App\Mail\SupportMessageMail;
 use App\Models\User;
 
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
+
 $domain   = domain();
 $domain   = "https://www.seosite1.nl";
 $website  = \App\Models\Site::get_info($domain);
@@ -26,6 +29,31 @@ if(!empty($website)) {
 Route::get('/api/cities', [CityController::class, 'search']);
 
 //Volt::routes(); 
+
+// 1️⃣   “Please verify your email” notice (you already have this)
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')
+  ->name('verification.notice');
+
+// 2️⃣   **This one was missing** – handles the signed link
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    // Mark the user as verified…
+    $request->fulfill();
+
+    // …and send them where you want next
+    return redirect()->intended('/dashboard');
+})->middleware(['auth', 'signed', 'throttle:6,1'])
+  ->name('verification.verify');
+
+// 3️⃣   Resend link form action (optional but handy)
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+
+    return back()->with('message', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])
+  ->name('verification.send');
+
 
 // Register (Registreren)
 Volt::route('/registreren', 'auth.register')->name('register');

@@ -203,7 +203,7 @@
                             <span class="text-primary">{{ devTranslate('page.Wat kunt u','Wat kunt u') }}</span> {{ devTranslate('page.Verwachten','Verwachten') }}
                         </h3>
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                            <div class="lg:col-span-1 border-gray-300 shadow-lg px-[30px] py-[50px] mb-6">
+                         <div class="lg:col-span-1 border-gray-300 shadow-lg px-[30px] py-[50px] mb-6">
                                 <figure class="w-[77px] h-[77px] bg-primaryLight rounded-full flex justify-center items-center mt-[-60px] mb-2">
                                     <img src="{{ asset('dieren/src/public/img/icon1.png')}}" alt="">
                                 </figure>
@@ -211,53 +211,75 @@
                                     {{ devTranslate('page.Diensten','Diensten') }}
                                 </h3>
                                 <ul>
-                                    <li class="mb-3 flex">
-                                        <i class="fa-regular fa-circle-check text-primary mr-1"></i> Overleg <span class="price block ml-auto">€35,00</span>
-                                    </li>
 
-                                    <li class="mb-3 flex">
-                                        <i class="fa-regular fa-circle-check text-primary mr-1"></i> Vaccins <span class="price block ml-auto">€35,00</span>
-                                    </li>
-                                    <li class="mb-3 flex">
-                                        <i class="fa-regular fa-circle-check text-primary mr-1"></i> Ontwormen <span class="price block ml-auto">€35,00</span>
-                                    </li>
-                                    <li class="mb-3 flex">
-                                        <i class="fa-regular fa-circle-check text-primary mr-1"></i> Elektrocardiogram <span class="price block ml-auto">€35,00</span>
-                                    </li>
-                                    <li class="mb-3 flex">
-                                        <i class="fa-regular fa-circle-check text-primary mr-1"></i> Voedingsadvies <span class="price block ml-auto">€35,00</span>
-                                    </li>
-                                    <li class="mb-3 flex">
-                                        <i class="fa-regular fa-circle-check text-primary mr-1"></i> Accessoires <span class="price block ml-auto">€35,00</span>
-                                    </li>
+                                    @foreach($groupOne as $item)
+
+                                            @php 
+                                                $advicePrice = false;
+                                                
+                                                $price = App\Models\VeterinariansPricing::getPriceByVeterinarianAndName($item, $veterinarian->id);
+                                                if (empty($price)){
+                                                    $advicePrice = true;
+                                                    $price = App\Models\VeterinariansPricing::getMaxPrice($item);
+                                                }
+                                                else{
+                                                    $price = $price -> consult_price;
+                                                }
+                                            @endphp
+                                            <li class="mb-3 flex">
+                                                <i class="fa-regular fa-circle-check text-primary mr-1"></i> {{$item}} <span class="price block ml-auto">€{{$price}}</span>
+                                            </li>
+                                    @endforeach
                                 </ul>
                             </div>
                             <div class="lg:col-span-1 border-gray-300 shadow-lg px-[30px] py-[50px] mb-6">
                                 <figure class="w-[77px] h-[77px] bg-primaryLight rounded-full flex justify-center items-center mt-[-60px] mb-2">
                                     <img src="{{ asset('dieren/src/public/img/icon2.png')}}" alt="">
                                 </figure>
-                                <h3 class="title title--services text-2xl font-bold text-gray-800 mb-4">
-                                    Operaties / Sterilisaties
-                                </h3>
-                                <ul>
-                                    <li class="mb-3 flex">
-                                        <i class="fa-regular fa-circle-check text-primary mr-1"></i> 0 A 5kg <span class="price block ml-auto">€35,00</span>
-                                    </li>
-                                    <li class="mb-3 flex">
-                                        <i class="fa-regular fa-circle-check text-primary mr-1"></i> 5.1 A 15kg <span class="price block ml-auto">€35,00</span>
-                                    </li>
-                                    <li class="mb-3 flex">
-                                        <i class="fa-regular fa-circle-check text-primary mr-1"></i> 15.1 A 25kg <span class="price block ml-auto">€35,00</span>
-                                    </li>
-                                    <li class="mb-3 flex">
-                                        <i class="fa-regular fa-circle-check text-primary mr-1"></i> 25.1 A 25kg <span class="price block ml-auto">€35,00</span>
-                                    </li>
-                                    <li class="mb-3 flex">
-                                        <i class="fa-regular fa-circle-check text-primary mr-1"></i> 35.1 A 45kg <span class="price block ml-auto">€35,00</span>
-                                    </li>
-                                    <li class="mb-3 flex">
-                                        <i class="fa-regular fa-circle-check text-primary mr-1"></i> > A 45kg <span class="price block ml-auto">€35,00</span>
-                                    </li>
+                                <h2 class="text-xl font-bold mb-4">{{__('Sterilisatie Tarieven per Dier')}}</h2>
+
+
+                                
+
+
+                                <h3 class="text-lg font-semibold mt-6 mb-2">🐶 {{__('Honden (Teefjes)')}}</h3>
+                                <ul class="list-none">
+
+                                    @if(!empty($honden))    
+                                        @foreach($honden as $it)
+                                        <li class="mb-3 flex items-center">
+                                            <i class="fa-regular fa-circle-check text-primary mr-2"></i>
+                                            <span>{{$it -> name}}</span>
+                                            <span class="price block ml-auto">€{{$it -> consult_price}}</span>
+                                        </li>
+                                        @endforeach
+                                    @endif
+                                </ul>
+
+                                <h3 class="text-lg font-semibold mt-6 mb-2">🐱 {{__('Katten (Poezen)')}}</h3>
+                                <ul class="list-none">
+                                    @if(!empty($katten))    
+                                        @foreach($katten as $it)
+                                        <li class="mb-3 flex items-center">
+                                            <i class="fa-regular fa-circle-check text-primary mr-2"></i>
+                                            <span>{{$it -> name}}</span>
+                                            <span class="price block ml-auto">€{{$it -> consult_price}}</span>
+                                        </li>
+                                        @endforeach
+                                    @endif
+                                </ul>
+
+                                <h3 class="text-lg font-semibold mt-6 mb-2">🐰 {{__('Konijnen (Voedsters)')}}</h3>
+                                <ul class="list-none">
+                                    @if(!empty($konijnen))    
+                                        @foreach($konijnen as $it)
+                                        <li class="mb-3 flex items-center">
+                                            <i class="fa-regular fa-circle-check text-primary mr-2"></i>
+                                            <span>{{$it -> name}}</span>
+                                            <span class="price block ml-auto">€{{$it -> consult_price}}</span>
+                                        </li>
+                                        @endforeach
+                                    @endif
                                 </ul>
                             </div>
                         </div>
