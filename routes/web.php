@@ -24,6 +24,9 @@ $website  = \App\Models\Site::get_info($domain);
 
 if(!empty($website)) {
     session(['website'  => $website]);
+    $key = 'adminmail';
+    $emailAdmin = \App\Models\Setting::getSetting($key);
+    config(['mail.admin_email' => $emailAdmin['option_value']]);
 }
 
 Route::get('/api/cities', [CityController::class, 'search']);
@@ -32,7 +35,7 @@ Route::get('/api/cities', [CityController::class, 'search']);
 
 // 1️⃣   “Please verify your email” notice (you already have this)
 Route::get('/email/verify', function () {
-    return view('auth.verify-email');
+    return view('livewire.auth.verify-email');
 })->middleware('auth')
   ->name('verification.notice');
 
@@ -42,8 +45,8 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
     $request->fulfill();
 
     // …and send them where you want next
-    return redirect()->intended('/dashboard');
-})->middleware(['auth', 'signed', 'throttle:6,1'])
+    return redirect()->intended('/cms/dashboard');
+})->middleware(['auth', 'throttle:6,1'])
   ->name('verification.verify');
 
 // 3️⃣   Resend link form action (optional but handy)
@@ -84,7 +87,7 @@ Route::middleware(['auth'])->group(function () {
 
 //require __DIR__.'/auth.php';
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/cms/dashboard', \App\Livewire\Company\Dashboard::class)->name('company.dashboard');
     Route::middleware(['claim.pending.redirect'])->group(function () {
         Route::get('/cms/bedrijfsinformatie', \App\Livewire\Company\CompanyInformation::class)->name('company.company-info');

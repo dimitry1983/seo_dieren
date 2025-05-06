@@ -17,6 +17,8 @@ new #[Layout('layouts.site')] class extends Component {
     #[Validate('required|string')]
     public string $password = '';
 
+    public string $site_id = '';
+
     public bool $remember = false;
 
     public function login(): void
@@ -25,7 +27,7 @@ new #[Layout('layouts.site')] class extends Component {
         $this->validate();
         $this->ensureIsNotRateLimited();
 
-        if (! Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
+        if (! Auth::attempt(['email' => $this->email, 'password' => $this->password, 'site_id' => session('website')->id], $this->remember)) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
@@ -35,6 +37,12 @@ new #[Layout('layouts.site')] class extends Component {
 
         RateLimiter::clear($this->throttleKey());
         Session::regenerate();
+
+        if (! Auth::user()->hasVerifiedEmail()) {
+            $this->redirect(route('verification.notice'), navigate: true);
+            return;
+        }
+
 
         $this->redirectIntended(default: route('company.dashboard', absolute: false), navigate: true);
     }

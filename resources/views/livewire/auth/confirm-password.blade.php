@@ -7,6 +7,7 @@ use Livewire\Volt\Component;
 
 new #[Layout('layouts.site')] class extends Component {
     public string $password = '';
+    public string $site_id = '';  // Add site_id property
 
     /**
      * Confirm the current user's password.
@@ -15,17 +16,21 @@ new #[Layout('layouts.site')] class extends Component {
     {
         $this->validate([
             'password' => ['required', 'string'],
+            'site_id' => ['required', 'string'],  // Validate site_id
         ]);
 
+        // Validate password and site_id together
         if (! Auth::guard('web')->validate([
             'email' => Auth::user()->email,
             'password' => $this->password,
+            'site_id' => $this->site_id,  // Include site_id in the validation
         ])) {
             throw ValidationException::withMessages([
                 'password' => __('auth.password'),
             ]);
         }
 
+        // If validated, set session and redirect
         session(['auth.password_confirmed_at' => time()]);
 
         $this->redirectIntended(default: route('company.dashboard', absolute: false), navigate: true);

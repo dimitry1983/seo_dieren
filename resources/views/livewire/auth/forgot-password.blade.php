@@ -6,6 +6,7 @@ use Livewire\Volt\Component;
 
 new #[Layout('layouts.site')] class extends Component {
     public string $email = '';
+    public string $site_id = '';  // Add site_id property
 
     /**
      * Send a password reset link to the provided email address.
@@ -14,9 +15,13 @@ new #[Layout('layouts.site')] class extends Component {
     {
         $this->validate([
             'email' => ['required', 'string', 'email'],
+            'site_id' => ['required', 'string'],  // Validate site_id
         ]);
 
-        Password::sendResetLink($this->only('email'));
+        // Include site_id when sending the reset link
+        Password::sendResetLink(
+            $this->only('email', 'site_id')  // Pass site_id along with email
+        );
 
         session()->flash('status', __('A reset link will be sent if the account exists.'));
     }

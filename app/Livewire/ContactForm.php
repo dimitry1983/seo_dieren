@@ -35,7 +35,7 @@ class ContactForm extends Component
         $this->protectAgainstSpam();
         $this->validate();
 
-        $adminEmail = env('EMAIL_ADMIN', 'info@vergelijkdierenartst.nl');
+        $adminEmail = config('mail.admin_email');;
         $this->subject = "Contact via website";
 
         $this->message = $this->message."\n\n Verzender: ".$this->email."\n".$this->email; 

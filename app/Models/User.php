@@ -20,14 +20,13 @@ class User extends Authenticatable  implements MustVerifyEmail, FilamentUser
 
     public function canAccessPanel(Panel $panel): bool
     {
-        // Customize your logic as needed. Returning true allows access.
-            
-            if(\Illuminate\Support\Facades\Auth::user()->id == 1 || \Illuminate\Support\Facades\Auth::user()->role == 'admin'){
-                return true;
-            }
-            else{
-                return false;
-            }
+        // Customize your logic as needed. Returning true allows access.   
+        if(\Illuminate\Support\Facades\Auth::user()->id == 1 || \Illuminate\Support\Facades\Auth::user()->role == 'admin'){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     /**
@@ -36,6 +35,7 @@ class User extends Authenticatable  implements MustVerifyEmail, FilamentUser
      * @var list<string>
      */
     protected $fillable = [
+        'site_id',
         'name',
         'email',
         'password',

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules;
+use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Locked;
 use Livewire\Volt\Component;
@@ -14,6 +15,7 @@ new #[Layout('layouts.site')] class extends Component {
     #[Locked]
     public string $token = '';
     public string $email = '';
+    public string $site_id = '';  // Add site_id property
     public string $password = '';
     public string $password_confirmation = '';
 
@@ -25,6 +27,7 @@ new #[Layout('layouts.site')] class extends Component {
         $this->token = $token;
 
         $this->email = request()->string('email');
+        $this->site_id = session('website')->id;  // Get site_id from the request
     }
 
     /**
@@ -35,15 +38,19 @@ new #[Layout('layouts.site')] class extends Component {
         $this->validate([
             'token' => ['required'],
             'email' => ['required', 'string', 'email'],
+            'site_id' => ['required', 'string'],  // Validate site_id
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        // Here we will attempt to reset the user's password. If it is successful we
-        // will update the password on an actual user model and persist it to the
-        // database. Otherwise we will parse the error and return the response.
+        // Here we will attempt to reset the user's password.
         $status = Password::reset(
-            $this->only('email', 'password', 'password_confirmation', 'token'),
+            $this->only('email', 'password', 'password_confirmation', 'token', 'site_id'),  // Include site_id in the reset process
             function ($user) {
+                // Ensure the user belongs to the given site_id
+                if ($user->site_id !== $this->site_id) {
+                    throw new ValidationException('Invalid site ID.');
+                }
+
                 $user->forceFill([
                     'password' => Hash::make($this->password),
                     'remember_token' => Str::random(60),
@@ -53,10 +60,8 @@ new #[Layout('layouts.site')] class extends Component {
             }
         );
 
-        // If the password was successfully reset, we will redirect the user back to
-        // the application's home authenticated view. If there is an error we can
-        // redirect them back to where they came from with their error message.
-        if ($status != Password::PasswordReset) {
+        // If the password was successfully reset, redirect.
+        if ($status != Password::PASSWORD_RESET) {
             $this->addError('email', __($status));
 
             return;

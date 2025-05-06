@@ -14,7 +14,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
-    'admin_email' => env('EMAIL_ADMIN', 'info@vergelijkdierenarts.nl'),
+    'admin_email' => config('mail.admin_email'),
     /*
     |--------------------------------------------------------------------------
     | Application Environment

@@ -13,6 +13,8 @@ use PhpParser\Node\NullableType;
 
 new #[Layout('layouts.site')] class extends Component {
     public string $name = '';
+    public $claim_vet_id = '';
+    public string $site_id = '';
     public string $email = '';
     public string $password = '';
     public string $password_confirmation = '';
@@ -32,12 +34,20 @@ new #[Layout('layouts.site')] class extends Component {
         $validated = $this->validate([
             'claim_vet_id' => ['nullable', 'exists:veterinarians,id'],
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+            'email' => [
+                'required',
+                'string',
+                'lowercase',
+                'email',
+                'max:255',
+                'unique:' . User::class . ',email,NULL,id,site_id,' . $this->site_id,  // Ensuring email is unique per site_id
+            ],
+            'site_id' => ['nullable', 'int'],
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $validated['password'] = Hash::make($validated['password']);
-
+        $validated['site_id'] = session('website')->id;
         event(new Registered(($user = User::create($validated))));
 
         if (!empty($validated['claim_vet_id'])){
