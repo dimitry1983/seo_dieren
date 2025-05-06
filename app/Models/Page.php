@@ -32,6 +32,7 @@ class Page extends Model
 
     public function scopeForSite($query)
     {
+   
         return $query->where('site_id', session('website')->id);
     }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Review;
+use App\Models\SeoVeterinarian;
 use App\Models\Veterinarian;
 use App\Models\VeterinariansPricing;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ class ProfileController extends Controller
     //
     public function profile($slug, $id){
         // Fetch the veterinarian with all related data
-        $veterinarian = Veterinarian::with([
+        $veterinarian = SeoVeterinarian::with([
                             'featuredImage',
                             'images',
                             'pricing',
@@ -48,7 +49,7 @@ class ProfileController extends Controller
             ->mapWithKeys(fn($star) => [$star => $rawCounts[$star] ?? 0])
             ->toArray();
 
-        Veterinarian::incrementViewsIfHuman($veterinarian);
+        SeoVeterinarian::incrementViewsIfHuman($veterinarian);
 
         $seo['title'] = $veterinarian -> name;
         $seo['description'] = Str::limit(strip_tags($veterinarian -> description), 100, '...');
@@ -63,8 +64,17 @@ class ProfileController extends Controller
         $katten = $pricingGroup2['Kat (Poes)'] ?? collect();
         $konijnen = $pricingGroup2['Konijn (Voedster)'] ?? collect();
 
+        $groupOne = ['Castratie',
+        'Preventieve zorg',
+        'Consulten',
+        'Bloed-, urine-, weefsel-, of ontlastingsonderzoek',
+        'Opname',
+        'Nagels knippen',
+        'Chip plaatsen',
+        'Oren spoelen',
+        'Crematie'];
 
-        return view('website.profile', ['honden' => $honden, 'katten' => $katten, 'konijnen' => $konijnen, 'seo' => $seo, 'veterinarian' => $veterinarian, 'rating' => $rating , 'totalRatings' => $totalRatings,'reviews' => $reviews, 'ratingCounts' => $ratingCounts]);
+        return view('website.profile', ['honden' => $honden,  'groupOne' => $groupOne , 'katten' => $katten, 'konijnen' => $konijnen, 'seo' => $seo, 'veterinarian' => $veterinarian, 'rating' => $rating , 'totalRatings' => $totalRatings,'reviews' => $reviews, 'ratingCounts' => $ratingCounts]);
     }
 
     private function countReviews($id){

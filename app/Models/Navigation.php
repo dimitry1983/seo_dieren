@@ -24,11 +24,11 @@ class Navigation extends Model
     }
 
     public static function getNavigations(){
-        return Navigation::get();
+        return Navigation::ForSite()->get();
     }
 
     public static function getByTitle(string $title): ?Navigation
     {
-        return Navigation::where('title', $title)->first();
+        return Navigation::ForSite()->where('title', $title)->first();
     }
 }

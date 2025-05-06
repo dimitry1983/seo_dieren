@@ -211,25 +211,26 @@
                                     {{ devTranslate('page.Diensten','Diensten') }}
                                 </h3>
                                 <ul>
+                                    @if (!empty($groupOne))
+                                        @foreach($groupOne as $item)
 
-                                    @foreach($groupOne as $item)
-
-                                            @php 
-                                                $advicePrice = false;
-                                                
-                                                $price = App\Models\VeterinariansPricing::getPriceByVeterinarianAndName($item, $veterinarian->id);
-                                                if (empty($price)){
-                                                    $advicePrice = true;
-                                                    $price = App\Models\VeterinariansPricing::getMaxPrice($item);
-                                                }
-                                                else{
-                                                    $price = $price -> consult_price;
-                                                }
-                                            @endphp
-                                            <li class="mb-3 flex">
-                                                <i class="fa-regular fa-circle-check text-primary mr-1"></i> {{$item}} <span class="price block ml-auto">€{{$price}}</span>
-                                            </li>
-                                    @endforeach
+                                                @php 
+                                                    $advicePrice = false;
+                                                    
+                                                    $price = App\Models\VeterinariansPricing::getPriceByVeterinarianAndName($item, $veterinarian->id);
+                                                    if (empty($price)){
+                                                        $advicePrice = true;
+                                                        $price = App\Models\VeterinariansPricing::getMaxPrice($item);
+                                                    }
+                                                    else{
+                                                        $price = $price -> consult_price;
+                                                    }
+                                                @endphp
+                                                <li class="mb-3 flex">
+                                                    <i class="fa-regular fa-circle-check text-primary mr-1"></i> {{$item}} <span class="price block ml-auto">€{{$price}}</span>
+                                                </li>
+                                        @endforeach
+                                    @endif    
                                 </ul>
                             </div>
                             <div class="lg:col-span-1 border-gray-300 shadow-lg px-[30px] py-[50px] mb-6">
@@ -343,7 +344,7 @@
                                         {{ $review->name }}, {{ $review->city }}
                                     </h3>
 
-                                    <p>{{ $review->description }}</p>
+                                    <p>{!! $review->description !!}</p>
                                     @if ($review->type == 'Google')
                                         <div class="mt-2 inline-flex items-center text-sm text-blue-600 bg-blue-100 px-2 py-1 rounded-full">
                                             <i class="fa-brands fa-google mr-1"></i> Google review

@@ -23,12 +23,19 @@ class Category extends Model
     }
 
     public static function getCategories(){
-        return Category::all();
+        return Category::where('site_id', session('website')->id)->get();
     }
     
 
     public function veterinarians()
     {
-        return $this->belongsToMany(Veterinarian::class, 'veterinarians_categories');
+        return $this->belongsToMany(
+            SeoVeterinarian::class,              // Related model
+            'veterinarians_categories',          // Pivot table
+            'category_id',                       // Foreign key on pivot table for this model (Category)
+            'veterinarian_id',                   // Foreign key on pivot table for related model (SeoVeterinarian)
+            'parent_id',                                // Local key on this model (Category)
+            'old_id'                             // Local key on related model (SeoVeterinarian)
+        );
     }
 }

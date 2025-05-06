@@ -28,6 +28,7 @@ class Blog extends Model
     {
         return Blog::orderBy('created_at', 'desc')
             ->where('status', 'active')
+            ->ForSite()
             ->take($limit)
             ->get();
     }
@@ -36,6 +37,7 @@ class Blog extends Model
     {
         return Blog::with('veterinarian')
             ->where('status', 'active')
+            ->ForSite()
             ->orderBy('created_at', 'desc')
             ->paginate(12);
     }

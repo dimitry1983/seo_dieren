@@ -6,6 +6,7 @@ use App\Filament\Admin\Resources\CategoryResource\Pages;
 use App\Filament\Admin\Resources\CategoryResource\RelationManagers;
 use App\Models\Category;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -31,10 +32,10 @@ class CategoryResource extends Resource
             ->schema([
                 Section::make('Categorieën') // Title of the section
                     ->schema([
-                    Tables\Columns\ImageColumn::make('images')
-                        ->square() // Optional: Makes the image a square preview
-                        ->circular() // Optional: Makes the image circular
-                        ->size(50), // Adjust the image size in pixels    
+                    FileUpload::make('images')
+                        ->image()
+                        ->required()
+                        ->maxSize(2048), 
                     Forms\Components\TextInput::make('name')
                         ->required()
                         ->maxLength(255),

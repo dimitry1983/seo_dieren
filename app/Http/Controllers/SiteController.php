@@ -9,6 +9,8 @@ use App\Models\Page;
 use App\Models\Province;
 use App\Models\Review;
 use App\Models\Seopage;
+use App\Models\SeoReview;
+use App\Models\SeoVeterinarian;
 use App\Models\VegetarianOpeningTime;
 use App\Models\Veterinarian;
 use App\Models\VeterinarianCategory;
@@ -44,23 +46,24 @@ class SiteController extends Controller
         $darkBanner = Page::getBlockInfo($page->blocks, 'dark_about_banner');
         $categories = Category::getCategories();
     
-        $categoriesForCount = Category::withCount('veterinarians')->get();
-
+        $categoriesForCount = Category::ForSite()->withCount('veterinarians')->get();
+       
+        
 
         $category = intval($request->query('categorie')); // Optional query parameter
     
         if (is_int($category)) {
-            $vets = Veterinarian::getWithFeaturedImage($category);
+            $vets = SeoVeterinarian::getWithFeaturedImage($category);
         } else {
-            $vets = Veterinarian::getWithFeaturedImage();
+            $vets = SeoVeterinarian::getWithFeaturedImage();
         }
 
-        $bestVets       = Veterinarian::get3BestRatedVets();
-        $mostViewedVets = Veterinarian::get3MostViewedVets();
+        $bestVets       = SeoVeterinarian::get3BestRatedVets();
+        $mostViewedVets = SeoVeterinarian::get3MostViewedVets();
 
         $blogs = Blog::get3LatestBlogs();
 
-        $getRandomReviews = Review::getRandomReviews();
+        $getRandomReviews = SeoReview::getRandomReviews();
  
 
         return view('website.index', compact('page', 'seo', 'headerBlock', 'bestVets',  'blogs', 'getRandomReviews', 'mostViewedVets', 'categoriesForCount', 'categories', 'vets', 'insurances', 'advantages', 'darkBanner'));
@@ -236,16 +239,16 @@ class SiteController extends Controller
         $seo = $page?->seo;
         $page               = Page::getCustomPage('home');
         $advantages         = Page::getBlockInfo($page->blocks, 'adventages');
-        $bestVets           = Veterinarian::get3BestRatedVets();
-        $mostViewedVets     = Veterinarian::get3MostViewedVets();
-        $categoriesForCount = Category::withCount('veterinarians')->get();
+        $bestVets           = SeoVeterinarian::get3BestRatedVets();
+        $mostViewedVets     = SeoVeterinarian::get3MostViewedVets();
+        $categoriesForCount = Category::ForSite()->withCount('veterinarians')->get();
         $categories         = Category::getCategories();
     
         $categoryId = $request->filled('categorie') ? intval($request->query('categorie')) : null;
         $city       = $request->query('stad');
         $search     = $request->query('zoeken');
     
-        $vets = Veterinarian::getWithFeaturedImage($categoryId, $city, $search);
+        $vets = SeoVeterinarian::getWithFeaturedImage($categoryId, $city, $search);
 
         return view('website.results', [
             'seo' => $seo,
@@ -263,7 +266,7 @@ class SiteController extends Controller
         $page = Page::getCustomPage('about');
         $seo = $page?->seo;
 
-        $getRandomReviews = Review::getRandomReviews();
+        $getRandomReviews = SeoReview::getRandomReviews();
         $intro = Page::getBlockInfo($page->blocks, 'about_us_content');
         $cta = Page::getBlockInfo($page->blocks, 'about_us_cta');
         return view('website.about', ['seo' => $seo, 'getRandomReviews' => $getRandomReviews, 'cta' => $cta, 'intro' => $intro]);

@@ -19,7 +19,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 
 $domain   = domain();
-$domain   = "https://www.dierenvergelijker1.nl";
+$domain   = "https://www.dierenvergelijker.nl";
 $website  = \App\Models\Site::get_info($domain);
 
 if(!empty($website)) {

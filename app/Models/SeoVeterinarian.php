@@ -226,4 +226,65 @@ class SeoVeterinarian extends Model
             }
         }
     }
+
+     /**
+     * The categories that belong to the veterinarian.
+     */
+    public function categories()
+    {
+        return $this->belongsToMany(\App\Models\Category::class, 'veterinarians_categories', 'veterinarian_id', 'category_id');
+    }
+
+    public function veterinariansImages()
+    {
+        return $this->hasMany(VeterinariansImage::class, 'veterinarian_id');
+    }
+
+    // Only the featured image
+    public function featuredImage()
+    {
+        return $this->hasOne(VeterinariansImage::class, 'veterinarian_id')->where('featured', 1);
+    }
+
+    /**
+     * The openingstimes that belong to the veterinarian.
+     */
+    public function images()
+    {
+        return $this->hasMany(VeterinariansImage::class, 'veterinarian_id', 'id');
+    }
+
+    /**
+     * The openingstimes that belong to the veterinarian.
+     */
+    public function pricing()
+    {
+        return $this->hasMany(VeterinariansPricing::class, 'veterinarian_id', 'old_id');
+    }
+
+    /**
+     * The openingstimes that belong to the veterinarian.
+     */
+    public function openingstimes()
+    {
+        return $this->hasMany(VegetarianOpeningTime::class, 'veterinarian_id', 'old_id');
+    }
+
+    /**
+     * The services that belong to the veterinarian.
+     */
+    public function services()
+    {
+        return $this->belongsToMany(\App\Models\Service::class, 'veterinarians_services', 'veterinarian_id', 'category_id');
+    }
+
+      /**
+     * The reviews that belong to the veterinarian.
+     */
+    public function reviews()
+    {
+        return $this->hasMany(\App\Models\SeoReview::class, 'veterinarian_id', 'id');
+    }
+
+
 }

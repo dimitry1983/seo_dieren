@@ -42,6 +42,7 @@ class CreateSite extends CreateRecord
             // Create a new navigation record with the same attributes, except for site_id
             $newCategory = $category->replicate(); // Replicate the existing page
             $newCategory->site_id = $lastSite -> id; // Assign the new site_id
+            $newCategory->parent_id = $category -> id; // Assign the new site_id
             $newCategory->save(); // Save the new duplicated page
         }
         //provinces

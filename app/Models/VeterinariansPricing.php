@@ -24,6 +24,18 @@ class VeterinariansPricing extends Model
         return $this->belongsTo(VeterinarianPricingGroup::class, 'pricing_group_id');
     }
 
+    public static function getPriceByVeterinarianAndName($name, $vetId)
+    {
+        return static::where('name', $name)
+            ->where('veterinarian_id', $vetId)
+            ->first();
+    }
+
+    public static function getMaxPrice($name){
+        return static::where('name', $name)
+            ->max('consult_price');
+    }
+
     public static function insertNewCompanyPrices($vet_id){
         $data = [
             'Sterilisatie' => [

@@ -6,6 +6,8 @@ use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Page;
 use App\Models\Review;
+use App\Models\SeoReview;
+use App\Models\SeoVeterinarian;
 use App\Models\Veterinarian;
 use Illuminate\Http\Request;
 
@@ -22,9 +24,9 @@ class OverviewController extends Controller
         $seo = $page?->seo;
 
         $greenBanner = Page::getBlockInfo($page->blocks, 'green_usp');
-        $bestVets = Veterinarian::get3BestRatedVets(4);
-        $categoriesForCount = Category::withCount('veterinarians')->get();
-        $getRandomReviews = Review::getRandomReviews();
+        $bestVets = SeoVeterinarian::get3BestRatedVets(4);
+        $categoriesForCount = Category::ForSite()->withCount('veterinarians')->get();
+        $getRandomReviews = SeoReview::getRandomReviews();
         $categories = Category::getCategories();
         return view('website.map', ['blogs' => $blogs, 'seo' => $seo ,'categories' => $categories ,'darkBanner' => $darkBanner, 'bestVets' => $bestVets, 'greenBanner' => $greenBanner, 'categoriesForCount' => $categoriesForCount, 'getRandomReviews' => $getRandomReviews]);
     }
