@@ -26,6 +26,9 @@ class Category extends Model
         return Category::where('site_id', session('website')->id)->get();
     }
     
+    public static function getCategoriesForSelect(){
+        return Category::where('site_id', session('website')->id)->get()->pluck('name', 'id');
+    }
 
     public function veterinarians()
     {

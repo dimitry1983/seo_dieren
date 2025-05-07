@@ -61,7 +61,7 @@ class VeterinariansPricing extends Model
                 $pricing -> pricing_group_id = 2;
                 $pricing -> animal_name = $entry['animal_name'];
                 $pricing -> save();
-                echo "saved";
+                
         }
 
         $data = [

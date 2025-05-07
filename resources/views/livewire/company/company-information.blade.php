@@ -44,10 +44,8 @@
                 </div>
             </div>
         </div>
-    </div>
-    <script>
+        <script>
         document.addEventListener("saved", function() {
-
                 // Add a small delay before scrolling to the top (0.5 seconds)
                 setTimeout(() => {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -64,5 +62,7 @@
             // Total time before fade-out (5 seconds including scroll delay)
         });
     </script>
+    </div>
+  
 </div>            
 

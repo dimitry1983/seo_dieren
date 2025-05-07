@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Company;
 
+use App\Models\SeoVeterinarian;
 use App\Models\Veterinarian;
 use App\Models\VeterinariansImage;
 use Illuminate\Support\Facades\Auth;
@@ -39,7 +40,7 @@ class Media extends Component
     }
 
     public function mount(){
-        $result = Veterinarian::where('id', Auth::user()->id)->first();
+        $result = SeoVeterinarian::where('user_id', Auth::user()->id)->first();
 
         $images = VeterinariansImage::where('veterinarian_id', $result -> id)->get();
         $this -> result = $result -> id;
@@ -84,14 +85,14 @@ class Media extends Component
             session()->flash('success', __('Logo succesvol ingesteld!'));
         }
         $this -> dispatch('saved');
-        $result = Veterinarian::where('id', Auth::user()->id)->first();
+        $result = SeoVeterinarian::where('user_id', Auth::user()->id)->first();
         $this -> images = VeterinariansImage::where('veterinarian_id', $result -> id )->get();
     }
 
     public function save()
     {
         $this->validate();
-        $result = Veterinarian::where('id', Auth::user()->id)->first();
+        $result = SeoVeterinarian::where('user_id', Auth::user()->id)->first();
         $teller = 0 +  $this->count;
     
         if (!empty($this->file)):
@@ -150,7 +151,7 @@ class Media extends Component
         endif;
 
 
-        $result = Veterinarian::where('id', Auth::user()->id)->first();
+        $result = SeoVeterinarian::where('user_id', Auth::user()->id)->first();
 
         $images = VeterinariansImage::where('veterinarian_id', $result -> id)->get();
         $this->images = $images;

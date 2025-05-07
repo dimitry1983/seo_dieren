@@ -4,6 +4,7 @@ namespace App\Livewire\Company;
 
 use App\Models\City;
 use App\Models\Province;
+use App\Models\SeoVeterinarian;
 use App\Models\User;
 use App\Models\Veterinarian;
 use App\Models\VeterinarianCategory;
@@ -29,6 +30,7 @@ class CompanyInformation extends Component implements HasForms
     use \Filament\Forms\Concerns\InteractsWithForms;
 
     public $name;
+    public $old_id;
     public $short_description;
     public $categories = [];
     public $services = [];
@@ -52,9 +54,9 @@ class CompanyInformation extends Component implements HasForms
     public function mount(): void
     {
       //fill the form with logged in user @todo  
-      $this -> company = new Veterinarian(); 
+      $this -> company = new SeoVeterinarian(); 
 
-      $result = Veterinarian::where('user_id', Auth::user()->id)->first();
+      $result = SeoVeterinarian::where('user_id', Auth::user()->id)->first();
       
       if (!empty($result)){
         $this -> company = $result;
@@ -97,7 +99,9 @@ class CompanyInformation extends Component implements HasForms
                             Select::make('categories')
                                 ->label(devTranslate('cms_company.Categorieën','Categorieën'))
                                 ->multiple()
-                                ->relationship('categories', 'name') // Ensure this matches the model function
+                                ->options(function (Get $get){
+                                    return \App\Models\Category::getCategoriesForSelect();
+                                })
                                 ->searchable()
                                 ->preload(),
                             Select::make('services')
@@ -177,19 +181,21 @@ class CompanyInformation extends Component implements HasForms
                             'xl' => 2,
                         ]),
                 ]),
-        ])->model(Veterinarian::class);
+        ])->model(SeoVeterinarian::class);
     }
 
 
     public function save()
     {
         
-        if (!empty($this->page->id)){
+        if (!empty($this->company->id)){
             $state = "update";
         }
         else{
             $state = "create";
         }
+
+
         $result = $this->form->getState();
 
         $address = $result['street']." ".$result['street_nr'];
@@ -211,7 +217,7 @@ class CompanyInformation extends Component implements HasForms
             unset($data['services']);
         }
         
-        
+        $data['site_id'] = session('website')->id;
 
         $data['user_id'] = Auth::user()->id;
 
@@ -220,6 +226,11 @@ class CompanyInformation extends Component implements HasForms
 
         $this -> company ->fill($data);
         $this -> company ->save();
+
+        if (empty($this->company->old_id)) {
+            $this->company->old_id = $this->company->id;
+            $this->company->save();
+        }
 
         if (!empty($categories)){
             VeterinarianCategory::where('veterinarian_id', $this -> company -> id)->delete();
@@ -244,15 +255,15 @@ class CompanyInformation extends Component implements HasForms
         }
 
         $this -> dispatch('saved');
+   
        
         if ($state == "create"){
-            VeterinariansPricing::insertNewCompanyPrices($this -> company -> id); 
+            //VeterinariansPricing::insertNewCompanyPrices($this -> company -> id); 
             session()->flash('success', devTranslate('page.Bedrijfsinformatie succesvol aangemaakt','Bedrijfsgegevens succesvol aangemaakt'));
         }
         else{
             session()->flash('success', devTranslate('page.Bedrijfsinformatie succesvol bijgewerkt','Bedrijfsgegevens succesvol bijgewerkt'));
         }
-
     }
 
     public function render()

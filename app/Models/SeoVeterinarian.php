@@ -232,7 +232,14 @@ class SeoVeterinarian extends Model
      */
     public function categories()
     {
-        return $this->belongsToMany(\App\Models\Category::class, 'veterinarians_categories', 'veterinarian_id', 'category_id');
+        return $this->belongsToMany(
+            \App\Models\Category::class,                  // Related model
+            'veterinarians_categories',                   // Pivot table
+            'veterinarian_id',                            // Foreign key on pivot (points to SeoVeterinarian.old_id)
+            'category_id',                                // Foreign key on pivot (points to Category.id)
+            'old_id',                                     // Local key on SeoVeterinarian
+            'id'                                          // Local key on Category
+        );
     }
 
     public function veterinariansImages()
