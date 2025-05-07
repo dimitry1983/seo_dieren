@@ -258,7 +258,7 @@ class CompanyInformation extends Component implements HasForms
    
        
         if ($state == "create"){
-            //VeterinariansPricing::insertNewCompanyPrices($this -> company -> id); 
+            VeterinariansPricing::insertNewCompanyPrices($this -> company -> id); 
             session()->flash('success', devTranslate('page.Bedrijfsinformatie succesvol aangemaakt','Bedrijfsgegevens succesvol aangemaakt'));
         }
         else{

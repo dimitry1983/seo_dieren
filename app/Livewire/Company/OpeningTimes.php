@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Company;
 
+use App\Models\SeoVeterinarian;
 use App\Models\VegetarianOpeningTime;
 use App\Models\Veterinarian;
 use App\Models\VeterinariansOpeningTime;
@@ -33,7 +34,7 @@ class OpeningTimes extends Component implements HasForms
     public $veterinarian_id;
 
     public function mount($id = null){
-        $result = Veterinarian::where('id', Auth::user()->id)->first();
+        $result = SeoVeterinarian::where('user_id', Auth::user()->id)->first();
         $this -> veterinarian_id = $result -> id;
        
         $this->openingsTimes = VegetarianOpeningTime::where('veterinarian_id', $result -> id)->get();
@@ -52,7 +53,7 @@ class OpeningTimes extends Component implements HasForms
         $this->openingsTime  = VegetarianOpeningTime::where('veterinarian_id', $this -> veterinarian_id)->find($id);
         $this->openingsTime = $this->openingsTime->toArray();
         $this->form->fill($this->openingsTime);
-        $result = Veterinarian::where('id', Auth::user()->id)->first();
+        $result = SeoVeterinarian::where('user_id', Auth::user()->id)->first();
         $this -> veterinarian_id = $result -> id;
         $this->openingsTimes = VegetarianOpeningTime::where('veterinarian_id', $result -> id)->get();
     }
@@ -124,7 +125,7 @@ class OpeningTimes extends Component implements HasForms
         $this->openingsTime->save();
        
         $this -> dispatch('saved');
-        $result = Veterinarian::where('id', Auth::user()->id)->first();
+        $result = SeoVeterinarian::where('user_id', Auth::user()->id)->first();
         $this -> veterinarian_id = $result -> id;
         $this -> openingsTimes = VegetarianOpeningTime::where('veterinarian_id', $result -> id)->get();
         if ($state == "create"){

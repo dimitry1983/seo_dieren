@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Company;
 
+use App\Models\SeoVeterinarian;
 use App\Models\Veterinarian;
 use App\Models\VeterinarianPricingGroup;
 use App\Models\VeterinariansPricing;
@@ -30,7 +31,7 @@ class Prices extends Component implements HasForms
     public $price;
 
     public function mount($id = null){
-        $result = Veterinarian::where('user_id', Auth::user()->id)->first();
+        $result = SeoVeterinarian::where('user_id', Auth::user()->id)->first();
         $this -> veterinarian_id = $result -> id;
         $this -> prices = VeterinariansPricing::with(['pricingGroup'])->where('veterinarian_id', $result -> id)->get();
 
@@ -69,7 +70,7 @@ class Prices extends Component implements HasForms
         $this->price  = VeterinariansPricing::where('veterinarian_id', $this -> veterinarian_id)->find($id);
         $this->price = $this->price->toArray();
         $this->form->fill($this->price);
-        $result = Veterinarian::where('id', Auth::user()->id)->first();
+        $result = SeoVeterinarian::where('user_id', Auth::user()->id)->first();
         $this -> veterinarian_id = $result -> id;
         $this -> prices = VeterinariansPricing::where('veterinarian_id', $result -> id)->get();
     }

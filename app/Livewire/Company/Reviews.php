@@ -3,6 +3,8 @@
 namespace App\Livewire\Company;
 
 use App\Models\Review;
+use App\Models\SeoReview;
+use App\Models\SeoVeterinarian;
 use App\Models\Veterinarian;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -21,25 +23,25 @@ class Reviews extends Component
     public $veterinarian_id;
 
     public function mount(){
-        $results = Veterinarian::where('user_id', Auth::user()->id)->first();
+        $results = SeoVeterinarian::where('user_id', Auth::user()->id)->first();
         $this -> veterinarian_id = $results -> id;
     
-        $result = Review::where('veterinarian_id', $results->id)->get();
+        $result = SeoReview::where('veterinarian_id', $results->id)->get();
         
         $this->reviews = $result;
     }
 
     public function loadReview($id){
        
-        $recencie  = Review::where('veterinarian_id',     $this -> veterinarian_id )->find($id);
+        $recencie  = SeoReview::where('veterinarian_id',     $this -> veterinarian_id )->find($id);
         $this -> parent_id = $recencie -> id;
         $this -> recencie = $recencie -> description;
     }
 
     public function save(){
-        $result = Veterinarian::where('user_id', Auth::user()->id)->first();
+        $result = SeoVeterinarian::where('user_id', Auth::user()->id)->first();
         if (!empty($this -> parent_id) && !empty($this -> description)){
-            $recencie = new Review();
+            $recencie = new SeoReview();
             $recencie -> name = $this -> name;
             $recencie -> description = $this -> description;
             $recencie -> parent_id = $this -> parent_id;
@@ -61,9 +63,9 @@ class Reviews extends Component
     public function render()
     {
         $active = "reviews";
-        $results = Veterinarian::where('user_id', Auth::user()->id)->first();
-        $result = Review::where('veterinarian_id', $results->id)->get();
-        $veterinarians = Veterinarian::with(['reviews' => function ($query) {
+        $results = SeoVeterinarian::where('user_id', Auth::user()->id)->first();
+        $result = SeoReview::where('veterinarian_id', $results->id)->get();
+        $veterinarians = SeoVeterinarian::with(['reviews' => function ($query) {
             $query->whereNull('parent_id')->with('responses');
         }])
         ->where('id', $results -> id)
