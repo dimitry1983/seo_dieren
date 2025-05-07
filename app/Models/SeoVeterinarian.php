@@ -244,13 +244,13 @@ class SeoVeterinarian extends Model
 
     public function veterinariansImages()
     {
-        return $this->hasMany(VeterinariansImage::class, 'veterinarian_id');
+        return $this->hasMany(VeterinariansImage::class, 'veterinarian_id', 'old_id');
     }
 
     // Only the featured image
     public function featuredImage()
     {
-        return $this->hasOne(VeterinariansImage::class, 'veterinarian_id')->where('featured', 1);
+        return $this->hasOne(VeterinariansImage::class, 'veterinarian_id' , 'old_id')->where('featured', 1);
     }
 
     /**
@@ -258,7 +258,7 @@ class SeoVeterinarian extends Model
      */
     public function images()
     {
-        return $this->hasMany(VeterinariansImage::class, 'veterinarian_id', 'id');
+        return $this->hasMany(VeterinariansImage::class, 'veterinarian_id', 'old_id');
     }
 
     /**
@@ -282,7 +282,14 @@ class SeoVeterinarian extends Model
      */
     public function services()
     {
-        return $this->belongsToMany(\App\Models\Service::class, 'veterinarians_services', 'veterinarian_id', 'category_id');
+        return $this->belongsToMany(
+            \App\Models\Service::class,
+            'veterinarians_services',
+            'veterinarian_id', // This is the foreign key on the pivot table
+            'category_id',     // This is the related key on the Service table
+            'old_id',          // This is the local key on SeoVeterinarian
+            'id'               // This is the local key on Service (default is 'id', adjust if different)
+        );
     }
 
       /**
