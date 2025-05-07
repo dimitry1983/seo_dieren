@@ -86,19 +86,19 @@
             return $newHexColor;
         }
         ?>
+        <link rel="stylesheet" href="{{ asset('dieren/dist/public/css/app.css')}}">
         <style>
             :root{
-                --primary: #7E5FBE;
-                --primaryLight: #<?= convertToLighterColor('7E5FBE') ?>;
-                --primaryDark: #<?= convertToDarkerColor('7E5FBE') ?>;
-                --primaryDarker: #<?= convertToVeryDarkColor('7E5FBE') ?>;
-                --secondary: #E8FF57;
-                --secondaryLight: #<?= convertToLighterColor('E8FF57') ?>;
-                --secondaryDark: #<?= convertToDarkerColor('E8FF57') ?>;
-                --secondaryDarker: #<?= convertToVeryDarkColor('E8FF57') ?>;
+                --primary: #1f2937;
+                --primaryLight: #<?= convertToLighterColor('1f2937') ?>;
+                --primaryDark: #<?= convertToDarkerColor('1f2937') ?>;
+                --primaryDarker: #<?= convertToVeryDarkColor('1f2937') ?>;
+                --secondary: #009999;
+                --secondaryLight: #<?= convertToLighterColor('009999') ?>;
+                --secondaryDark: #<?= convertToDarkerColor('009999') ?>;
+                --secondaryDarker: #<?= convertToVeryDarkColor('009999') ?>; 
             }
         </style>
-        <link rel="stylesheet" href="{{ asset('dieren/dist/public/css/app.css')}}">
         @livewireStyles
         @yield('structured-data')
 </head>

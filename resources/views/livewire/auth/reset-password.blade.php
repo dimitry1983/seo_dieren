@@ -86,7 +86,7 @@ new #[Layout('layouts.site')] class extends Component {
         </div>
     </div>
     <!-- Hero Section -->
-    <section class="section section--hero-interior bg-primaryLight relative py-[60px]">
+    <section class="section section--hero-interior bg-secondaryLight relative py-[60px]">
         <img class="absolute bottom-0 left-0 z-0" src="{{ asset('dieren/src/public/img/about1.png') }}" alt="">
         <div class="container header__content mx-auto relative z-1">
             <h1 class="text-center font-regular text-gray-800 relative z-3">

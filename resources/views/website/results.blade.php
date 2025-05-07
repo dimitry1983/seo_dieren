@@ -12,7 +12,7 @@
         
         <section class="section section--search py-0 bg-transparent">
             <div class="container px-2 mx-auto bg-transparent">
-                <form action="{{route('results')}}" class="s-form md:p-[40px] z-30 p-[20px] flex flex-col md:flex-row px-[20px] items-center gap-y-4 md:gap-x-6 mt-[-50px] bg-white md:rounded-full border border-[#D2D3D4] relative before:hidden md:before:block before:absolute before:right-0 before:top-0 before:w-full md:before:w-1/4 before:h-full before:z-0 before:bg-primaryLight before:rounded-tr-full before:rounded-br-full">
+                <form action="{{route('results')}}" class="s-form md:p-[40px] z-30 p-[20px] flex flex-col md:flex-row px-[20px] items-center gap-y-4 md:gap-x-6 mt-[-50px] bg-white md:rounded-full border border-[#D2D3D4] relative before:hidden md:before:block before:absolute before:right-0 before:top-0 before:w-full md:before:w-1/4 before:h-full before:z-0 before:bg-secondaryLight before:rounded-tr-full before:rounded-br-full">
                     <div class="w-full md:w-1/4 text-center md:text-left relative z-1">
                         <p class="mb-0 block xl-custom:block md:hidden">
                             <strong>{{ devTranslate('page.What Are You Looking For?','Waar ben je naar opzoek?') }}</strong>

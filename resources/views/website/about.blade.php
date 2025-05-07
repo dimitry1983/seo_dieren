@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="main-container relative w-full overflow-hidden">
-    <section class="section section--hero-interior bg-primaryLight relative py-[60px]">
+    <section class="section section--hero-interior bg-secondaryLight relative py-[60px]">
         <img class="absolute bottom-0 left-0 z-0" src="{{ asset('dieren/src/public/img/about1.png')}}" alt="">
         <div class="container header__content mx-auto relative z-10">
             <h1 class="text-center font-regular text-gray-800 relative z-3 leading-tight md:leading-tight lg:leading-normal">
@@ -58,8 +58,8 @@
                         @endif
                         
                     </ul>
-                    <a href="{!!$cta['cta_url_btn1']!!}" class="btn btn-primary pl-6 pr-[70px] py-5 bg-primaryLight text-center text-white block w-fit lg:mb-8 mb-4 relative">
-                        {{$cta['cta_title_btn1']}} <i class="fa-solid fa-magnifying-glass float-right text-xl  text-primaryLight w-[50px] h-[50px] rounded-full flex justify-center items-center bg-white absolute right-2 top-2"></i>
+                    <a href="{!!$cta['cta_url_btn1']!!}" class="btn btn-primary pl-6 pr-[70px] py-5 bg-secondaryLight text-center text-white block w-fit lg:mb-8 mb-4 relative">
+                        {{$cta['cta_title_btn1']}} <i class="fa-solid fa-magnifying-glass float-right text-xl  text-secondary w-[50px] h-[50px] rounded-full flex justify-center items-center bg-white absolute right-2 top-2"></i>
                     </a>
                 </div>
                 <div class="lg:col-span-5">

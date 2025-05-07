@@ -204,7 +204,7 @@
                         </h3>
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
                          <div class="lg:col-span-1 border-gray-300 shadow-lg px-[30px] py-[50px] mb-6">
-                                <figure class="w-[77px] h-[77px] bg-primaryLight rounded-full flex justify-center items-center mt-[-60px] mb-2">
+                                <figure class="w-[77px] h-[77px] bg-secondaryLight rounded-full flex justify-center items-center mt-[-60px] mb-2">
                                     <img src="{{ asset('dieren/src/public/img/icon1.png')}}" alt="">
                                 </figure>
                                 <h3 class="title title--services text-2xl font-bold text-gray-800 mb-4">
@@ -234,7 +234,7 @@
                                 </ul>
                             </div>
                             <div class="lg:col-span-1 border-gray-300 shadow-lg px-[30px] py-[50px] mb-6">
-                                <figure class="w-[77px] h-[77px] bg-primaryLight rounded-full flex justify-center items-center mt-[-60px] mb-2">
+                                <figure class="w-[77px] h-[77px] bg-secondaryLight rounded-full flex justify-center items-center mt-[-60px] mb-2">
                                     <img src="{{ asset('dieren/src/public/img/icon2.png')}}" alt="">
                                 </figure>
                                 <h2 class="text-xl font-bold mb-4">{{__('Sterilisatie Tarieven per Dier')}}</h2>

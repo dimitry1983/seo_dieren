@@ -16,14 +16,14 @@ module.exports = {
         '20p': '20%', // Define a 20% padding utility
       },
       colors: {
-        primary: '#009999', 
-        primaryLight: '#00CCCC', 
-        primaryDark: '#3E8383',
+        primary: 'var(--primary)', 
+        primaryLight: 'var(--primaryLight)',
+        primaryDark: 'var(--primaryDark)',
         primaryDarker: 'var(--primaryDarker)',
         secondary: 'var(--secondary)',
-        secondaryLight: 'var(--primaryLight)',
-        secondaryDark: 'var(--primaryDark)',
-        secondaryDarker: 'var(--primaryDarker)'
+        secondaryLight: 'var(--secondaryLight)',
+        secondaryDark: 'var(--secondaryDark)',
+        secondaryDarker: 'var(--secondaryDarker)'
       },
       animation: {
         spin: 'spin 1s linear infinite',  // Ensuring the spin animation is available

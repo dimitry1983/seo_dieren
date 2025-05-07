@@ -10,7 +10,7 @@
         @apply roboto
     }
     .btn-secondary{
-        @apply bg-[#202428] hover:bg-white hover:text-[#202428] text-primaryLight font-semibold py-3 px-8 rounded-[30px] text-base transition-all duration-300 block w-fit
+        @apply bg-[#202428] hover:bg-white hover:text-[#202428] text-secondaryLight font-semibold py-3 px-8 rounded-[30px] text-base transition-all duration-300 block w-fit
     }
 
     .btn-outline-primary{
@@ -18,10 +18,10 @@
     }
 
     .btn-primary{
-        @apply bg-primary hover:bg-primaryDark hover:text-[#202428] text-[#202428] font-semibold py-3 px-8 rounded-[30px] text-base transition-all duration-300 block w-fit
+        @apply bg-secondaryLight hover:bg-secondary hover:text-[#202428] text-[#202428] font-semibold py-3 px-8 rounded-[30px] text-base transition-all duration-300 block w-fit
     }
     .btn-primaryLight{
-        @apply bg-primaryLight hover:bg-primary hover:text-[#202428] text-[#202428] font-semibold py-3 px-8 rounded-[30px] text-base transition-all duration-300 block w-fit
+        @apply bg-secondaryLight hover:bg-secondary hover:text-[#202428] text-[#202428] font-semibold py-3 px-8 rounded-[30px] text-base transition-all duration-300 block w-fit
     }
     .btn-black{
         @apply bg-black hover:bg-primaryDark text-white font-semibold py-4 px-6 rounded text-xl
@@ -106,10 +106,10 @@
        @apply text-4xl sm:text-5xl md:text-6xl text-gray-800 leading-tight md:leading-tight lg:leading-normal 
     }
     .header__content span{
-        @apply text-primary font-bold
+        @apply text-secondary font-bold
     }
     h3.adv span{
-        @apply text-primary 
+        @apply text-secondary 
     }
     .check-block input{
         @apply hidden

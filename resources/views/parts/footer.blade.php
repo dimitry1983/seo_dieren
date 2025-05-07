@@ -17,7 +17,7 @@
                     @endif
                 </div>
                 <div class="widget col-span-1 lg:col-span-3">
-                    <h4 class="title title--widget text-primary font-bold text-lg mb-[20px]">Home</h4>
+                    <h4 class="title title--widget text-secondary font-bold text-lg mb-[20px]">Home</h4>
                     <ul>
                         @if (!empty($navigations['footer2']))
                             @foreach ($navigations['footer2']['content'] as $item)
@@ -27,7 +27,7 @@
                     </ul>
                 </div>
                 <div class="widget col-span-1 lg:col-span-2">
-                    <h4 class="title title--widget text-primary font-bold text-lg mb-[20px]">Links</h4>
+                    <h4 class="title title--widget text-secondary font-bold text-lg mb-[20px]">Links</h4>
                     <ul>
                         @if (!empty($navigations['footer3']))
                             @foreach ($navigations['footer3']['content'] as $item)
@@ -37,7 +37,7 @@
                     </ul>
                 </div>
                 <div class="widget col-span-1 lg:col-span-3 text-left">
-                    <h4 class="title title--widget text-primary font-bold text-lg mb-[20px]">Volg ons</h4>
+                    <h4 class="title title--widget text-secondary font-bold text-lg mb-[20px]">Volg ons</h4>
                     <div class="flex justify-start  gap-3 mb-3">
                         @if (!empty($navigations['footer4']))
                             @foreach ($navigations['footer4']['content'] as $item)

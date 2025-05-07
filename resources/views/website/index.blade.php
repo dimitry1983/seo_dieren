@@ -40,7 +40,7 @@
 
     <section class="section section--search py-0 bg-transparent">
         <div class="container px-2 mx-auto bg-transparent">
-            <form action="{{route('results')}}" class="s-form lg:px-[40px] lg:py-[20px] md:px-[30px] md:py-[15px] px-[20px] py-8px z-30 flex flex-col md:flex-row items-center gap-y-4 md:gap-x-6 mt-[-50px] bg-white md:rounded-full border border-[#D2D3D4] relative before:hidden md:before:block before:absolute before:right-0 before:top-0 before:w-full md:before:w-1/4 before:h-full before:z-0 before:bg-primaryLight before:rounded-tr-full before:rounded-br-full">
+            <form action="{{route('results')}}" class="s-form lg:px-[40px] lg:py-[20px] md:px-[30px] md:py-[15px] px-[20px] py-8px z-30 flex flex-col md:flex-row items-center gap-y-4 md:gap-x-6 mt-[-50px] bg-white md:rounded-full border border-[#D2D3D4] relative before:hidden md:before:block before:absolute before:right-0 before:top-0 before:w-full md:before:w-1/4 before:h-full before:z-0 before:bg-secondaryLight before:rounded-tr-full before:rounded-br-full">
                 <div class="w-full md:w-1/4 text-center md:text-left relative z-1">
                     <p class="lg:mb-0 block xl-custom:block md:hidden mb-4">
                         <strong>{{ devTranslate('page.What Are You Looking For?','Waar ben je naar opzoek?') }}</strong>
@@ -442,7 +442,7 @@
                     @foreach($darkBanner['about'] as $item)
                         <div class="text-center">
                             <p class="text-white">{{$item['title']}}</p>
-                            <span class="text-primaryLight font-medium text-5xl md:text-6xl block">{{$item['number']}}</span>
+                            <span class="text-secondary font-medium text-5xl md:text-6xl block">{{$item['number']}}</span>
                         </div>
                     @endforeach
                 @endif

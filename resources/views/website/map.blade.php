@@ -33,7 +33,7 @@
 
                     <p class="mb-0"><strong>{{ devTranslate('page.Search','Zoeken') }}</strong></p>
                     <button class="btn btn-primaryLight w-full mt-3 flex items-center justify-center gap-2 px-3 py-5 rounded-full relative">
-                        {{ devTranslate('page.Search Now','Zoek nu') }} <i class="fa-solid fa-magnifying-glass text-primaryLight w-[50px] h-[50px] rounded-full flex justify-center items-center bg-black absolute right-4 top-2"></i>
+                        {{ devTranslate('page.Search Now','Zoek nu') }} <i class="fa-solid fa-magnifying-glass text-secondaryLight w-[50px] h-[50px] rounded-full flex justify-center items-center bg-black absolute right-4 top-2"></i>
                     </button>
 
                     <a class="underline text-center block mt-4 text-gray-800 font-bold hover:text-primary transition" id="resetfilters" href="#">{{ devTranslate('page.Clear All Filters','Reset Filters') }}</a>
@@ -194,8 +194,8 @@
                             @endforeach
                         @endif
                     </ul>
-                    <a href="{{$greenBanner['cta_url_btn1']}}" class="btn btn-primary min-w-[300px] md:min-w-[400px] py-5 bg-[#202428] text-center text-primaryLight block w-fit lg:mx-auto lg:mb-8 mb-4 relative">{{$greenBanner['cta_title_btn1']}} <i class="fa-solid fa-magnifying-glass float-right text-xl  text-[#202428] w-[50px] h-[50px] rounded-full flex justify-center items-center bg-primaryLight absolute right-2 top-2"></i></a>
-                    <a href="{{$greenBanner['cta_url_btn2']}}" class="btn btn-primary min-w-[300px] md:min-w-[400px] py-5 bg-[#202428] text-center text-primaryLight block w-fit lg:mx-auto relative">{{$greenBanner['cta_title_btn2']}} <i class="fa-solid fa-plus float-right text-xl  text-[#202428] w-[50px] h-[50px] rounded-full flex justify-center items-center bg-primaryLight absolute right-2 top-2"></i></a>
+                    <a href="{{$greenBanner['cta_url_btn1']}}" class="btn btn-primary min-w-[300px] md:min-w-[400px] py-5 bg-[#202428] text-center text-secondaryLight block w-fit lg:mx-auto lg:mb-8 mb-4 relative">{{$greenBanner['cta_title_btn1']}} <i class="fa-solid fa-magnifying-glass float-right text-xl  text-[#202428] w-[50px] h-[50px] rounded-full flex justify-center items-center bg-secondaryLight absolute right-2 top-2"></i></a>
+                    <a href="{{$greenBanner['cta_url_btn2']}}" class="btn btn-primary min-w-[300px] md:min-w-[400px] py-5 bg-[#202428] text-center text-secondaryLight block w-fit lg:mx-auto relative">{{$greenBanner['cta_title_btn2']}} <i class="fa-solid fa-plus float-right text-xl  text-[#202428] w-[50px] h-[50px] rounded-full flex justify-center items-center bg-secondaryLight absolute right-2 top-2"></i></a>
                 </div>
             </div>
         </div>
@@ -216,7 +216,7 @@
                     @foreach($darkBanner['about'] as $item)
                     <div class="text-center">
                         <p class="text-white">{{$item['title']}}</p>
-                        <span class="text-primaryLight font-medium text-5xl md:text-6xl block">{{$item['number']}}</span>
+                        <span class="text-secondary font-medium text-5xl md:text-6xl block">{{$item['number']}}</span>
                     </div>
                     @endforeach
                 @endif

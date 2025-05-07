@@ -22,7 +22,7 @@
         
         <section class="section section--search py-0 bg-transparent">
             <div class="container mx-auto bg-transparent">
-            <form action="" class="md:p-[40px] p-[20px] flex flex-col md:flex-row items-center gap-y-4 md:gap-x-6 mt-[-50px] bg-white md:rounded-full border border-[#D2D3D4] relative before:hidden md:before:block before:absolute before:right-0 before:top-0 before:w-full md:before:w-1/4 before:h-full before:z-0 before:bg-primaryLight before:rounded-tr-full before:rounded-br-full">
+            <form action="" class="md:p-[40px] p-[20px] flex flex-col md:flex-row items-center gap-y-4 md:gap-x-6 mt-[-50px] bg-white md:rounded-full border border-[#D2D3D4] relative before:hidden md:before:block before:absolute before:right-0 before:top-0 before:w-full md:before:w-1/4 before:h-full before:z-0 before:bg-secondaryLight before:rounded-tr-full before:rounded-br-full">
                 <div class="w-full md:w-1/4 text-center md:text-left relative z-1">
                     <p class="mb-[10px]"><strong>What Are You Looking For?</strong></p>
                     <input type="text" placeholder="Search For" class="form-control p-3 border border-gray-300 rounded-full outline-none transition duration-300 ease-out w-full">
