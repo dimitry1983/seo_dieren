@@ -1,0 +1,253 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+    p{
+        @apply mb-4
+    }
+    body{
+        @apply mona
+    }
+
+    .container{
+        @apply mx-auto px-4
+    }
+    
+    .btn-secondary{
+        @apply bg-secondary hover:bg-secondary hover:text-white text-white font-semibold py-3 px-8 rounded-[10px] text-base transition-all duration-300 block w-fit
+    }
+
+    .btn-white-secondary{
+        @apply border-[1px] border-solid bg-transparent border-[#ADADAD] hover:bg-primary hover:text-white hover:border-primary text-primary font-semibold py-3 px-8 rounded-[10px] text-base transition-all duration-300 block w-fit
+    }
+
+    .btn-secondary-light{
+        @apply bg-secondaryLight hover:bg-secondary hover:text-white text-primary font-semibold py-3 px-8 rounded-[10px] text-base transition-all duration-300 block w-fit
+    }
+
+    .btn-outline-primary{
+        @apply border-[2px] border-solid bg-transparent border-[#ADADAD] hover:bg-primary hover:text-white hover:border-primary text-primary font-semibold py-3 px-8 rounded-[10px] text-base transition-all duration-300 block w-fit
+    }
+
+    .btn-primary{
+        @apply bg-primary hover:bg-primary hover:text-primary text-white font-semibold py-3 px-8 rounded-[10px] text-base transition-all duration-300 block w-fit
+    }
+    .btn-black{
+        @apply bg-black hover:bg-primary text-white font-semibold py-4 px-6 rounded text-xl
+    }
+    .nav-item{
+        @apply transition-all duration-300
+    }
+    /* globals */
+    .section-title--sm{
+        @apply text-xl lg:text-[40px] leading-tight font-semibold
+    }
+    .section-title{
+        @apply text-2xl lg:text-[45px] leading-tight
+    }
+    .section-title strong{
+        @apply font-bold
+    }
+    .section-title--lg{
+        @apply text-3xl lg:text-[75px] leading-tight font-semibold
+    }
+    /* helpers */
+    .abs-cover{
+        @apply w-full h-full absolute left-0 top-0 object-cover
+    }
+    /* sections */
+    .section{
+        @apply py-10 lg:py-28
+    }
+    .section--white+.section--white{
+        @apply pt-0
+    }
+    .section--gray{
+        @apply bg-[#FBF9FF]
+    }
+
+    .section--banner .inner::before{
+        content: '';
+        @apply w-[25%] pb-[25%] bg-white bg-opacity-25 block absolute right-0 top-0 rounded-[50px] origin-top-left rotate-45 translate-x-[55%] -translate-y-[65%]
+    }
+    .section--banner .inner::after{
+        content: '';
+        @apply w-[25%] pb-[25%] bg-white bg-opacity-25 block absolute left-0 bottom-0 rounded-[50px] origin-top-left rotate-45 translate-x-[20%] translate-y-[25%]
+    }
+
+    .subside::after{
+        content: '';
+        @apply w-[85%] pb-[85%] bg-white bg-opacity-25 block absolute right-0 top-0 rounded-[80px] origin-bottom-left -rotate-45 translate-x-[65%] -translate-y-[25%]
+    }
+
+    .pills a{
+        @apply flex flex-1 border-[3px] border-solid border-primary text-primary text-lg lg:text-3xl py-3 px-8 text-center items-center justify-center font-semibold rounded-[40px] duration-300 hover:bg-secondary
+    }
+
+    .pagination span, .pagination a{
+        @apply w-10 h-10 flex items-center justify-center
+    }
+    .pagination span+a, .pagination a+span, .pagination a+a{
+        @apply ml-3
+    }
+    .form-control, .form-select{
+        @apply text-black py-2 px-3 rounded
+    }
+
+    .form-group{
+        @apply block mb-6
+    }
+
+    .form-group>span{
+        @apply block mb-2
+    }
+    .form-control{
+        @apply border border-solid border-[#E1E6EF] rounded-[10px] w-full px-6 py-3 text-[#484848]
+    }
+    .form-control::placeholder{
+        @apply text-[#484848]
+    }
+    .form-select{
+        @apply form-control
+    }
+    
+
+    .check-block input{
+        @apply hidden
+    }
+    .check-block input+span{
+        @apply block border-2 border-solid border-[#d8d8d8] px-6 py-5 rounded-[12px] relative duration-300
+    }
+    .check-block input+span:after{
+        content: '';
+        box-shadow: 0 0 2px #DFE1E7;
+        @apply block w-[22px] h-[22px] rounded-full absolute right-[20px] top-[20px] bg-white border border-solid border-[#DFE1E7] duration-300
+    }
+    .check-block input:checked+span{
+        @apply border-2 border-primary bg-[#f8f8f8]
+    }
+    .check-block input:checked+span:after{
+        @apply border-[7px] border-primary
+    }
+    .check-block input+span span{
+        @apply block
+    }
+
+    .check-block.check-block--side input+span{
+        @apply bg-white text-black border-0 ps-[80px]
+    }
+
+    .check-block.check-block--side input+span:after{
+        @apply right-auto left-[30px] top-0 bottom-0 my-auto
+    }
+    .check-block.check-block--side input:checked+span{
+        @apply bg-opacity-70
+    }
+
+    .agree-terms input{
+        @apply hidden
+    }
+    .agree-terms input+span{
+        @apply relative ps-8 block text-[#757575] text-[13px]
+    }
+    .agree-terms input+span:before{
+        content: '\f00c';
+        font-family: 'Font Awesome 6 Pro';
+        @apply absolute left-0 w-[22px] h-[22px] rounded-[2px] border border-solid border-[#DADADA] flex items-center justify-center font-black text-white duration-300
+    }
+    .agree-terms input:checked+span:before{
+        @apply bg-[#11AF22] border-[#11AF22]
+    }
+
+    .pagination a, .pagination span{
+        @apply bg-white text-primary border-[1px] border-solid border-[#E3E3E3] w-[66px] h-[66px] flex items-center justify-center font-semibold transition-all duration-300
+
+    }
+    .pagination span, .pagination a.arrow{
+        @apply bg-[#9990DA] text-white border-[#9990DA]
+    }
+    .pagination a:hover{
+        @apply bg-primary text-white border-primary
+    }
+    .accordeon{
+        @apply bg-white;
+    }
+
+    .accordeon button span{
+        position: relative;
+        width: 20px;
+        height: 2px;
+    }
+    .accordeon button span:after,
+    .accordeon button span:before{
+        content: '';
+        @apply w-full h-full bg-[#3d3d3d] absolute left-0 top-0
+    }
+    .accordeon button span:before{
+        @apply rotate-[90deg] duration-300
+    }
+
+    .accordeon.open button span:before{
+        @apply rotate-[0]
+    }
+    .accordeon.open{
+        @apply bg-[#E3E0FA]
+    }
+}
+
+.splide__pagination{
+    @apply static mt-11 flex gap-[8px]
+}
+.splide__pagination__page{
+    @apply bg-[#E3E3E3] w-[11px] h-[11px]
+}
+.splide__pagination__page.is-active{
+    @apply bg-primary transform-none
+}
+.post-item{
+    /*box-shadow: 0 4px 40px rgba(60, 30, 130, 0.1);*/
+}
+
+.header--main{
+    box-shadow: 0 4px 50px rgba(0, 0, 0, 0.1);
+}
+
+@media(min-width: 992px){
+    .section--hero .splide__slide.is-visible+.is-visible+.is-active.is-visible{
+        opacity: .6;
+    }
+}
+.mona{
+    font-family: 'Mona Sans', serif;
+}
+.maison{
+    font-family: 'Raleway', sans-serif;
+}
+
+.employee-picker{
+    position: relative;
+}
+
+.employee-picker .employee-results{
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+}
+
+.section--hero{
+    position: relative;
+}
+.section--hero::before{
+    content: '';
+    @apply w-full h-[50%] absolute left-0 top-0 bg-gradient-to-b from-[#5d4fc4] to-transparent opacity-50 z-0
+}
+.section--hero:not(.section--page-header)::after{
+    content: '';
+    @apply w-full h-[25%] absolute left-0 bottom-0 bg-gradient-to-t from-[#FFF] to-transparent z-0
+}
+.section--hero .container{
+    position: relative;
+    z-index: 2;
+}

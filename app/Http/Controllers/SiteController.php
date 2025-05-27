@@ -34,6 +34,43 @@ class SiteController extends Controller
         $this->geoapifyService = $geoapifyService;
     }
 
+    /*
+    *   HERE we are going to put the seo site controller
+    *
+    */
+    public function homePage(){
+        $page = Page::getCustomPage('home');
+        $seo = $page?->seo;
+
+        if (empty($page)){
+            abort(404);
+        }
+
+        return view('seosite.index', ['page' => $page, 'seo' => $seo]);
+    }
+
+    public function seoPages(){
+
+    }
+
+    public function seoBlog(){
+
+    }
+
+    public function seoBlogDetail(){
+
+    }
+
+    public function seoAboutUs(){
+
+    }
+
+    public function seoContact(){
+
+    }
+
+
+
     public function index(Request $request)
     {      
         $page = Page::getCustomPage('home');

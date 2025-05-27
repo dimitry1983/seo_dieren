@@ -31,77 +31,7 @@ if(!empty($website)) {
 
 Route::get('/api/cities', [CityController::class, 'search']);
 
-//Volt::routes(); 
 
-// 1️⃣   “Please verify your email” notice (you already have this)
-Route::get('/email/verify', function () {
-    return view('livewire.auth.verify-email');
-})->middleware('auth')
-  ->name('verification.notice');
-
-// 2️⃣   **This one was missing** – handles the signed link
-Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    // Mark the user as verified…
-    $request->fulfill();
-
-    // …and send them where you want next
-    return redirect()->intended('/cms/dashboard');
-})->middleware(['auth', 'throttle:6,1'])
-  ->name('verification.verify');
-
-// 3️⃣   Resend link form action (optional but handy)
-Route::post('/email/verification-notification', function (Request $request) {
-    $request->user()->sendEmailVerificationNotification();
-
-    return back()->with('message', 'Verification link sent!');
-})->middleware(['auth', 'throttle:6,1'])
-  ->name('verification.send');
-
-
-// Register (Registreren)
-Volt::route('/registreren', 'auth.register')->name('register');
-
-// Login
-Volt::route('/inloggen', 'auth.login')->name('login');
-
-// Forgot Password (Wachtwoord vergeten)
-Volt::route('/wachtwoord-vergeten', 'auth.forgot-password')->name('password.request');
-
-// Password Reset
-Volt::route('/wachtwoord-herstellen/{token}', 'auth.reset-password')->name('password.reset');
-Volt::route('/wachtwoord-herstellen', 'auth.reset-password')->name('password.update');
-
-// Optional: Logout post route
-
-Route::post('/uitloggen', Logout::class)->name('logout');
-
-
-
-Route::middleware(['auth'])->group(function () {
-    Route::redirect('settings', 'settings/profile');
-
-    Volt::route('settings/profile', 'settings.profile')->name('settings.profile');
-    Volt::route('settings/password', 'settings.password')->name('settings.password');
-    Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
-});
-
-//require __DIR__.'/auth.php';
-
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/cms/dashboard', \App\Livewire\Company\Dashboard::class)->name('company.dashboard');
-    Route::middleware(['claim.pending.redirect'])->group(function () {
-        Route::get('/cms/bedrijfsinformatie', \App\Livewire\Company\CompanyInformation::class)->name('company.company-info');
-        Route::get('/cms/media', \App\Livewire\Company\Media::class)->name('company.company-media');
-        Route::get('/cms/openingstijden', \App\Livewire\Company\OpeningTimes::class)->name('company.openingstime');
-        Route::get('/cms/prijzen', \App\Livewire\Company\Prices::class)->name('company.company-pricing');
-        Route::get('/cms/recencies', \App\Livewire\Company\Reviews::class)->name('company.company-reviews');
-        Route::get('/cms/blogs', \App\Livewire\Company\Blogs::class)->name('company.company-blogs');
-        Route::get('/cms/support', App\Livewire\Company\SupportMessage::class)->name('company.support');
-    });
-    //Route::get('/cms/inbox', \App\Livewire\Company\Inbox::class)->name('company.company-inbox');
-    //Route::get('/cms/facturen', \App\Livewire\Company\Invoices::class)->name('company.company-invoices');
-});
-//routing for the website
 
 Route::get('/preview-mail', function () {
     $fakeUser = User::find(1);
@@ -114,7 +44,7 @@ Route::get('/sitemap', [SitemapController::class, 'sitemap'])->name('site.map.ad
 
 // Site Routes
 Route::middleware(['bread'])->group(function () {
-    Route::get('/', [SiteController::class, 'index'])->name('home');
+    Route::get('/', [SiteController::class, 'homePage'])->name('home');
     Route::get('/more-information', [SiteController::class, 'getMoreInformation'])->name('more');
     //getMoreInformation
     Route::get('/zoekresultaten', [SiteController::class, 'results'])->name('results');
