@@ -50,7 +50,14 @@ class SiteController extends Controller
     }
 
     public function seoPages(){
+        $page = Page::getCustomPage('home');
+        $seo = $page?->seo;
 
+        if (empty($page)){
+            abort(404);
+        }
+
+        return view('seosite.page', ['page' => $page, 'seo' => $seo]);
     }
 
     public function seoBlog(){
@@ -62,7 +69,14 @@ class SiteController extends Controller
     }
 
     public function seoAboutUs(){
+        $page = Page::getCustomPage('home');
+        $seo = $page?->seo;
 
+        if (empty($page)){
+            abort(404);
+        }
+
+        return view('seosite.about', ['page' => $page, 'seo' => $seo]);
     }
 
     public function seoContact(){

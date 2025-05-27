@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
-use Livewire\Volt\Volt;
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CityController;
@@ -42,48 +41,16 @@ Route::get('/preview-mail', function () {
 
 Route::get('/sitemap', [SitemapController::class, 'sitemap'])->name('site.map.ads');
 
-// Site Routes
+// SEO Site Routes
 Route::middleware(['bread'])->group(function () {
     Route::get('/', [SiteController::class, 'homePage'])->name('home');
-    Route::get('/more-information', [SiteController::class, 'getMoreInformation'])->name('more');
-    //getMoreInformation
-    Route::get('/zoekresultaten', [SiteController::class, 'results'])->name('results');
-    Route::get('/over-ons', [SiteController::class, 'about'])->name('about');
-
+    Route::get('/over-ons', [SiteController::class, 'seoAboutUs'])->name('about');
     // Blog Routes
     Route::get('/blog', [BlogController::class, 'overview'])->name('blog.overview');
     Route::get('/blog/{slug}/{id}', [BlogController::class, 'blogDetail'])->name('blog.detail');
-
-    // Overview Routes
-    Route::get('/overzicht', [OverviewController::class, 'map'])->name('map');
-
-    // Profile Routes
-    Route::get('/{slug}/{id}', [ProfileController::class, 'profile'])
-    ->where([
-        'slug' => '^(?!admin).*',  // Exclude "admin"
-        'id' => '[0-9]+'           // Ensure ID is an integer
-    ])
-    ->name('profile');
-
     Route::get('/contact', App\Livewire\ContactForm::class)->name('contact');
-    Route::get('/{slug}', [SiteController::class, 'page'])->name('custom.page'); 
-
-    Route::get('/{slug}/{city}', [SiteController::class, 'seopage'])->name('page.city'); 
-    //Route::get('/{slug}/{provincie}/{city}', [SiteController::class, 'seopage'])->name('page.province.city'); 
-    // Search Routes
-   // Route::get('/zoekresultaat', [SearchController::class, 'search'])->name('search');
+    Route::get('/{slug}', [SiteController::class, 'seoPages'])->name('custom.page'); 
 });
 
-//routings for dashboard
-
- 
-
-
-Route::redirect('dashboard', 'cms/dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
-
-
-Route::get('/convert', [SiteController::class, 'convertDB'])->name('site.convert');    
-Route::get('/convert2', [SiteController::class, 'convertDBAgain'])->name('site.convert2');    
+   
 
