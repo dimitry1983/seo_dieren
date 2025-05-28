@@ -61,11 +61,25 @@ class SiteController extends Controller
     }
 
     public function seoBlog(){
+        $page = Page::getCustomPage('home');
+        $seo = $page?->seo;
 
+        if (empty($page)){
+            abort(404);
+        }
+
+        return view('seosite.blog', ['page' => $page, 'seo' => $seo]);
     }
 
     public function seoBlogDetail(){
+        $page = Page::getCustomPage('home');
+        $seo = $page?->seo;
 
+        if (empty($page)){
+            abort(404);
+        }
+
+        return view('seosite.blog-detail', ['page' => $page, 'seo' => $seo]);
     }
 
     public function seoAboutUs(){

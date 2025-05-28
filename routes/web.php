@@ -46,8 +46,8 @@ Route::middleware(['bread'])->group(function () {
     Route::get('/', [SiteController::class, 'homePage'])->name('home');
     Route::get('/over-ons', [SiteController::class, 'seoAboutUs'])->name('about');
     // Blog Routes
-    Route::get('/blog', [BlogController::class, 'overview'])->name('blog.overview');
-    Route::get('/blog/{slug}/{id}', [BlogController::class, 'blogDetail'])->name('blog.detail');
+    Route::get('/blog', [SiteController::class, 'seoBlog'])->name('blog.overview');
+    Route::get('/blog/detail', [SiteController::class, 'seoBlogDetail'])->name('blog.detail');
     Route::get('/contact', App\Livewire\ContactForm::class)->name('contact');
     Route::get('/{slug}', [SiteController::class, 'seoPages'])->name('custom.page'); 
 });

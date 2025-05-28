@@ -526,121 +526,181 @@ function getPageBuilderSchema(){
     $iconOptions = iconOptions();
     $schema = [
         // Header block
-        FilamentBuilder\Block::make('Header-big')
+        FilamentBuilder\Block::make('Header_big')
         ->schema([
-            FileUpload::make('background-image'),
+            FileUpload::make('background_image'),
             TextInput::make('title'),
             Textarea::make('description'),
-            TextInput::make('cta_url'),
             TextInput::make('cta_title'),
+            TextInput::make('cta_url1'),
+            TextInput::make('cta_title1'),
+            TextInput::make('cta_url2'),
+            TextInput::make('cta_title2'),
+            TextInput::make('cta_url3'),
+            TextInput::make('cta_title3'),
+        ]),
+
+      FilamentBuilder\Block::make('intro')
+        ->schema([
+            FileUpload::make('image_left'),
+            TextInput::make('title'),
+            RichEditor::make('description'),
+            Repeater::make('insurance')
+                ->schema([
+                    TextInput::make('advantages'),
+                ]),
+            TextInput::make('cta_url'),
+            TextInput::make('cta_title'),    
         ]),
 
         FilamentBuilder\Block::make('insurances')
-        ->schema([
-            Repeater::make('insurance')
-            ->schema([
-                    FileUpload::make('image'),
-                    TextInput::make('title'),
-                    TextInput::make('discount'),
-                    TextInput::make('cta_url'),
-                    TextInput::make('cta_title'),
-                    TextInput::make('small_text_under_button'),
-                ])
-        ]),
-
-
-        FilamentBuilder\Block::make('content')
-        ->schema([
-            TextInput::make('title'),
-            RichEditor::make('description'),
-        ]),
-
-        FilamentBuilder\Block::make('about_us_content')
-        ->schema([
-            TextInput::make('title_first'),
-            TextInput::make('title_second'),
-            RichEditor::make('description'),
-            TextInput::make('cta_url_btn1'),
-            TextInput::make('cta_title_btn1'),
-            FileUpload::make('image'),
-        ]),
-
-        FilamentBuilder\Block::make('about_us_cta')
-        ->schema([
-            TextInput::make('title'),
-            Textarea::make('description'),
-            Repeater::make('usp')
-            ->schema([
-                TextInput::make('usp'),
-            ]),
-            TextInput::make('cta_url_btn1'),
-            TextInput::make('cta_title_btn1'),
-            FileUpload::make('image'),
-        ]),
-
-        FilamentBuilder\Block::make('adventages')
-        ->schema([
-            TextInput::make('title'),
-            Textarea::make('description'),
-            Repeater::make('usp')
-            ->schema([
-                TextInput::make('usp'),
-            ]),
-            FileUpload::make('image'),
-        ]),
-
-        FilamentBuilder\Block::make('dark_about_banner')
-        ->schema([
-            TextInput::make('title'),
-            Textarea::make('description'),
-            Repeater::make('about')
             ->schema([
                 TextInput::make('title'),
-                TextInput::make('number'),
+                RichEditor::make('description'),
+                Repeater::make('insurance')
+                ->schema([
+                        FileUpload::make('image'),
+                        TextInput::make('title'),
+                        TextInput::make('rating'),
+                        RichEditor::make('description'),
+                        Repeater::make('insurance')
+                            ->schema([
+                                TextInput::make('title'),
+                                TextInput::make('text'),
+                                TextInput::make('price'),
+                            ]),
+                        TextInput::make('cta_url1'),
+                        TextInput::make('cta_title1'),
+                        TextInput::make('cta_url2'),
+                        TextInput::make('cta_title2'),
+                    ])
             ]),
-        ]),
 
-        FilamentBuilder\Block::make('green_usp')
-        ->schema([
-            TextInput::make('title'),
-            Repeater::make('usp')
+            FilamentBuilder\Block::make('information_steps')
+                ->schema([
+                    TextInput::make('title'),
+                    Repeater::make('info_steps')
+                        ->schema([
+                            TextInput::make('title'),
+                            RichEditor::make('description'),
+                        ]),    
+                ]),
+
+            FilamentBuilder\Block::make('intro_flex')
+                ->schema([
+                    TextInput::make('title'),
+                    RichEditor::make('description'),
+                ]),        
+
+            FilamentBuilder\Block::make('insurances_flex')
+                ->schema([
+                    TextInput::make('title'),
+                    RichEditor::make('description'),
+                    Repeater::make('insurance')
+                    ->schema([
+                            FileUpload::make('image'),
+                            TextInput::make('title'),
+                            TextInput::make('rating'),
+                            RichEditor::make('description'),
+                            Repeater::make('insurance')
+                                ->schema([
+                                    TextInput::make('usp'),
+                                ]),
+                            Repeater::make('insurance')
+                                ->schema([
+                                    TextInput::make('title'),
+                                    TextInput::make('text'),
+                                    TextInput::make('price'),
+                                ]),
+                            TextInput::make('cta_url1'),
+                            TextInput::make('cta_title1'),
+                            TextInput::make('cta_url2'),
+                            TextInput::make('cta_title2'),
+                        ])
+                ]),
+
+            FilamentBuilder\Block::make('information_steps_flex')
+                ->schema([
+                    TextInput::make('title'),
+                    Repeater::make('info_steps')
+                        ->schema([
+                            TextInput::make('title'),
+                            RichEditor::make('description'),
+                        ]),    
+                ]),
+
+          FilamentBuilder\Block::make('seo_text_flex')
+                ->schema([
+                    FileUpload::make('image_left'),
+                    TextInput::make('title'),
+                    RichEditor::make('description'),
+                    Repeater::make('insurance')
+                        ->schema([
+                            TextInput::make('advantages'),
+                        ]),
+                    TextInput::make('cta_url'),
+                    TextInput::make('cta_title'),    
+                ]),
+
+
+        FilamentBuilder\Block::make('faq_flex')
+                ->schema([
+                    Repeater::make('faq')
+                        ->schema([
+                            TextInput::make('question'),
+                            RichEditor::make('answer'),
+                        ]),    
+                ]),
+
+        FilamentBuilder\Block::make('header_blog')
             ->schema([
-                TextInput::make('title')
+                FileUpload::make('background_image'),
             ]),
-            TextInput::make('cta_url_btn1'),
-            TextInput::make('cta_title_btn1'),
-            TextInput::make('cta_url_btn2'),
-            TextInput::make('cta_title_btn2'),
-        ]),
-
-        // Event block
-        // FilamentBuilder\Block::make('events')
-        // ->schema([
-        //     TextInput::make('title'),
-        //     RichEditor::make('description')
-        // ]),
-
-        // News block
-        // FilamentBuilder\Block::make('news')
-        // ->schema([
-        //     TextInput::make('title'),
-        //     Select::make('news')->multiple()->options(News::pluck('title','id'))
-        // ]),
-
-        // Content block
-        FilamentBuilder\Block::make('content')
+        FilamentBuilder\Block::make('header_blog_detail')
+            ->schema([
+                FileUpload::make('background_image'),
+            ]),
+        FilamentBuilder\Block::make('header_contact')
+            ->schema([
+                FileUpload::make('background_image'),
+            ]),
+        FilamentBuilder\Block::make('header_over_ons')
+            ->schema([
+                FileUpload::make('background_image'),
+            ]),    
+      FilamentBuilder\Block::make('intro_over_ons')
         ->schema([
-            FileUpload::make('background'),
-            Select::make('icon')
-                    ->label('Select Icon')
-                    ->options($iconOptions) // $iconOptions is the associative array generated from the JSON data
-                    ->searchable()
-                    ->getOptionLabelUsing(fn ($value) => '<i class="' . $value . '"></i> ' . $value)
-                    ->hint('Choose a Font Awesome icon.')
-                    ->reactive(),
+            FileUpload::make('image_left'),
             TextInput::make('title'),
-            RichEditor::make('description')
+            RichEditor::make('description'),
+            Repeater::make('insurance')
+                ->schema([
+                    TextInput::make('advantages'),
+                ]),
+            TextInput::make('cta_url'),
+            TextInput::make('cta_title'),    
         ]),
+        FilamentBuilder\Block::make('intro_over_ons_block_2')
+            ->schema([
+                FileUpload::make('image_left'),
+                TextInput::make('title'),
+                RichEditor::make('description'),
+                Repeater::make('insurance')
+                    ->schema([
+                        TextInput::make('advantages'),
+                    ]),
+                TextInput::make('cta_url'),
+                TextInput::make('cta_title'),    
+            ]),
+        FilamentBuilder\Block::make('information_steps_over_ons')
+                ->schema([
+                    TextInput::make('title'),
+                    Repeater::make('info_steps')
+                        ->schema([
+                            TextInput::make('title'),
+                            RichEditor::make('description'),
+                        ]),    
+                ]),    
     ];
 
     return $schema;

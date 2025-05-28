@@ -116,7 +116,6 @@
 </body>
 <script src="{{ asset('dieren/src/public/js/jquery.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-<script src="{{ asset('hondverzekeren/src/public/js/alpine.js')}}"></script>
 <script src="{{ asset('hondverzekeren/src/public/js/splide.min.js')}}"></script>
 @stack('scripts')
 @livewireScripts

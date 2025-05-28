@@ -82,15 +82,15 @@ class BreadcrumbMiddleware
 
         if ($currentRouteName == 'blog.detail'){
 
-            $slug = $routeParameters['slug'];
-            $id = $routeParameters['id'];
+            $slug = $routeParameters['slug'] ?? '';
+            $id = $routeParameters['id'] ?? '';
             $blogName = Blog::find($id);
 
             $breadcrumbData = [
                 'url_one' => route('blog.overview'),
                 'name_one' => __('Blog'), 
                 'total' => 2,
-                'name_two' =>  $blogName->name
+                'name_two' =>  $blogName->name ?? ""
             ];
         }
 
