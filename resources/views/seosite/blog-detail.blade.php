@@ -16,6 +16,7 @@
  <!-- content -->
  <section class="section section--white section--content">
      <div class="container">
+        @include('parts.breadcrumb' , ['breadcrumbs' => $breadcrumbData ?? ''] )
          <div class="lg:grid lg:grid-cols-12 lg:gap-24">
              <div class="col-span-8 flex flex-col gap-11">
 

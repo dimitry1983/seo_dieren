@@ -12,12 +12,14 @@
     </section>
     <!-- /hero -->
 
+<section class="section section--white  w-full bg-white pt-10">
+    <div class="container p-4">
+        @include('parts.breadcrumb' , ['breadcrumbs' => $breadcrumbData ?? ''] )
+    </div>
+
     @foreach ($blocks as $item)
         @include('seosite.blocks.' . $item['type'], ['blocks' => $blocks])
     @endforeach
-
-
-
 
 </div>
 

@@ -16,7 +16,7 @@
  <!-- content -->
  <section class="section section--white section--content">
      <div class="container">
-
+        @include('parts.breadcrumb' , ['breadcrumbs' => $breadcrumbData ?? ''] )
          <div class="flex flex-col lg:grid lg:grid-cols-3 gap-12">
              <div class="col-span-1">
                  <div class="relative pb-[100%] rounded-[20px] mb-4 overflow-hidden">

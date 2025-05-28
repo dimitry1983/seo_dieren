@@ -70,9 +70,8 @@ class SiteController extends Controller
     }
 
     public function seoBlog(){
-        $page = Page::getCustomPage('blog');
+        $page = Page::getCustomPage('blogs');
         $seo = $page?->seo;
-
         if (empty($page)){
             abort(404);
         }

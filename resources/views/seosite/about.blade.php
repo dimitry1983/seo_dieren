@@ -18,6 +18,9 @@
             $image =  Storage::url($intro['image_left']) ?? asset('hondverzekeren/src/public/img/d4dafed883c6d259b8270f4bb463c0f23187e10a.png');
         ?>
         <section class="section section--white  w-full bg-white">
+             <div class="container">
+               @include('parts.breadcrumb' , ['breadcrumbs' => $breadcrumbData ?? ''] )
+            </div>   
             <div class="container flex-col lg:grid lg:grid-cols-12 gap-12 justify-center items-center mx-auto my-0">
                 <div class="shrink-0 col-span-5">
                     <img src="{{$image}}" alt="Woman hugging a husky dog" class="object-cover rounded-3xl size-full">

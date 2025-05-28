@@ -4,7 +4,7 @@
         @endphp       
         
         <!-- content-image -->
-        <section class="section section--white  w-full bg-white">
+
             <div class="container mx-auto my-0">
 
 
