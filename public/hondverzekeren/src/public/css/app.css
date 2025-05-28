@@ -9,7 +9,9 @@
     body{
         @apply mona
     }
-
+    p{
+        @apply mb-5 max-w-full text-lg font-medium leading-loose text-neutral-700 max-md:text-base max-sm:text-sm
+    }
     .container{
         @apply mx-auto px-4
     }

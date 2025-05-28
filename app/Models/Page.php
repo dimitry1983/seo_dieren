@@ -72,7 +72,20 @@ class Page extends Model
     }
 
     public static function getCustomPage($page){
-      
         return Page::ForSite()->where('slug', $page)->first();
     }
+
+    public static function getBlockByType($page, $type){
+        $blocks = $page->blocks;
+       
+        $block = null;
+        foreach ($blocks as $b){
+            if ($b['type'] == $type){
+                $block = $b;
+                break;
+            }
+        }
+        return $block['data'];
+    }
+
 }

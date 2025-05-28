@@ -586,6 +586,16 @@ function getPageBuilderSchema(){
                         ]),    
                 ]),
 
+            FilamentBuilder\Block::make('partners')
+                 ->schema([
+                    TextInput::make('title'),
+                    Repeater::make('info_steps')
+                        ->schema([
+                            FileUpload::make('image'),
+                            TextInput::make('url'),   
+                        ]),
+                ]),
+
             FilamentBuilder\Block::make('intro_flex')
                 ->schema([
                     TextInput::make('title'),
@@ -645,6 +655,7 @@ function getPageBuilderSchema(){
 
         FilamentBuilder\Block::make('faq_flex')
                 ->schema([
+                    TextInput::make('big_title'),
                     Repeater::make('faq')
                         ->schema([
                             TextInput::make('question'),

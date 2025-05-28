@@ -1,9 +1,12 @@
  @extends('layouts.seosite')
 
  @section('content')
-
+  <?php
+    use Illuminate\Support\Facades\Storage;
+    $image =  Storage::url($headerBlock['background_image']) ?? asset('hondverzekeren/src/public/img/hero-bg.jpg');
+?>
  <!-- hero -->
- <section class="section section--primary section--hero section--page-header bg-cover bg-center bg-no-repeat text-white relative overflow-hidden" style="background-image: url('{{ asset('hondverzekeren/src/public/img/hero-bg.jpg') }}');">
+ <section class="section section--primary section--hero section--page-header bg-cover bg-center bg-no-repeat text-white relative overflow-hidden" style="background-image: url('{{$image}}');">
      <div class="container text-center">
          <h1 class="section-title--lg lg:text-[60px] mb-2 font-medium">Blog</h1>
      </div>
