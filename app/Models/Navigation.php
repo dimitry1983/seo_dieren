@@ -12,7 +12,7 @@ class Navigation extends Model
     protected $guarded = [];
 
     // Define the fillable properties for mass assignment
-    protected $fillable = ['location', 'title', 'content','slug','items'];
+    protected $fillable = ['location', 'title', 'content','slug','items', 'site_id'];
 
     protected $casts = [
         'content' => 'array',

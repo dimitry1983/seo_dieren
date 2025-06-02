@@ -22,11 +22,14 @@
 
                  <div >
                      <figure class="relative pb-[55%]">
-                         <img src="{{ asset('hondverzekeren/src/public/img/image.jpg')}}" class="abs-cover" alt="">
+                         <img src="{{ $blog->thumb ? Storage::url($blog->thumb) : asset('dieren/src/public/img/blog-interior.jpg') }}" class="abs-cover" alt="{{ $blog->name }}">
                      </figure>
                      <div class="py-6 px-10">
-                         <h2 class="text-2xl lg:text-[35px] font-semibold mb-6">Fotografie voor beginners: compositie en bewerking</h2>
-                         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. </p>
+                        <h2 class="text-2xl lg:text-[35px] font-semibold mb-6"> {!! Str::headline($blog->name) !!}</h2>
+                        <span class="date text-primary block mb-4 font-semibold">
+                            {{ $blog->created_at->translatedFormat('d F Y') }}
+                        </span>
+                         <p>{!! $blog->description !!}</p>
                      </div>
                  </div>
 
@@ -34,44 +37,32 @@
 
              <div class="col-span-4">
                  <div class="py-9 px-10">
-                     <h3 class="text-2xl font-semibold mb-6">Lorem ipsum dolor sit amet</h3>
+                     <h3 class="text-2xl font-semibold mb-6">  Gerelateerde Artikelen</h3>
                      <div class="flex flex-col gap-5">
-                         <div class="grid grid-cols-3 gap-5 items-center">
-                             <div class="col-span-1">
-                                 <figure class="pb-[65%] relative rounded-[10px] border-[3px] border-solid border-primary overflow-hidden">
-                                     <img src="{{ asset('hondverzekeren/src/public/img/image.jpg')}}" class="abs-cover filter blur opacity-80 scale-125" alt="">
-                                     <i class="fa-solid fa-lock-keyhole absolute left-0 right-0 w-fit h-fit top-0 bottom-0 m-auto z-10 text-white text-3xl drop-shadow-md"></i>
-                                 </figure>
-                             </div>
-                             <div class="col-span-2">
-                                 <strong class="text-lg font-semibold text-black block mb-1">Dit is de title</strong>
-                                 <span class="font-medium text-primaryDark">Dit is de korte omschrijving</span>
-                             </div>
-                         </div>
-                         <div class="grid grid-cols-3 gap-5 items-center">
-                             <div class="col-span-1">
-                                 <figure class="pb-[65%] relative rounded-[10px] border-[3px] border-solid border-primary overflow-hidden">
-                                     <img src="{{ asset('hondverzekeren/src/public/img/image.jpg')}}" class="abs-cover filter blur opacity-80 scale-125" alt="">
-                                     <i class="fa-solid fa-lock-keyhole absolute left-0 right-0 w-fit h-fit top-0 bottom-0 m-auto z-10 text-white text-3xl drop-shadow-md"></i>
-                                 </figure>
-                             </div>
-                             <div class="col-span-2">
-                                <strong class="text-lg font-semibold text-black block mb-1">Dit is de title</strong>
-                                 <span class="font-medium text-primaryDark">Dit is de korte omschrijving</span>
-                             </div>
-                         </div>
-                         <div class="grid grid-cols-3 gap-5 items-center">
-                             <div class="col-span-1">
-                                 <figure class="pb-[65%] relative rounded-[10px] border-[3px] border-solid border-primary overflow-hidden">
-                                     <img src="{{ asset('hondverzekeren/src/public/img/image.jpg')}}" class="abs-cover filter blur opacity-80 scale-125" alt="">
-                                     <i class="fa-solid fa-lock-keyhole absolute left-0 right-0 w-fit h-fit top-0 bottom-0 m-auto z-10 text-white text-3xl drop-shadow-md"></i>
-                                 </figure>
-                             </div>
-                             <div class="col-span-2">
-                                <strong class="text-lg font-semibold text-black block mb-1">Dit is de title</strong>
-                                <span class="font-medium text-primaryDark">Dit is de korte omschrijving</span>
-                             </div>
-                         </div>
+                         
+                        @if (!empty($blogs))
+                            @foreach($blogs as $related)
+                               <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 items-center">
+                                    <div class="col-span-1 sm:col-span-1">
+                                        <a href="{{ route('blog.detail', ['slug' => Str::slug($related->name), 'id' => $related->id]) }}">
+                                            <figure class="pb-[65%] relative rounded-[10px] border-[3px] border-solid border-primary overflow-hidden">
+                                                <img src="{{ $related->thumb ? Storage::url($related->thumb) : asset('dieren/src/public/img/article1.jpg') }}" class="abs-cover opacity-80 scale-125" alt="">
+                                            </figure>
+                                        </a>
+                                    </div>
+                                    <div class="col-span-1 sm:col-span-2">
+                                        <strong class="text-lg font-semibold text-black block mb-1">
+                                            <a href="{{ route('blog.detail', ['slug' => Str::slug($related->name), 'id' => $related->id]) }}">
+                                                {{ Str::limit($related->name, 50) }}
+                                            </a>
+                                        </strong>
+                                        <span class="font-medium text-primaryDark">
+                                            {{ \Illuminate\Support\Str::limit(strip_tags($related->description), 60) }}
+                                        </span>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endif
                  </div>
              </div>
          </div>

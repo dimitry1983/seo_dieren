@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\Page;
 use App\Services\ContentService;
 use App\Services\GeoapifyService;
@@ -52,21 +53,25 @@ class SiteController extends Controller
         }
 
         $headerBlock = Page::getBlockInfo($page->blocks, 'header_blog');
-
-        return view('seosite.blog', ['page' => $page, 'seo' => $seo, 'headerBlock' => $headerBlock]);
+        $blogs = Blog::getLatestBlogs();
+        return view('seosite.blog', ['page' => $page, 'seo' => $seo, 'blogs' => $blogs, 'headerBlock' => $headerBlock]);
     }
 
-    public function seoBlogDetail(){
+    public function seoBlogDetail($slug, $id){
+        $blog = Blog::where('id', $id)
+            ->where('status', 'active')
+            ->firstOrFail();
         $page = Page::getCustomPage('blog-detail');
-        $seo = $page?->seo;
 
-        if (empty($page)){
+        $seo = $blog?->seo;
+
+        if (empty($page) OR $slug !== slugify($blog->name)){
             abort(404);
         }
 
         $headerBlock = Page::getBlockInfo($page->blocks, 'header_blog_detail');
-
-        return view('seosite.blog-detail', ['page' => $page, 'seo' => $seo, 'headerBlock' => $headerBlock]);
+        $blogs = Blog::get3LatestBlogs(6);
+        return view('seosite.blog-detail', ['page' => $page, 'seo' => $seo, 'blogs' => $blogs , 'blog' => $blog  ,'headerBlock' => $headerBlock]);
     }
 
     public function seoAboutUs(){

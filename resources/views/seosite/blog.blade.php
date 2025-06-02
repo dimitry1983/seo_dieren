@@ -1,10 +1,12 @@
  @extends('layouts.seosite')
 
  @section('content')
-  <?php
+ <?php
+
     use Illuminate\Support\Facades\Storage;
+
     $image =  Storage::url($headerBlock['background_image']) ?? asset('hondverzekeren/src/public/img/hero-bg.jpg');
-?>
+    ?>
  <!-- hero -->
  <section class="section section--primary section--hero section--page-header bg-cover bg-center bg-no-repeat text-white relative overflow-hidden" style="background-image: url('{{$image}}');">
      <div class="container text-center">
@@ -16,73 +18,36 @@
  <!-- content -->
  <section class="section section--white section--content">
      <div class="container">
-        @include('parts.breadcrumb' , ['breadcrumbs' => $breadcrumbData ?? ''] )
+         @include('parts.breadcrumb' , ['breadcrumbs' => $breadcrumbData ?? ''] )
          <div class="flex flex-col lg:grid lg:grid-cols-3 gap-12">
-             <div class="col-span-1">
-                 <div class="relative pb-[100%] rounded-[20px] mb-4 overflow-hidden">
-                     <img src="{{ asset('hondverzekeren/src/public/img/d4dafed883c6d259b8270f4bb463c0f23187e10a.png')}}" alt="Blog Image 1" class="w-full h-full object-cover absolute top-0 left-0">
-                 </div>
-                 <span class="uppercase text-secondary font-semibold">28 MAY 2025</span>
-                 <h2 class="text-3xl text-primary font-semibold mb-2">Blog Title 1</h2>
-                 <p class="text-lg mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at erat vel quam facilisis commodo.</p>
-                 <a href="#" class="text-secondary font-bold">Lees meer</a>
+
+             @if (!empty($blogs[0]))
+                @foreach($blogs as $blog)
+                    <div class="col-span-1">
+                        <div class="relative pb-[100%] rounded-[20px] mb-4 overflow-hidden">
+                            <img src="{{ asset('storage/'.$blog->thumb ?? 'dieren/src/public/img/blog-2.png') }}" alt="{{ $blog->name }}" class="w-full h-full object-cover absolute top-0 left-0">
+                        </div>
+                        <span class="uppercase text-secondary font-semibold">{{ strftime('%d %B %Y', strtotime($blog->created_at)) }}</span>
+                        <h2 class="text-3xl text-primary font-semibold mb-2">{{ $blog->name }}</h2>
+                        <p class="text-lg mb-4">{{ \Illuminate\Support\Str::limit(strip_tags($blog->description), 120) }}</p>
+                        <a href="{{ route('blog.detail', [ 'slug' => slugify($blog->name) , 'id' => $blog->id ]) }}" class="text-secondary font-bold">Lees meer</a>
+                    </div>
+                @endforeach
+             @else
+             <div class="text-center py-10 text-gray-500">
+                 <p class="text-lg font-semibold">{{ devTranslate('page.No Blog articles found','Geen Blog artikelen gevonden.') }}</p>
              </div>
-             <div class="col-span-1">
-                 <div class="relative pb-[100%] rounded-[20px] mb-4 overflow-hidden">
-                     <img src="{{ asset('hondverzekeren/src/public/img/d4dafed883c6d259b8270f4bb463c0f23187e10a.png')}}" alt="Blog Image 2" class="w-full h-full object-cover absolute top-0 left-0">
-                 </div>
-                 <span class="uppercase text-secondary font-semibold">28 MAY 2025</span>
-                 <h2 class="text-3xl text-primary font-semibold mb-2">Blog Title 2</h2>
-                 <p class="text-lg mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at erat vel quam facilisis commodo.</p>
-                 <a href="#" class="text-secondary font-bold">Lees meer</a>
-             </div>
-             <div class="col-span-1">
-                 <div class="relative pb-[100%] rounded-[20px] mb-4 overflow-hidden">
-                     <img src="{{ asset('hondverzekeren/src/public/img/d4dafed883c6d259b8270f4bb463c0f23187e10a.png')}}" alt="Blog Image 3" class="w-full h-full object-cover absolute top-0 left-0">
-                 </div>
-                 <span class="uppercase text-secondary font-semibold">28 MAY 2025</span>
-                 <h2 class="text-3xl text-primary font-semibold mb-2">Blog Title 3</h2>
-                 <p class="text-lg mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at erat vel quam facilisis commodo.</p>
-                 <a href="#" class="text-secondary font-bold">Lees meer</a>
-             </div>
-             <div class="col-span-1">
-                 <div class="relative pb-[100%] rounded-[20px] mb-4 overflow-hidden">
-                     <img src="{{ asset('hondverzekeren/src/public/img/d4dafed883c6d259b8270f4bb463c0f23187e10a.png')}}" alt="Blog Image 4" class="w-full h-full object-cover absolute top-0 left-0">
-                 </div>
-                 <span class="uppercase text-secondary font-semibold">28 MAY 2025</span>
-                 <h2 class="text-3xl text-primary font-semibold mb-2">Blog Title 4</h2>
-                 <p class="text-lg mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at erat vel quam facilisis commodo.</p>
-                 <a href="#" class="text-secondary font-bold">Lees meer</a>
-             </div>
-             <div class="col-span-1">
-                 <div class="relative pb-[100%] rounded-[20px] mb-4 overflow-hidden">
-                     <img src="{{ asset('hondverzekeren/src/public/img/d4dafed883c6d259b8270f4bb463c0f23187e10a.png')}}" alt="Blog Image 5" class="w-full h-full object-cover absolute top-0 left-0">
-                 </div>
-                 <span class="uppercase text-secondary font-semibold">28 MAY 2025</span>
-                 <h2 class="text-3xl text-primary font-semibold mb-2">Blog Title 5</h2>
-                 <p class="text-lg mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at erat vel quam facilisis commodo.</p>
-                 <a href="#" class="text-secondary font-bold">Lees meer</a>
-             </div>
-             <div class="col-span-1">
-                 <div class="relative pb-[100%] rounded-[20px] mb-4 overflow-hidden">
-                     <img src="{{ asset('hondverzekeren/src/public/img/d4dafed883c6d259b8270f4bb463c0f23187e10a.png')}}" alt="Blog Image 6" class="w-full h-full object-cover absolute top-0 left-0">
-                 </div>
-                 <span class="uppercase text-secondary font-semibold">28 MAY 2025</span>
-                 <h2 class="text-3xl text-primary font-semibold mb-2">Blog Title 6</h2>
-                 <p class="text-lg mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at erat vel quam facilisis commodo.</p>
-                 <a href="#" class="text-secondary font-bold">Lees meer</a>
-             </div>
+             @endif
+
          </div>
 
+        @if (!empty($blogs[0]))
          <div class="pagination flex items-center justify-center mt-20 gap-2">
-             <a href="#" class="arrow"><i class="fa-light fa-arrow-left"></i></a>
-             <span>1</span>
-             <a href="#">2</a>
-             <a href="#">3</a>
-             <a href="#" class="arrow"><i class="fa-light fa-arrow-right"></i></a>
+              {{ $blogs->appends(request()->query())->links('vendor.pagination.custom') }}
          </div>
+         @endif
      </div>
  </section>
- 
+
  <!-- /content -->
  @endsection

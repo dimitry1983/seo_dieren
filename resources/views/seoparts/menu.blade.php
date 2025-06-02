@@ -11,11 +11,13 @@
             </button>
             <nav id="mainMenu" class="peer-open:border-t peer-open:border-gray-800 hidden absolute top-[100%] left-0 lg:static bg-primaryAlt w-full lg:w-[fit-content] lg:block ms-auto z-50 bg-white">
                 <ul class="text-center py-5 lg:py-0 lg:text-left lg:flex lg:gap-10 text-lg text-black font-medium">
-                    <li class="nav-item hover:text-primary"><a href="#">Home</a></li>
-                    <li class="nav-item hover:text-primary mt-2 lg:mt-0"><a href="#">Over ons</a></li>
-                    <li class="nav-item hover:text-primary mt-2 lg:mt-0"><a href="#">Onze verzekering</a></li>
-                    <li class="nav-item hover:text-primary mt-2 lg:mt-0"><a href="#">Blog</a></li>
-                    <li class="nav-item hover:text-primary mt-2 lg:mt-0"><a href="#">Contact</a></li>
+                      @if (!empty($navigations['header']))
+                        @foreach ($navigations['header']['content'] as $item)
+                            <li class="nav-item hover:text-primary mt-2 lg:mt-0">
+                                <a href="{{$item['link']}}">{{$item['title']}}</a>
+                            </li>
+                        @endforeach
+                    @endif
                 </ul>
 
                 <div class="flex flex-col lg:hidden px-4 pb-4 gap-4">

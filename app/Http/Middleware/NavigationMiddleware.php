@@ -21,6 +21,7 @@ class NavigationMiddleware
        
 
         // Fetch the navigation menus
+        $navigations['header'] = Navigation::getByTitle('header-menu');
         $navigations['footer1'] = Navigation::getByTitle('footer1');
         $navigations['footer2'] = Navigation::getByTitle('footer2');
         $navigations['footer3'] = Navigation::getByTitle('footer3');
