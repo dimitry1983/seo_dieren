@@ -39,7 +39,7 @@ Route::get('/preview-mail', function () {
     return (new SupportMessageMail($fakeUser, $content))->render();
 });
 
-Route::get('/sitemap', [SitemapController::class, 'sitemap'])->name('site.map.ads');
+Route::get('/sitemap.xml', [SitemapController::class, 'sitemap'])->name('site.map.ads');
 
 // SEO Site Routes
 Route::middleware(['bread'])->group(function () {
