@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\News;
+use App\Models\Page;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
@@ -595,6 +596,22 @@ function getPageBuilderSchema(){
                             TextInput::make('url'),   
                         ]),
                 ]),
+
+            FilamentBuilder\Block::make('seo_block')
+                 ->schema([
+                    TextInput::make('title'),
+                    select::make('flex_pages')->multiple()->options( function () { 
+                        $siteId = session('website')?->id;
+
+                if (!$siteId) {
+                    return [];
+                }
+
+                return Page::where('site_id', $siteId)
+                    ->pluck('title', 'id') // Assuming `slug` is the key, and `title` is the label
+                    ->toArray(); })->label(devTranslate('Selecteer pagina\'s', 'Selecteer pagina\'s')),
+                ]),
+
 
             FilamentBuilder\Block::make('intro_flex')
                 ->schema([

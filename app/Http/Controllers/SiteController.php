@@ -23,13 +23,14 @@ class SiteController extends Controller
             abort(404);
         }
 
+        
         $headerBlock = Page::getBlockInfo($page->blocks, 'Header_big');
         $intro = Page::getBlockInfo($page->blocks, 'intro');
         $insurances = Page::getBlockInfo($page->blocks, 'insurances');
         $information_steps = Page::getBlockInfo($page->blocks, 'information_steps');
         $partners = Page::getBlockInfo($page->blocks, 'partners');
-
-        return view('seosite.index', ['page' => $page, 'seo' => $seo, 'headerBlock' => $headerBlock, 'intro' => $intro, 'insurances' => $insurances, 'information_steps' => $information_steps, 'partners' => $partners]);
+        $seoBlock = Page::getBlockInfo($page->blocks, 'seo_block');
+        return view('seosite.index', ['page' => $page, 'seo' => $seo, 'seoBlock' => $seoBlock , 'headerBlock' => $headerBlock, 'intro' => $intro, 'insurances' => $insurances, 'information_steps' => $information_steps, 'partners' => $partners]);
     }
 
     public function seoPages($slug){
@@ -58,9 +59,13 @@ class SiteController extends Controller
     }
 
     public function seoBlogDetail($slug, $id){
+      
+       
         $blog = Blog::where('id', $id)
             ->where('status', 'active')
             ->firstOrFail();
+        
+           
         $page = Page::getCustomPage('blog-detail');
 
         $seo = $blog?->seo;

@@ -47,14 +47,14 @@
                                     <!-- Text section -->
                                     <div class="lg:col-span-3 pr-4 py-2 px-2 md:px-0 relative">
                                         <h3 class="title title--article text-normal font-bold">
-                                            <a href="{{ route('blog.detail', ['slug' => Str::slug($related->name), 'id' => $related->id]) }}">
+                                            <a href="{{ route('blog.detail', ['slug' => slugify($related->name), 'id' => $related->id]) }}">
                                                 {{ Str::limit($related->name, 50) }}
                                             </a>
                                         </h3>
                                         <p class="text-sm mb-0">
                                             {{ \Illuminate\Support\Str::limit(strip_tags($related->description), 60) }}
                                         </p>
-                                        <a href="{{ route('blog.detail', ['slug' => Str::slug($related->name), 'id' => $related->id]) }}"
+                                        <a href="{{ route('blog.detail', ['slug' => slugify($related->name), 'id' => $related->id]) }}"
                                         class="text-primary absolute lg:right-[8px] right-[15px] lg:bottom-[5px] bottom-[15px] text-lg">
                                             <i class="fa-sharp fa-solid fa-circle-arrow-right"></i>
                                         </a>

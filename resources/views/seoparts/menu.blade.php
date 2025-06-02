@@ -14,7 +14,11 @@
                       @if (!empty($navigations['header']))
                         @foreach ($navigations['header']['content'] as $item)
                             <li class="nav-item hover:text-primary mt-2 lg:mt-0">
-                                <a href="{{$item['link']}}">{{$item['title']}}</a>
+                                @if ($item['link'] != '/')
+                                    <a href="/{{$item['link']}}">{{$item['title']}}</a>
+                                @else
+                                    <a href="{{$item['link']}}">{{$item['title']}}</a>
+                                @endif
                             </li>
                         @endforeach
                     @endif

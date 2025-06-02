@@ -219,6 +219,40 @@
                 </div>
             </div>
         </section>
+
+
+    <section class="section section--white  w-full bg-white">
+            <div class="container flex-col gap-12 justify-center items-center mx-auto my-0">
+ 
+
+                <article class="flex flex-col shrink-0 justify-start items-start  max-md:pt-10 col-span-12">
+                    <h1 class="mt-5 mb-10 text-5xl maison tracking-normal leading-none text-indigo-900 font-[bold] max-md:mb-10 max-md:text-4xl max-md:text-center max-sm:mb-8 max-sm:text-3xl">
+                      {!!$seoBlock['title'] ?? "Huisdierenverzekering"!!}
+                    </h1>
+                
+
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-16 max-md:gap-2">
+                        @if (!empty($seoBlock['flex_pages']))
+                            @foreach($seoBlock['flex_pages'] as $item)
+                                <?php 
+                                    $page = \App\Models\Page::where('id', $item)->first();
+                                ?>
+                                <li class="flex gap-4 items-center">
+                                    <a href="{{ $page->slug }}" class="mt-6 text-xl px-5 maison font-bold text-indigo-900 flex items-center gap-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" 
+                                            stroke-width="1.5" stroke="currentColor" class="size-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+                                        </svg>
+                                        {{ $page->title }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        @endif
+                    </ul>
+                </article>
+            </div>
+        </section>
+
     </div>
 
 

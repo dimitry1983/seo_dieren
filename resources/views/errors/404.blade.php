@@ -1,4 +1,4 @@
-@extends('layouts.site')
+@extends('layouts.seosite')
 
 @section('content')
 <div class="main-container center bg-white text-white py-6 lg:py-20 h-[60vh]">
