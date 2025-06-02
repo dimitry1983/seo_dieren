@@ -37,7 +37,7 @@ class SupportMessageMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Support aanvraag Vergelijkdierenarts.nl: ' . $this->user->name)
+        return $this->subject('Support aanvraag seowebsite: ' . $this->user->name)
         ->markdown('emails.support-message')
         ->with([
             'user' => $this->user,

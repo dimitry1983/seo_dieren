@@ -1,8 +1,20 @@
-@component('mail::message')
-# {{ devTranslate('inbox.Contact via sex-advertenties.com', 'Contact via sex-advertenties.com') }}
 
-{!! nl2br(e($messageContent)) !!}
+# {{ devTranslate('inbox.Contact via website', 'Contact via website') }} <?php
+ echo app(\App\Services\SettingService::class)->get('site_name');
+?><br>
+<br>
+<br>
+
+
+{!! nl2br(e($messageContent)) !!} <br>
+<br>
+<br>
+<br>
+<br>
+
 
 {{ devTranslate('inbox.Bedankt', 'Bedankt') }},<br>
-{{ config('app.name') }}
-@endcomponent
+
+<?php
+ echo app(\App\Services\SettingService::class)->get('site_name');
+?>

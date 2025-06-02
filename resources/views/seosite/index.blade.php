@@ -226,9 +226,9 @@
  
 
                 <article class="flex flex-col shrink-0 justify-start items-start  max-md:pt-10 col-span-12">
-                    <h1 class="mt-5 mb-10 text-5xl maison tracking-normal leading-none text-indigo-900 font-[bold] max-md:mb-10 max-md:text-4xl max-md:text-center max-sm:mb-8 max-sm:text-3xl">
+                    <h2 class="mt-5 mb-10 text-5xl maison tracking-normal leading-none text-indigo-900 font-[bold] text-center  max-md:mb-10 max-md:text-4xl max-md:text-center max-sm:mb-8 max-sm:text-3xl">
                       {!!$seoBlock['title'] ?? "Huisdierenverzekering"!!}
-                    </h1>
+                    </h2>
                 
 
                     <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-16 max-md:gap-2">

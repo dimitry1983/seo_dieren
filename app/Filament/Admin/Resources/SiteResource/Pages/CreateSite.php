@@ -37,25 +37,8 @@ class CreateSite extends CreateRecord
             $newNavigation->site_id = $lastSite -> id; // Assign the new site_id
             $newNavigation->save(); // Save the new duplicated page
         }
-        $categories = Category::where('site_id', 0)->get();
-        foreach ($categories as $category) {
-            // Create a new navigation record with the same attributes, except for site_id
-            $newCategory = $category->replicate(); // Replicate the existing page
-            $newCategory->site_id = $lastSite -> id; // Assign the new site_id
-            $newCategory->parent_id = $category -> id; // Assign the new site_id
-            $newCategory->save(); // Save the new duplicated page
-        }
-        //provinces
-        $provinces = Province::where('site_id', 0)->get();
-        foreach ($provinces as $province) {
-            // Create a new navigation record with the same attributes, except for site_id
-            $province = $category->replicate(); // Replicate the existing page
-            $province->site_id = $lastSite -> id; // Assign the new site_id
-            $province->save(); // Save the new duplicated page
-        }
-        //import Veterinian + reviews, + rewrite with chatgpt
-        //we need to add old_id to table
-        (new SeoVeterinarian())->importVeterinarians($lastSite -> id);
+   
+    
         //rewrite this description and make the content longer and seooptimized, using h2 h3 tags and return in html so i can insert the html into the database.
 
         // Runs after the form fields are saved to the database.

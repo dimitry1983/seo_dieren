@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Page;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Spatie\Honeypot\Http\Livewire\Concerns\HoneypotData;
@@ -35,7 +36,7 @@ class ContactForm extends Component
         $this->protectAgainstSpam();
         $this->validate();
 
-        $adminEmail = config('mail.admin_email');;
+        $adminEmail = app(\App\Services\SettingService::class)->get('adminmail');
         $this->subject = "Contact via website";
 
         $this->message = $this->message."\n\n Verzender: ".$this->email."\n".$this->email; 
@@ -56,7 +57,10 @@ class ContactForm extends Component
 
     public function render()
     {
+        $page = Page::getCustomPage('blogs');
+      
 
-        return view('livewire.contact-form')->layout('layouts.site');
+        $headerBlock = Page::getBlockInfo($page->blocks, 'header_blog');
+        return view('livewire.contact-form', ['headerBlock' => $headerBlock])->layout('layouts.seosite');
     }
 }
