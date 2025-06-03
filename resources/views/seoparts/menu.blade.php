@@ -6,7 +6,7 @@
                 @endphp
 
                 @if ($logo)
-                    <img src="{{ asset('storage/' . $logo) }}" alt="Site Logo">
+                    <img src="{{ asset('storage/' . $logo) }}" alt="Site Logo" style="max-height: 70px;">
                 @endif
             </a>
 
