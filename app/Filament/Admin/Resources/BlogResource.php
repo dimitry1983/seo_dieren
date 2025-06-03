@@ -18,6 +18,7 @@ use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 use RalphJSmit\Filament\SEO\SEO;
 
 class BlogResource extends Resource
@@ -55,7 +56,7 @@ class BlogResource extends Resource
                             Forms\Components\TextInput::make('excerpt')
                                 ->required()
                                 ->maxLength(255),
-                            Forms\Components\RichEditor::make('description')
+                            TinyEditor::make('description')
                                 ->required()
                                 ->columnSpanFull(),
                             Select::make('status')

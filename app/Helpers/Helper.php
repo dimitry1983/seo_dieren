@@ -18,6 +18,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Toggle;
 
 
+
 if(!function_exists('domain')){
     function domain(){
         if(!empty(@$_SERVER['HTTP_X_FORWARDED_HOST'])) {
@@ -545,7 +546,7 @@ function getPageBuilderSchema(){
         ->schema([
             FileUpload::make('image_left'),
             TextInput::make('title'),
-            RichEditor::make('description'),
+            TinyEditor::make('description'),
             Repeater::make('insurance')
                 ->schema([
                     TextInput::make('advantages'),
@@ -557,13 +558,13 @@ function getPageBuilderSchema(){
         FilamentBuilder\Block::make('insurances')
             ->schema([
                 TextInput::make('title'),
-                RichEditor::make('description'),
+                TinyEditor::make('description'),
                 Repeater::make('insurance')
                 ->schema([
                         FileUpload::make('image'),
                         TextInput::make('title'),
                         TextInput::make('rating'),
-                        RichEditor::make('description'),
+                        TinyEditor::make('description'),
                         Repeater::make('insurance')
                             ->schema([
                                 TextInput::make('title'),
@@ -583,7 +584,7 @@ function getPageBuilderSchema(){
                     Repeater::make('info_steps')
                         ->schema([
                             TextInput::make('title'),
-                            RichEditor::make('description'),
+                            TinyEditor::make('description'),
                         ]),    
                 ]),
 
@@ -616,19 +617,19 @@ function getPageBuilderSchema(){
             FilamentBuilder\Block::make('intro_flex')
                 ->schema([
                     TextInput::make('title'),
-                    RichEditor::make('description'),
+                    TinyEditor::make('description'),
                 ]),        
 
             FilamentBuilder\Block::make('insurances_flex')
                 ->schema([
                     TextInput::make('title'),
-                    RichEditor::make('description'),
+                    TinyEditor::make('description'),
                     Repeater::make('insurance')
                     ->schema([
                             FileUpload::make('image'),
                             TextInput::make('title'),
                             TextInput::make('rating'),
-                            RichEditor::make('description'),
+                            TinyEditor::make('description'),
                             Repeater::make('insurance')
                                 ->schema([
                                     TextInput::make('usp'),
@@ -652,7 +653,7 @@ function getPageBuilderSchema(){
                     Repeater::make('info_steps')
                         ->schema([
                             TextInput::make('title'),
-                            RichEditor::make('description'),
+                            TinyEditor::make('description'),
                         ]),    
                 ]),
 
@@ -660,7 +661,7 @@ function getPageBuilderSchema(){
                 ->schema([
                     FileUpload::make('image_left'),
                     TextInput::make('title'),
-                    RichEditor::make('description'),
+                    TinyEditor::make('description'),
                     Repeater::make('insurance')
                         ->schema([
                             TextInput::make('advantages'),
@@ -676,7 +677,7 @@ function getPageBuilderSchema(){
                     Repeater::make('faq')
                         ->schema([
                             TextInput::make('question'),
-                            RichEditor::make('answer'),
+                            TinyEditor::make('answer'),
                         ]),    
                 ]),
 
@@ -712,7 +713,7 @@ function getPageBuilderSchema(){
             ->schema([
                 FileUpload::make('image_left'),
                 TextInput::make('title'),
-                RichEditor::make('description'),
+                TinyEditor::make('description'),
                 Repeater::make('insurance')
                     ->schema([
                         TextInput::make('advantages'),
@@ -726,7 +727,7 @@ function getPageBuilderSchema(){
                     Repeater::make('info_steps')
                         ->schema([
                             TextInput::make('title'),
-                            RichEditor::make('description'),
+                            TinyEditor::make('description'),
                         ]),    
                 ]),    
     ];

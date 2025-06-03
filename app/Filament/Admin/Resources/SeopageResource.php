@@ -4,6 +4,7 @@ namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\SeopageResource\Pages;
 use App\Filament\Admin\Resources\SeopageResource\RelationManagers;
+use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 use App\Models\Page;
 use App\Models\Seopage;
 use Filament\Forms;
@@ -44,15 +45,15 @@ class SeopageResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('meta_title')
                     ->maxLength(255),
-                Forms\Components\RichEditor::make('meta_description')
+                TinyEditor::make('meta_description')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('title')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\RichEditor::make('top_description')
+                TinyEditor::make('top_description')
                     ->required()
                     ->columnSpanFull(),
-                Forms\Components\RichEditor::make('bottom_description')
+                TinyEditor::make('bottom_description')
                     ->columnSpanFull(),
                 Forms\Components\TextInput::make('slug')
                     ->disabled()
